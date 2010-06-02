@@ -4,3 +4,10 @@
 
 == 02/06/2010 ==
   * Group discussion to divide the work
+  * Installed processing using a Mac .dmg.
+  * Installed Eclipse. Added a new project with the Processing lib. Now i'm able to program processing application in Eclipse SDK.
+  * Explored a couple visualization frameworks/websites:
+     * http://blog.blprnt.com/blog/blprnt/your-random-numbers-getting-started-with-processing-and-data-visualization
+    * http://prefuse.org/gallery/
+    * http://www.wikiviz.org/wiki/Tools
+  * Downloaded the JAR and source code of Mondrian. Can't compile the source code, but JAR runs.
