@@ -1,0 +1,15 @@
+#summary Group devisions
+
+== Group 1 ==
+Group one will focus on the classification based on statistical features.
+
+  * Bart van de Poel (features)
+  * Quang (classifiers)
+  * Nick (visualization)
+
+== Group 2 ==
+Group two will focus on the classification based on cognitive features.
+
+  * Sander (features)
+  * Bart Buter (Scraping & social network)
+  * Davide (features)
