@@ -11,3 +11,6 @@
     * http://prefuse.org/gallery/
     * http://www.wikiviz.org/wiki/Tools
   * Downloaded the JAR and source code of Mondrian. Can't compile the source code, but JAR runs.
+  * Downloaded Prefuse. I think this toolkit is more appropriate for our project then Processing. I contains several plot functions.
+     http://www.nickd.nl/dl/ai/is/prefuse_img.png
+     http://www.nickd.nl/dl/ai/is/prefuse_scatter.png
