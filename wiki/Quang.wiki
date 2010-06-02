@@ -1,7 +1,5 @@
-#summary One-sentence summary of this page.
+#Research Log of Quang
 
-= Introduction =
-
-*Research Log of Quang Nguyen*
+*Research Log of Quang*
 
 6/2/2010 - Created a wiki page.
