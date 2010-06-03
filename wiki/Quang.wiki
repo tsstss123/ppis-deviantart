@@ -1,3 +1,10 @@
-*Research Log of Quang*
+#Research Log of Quang
 
-6/2/2010 - Created a wiki page.
+=Research Log=
+
+==02/06==
+ * Had initial meeting about the project and tasks at Science Park
+ * Started on SVM Classifier. 
+
+==03/06==
+ * Looked for papers for Image classification. Found a very interesting survey paper containing all kinds of classification methods used in the literature. Also contains lots of information about how the research field has extracted different kinds of image features: http://isu.indstate.edu/qweng/classification_review_IJRS_2007.pdf
