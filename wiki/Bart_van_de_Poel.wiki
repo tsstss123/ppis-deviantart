@@ -17,4 +17,5 @@
   * Avg Intensity / avg Hue
   * Weibull fit parameters
   * Number of edges / edge ratio
-  * Corner detection
+  * Corner detection 
+  * Colour Histogram 
