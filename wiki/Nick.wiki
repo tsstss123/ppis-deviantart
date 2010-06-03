@@ -3,7 +3,7 @@
 = Logbook =
 
 == 03/06/2010 ==
-  * Started reading the "Visualizing Data" book.
+  * Started reading the "Visualizing Data" book. Why Processing: "Processing was the right combination of cost, ease of use, and execution speed."
 
 == 02/06/2010 ==
   * Group discussion to divide the work
