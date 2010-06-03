@@ -9,3 +9,6 @@ Discussed network links, favorites vs. viewers
 = 3-6-2010 =
 Installing work enviroment on my computer, matlab python svn etc.
 Researching network links  
+trying out scrapy for python,
+needs, python2.6, zope.interface, twisted10,  pywin, libxml2, lxml,
+http://users.skynet.be/sbi/libxml-python/
