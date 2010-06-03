@@ -1,0 +1,20 @@
+#summary Bart's research log
+
+=Research Log=
+
+==02/06==
+ * Had initial meeting about the project and tasks at Science Park
+ * My task is the extraction of statistical features
+ * Installed ImageJ and looked at some of the features
+ * Created research log
+
+==03/06==
+ * Looked for papers about statistical features
+
+
+= Possible features =
+
+  * Avg Intensity / avg Hue
+  * Weibull fit parameters
+  * Number of edges / edge ratio
+  * Corner detection
