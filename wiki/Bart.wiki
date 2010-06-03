@@ -2,12 +2,10 @@
 
 = Bart's Log =
 
-Add your content here.
+= 2-6-2010 =
+Discussed some data-structure ideas with Davide
+Discussed network links, favorites vs. viewers
 
-
-= Details =
-
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
+= 3-6-2010 =
+Installing work enviroment on my computer, matlab python svn etc.
+Researching network links  
