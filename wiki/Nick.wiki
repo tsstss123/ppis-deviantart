@@ -2,6 +2,9 @@
 
 = Logbook =
 
+== 03/06/2010 ==
+  * Started reading the "Visualizing Data" book.
+
 == 02/06/2010 ==
   * Group discussion to divide the work
   * Installed processing using a Mac .dmg.
