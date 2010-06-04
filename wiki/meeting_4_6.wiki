@@ -4,7 +4,7 @@
 
 *Global questions:*
   * Can we use image features to recommend deviants for a given gallery?
-  * Can we use those features to cluster (classifier) the images into categories/styles?
+  * Can we use those features to cluster (classifier) the images into categories/styles? Given the taxonomy, are there features in our feature vector that can be used to classify these categories?
 
 network
 - can network improve recommendation accuracy
