@@ -16,6 +16,9 @@
  * Read paper accompanying koen's color description software. Colour descriptions around salient points (or other point sampling technique) are calculated. So for each image there is a list of descriptor vectors (one vector for each sampled point). This list can vary in length. In order to turn this into a fixed length feature vector, the descriptors are compared to a "codebook" which contains a fixed number of elemens. (bag of words model). Each descriptor is assigned to one of the codebook elements, creating a histogram which shows the amount of descriptors in each codebook element (This codebook needs to be created by us using training data?). Finally this histogram is normalized and used as the feature vector.   NOTE: not sure what kind of descriptors we should use for this (they all have different invariance properties, so depends on what kind of invariance we want). 
  * Can't run koen's code though. Seems that its not compiled for my OS
 
+==04/06==
+ * Meeting with team about research goals and specifics
+
 
 = Possible features =
 
