@@ -2,6 +2,9 @@
 
 = Logbook =
 
+== 04/06/2010 ==
+  * Discusses our research questions and ways to validate the results of the system.
+
 == 03/06/2010 ==
   * Started reading the "Visualizing Data" book. Why Processing: "Processing was the right combination of cost, ease of use, and execution speed."
   * Read the first 108 pages of the book. Chapter 3 describes how to make a timeSerie (plot) using Processing.
