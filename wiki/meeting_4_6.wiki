@@ -2,7 +2,9 @@
 
 = Research questions =
 
-*Global question:* can we use image features to recommend deviants for a given gallery?
+*Global question:*
+  * Can we use image features to recommend deviants for a given gallery?
+  * Can we use those features to cluster (classifier) the images into categories/styles?
 
 network
 - can network improve recommendation accuracy
