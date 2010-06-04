@@ -1,5 +1,35 @@
 #summary List of the meetings
 
+<wiki:toc max_depth="1" />
+
   * 04/06/2010 (group) @ 11.00 new building
   * 02/06/2010 (group and supervisor)
   * 01/06/2010 (group and supervisor)
+
+
+= Meeting 04/06/2010 =
+
+*Global questions:*
+  * Can we use image features to recommend deviants for a given gallery?
+  * Can we use those features to cluster (classifier) the images into categories/styles? Given the taxonomy, are there features in our feature vector that can be used to classify these categories?
+
+  * can we improve recommendation accuracy by incorporating the [friends] network?
+
+  * which features are better? cognitive vs statistical recommendations
+
+- metrics
+
+  - use favorites as a metric 100 images of artist as train, 100 images including 10 of his favorites as test set.
+
+  - use favorites as a metric 100 images of artist as train, 100 images including 10 of his own work not in the train set.
+
+  - correlation between network distance and "image distance"
+ 
+
+what are we recommending
+
+recommending one image per gallery
+
+see if it performs on a favorites gallery
+
+limit ourselves to premium accounts
