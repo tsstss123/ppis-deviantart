@@ -6,6 +6,7 @@
   * Discussed our research questions and ways to validate the results of the system.
   * Updated the project details.
   * Continue reading the book. "The translate() method moves the coordinate system over slightly, giving us a white border: (0, 0) will now be (30, 30), so nothing will be drawn in the left or top 30 pixels of the image"
+  * Finished chapter 5. Was not interesting at all for our application. Preprocessing data will be done outside the visualization app.
 
 == 03/06/2010 ==
   * Started reading the "Visualizing Data" book. Why Processing: "Processing was the right combination of cost, ease of use, and execution speed."
