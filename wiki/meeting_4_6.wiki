@@ -8,7 +8,7 @@
 
   * can we improve recommendation accuracy by incorporating the [friends] network?
 
-  * wich features are better? cognitive vs statistical recommendations
+  * which features are better? cognitive vs statistical recommendations
 
 - metrics
 
