@@ -67,10 +67,7 @@ def getDeviantPage(deviant):
     return 'http://%s.deviantart.com/' % (deviant)
     
 if __name__ == '__main__':
-    #deviants.add('omega300m')
-    #parseFriends(getDeviantPage('omega300m'))  
-    
-    todolist = ['aru01']
+    todolist = set(['omega300m', 'aru01'])
     
     while len(todolist) > 0:
         deviant = todolist.pop()
