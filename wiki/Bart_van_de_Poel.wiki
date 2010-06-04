@@ -18,7 +18,8 @@
 
 ==04/06==
  * Meeting with team about research goals and specifics
-
+ * Decided on how to output features and wrote an example feature extractor to extract the edge to non-edge ratio of an image (Note: need to decide on parameters for the edge detector). Output is a textfile with a line for each image with the format filename,ratio:
+1980_by_K1lgore.jpg,0.069953
 
 = Possible features =
 
@@ -28,3 +29,8 @@
   * Corner detection 
   * Colour Histograms
   * Codebook vector produced by koen's code
+
+= Implemented features =
+ * edge/non-edge ratio
+ * corner detection (theo has code for this on his website. Haven't looked at it extensively yet, but seems to work.
+ 
