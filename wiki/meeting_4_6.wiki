@@ -2,7 +2,7 @@
 
 = Research questions =
 
-*Global question:*
+*Global questions:*
   * Can we use image features to recommend deviants for a given gallery?
   * Can we use those features to cluster (classifier) the images into categories/styles?
 
