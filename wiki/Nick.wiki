@@ -3,7 +3,9 @@
 = Logbook =
 
 == 04/06/2010 ==
-  * Discusses our research questions and ways to validate the results of the system.
+  * Discussed our research questions and ways to validate the results of the system.
+  * Updated the project details.
+  * Continue reading the book.
 
 == 03/06/2010 ==
   * Started reading the "Visualizing Data" book. Why Processing: "Processing was the right combination of cost, ease of use, and execution speed."
