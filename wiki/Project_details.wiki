@@ -15,3 +15,5 @@ Group two will focus on the classification based on cognitive features.
   * Sander (features)
   * Bart Buter (Scraping & social network)
   * Davide (features)
+
+= Research questions =
