@@ -1,7 +1,7 @@
 #summary List of the meetings
 
 <wiki:toc max_depth="1" />
-
+  * 07/06/2010 (group and supervisor) @ 13.00 albert's office 
   * 04/06/2010 (group) @ 11.00 new building
   * 02/06/2010 (group and supervisor)
   * 01/06/2010 (group and supervisor)
