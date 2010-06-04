@@ -2,6 +2,8 @@
 
 = Research question =
 
+Global question: can we use image features to recommend deviants for a given gallery?
+
 network
 - can network improve recommendation accuracy
 
