@@ -1,8 +1,8 @@
 #summary One-sentence summary of this page.
 
-= Research question =
+= Research questions =
 
-Global question: can we use image features to recommend deviants for a given gallery?
+*Global question:* can we use image features to recommend deviants for a given gallery?
 
 network
 - can network improve recommendation accuracy
