@@ -5,8 +5,8 @@ from HTMLParser  import HTMLParser
 
 import datetime
 import pickle
-
-todolist = set()
+import cProfile 
+import pstats
 
 starttime = datetime.datetime.now()
 
@@ -20,10 +20,11 @@ class Deviants( dict ):
 		item[1].add(self.deviant_id(friend))
 		
 class URLLister(SGMLParser):
-	def __init__(self, deviantt, deviantss):
+	def __init__(self, deviant, deviants, todolist):
 		SGMLParser.__init__(self, 0)
-		self.deviant = deviantt
-		self.deviants = deviantss
+		self.deviant = deviant
+		self.deviants = deviants
+		self.todolist = todolist
 		
 	def reset(self):                              
 		SGMLParser.reset(self)
@@ -49,9 +50,9 @@ class URLLister(SGMLParser):
 			if self.specialmember:
 				newdeviant = href[0].strip('http://').split('.')[0]
 				if newdeviant not in self.deviants.keys():
-					deviants.add(newdeviant)
-					todolist.add(newdeviant)
-				deviants.add_friend(deviant, newdeviant)
+					self.deviants.add(newdeviant)
+					self.todolist.add(newdeviant)
+				self.deviants.add_friend(self.deviant, newdeviant)
 				self.specialmember = False
 				
 	def end_a(self):
@@ -68,9 +69,9 @@ class URLLister(SGMLParser):
 				self.nextpage = self.lasthref[0] 
 						
 				
-def parseFriends(deviant, deviants):
+def parseFriends(deviant, deviants, todolist):
 	deviant_page = getDeviantPage(deviant)
-	parser = URLLister(deviant, deviants)
+	parser = URLLister(deviant, deviants, todolist)
 	print('[%s] Parsing %s (%d deviants so far, %d in the todo list)....' % (datetime.datetime.now()-starttime, deviant_page, len(deviants), len(todolist)))
 	
 	while deviant_page:
@@ -82,11 +83,12 @@ def parseFriends(deviant, deviants):
 def getDeviantPage(deviant):
 	return 'http://%s.deviantart.com/' % (deviant)
 
-def pajek_writer(deviants):
-	out = open('deviants.pickle', 'wb')
+def pajek_writer(deviants, time):
+	print 'saving timestamp %d' %(time)
+	out = open('deviants_%d.pickle' %(time), 'wb')
 	pickle.dump(deviants, out)
 	out.close
-	f = open('deviants.net', 'w')
+	f = open('deviants%d.net' %(time), 'w')
 	f.write('*Vertices %d\n'  %(len(deviants)))
 	for (deviant, value) in deviants.iteritems():
 		f.write('%d "%s"\n'%(value[0], deviant))
@@ -95,15 +97,24 @@ def pajek_writer(deviants):
 		for friend in (value[1]):
 			f.write('%d %d 1\n' %(value[0], friend))	
 	f.close
-	
-if __name__ == '__main__':
+
+def start():
 	todolist = set(['omega300m', 'aru01'])
 	deviants = Deviants()
-	
+	nextsavetime = 0
 	for deviant in todolist:
 		deviants.add(deviant)
 	print deviants	
-	while (len(todolist) > 0) and (len(deviants)<100) :
+	while (len(todolist) > 0) and (len(deviants) < 1000) :
+		if (datetime.datetime.now()-starttime).seconds > nextsavetime:
+			pajek_writer(deviants,nextsavetime)
+			nextsavetime +=300
 		deviant = todolist.pop()
-		parseFriends(deviant, deviants)
-	pajek_writer(deviants)
+		parseFriends(deviant, deviants, todolist)
+	pajek_writer(deviants, -1)
+	
+if __name__ == '__main__':
+	start()
+#	cProfile.run('start()', 'prof')
+#	p = pstats.Stats('prof')
+#	p.sort_stats('cumulative').print_stats(25)
