@@ -105,7 +105,7 @@ def start():
 	for deviant in todolist:
 		deviants.add(deviant)
 	print deviants	
-	while (len(todolist) > 0) and (len(deviants) < 1000) :
+	while (len(todolist) > 0):
 		if (datetime.datetime.now()-starttime).seconds > nextsavetime:
 			pajek_writer(deviants,nextsavetime)
 			nextsavetime +=300
