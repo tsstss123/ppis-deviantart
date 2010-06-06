@@ -104,7 +104,6 @@ def start():
 	nextsavetime = 0
 	for deviant in todolist:
 		deviants.add(deviant)
-	print deviants	
 	while (len(todolist) > 0):
 		if (datetime.datetime.now()-starttime).seconds > nextsavetime:
 			pajek_writer(deviants,nextsavetime)
