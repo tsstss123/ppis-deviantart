@@ -2,9 +2,17 @@
 
 =Research Log=
 
-==02/06==
- * Had initial meeting about the project and tasks at Science Park
- * Started on SVM Classifier. 
+==06/06==
+ * Read the PRTools documentation to have a better understanding of it in order to utilize better.
+
+==04/06==
+ * Written code to read in a vector with feature values and use it in SVM. Also did this for kmeans. 
+ * Written the code to create simple features like the average hue, saturation and intensity.
+ * Note: We are going to run experiments so an extra addition to the code is to let it automatically output all statistics.
 
 ==03/06==
  * Looked for papers for Image classification. Found a very interesting survey paper containing all kinds of classification methods used in the literature. Also contains lots of information about how the research field has extracted different kinds of image features: http://isu.indstate.edu/qweng/classification_review_IJRS_2007.pdf
+
+==02/06==
+ * Had initial meeting about the project and tasks at Science Park
+ * Started on SVM Classifier.
