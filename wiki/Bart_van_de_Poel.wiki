@@ -21,6 +21,9 @@
  * Decided on how to output features and wrote an example feature extractor to extract the edge to non-edge ratio of an image (Note: need to decide on parameters for the canny edge detector). Output is a textfile with a line for each image with the format filename,ratio:
 1980_by_K1lgore.jpg,0.069953
 
+==06/06==
+ * wrote extraction of avg hue, saturation and intensity
+
 = Possible features =
 
   * Avg Intensity / avg Hue
@@ -32,5 +35,6 @@
 
 = Implemented features =
  * edge/non-edge ratio
+ * avg hue, avg saturation & avg Intensity
  * corner detection (theo has code for this on his website. Haven't looked at it extensively yet, but seems to work.
  
