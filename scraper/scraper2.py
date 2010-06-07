@@ -98,6 +98,7 @@ def pajek_writer(deviantsandlist, time):
 	out = open('deviants_%d.pickle' %(time), 'wb')
 	pickle.dump(deviantsandlist, out)
 	out.close
+	deviants = deviantsandlist[0]
 	f = open('deviants_%d.net' %(time), 'w')
 	f.write('*Arcs %d\n'  %(len(deviants)))
 	for (deviant, value) in deviants.iteritems():
