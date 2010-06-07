@@ -1,5 +1,19 @@
 #summary Sander's research log
 
+== 06/07/2010==
+  * Working on extracting all images from a gallery of a deviant.
+    Looked at the matlab code of Albert. Seems he does not extract all images for each deviant. The first backend page only shows like the first 2.5 pages of the gallery. You need to modify the offset to show the remaining image information.
+
+  * I'm rewriting the code in python. Using the SGMLParser class to find the backend url in the gallery page. Using xml.sax to parse the backend page.
+    
+  * The backend page contains the following information:
+    * Image link
+    * Thumbtail links (something like 300x300 and 100x100)
+    * Title
+    * Category information
+    * Keywords
+    * Etc. 
+
 == 06/03/2010==
   * Worked together with Bart on extracting all friends from a deviant. With this information we can generate a graph of all connected deviants. 
   The friends selection is limited to special members (premium members).
