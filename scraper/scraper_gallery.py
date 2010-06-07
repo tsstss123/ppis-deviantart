@@ -18,7 +18,6 @@ class BackEndUrlRetriever(SGMLParser):
 	backend = None
 	
 class BackEndParser(handler.ContentHandler):
-
 	def __init__(self, image_folder):
 		self.image_folder = image_folder
 		self.itemstarted = False
@@ -71,7 +70,7 @@ def parseDeviant(deviant):
 	
 	if not os.path.exists(image_folder):
 		os.mkdir(image_folder)
-	deviant_folder = os.path.join(image_folder, deviant) #'%s/%s' % (image_folder, deviant)
+	deviant_folder = os.path.join(image_folder, deviant)
 	if not os.path.exists(deviant_folder):
 		os.mkdir(deviant_folder)
 	
