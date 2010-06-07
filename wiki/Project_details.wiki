@@ -34,3 +34,6 @@ Group two will focus on the classification based on cognitive features.
   * recommending one image per gallery
   * see if it performs on a favorites gallery
   * limit ourselves to premium accounts
+
+= Visualization methods =
+  * First we are going to implement the "Parallel coordinates" visualization method. "Parallel coordinates is a common way of visualizing high-dimensional geometry and analyzing multivariate data." This methods enables us to compare how different features react on different galleries/images.
