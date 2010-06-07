@@ -30,7 +30,7 @@ Group two will focus on the classification based on cognitive features.
   * use favorites as a metric 100 images of artist as train, 100 images including 10 of his own work not in the train set.
   *correlation between network distance and "image distance"
  
-- what are we recommending
-- recommending one image per gallery
-- see if it performs on a favorites gallery
-- limit ourselves to premium accounts
+  * what are we recommending
+  * recommending one image per gallery
+  * see if it performs on a favorites gallery
+  * limit ourselves to premium accounts
