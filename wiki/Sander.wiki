@@ -1,7 +1,11 @@
 #summary Sander's research log
 
-= 06/02/2010=
-=== A Model of Saliency-Based Visual Attention for Rapid Scene Analysis" and "COMPUTATIONAL MODELLING OFVISUAL ATTENTION ===
+== 06/03/2010==
+  * Worked together with Bart on extracting all friends from a deviant. With this information we can generate a graph of all connected deviants. 
+  The friends selection is limited to special members (premium members).
+
+== 06/02/2010==
+==== A Model of Saliency-Based Visual Attention for Rapid Scene Analysis" and "COMPUTATIONAL MODELLING OFVISUAL ATTENTION ====
   * Read the papers "A Model of Saliency-Based Visual Attention for Rapid Scene Analysis" and  "COMPUTATIONAL MODELLING OFVISUAL ATTENTION"
   * Assumes primates decompose visual input into a set of topographic feature maps. Spatial locations compete for saliency in each map. A saliency map is constructed from this and the attention point is derived from this.
   
@@ -9,5 +13,5 @@
 
   * _Discussion point:_ Papers seem to be focussed on finding saliency. The features could certainly be used to find similar images, but what if two images have the same attention points but are actually pretty different?  
 
-= 05/02/2010=
+== 05/02/2010==
 Made a research log.
