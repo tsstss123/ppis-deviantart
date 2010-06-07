@@ -19,36 +19,43 @@ class Deviants( dict ):
 		item = dict.__getitem__(self, deviant)
 		item[1].add(self.deviant_id(friend))
 		
-class URLLister(SGMLParser):
+class FriendListParser(SGMLParser):
 	def __init__(self, deviant, deviants, todolist):
 		SGMLParser.__init__(self, 0)
 		self.deviant = deviant
 		self.deviants = deviants
 		self.todolist = todolist
-		
+
 	def reset(self):                              
 		SGMLParser.reset(self)
 		
-		self.li_started = False
-		self.a_started = False
 		self.specialmember = False
 		self.nextpage = None
 		self.lasthref = None
-
-	def start_li(self, attrs):
-		self.li_started = 1
 		
-	def end_li(self):
-		self.li_started = 0
+		self.stack = []
+		
+	def handle_starttag(self, tag, method, attributes):
+		SGMLParser.handle_starttag(self, tag, method, attributes)
+		self.stack.append(tag)
+		
+	def handle_endtag(self, tag, method):
+		SGMLParser.handle_endtag(self, tag, method)
+		self.stack.pop()
+
+	# Defining the following methods will make sure 
+	# that handle_starttag and endtag gets called.
+	def start_li(self, attrs): pass
+	def end_li(self): pass
+	def start_span(self, attrs): pass
+	def end_span(self): pass
 		
 	def start_a(self, attrs):     
-		global todolist
-		self.a_started = True
 		href = [v for k, v in attrs if k=='href']  
 		if href:
 			self.lasthref = href
 			if self.specialmember:
-				newdeviant = href[0].strip('http://').split('.')[0]
+				newdeviant = getDeviantForPage(href[0])
 				if newdeviant not in self.deviants.keys():
 					self.deviants.add(newdeviant)
 					self.todolist.add(newdeviant)
@@ -56,23 +63,24 @@ class URLLister(SGMLParser):
 				self.specialmember = False
 				
 	def end_a(self):
-		self.a_started  = False
+		pass
 		
 	def handle_data(self, text):
-		if self.li_started > 0:
-			self.li_started += 1
-			if self.li_started == 3:
-				if text != '~':
-					self.specialmember = True   
-		if self.a_started:
+		if len(self.stack) == 0:
+			return	# No tags we want to catch, so don't care about the data
+			
+		tag = self.stack[len(self.stack)-1]
+		if tag == 'li':
+			if text != '~':
+				self.specialmember = True 
+		elif tag == 'a':
 			if text == 'Next Page':
 				self.nextpage = self.lasthref[0] 
-						
-				
+
 def parseFriends(deviant, deviants, todolist):
 	deviant_page = getDeviantPage(deviant)
-	parser = URLLister(deviant, deviants, todolist)
-	print('[%s] Parsing %s (%d deviants so far, %d in the todo list)....' % (datetime.datetime.now()-starttime, deviant_page, len(deviants), len(todolist)))
+	parser = FriendListParser(deviant, deviants, todolist)
+	print('[%s] Parsing %s (%d deviants processed, %d in the todo list)....' % (datetime.datetime.now()-starttime, deviant_page, len(deviants), len(todolist)))
 	
 	while deviant_page:
 		url = urllib.urlopen('%sfriends' % (deviant_page) )
@@ -82,7 +90,9 @@ def parseFriends(deviant, deviants, todolist):
 
 def getDeviantPage(deviant):
 	return 'http://%s.deviantart.com/' % (deviant)
-
+def getDeviantForPage(page):
+    return page.strip('http://').split('.')[0]
+    
 def pajek_writer(deviants, time):
 	print 'saving timestamp %d' %(time)
 	out = open('deviants_%d.pickle' %(time), 'wb')
