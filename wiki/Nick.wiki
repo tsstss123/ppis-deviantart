@@ -6,6 +6,7 @@
   * Finished chapter 8.
   * Decided to kickoff with the "Parallel coordinates" visualization method. Parallel coordinates is a common way of visualizing high-dimensional geometry and analyzing multivariate data. This methods enables us to compare how different features react on different galleries/images.
   * Finished reading the book. Last chapter described how to integrate a Processing PApplet into a Java Swing application.
+  * Created first version of the parallel coordinates vis: http://www.nickd.nl/dl/ai/is/parallel_coordinates_v0.1.png
 
 == 06/06/2010 ==
   * Continue reading the book. "A *thread* provides a way to bundle a function in your program so that it can run at the same time as another part of the program. In this case, rather than waiting for the data to download, a thread can be used for the download while the main draw() method of the program continues to run."
@@ -35,6 +36,5 @@
     * http://www.wikiviz.org/wiki/Tools
   * Downloaded the JAR and source code of Mondrian. Can't compile the source code, but JAR runs.
   * Downloaded Prefuse. ~~I think this toolkit is more appropriate for our project then Processing.~~ I contains several plot functions.
-     http://www.nickd.nl/dl/ai/is/prefuse_img.png http://www.nickd.nl/dl/ai/is/prefuse_scatter.png
   * Browsed the internet for Processing examples. It is very powerful and offers many features. The drawback is that we need to script more stuff manually, but this enables us to customize is the way we want.
   * Found an interesting book about Processing: "Visualizing Data". Ordered it and going to read it.
