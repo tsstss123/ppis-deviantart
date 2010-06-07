@@ -80,7 +80,8 @@ class FriendListParser(SGMLParser):
 def parseFriends(deviant, deviants, todolist):
 	deviant_page = getDeviantPage(deviant)
 	parser = FriendListParser(deviant, deviants, todolist)
-	print('[%s] Parsing %s (%d deviants processed, %d in the todo list)....' % (datetime.datetime.now()-starttime, deviant_page, len(deviants), len(todolist)))
+	print('[%s] Parsing %s (%d deviants know, %d todo )....' 
+% (datetime.datetime.now()-starttime, deviant, len(deviants), len(todolist)))
 	
 	while deviant_page:
 		url = urllib.urlopen('%sfriends' % (deviant_page) )
@@ -94,7 +95,7 @@ def getDeviantForPage(page):
     return page.strip('http://').split('.')[0]
     
 def pajek_writer(deviantsandlist, time):
-	print 'saving timestamp %d' %(time)
+	print 'saving timestamp %d errors %s' %(time, deviantsandlist[2])
 	out = open('deviants_%d.pickle' %(time), 'wb')
 	pickle.dump(deviantsandlist, out)
 	out.close
@@ -110,18 +111,23 @@ def pajek_writer(deviantsandlist, time):
 	f.close
 
 def start():
-	todolist = set(['omega300m', 'aru01'])
+	todolist = set(['omega300m'])
+	errlist = []
 	deviants = Deviants()
 	nextsavetime = 0
 	for deviant in todolist:
 		deviants.add(deviant)
 	while (len(todolist) > 0):
 		if (datetime.datetime.now()-starttime).seconds > (nextsavetime*300):
-			pajek_writer([deviants, todolist], nextsavetime)
+			pajek_writer([deviants, todolist, errlist], nextsavetime)
 			nextsavetime += 1
 		deviant = todolist.pop()
-		parseFriends(deviant, deviants, todolist)
-	pajek_writer(deviants, todolist, -1)
+        	try:
+			parseFriends(deviant, deviants, todolist)
+		except Exception as e:
+			print('Exception: %s %s, %s' %(deviant, type(e), e))
+            		errlist.append(deviant)
+	pajek_writer([deviants, todolist, errlist], -1)
 	
 if __name__ == '__main__':
 	start()
