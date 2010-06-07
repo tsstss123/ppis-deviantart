@@ -92,10 +92,11 @@ def parseDeviant(deviant):
 		url = urllib.urlopen('%s%d' % (backendurl, offset))
 		
 		parser = make_parser()
-		parser.setContentHandler(BackEndParser(deviant_folder))
+		handler = BackEndParser(deviant_folder)
+		parser.setContentHandler(handler)
 		parser.parse(url)
 		
-		count = parser.count
+		count = handler.count
 		offset += count
 	print('Downloaded %d images' % (offset))
 
