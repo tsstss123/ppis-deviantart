@@ -4,6 +4,7 @@
 
 == 07/06/2010 ==
   * Finished chapter 8.
+  * Decided to kickoff with the "Parallel coordinates" visualization method. Parallel coordinates is a common way of visualizing high-dimensional geometry and analyzing multivariate data. This methods enables us to compare how different features react on different galleries/images.
 
 == 06/06/2010 ==
   * Continue reading the book. "A *thread* provides a way to bundle a function in your program so that it can run at the same time as another part of the program. In this case, rather than waiting for the data to download, a thread can be used for the download while the main draw() method of the program continues to run."
