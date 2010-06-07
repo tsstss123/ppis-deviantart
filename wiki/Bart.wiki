@@ -2,13 +2,27 @@
 
 = Bart's Log =
 
-= 2-6-2010 =
-Discussed some data-structure ideas with Davide
-Discussed network links, favorites vs. viewers
+= We 2-6-2010 =
+Discussed some data-structure ideas with Davide <br>
+Discussed network links, favorites vs. viewers <br>
 
-= 3-6-2010 =
-Installing work enviroment on my computer, matlab python svn etc.
-Researching network links  
-trying out scrapy for python,
-needs, python2.6, zope.interface, twisted10,  pywin, libxml2, lxml,
-http://users.skynet.be/sbi/libxml-python/
+= Th 3-6-2010 =
+Installing work enviroment on my computer, matlab python svn etc.<br>
+Researching network links  <br>
+trying out scrapy for python,<br>
+needs, python2.6, zope.interface, twisted10,  pywin, libxml2, lxml,<br>
+http://users.skynet.be/sbi/libxml-python/<br>
+
+= Fri 4-6-2010 =
+Group meeting took notes <br>
+Made scraper with Sander, does not store correct data bur crawls along the relevant images <br>
+
+= Weekend = 
+Finished scraper now stores relevant data and stores intermediates these every 5 minutes
+Started a run Sunday evening<br>
+
+= Mo 7-6-2010 = 
+Looked at results from 2 hr run in Pajek total nodes about 40.000, maximum in degree 3, about 600 nodes with an out degree of at least one, nodes with out degree of 0 have been visited and have no watchers, or have not been visited. <br>
+
+= ToDo= 
+Weibull features, read network papers
