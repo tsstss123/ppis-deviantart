@@ -2,6 +2,9 @@
 
 = Logbook =
 
+== 07/06/2010 ==
+  * Finished chapter 8.
+
 == 06/06/2010 ==
   * Continue reading the book. "A *thread* provides a way to bundle a function in your program so that it can run at the same time as another part of the program. In this case, rather than waiting for the data to download, a thread can be used for the download while the main draw() method of the program continues to run."
   * No changes in data/view: skip the draw() loop by using noLoop() to make the app less CPU demanding.
