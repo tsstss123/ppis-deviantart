@@ -25,7 +25,7 @@ Group two will focus on the classification based on cognitive features.
   * can we improve recommendation accuracy by incorporating the [friends] network?
   * which features are better? cognitive vs statistical recommendations
 
-*metrics:*
+*Measure:*
   * use favorites as a metric 100 images of artist as train, 100 images including 10 of his favorites as test set.
   * use favorites as a metric 100 images of artist as train, 100 images including 10 of his own work not in the train set.
   *correlation between network distance and "image distance"
