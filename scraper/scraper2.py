@@ -93,13 +93,13 @@ def getDeviantPage(deviant):
 def getDeviantForPage(page):
     return page.strip('http://').split('.')[0]
     
-def pajek_writer(deviants, time):
+def pajek_writer(deviantsandlist, time):
 	print 'saving timestamp %d' %(time)
 	out = open('deviants_%d.pickle' %(time), 'wb')
-	pickle.dump(deviants, out)
+	pickle.dump(deviantsandlist, out)
 	out.close
-	f = open('deviants%d.net' %(time), 'w')
-	f.write('*Vertices %d\n'  %(len(deviants)))
+	f = open('deviants_%d.net' %(time), 'w')
+	f.write('*Arcs %d\n'  %(len(deviants)))
 	for (deviant, value) in deviants.iteritems():
 		f.write('%d "%s"\n'%(value[0], deviant))
 	f.write('*Edges\n' )
@@ -115,12 +115,12 @@ def start():
 	for deviant in todolist:
 		deviants.add(deviant)
 	while (len(todolist) > 0):
-		if (datetime.datetime.now()-starttime).seconds > nextsavetime:
-			pajek_writer(deviants,nextsavetime)
-			nextsavetime +=300
+		if (datetime.datetime.now()-starttime).seconds > (nextsavetime*300):
+			pajek_writer([deviants, todolist], nextsavetime)
+			nextsavetime += 1
 		deviant = todolist.pop()
 		parseFriends(deviant, deviants, todolist)
-	pajek_writer(deviants, -1)
+	pajek_writer(deviants, todolist, -1)
 	
 if __name__ == '__main__':
 	start()
