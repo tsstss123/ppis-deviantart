@@ -11,7 +11,7 @@
     
   * The backend page contains the following information:
     * Image link
-    * Thumbtail links (something like 300x300 and 100x100)
+    * Thumbtail links (two versions: 300 width and 150 height)
     * Title
     * Category information
     * Keywords
