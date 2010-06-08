@@ -18,8 +18,10 @@ class BackEndUrlRetriever(SGMLParser):
 	backend = None
 	
 class BackEndParser(handler.ContentHandler):
-	def __init__(self, image_folder):
-		self.image_folder = image_folder
+	def __init__(self, full_folder, thumb150_folder, thumb300W_folder):
+		self.full_folder = full_folder
+		self.thumb150_folder = thumb150_folder
+		self.thumb300W_folder = thumb300W_folder
 		self.itemstarted = False
 		self.count = 0
 		self.stack = []
@@ -29,19 +31,26 @@ class BackEndParser(handler.ContentHandler):
 		if name == 'item':
 			self.itemstarted = True
 			self.count += 1
-		elif name == 'media:content':
+		elif self.download_full and name == 'media:content':
 			doctype = attrs.getValue('medium')
 			if doctype != 'image':
 				return
 			
-			url_name = attrs.getValue('url')
-			path = os.path.basename(url_name)
+			self.downloadImageTo(self.full_folder, attrs.getValue('url'))
 			
-			url = urllib.urlopen(url_name)
+		elif name == 'media:thumbnail':
+			if self.download_thumb150 and attrs.getValue('height') == '150':
+				self.downloadImageTo(self.thumb150_folder, attrs.getValue('url'))
+			elif self.download_thumb300W and attrs.getValue('width') == '300':
+				self.downloadImageTo(self.thumb300W_folder, attrs.getValue('url'))
+			
+	def downloadImageTo(self, folder, url_name):
+		filename = os.path.basename(url_name)
 
-			f = open(os.path.join(self.image_folder, path), 'wb')
-			f.write(url.read())
-			f.close()
+		url = urllib.urlopen(url_name)
+		f = open(os.path.join(folder, filename), 'wb')
+		f.write(url.read())
+		f.close()
 			
 	def endElement(self, name):
 		self.stack.pop()
@@ -56,6 +65,9 @@ class BackEndParser(handler.ContentHandler):
 	def endDocument(self):
 		pass
 
+	download_full = True
+	download_thumb150 = True
+	download_thumb300W = True
 
 def getDeviantPage(deviant):
 	return 'http://%s.deviantart.com/' % (deviant)
@@ -73,7 +85,16 @@ def parseDeviant(deviant):
 	deviant_folder = os.path.join(image_folder, deviant)
 	if not os.path.exists(deviant_folder):
 		os.mkdir(deviant_folder)
-	
+	full_folder = os.path.join(deviant_folder, 'full')
+	if not os.path.exists(full_folder):
+		os.mkdir(full_folder)
+	thumb150_folder = os.path.join(deviant_folder, 'thumb150')
+	if not os.path.exists(thumb150_folder):
+		os.mkdir(thumb150_folder)		
+	thumb300W_folder = os.path.join(deviant_folder, 'thumb300W')
+	if not os.path.exists(thumb300W_folder):
+		os.mkdir(thumb300W_folder)	
+		
 	# First retrieve the backend url
 	print('[%s] Retrieving backend url from gallery...' % (datetime.now() - starttime))
 	url = urllib.urlopen('%sgallery' % (page))
@@ -91,7 +112,7 @@ def parseDeviant(deviant):
 		url = urllib.urlopen('%s%d' % (backendurl, offset))
 		
 		parser = make_parser()
-		handler = BackEndParser(deviant_folder)
+		handler = BackEndParser(full_folder, thumb150_folder, thumb300W_folder)
 		parser.setContentHandler(handler)
 		parser.parse(url)
 		
