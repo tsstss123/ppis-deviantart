@@ -37,7 +37,7 @@ http://img249.imageshack.us/img249/5981/saliencymodel.png
     * Some categories contain very similar images (because the style is the same one) 
     * A category called "Stock Images" (the ones with a commercial porpouse) contains images of completely different topics. 
 
-    * We could extract 4-5 category describing 4-5 different styles and we could classify them.
+    * We could extract 4-5 categories describing 4-5 different styles and we could classify them.
 
 
 
