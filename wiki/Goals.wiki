@@ -1,0 +1,16 @@
+#summary What we are trying to achieve
+
+= Goals =
+
+*Create a toolbox for feature extracting and classifying we can reuse:<br>
+- clean reusable code
+
+* Create a recommender system that can recommend a new picture given a gallery<br>
+
+* Create visualization tools for visualizing high dimensional image feature data <br>
+
+
+* Research questions:
+- what is the influence on the "class" of features on the recommendation performance(class being statistical or human inspired) <br>
+- How can the rich data help us (network information) <br>
+ 
