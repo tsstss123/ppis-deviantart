@@ -150,8 +150,9 @@ def start():
 	deviants = data[0]
 	todolist = data[1]
 	errlist = data[2]
-	nextsavetime = data[3]
-	
+	prevsavetime = data[3]
+
+	nextsavetime = 0
 	saveinterval = 300
 
 	if len(todolist) == 0 and len(errlist) > 0 and os.name == 'nt':
@@ -163,7 +164,7 @@ def start():
 			deviants.add(deviant)
 	while (len(todolist) > 0):
 		if (datetime.datetime.now()-starttime).seconds > (nextsavetime*saveinterval):
-			pajek_writer([deviants, todolist, errlist, nextsavetime+1], nextsavetime, nextsavetime-2)
+			pajek_writer([deviants, todolist, errlist, prevsavetime+nextsavetime+1], prevsavetime+nextsavetime, prevsavetime+nextsavetime-2)
 			nextsavetime += 1
 		deviant = todolist.pop(0)
 		try:
@@ -171,7 +172,7 @@ def start():
 		except Exception as e:
 			print('Exception: %s %s, %s' %(deviant, type(e), e))
 			errlist.append(deviant)
-	pajek_writer([deviants, todolist, errlist, nextsavetime], -99, -1)
+	pajek_writer([deviants, todolist, errlist, nextsavetime+prevsavetime], -99, -1)
 	
 if __name__ == '__main__':
 	start()
