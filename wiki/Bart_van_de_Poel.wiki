@@ -4,7 +4,7 @@
 
 ==08/06==
  * Waisted a couple of hours trying to get the opencv/matlab code that albert sent to work, but it won't compile correctly on mac. 
- * Finally works! Turned out to be a small error in the source code. Tried canny edge, and rgb2hsv and they both were 10-50 times faster then the matlab versions.
+ * Finally works! Turned out to be a small compiler-dependent error in the source code. Tried canny edge, and rgb2hsv and they both were 10-50 times faster then the matlab versions.
  * Rewrote the feature extraction code so that the different feature codes just take one image as input and return the feature(vector) instead of being standalone pieces of code. And replaces builtin matlab functions with opencv functions where possible.
  * Tried the viola and jones face detector. Works, but haven't found out how to give parameters like the confidence threshold yet (otherwise it will give a lot of false positives). 
 
@@ -46,7 +46,7 @@
   * Codebook vector produced by koen's code
 
 = Implemented features =
- * edge/non-edge ratio
+ * edge/non-edge ratio (now with default parameters)
  * avg hue, avg saturation & avg Intensity
  * corner detection (theo has code for this on his website. Haven't looked at it extensively yet, but seems to work.
  
