@@ -152,7 +152,7 @@ def start():
 	errlist = data[2]
 	nextsavetime = data[3]
 	
-	saveinterval = 30
+	saveinterval = 300
 
 	if len(todolist) == 0 and len(errlist) > 0 and os.name == 'nt':
 		todolist = errlist
