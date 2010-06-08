@@ -87,7 +87,7 @@ def parseDeviant(deviant):
 	count = 0
 	offset = 0
 	while offset == 0 or count > 0:
-		print '%s%d' % (backendurl, offset)
+		print '[%s] %s%d' % (datetime.now() - starttime, backendurl, offset)
 		url = urllib.urlopen('%s%d' % (backendurl, offset))
 		
 		parser = make_parser()
