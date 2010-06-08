@@ -121,7 +121,7 @@ def pajek_writer(deviantsandlist, time, delete):
 def load_data():
 	mx = -1
 	mxf = ''
-	for file in os.listdir(''):
+	for file in os.listdir('.'):
 		end = file.find('.pickle')
 		if end > 0:
 			start = file[:end].find('_')+1
