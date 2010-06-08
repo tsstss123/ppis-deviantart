@@ -12,13 +12,14 @@ Add your content here.  Format your content with:
   * Headings, paragraphs, and lists
   * Automatic links to other wiki pages
 
-03/06/10 
+== 03/06/2010==
     * Explored DevianArt 
-* Some users put their pictures/fotos in galleries and in every gallery explored all the images belong to the same "topic". Maybe it could be interesting to find a way to suggest galleries instead of suggesting single users images. 
+    * Some users put their pictures/fotos in galleries and in every gallery explored all the images belong to the same "topic". Maybe it could be interesting to find a way to suggest galleries instead of suggesting single users images. 
     * 
 
 
-02/06/10
+
+== 02/06/2010==
 
     * Meeting about the project and tasks at Science Park
     * My task is the extraction of cognitive features 
