@@ -6,6 +6,22 @@
   * 02/06/2010 (group and supervisor)
   * 01/06/2010 (group and supervisor)
 
+= Meeting 07/06/2010 = 
+* BJ's notes
+
+* Watch out with metric vs measure, measure is safer, as the comment below also says<br>
+* Look at literature firefly recommender systems, as well as LastFM & Pandora<br>
+* make the code so it can be :<br>
+- re-used as a "personal" toolbox <br>
+- make nice code <br>
+- make code that works on millions of images thus: <br>
+-- use openCV because it's quick <br>
+-- use profiler to see where mos of the time is lost <br>
+* We can use classifiers as a distance measure as explained with the HMM's
+* Some saliency stuff was discussed with Davide
+* Some network stuff with BJ
+* Stock images are difficult but might be a nice expansion.
+
 
 = Meeting 04/06/2010 =
 
@@ -17,7 +33,7 @@
 
   * which features are better? cognitive vs statistical recommendations
 
-- metrics
+- measures
 
   - use favorites as a metric 100 images of artist as train, 100 images including 10 of his favorites as test set.
 
