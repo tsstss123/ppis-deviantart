@@ -2,8 +2,26 @@
 
 =Research Log=
 
-==01/06==
- * Project proposal presentation
+==08/06==
+ * Waisted a couple of hours trying to get the opencv/matlab code that albert sent to work, but it won't compile correctly on mac. 
+ * Finally works! Turned out to be a small error in the source code. Tried canny edge, and rgb2hsv and they both were 20-50 times faster then the matlab versions.
+
+==07/06==
+ * We had long meeting with albert
+ * Looked at using opencv from matlab
+
+==06/06==
+ * wrote extraction of avg hue, saturation and intensity
+
+==04/06==
+ * Meeting with team about research goals and specifics
+ * Decided on how to output features and wrote an example feature extractor to extract the edge to non-edge ratio of an image (Note: need to decide on parameters for the canny edge detector). Output is a textfile with a line for each image with the format filename,ratio:
+1980_by_K1lgore.jpg,0.069953
+
+==03/06==
+ * Looked for papers about statistical features
+ * Read paper accompanying koen's color description software. Colour descriptions around salient points (or other point sampling technique) are calculated. So for each image there is a list of descriptor vectors (one vector for each sampled point). This list can vary in length. In order to turn this into a fixed length feature vector, the descriptors are compared to a "codebook" which contains a fixed number of elemens. (bag of words model). Each descriptor is assigned to one of the codebook elements, creating a histogram which shows the amount of descriptors in each codebook element (This codebook needs to be created by us using training data?). Finally this histogram is normalized and used as the feature vector.   NOTE: not sure what kind of descriptors we should use for this (they all have different invariance properties, so depends on what kind of invariance we want). 
+ * Can't run koen's code though. Seems that its not compiled for my OS
 
 ==02/06==
  * Had initial meeting about the project and tasks at Science Park
@@ -11,25 +29,10 @@
  * Installed ImageJ and looked at some of the features
  * Created research log
 
-==03/06==
- * Looked for papers about statistical features
- * Read paper accompanying koen's color description software. Colour descriptions around salient points (or other point sampling technique) are calculated. So for each image there is a list of descriptor vectors (one vector for each sampled point). This list can vary in length. In order to turn this into a fixed length feature vector, the descriptors are compared to a "codebook" which contains a fixed number of elemens. (bag of words model). Each descriptor is assigned to one of the codebook elements, creating a histogram which shows the amount of descriptors in each codebook element (This codebook needs to be created by us using training data?). Finally this histogram is normalized and used as the feature vector.   NOTE: not sure what kind of descriptors we should use for this (they all have different invariance properties, so depends on what kind of invariance we want). 
- * Can't run koen's code though. Seems that its not compiled for my OS
+==01/06==
+ * Project proposal presentation
 
-==04/06==
- * Meeting with team about research goals and specifics
- * Decided on how to output features and wrote an example feature extractor to extract the edge to non-edge ratio of an image (Note: need to decide on parameters for the canny edge detector). Output is a textfile with a line for each image with the format filename,ratio:
-1980_by_K1lgore.jpg,0.069953
 
-==06/06==
- * wrote extraction of avg hue, saturation and intensity
-
-==07/06==
- * We had long meeting with albert
- * Looked at using opencv from matlab
-
-==08/06==
- * Waisted a couple of hours trying to get the opencv/matlab code that albert sent to work, but it won't compile correctly on mac. 
 
 = Possible features =
 
