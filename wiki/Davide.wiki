@@ -14,7 +14,7 @@ Add your content here.  Format your content with:
 
 == 03/06/2010==
     * Explored DevianArt wepages. 
-    * *Considerations/Ideas*: 
+*Considerations/Ideas*: 
     * Some users save their pictures/fotos in galleries and in every gallery explored all the images belong to the same "topic". Maybe it could be interesting to find a way to suggest galleries instead of suggesting single images. 
     * DevianArt has categories (not based on the styles). The user is free to put its images under the category he prefer and often some pictures seems to be misclassified. 
     * Some categories contain very similar images (because the style is the same one) 
