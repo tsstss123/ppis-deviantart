@@ -13,7 +13,7 @@ Add your content here.  Format your content with:
   * Automatic links to other wiki pages
 == 04/06/2010==
 Read the paper: _"Computational modelling of visual attention"_ of Laurent Itti and Christo Kock. 
-    * In the paper they present a general overview and recent work on computational models of focal visual attention. Five trends have emerged from the work: 
+    * In the paper they present a general overview and some recent work on *computational models of focal visual attention*. _Five trends_ have emerged from the work: 
        * the perceptual saliency of stimuli critically depends on the surrounding context.
        * a unique saliency map that topographically encodes for stimulus conspicuity over the visual scene has proved to be an efficien an plausible bottom-up control strategy
        * Inhibition of return, that is the process by which the currently attended location is prevented from being attended again, is a crucial element of attentional deployment
