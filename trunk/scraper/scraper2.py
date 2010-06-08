@@ -4,7 +4,7 @@ from sgmllib import SGMLParser
 from HTMLParser  import HTMLParser
 
 import datetime
-import pickle
+import cPickle
 import cProfile 
 import pstats
 import os
@@ -104,7 +104,7 @@ def pajek_writer(deviantsandlist, time, delete):
 		print('Files not found: deviants_%d.pickle, deviants_%d.net' %(delete, delete))
 				
 	out = open('deviants_%d.pickle' %(time), 'wb')
-	pickle.dump(deviantsandlist, out)
+	cPickle.dump(deviantsandlist, out)
 	out.close
 	deviants = deviantsandlist[0]
 	#open as binary so both in windows and unix we get the windows output
@@ -117,18 +117,53 @@ def pajek_writer(deviantsandlist, time, delete):
 		for friend in (value[1]):
 			f.write('%d %d 1\r\n' %(value[0], friend))	
 	f.close
-
-def start():
-	todolist = ['omega300m', '-achiru-', '-lildragon-', '-az']
-	errlist = []
+	
+def load_data():
+	mx = -1
+	mxf = ''
+	for file in os.listdir(''):
+		end = file.find('.pickle')
+		if end > 0:
+			start = file[:end].find('_')+1
+			if int(file[start:end])> mx:
+				mx = int(file[start:end])
+				mxf = file
+	if mx > 0 : 
+		print('Loading pickle from file: %s' %(mxf))
+		f = open(mxf, 'rb')
+		data = cPickle.load(f)
+		f.close()
+		return data
+	else :
+		print('No pickles found, will load default values')
+		return defaultvalues()
+		
+def defaultvalues():
 	deviants = Deviants()
+	todolist = ['omega300m']
+	errlist = []
 	nextsavetime = 0
-	saveinterval = 30 
-	for deviant in todolist:
-		deviants.add(deviant)
+	return [deviants, todolist, errlist, nextsavetime]
+	
+def start():
+	data = load_data()
+	deviants = data[0]
+	todolist = data[1]
+	errlist = data[2]
+	nextsavetime = data[3]
+	
+	saveinterval = 30
+
+	if len(todolist) == 0 and len(errlist) > 0 and os.name == 'nt':
+		todolist = errlist
+		errlist = []
+				
+	if len(deviants) == 0:
+		for deviant in todolist:
+			deviants.add(deviant)
 	while (len(todolist) > 0):
 		if (datetime.datetime.now()-starttime).seconds > (nextsavetime*saveinterval):
-			pajek_writer([deviants, todolist, errlist], nextsavetime, nextsavetime-2)
+			pajek_writer([deviants, todolist, errlist, nextsavetime+1], nextsavetime, nextsavetime-2)
 			nextsavetime += 1
 		deviant = todolist.pop(0)
 		try:
@@ -136,7 +171,7 @@ def start():
 		except Exception as e:
 			print('Exception: %s %s, %s' %(deviant, type(e), e))
 			errlist.append(deviant)
-	pajek_writer([deviants, todolist, errlist], -99, -1)
+	pajek_writer([deviants, todolist, errlist, nextsavetime], -99, -1)
 	
 if __name__ == '__main__':
 	start()
