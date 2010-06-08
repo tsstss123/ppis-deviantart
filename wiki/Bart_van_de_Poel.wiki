@@ -24,6 +24,13 @@
 ==06/06==
  * wrote extraction of avg hue, saturation and intensity
 
+==07/06==
+ * We had long meeting with albert
+ * Looked at using opencv from matlab
+
+==08/06==
+ * Waisted a couple of hours trying to get the opencv/matlab code that albert sent to work, but it won't compile correctly on mac. 
+
 = Possible features =
 
   * Avg Intensity / avg Hue
