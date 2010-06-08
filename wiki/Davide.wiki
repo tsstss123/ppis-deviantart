@@ -11,6 +11,10 @@ Add your content here.  Format your content with:
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
   * Automatic links to other wiki pages
+
+
+
+
 == 04/06/2010==
 Read the paper: _"Computational modeling of visual attention"_ of Laurent Itti and Christo Kock. 
     * In the paper they present a general overview and some recent work on *computational models of focal visual attention*. _Five trends_ have emerged from the work: 
@@ -19,7 +23,12 @@ Read the paper: _"Computational modeling of visual attention"_ of Laurent Itti a
        * Inhibition of return, that is the process by which the currently attended location is prevented from being attended again, is a crucial element of attentional deployment
        * attention and eye movements tightly interplay, posing computational challenges with respect to the coordinate system used to control attention
        * scene understanding and object recognition strongly constrain the selection of attended location. 
-    * The paper was interesting but a bit to general and to much focused on the neurobiological understanding of visual attention
+    * The paper was interesting but a bit to general and to much focused on the neurobiological understanding of visual attention.
+
+Read the paper: _"A Model of Saliency-Based Visual Attention for Rapid Scene Analysis"_ of Laurent Itti, Christof Koch and Ernst Niebur.
+    * The paper is quite interesting and explain relly good the way they try to extract saliency locations from images. The process can be seen in the following image:
+
+http://img200.imageshack.us/img200/5981/saliencymodel.png
 
 == 03/06/2010==
     * Explored DevianArt wepages. 
