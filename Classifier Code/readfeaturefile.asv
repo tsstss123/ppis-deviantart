@@ -1,0 +1,15 @@
+function [ imagenames, classnames, features ] = readfeaturefile( artistname )
+
+%Read in the edge ratio feature
+path = strcat(artistname, '.txt'); 
+fid=fopen(path);
+contents = textscan(fid, '%s %s %f %f %f', 'Delimiter','\t');
+fclose(fid);
+
+imagenames = contents{1};
+classnames = contents{2};
+
+
+
+end
+
