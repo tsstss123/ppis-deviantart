@@ -7,7 +7,7 @@
  * Finally works! Turned out to be a small error in the source code. Tried canny edge, and rgb2hsv and they both were 20-50 times faster then the matlab versions.
 
 ==07/06==
- * We had long meeting with albert
+ * We meeting with albert
  * Looked at using opencv from matlab
 
 ==06/06==
