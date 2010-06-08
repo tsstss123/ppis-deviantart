@@ -7,20 +7,20 @@
   * 01/06/2010 (group and supervisor)
 
 = Meeting 07/06/2010 = 
-* BJ's notes
+*BJ's notes
 
-* Watch out with metric vs measure, measure is safer, as the comment below also says<br>
-* Look at literature firefly recommender systems, as well as LastFM & Pandora<br>
-* make the code so it can be :<br>
-- re-used as a "personal" toolbox <br>
-- make nice code <br>
-- make code that works on millions of images thus: <br>
--- use openCV because it's quick <br>
--- use profiler to see where mos of the time is lost <br>
-* We can use classifiers as a distance measure as explained with the HMM's
-* Some saliency stuff was discussed with Davide
-* Some network stuff with BJ
-* Stock images are difficult but might be a nice expansion.
+-Watch out with metric vs measure, measure is safer, as the comment below also says<br>
+-Look at literature firefly recommender systems, as well as LastFM & Pandora<br>
+-Make the code so it can be :<br>
+ - re-used as a "personal" toolbox <br>
+ - make nice code <br>
+ - make code that works on millions of images thus: <br>
+  -- use openCV because it's quick <br>
+  -- use profiler to see where mos of the time is lost <br>
+-We can use classifiers as a distance measure as explained with the HMM's<br>
+-Some saliency stuff was discussed with Davide<br>
+-Some network stuff with BJ<br>
+-Stock images are difficult but might be a nice expansion.<br>
 
 
 = Meeting 04/06/2010 =
