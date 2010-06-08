@@ -11,6 +11,9 @@ Add your content here.  Format your content with:
   * Text in *bold* or _italic_
   * Headings, paragraphs, and lists
   * Automatic links to other wiki pages
+== 04/06/2010==
+    * Read _Computational modelling of visual attention_ from Laurent Itti and Christo Kock. 
+
 
 == 03/06/2010==
     * Explored DevianArt wepages. 
