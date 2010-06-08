@@ -2,6 +2,14 @@
 
 =Research Log=
 
+==08/07==
+ * Created code to classify a new image given the trained SVM classifier.
+ * Created code to compute the similarity between users, now we have a ranking of which users are similar to the given user based on the features(for now hsv). Similarity measure was done using Euclidian distance on the gallery level(one vector representing all images of an user). User set are 8 different users, can be found in the Downloads section.
+
+==07/06==
+ * Created a basis for dividing a dataset into train and test set in order to evaluate and structured the scores using Matlabs classperf function. So now you can get the error rate using the code. Also made it so that you can just train the classifier.
+ * The basis can be reused just changing the classifiers. 
+
 ==06/06==
  * Read the PRTools documentation to have a better understanding of it in order to utilize better.
 
