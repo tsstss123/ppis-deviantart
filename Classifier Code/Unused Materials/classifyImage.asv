@@ -1,0 +1,11 @@
+function [ output ] = classifyImage( typeofclassifier ,trainedclassifier, image )
+    % Computer Features for the image
+
+    
+    if strcmp('SVM', typeofclassifier)
+       svmclassify(trainedclassifier)
+    end
+
+
+end
+

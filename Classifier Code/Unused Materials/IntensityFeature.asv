@@ -1,0 +1,70 @@
+% This function should compute the intensity value of an entire set of
+% images inside a directory for n x n-patches that an image is divided into.
+function [output] = IntensityFeature(directoryname)
+
+
+    % Extract Color Channels
+    r = image(:,:,1);
+    g = image(:,:,2);
+    b = image(:,:,3);
+    
+    numberofpatches = n*n;
+
+    files = dir(directoryname);
+    
+    fileIndex = find(~[files.isdir]);
+    
+    observationmatrix = zeros(1, numberofpatches);
+    
+    for i=1:length(fileIndex)
+       fileName = files(fileIndex(i)).name;
+       path = strcat(directoryname, '\', fileName);
+       try
+           
+           image = imread(path);
+           % Look at the Image Sizes
+           imgheight = length(image(:,1,:));
+           imgwidth = length(image(1,:,:));
+           
+           % Convert to uint16 to support numbers higher than 255 and
+           % compute the Intensity value on the entire image.
+           totalIntensityimage = uint16(r) + uint16(g) + uint16(b);
+           
+           patchwidth = floor(imgwidth / n) - 1;
+           patchheight = floor(imgheight / n) - 1;
+           
+           % Create a feature vector
+           imagevector = zeros(1, numberofpatches);
+           index = 0;
+          
+           path
+           
+           %Split on Patches and computer Intensity of a patch then divide
+           %into number of pixels of the patch and add that number to the
+           %vector           
+           for p=1:(patchheight+1):imgheight
+               if ((p+patchheight) > imgheight)
+                   continue;
+               end
+               for q=1:(patchwidth+1):imgwidth
+                  if((q+patchwidth) > imgwidth)
+                      continue;
+                  end
+                  index = index + 1;
+                  patch = totalIntensityimage(p:(p+patchheight),q:(q+patchwidth));
+                  patchIntensity = sum(sum(patch));
+                  [patchheight2, patchwidth2] = size(patch);
+                  patchpixelIntensity = patchIntensity / (patchheight2 * patchwidth2);
+                  imagevector(index) = patchpixelIntensity;
+               end
+           end
+           %Add to the observation Matrix for SVM         
+           observationmatrix(end+1,:) = imagevector;
+      catch
+         fileName
+      end
+    end
+    observationmatrix(1,:) = [];
+    output = observationmatrix;
+end
+

@@ -1,0 +1,42 @@
+% Compute feature vectors
+class1 = IntensityFeature('trainclass1');
+class2 = IntensityFeature('trainclass2');
+
+% Label feature vectors and split them in train and test data
+[trainingclass1, testclass1] = splitData(class1, 0, 0.7);
+[trainingclass2, testclass2] = splitData(class2, 1, 0.7);
+
+% Combine training set for the SVM
+trainingmatrix = vertcat(trainingclass1, trainingclass2);
+trainingobsmatrix = trainingmatrix(:,1:end-1);
+traininggroundtruthvector = trainingmatrix(:,end);
+
+% Combine test set for the SVM
+testmatrix = vertcat(testclass1, testclass2);
+testobsmatrix = testmatrix(:,1:end-1);
+testgroundtruthvector = testmatrix(:,end);
+
+% Create classperf data classifiers performance
+cp = classperf(testgroundtruthvector);
+
+svmtrain(trainingobsmatrix, traininggroundtruthvector);
+
+% Create a testset
+% testset = HueFeature('testset');
+
+% Train the SVM
+%svmStruct = svmtrain(obsmatrixgroups, groups, 'Showplot', true);
+
+% Test the SVM
+%c = svmclassify(svmStruct, testset, 'Showplot', true);
+
+% Create observation matrix of the second class
+%obsmatrix2 = HueFeature('trainclass2');
+%[matrixrows2, matrixcolumns2] = size(obsmatrix2);
+
+% Create Group Vector 2
+%groupvector2 = ones(matrixrows2, 1);
+
+% Combine the Groups groups is the groundtruth
+%obsmatrixgroups = vertcat(obsmatrix1,obsmatrix2);
+%groups = vertcat(groupvector1,groupvector2);
