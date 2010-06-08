@@ -1,0 +1,20 @@
+#Info about networks
+
+= Introduction =
+
+there are multiple network models, from the paper references given I looked into:<br>
+<br><a href=http://en.wikipedia.org/wiki/Erd%C5%91s%E2%80%93R%C3%A9nyi_model>Erdős–Rényi model</a><br> 
+- This does not seem to fit because of "random network connections", the clustering for these networks will probably be low
+<br><a href=http://en.wikipedia.org/wiki/Barab%C3%A1si%E2%80%93Albert_model><br>
+- Barabási–Albert model</a> This is a generative scale-free model, which might fit if our network is scale free, which we can discover by looking if the degree distribution follows the power law 
+<br><a href=http://en.wikipedia.org/wiki/Watts_and_Strogatz_model>Watts and Strogatz model</a><br> 
+- Also Small world network, has both local clustering as well as short characteristic paths
+
+
+Conclusion once we have the network we should look at: <br>
+- the degree distribution,<br>
+- the cluster coefficients and<br>
+- the average path length. <br>
+these should be possible to cumpute using Pajek
+
+Then we can decide which model fits and hopefully draw conclusions from that
