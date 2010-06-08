@@ -7,6 +7,8 @@
     * Added axis + title + min/max value
     * Added highlighting of single image (left click) and whole class (center click)
     * Tested it on Quangs dataset containing 3 features: HSV
+    * New design:
+     http://www.nickd.nl/dl/ai/is/parallel_coordinates_v0.2.png
 
 == 07/06/2010 ==
   * Finished chapter 8.
