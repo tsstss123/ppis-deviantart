@@ -2,6 +2,12 @@
 
 = Logbook =
 
+== 08/06/2010 ==
+  * Improved the "Parallel coordinates" plot:
+    * Added axis + title + min/max value
+    * Added highlighting of single image (left click) and whole class (center click)
+    * Tested it on Quangs dataset containing 3 features: HSV
+
 == 07/06/2010 ==
   * Finished chapter 8.
   * Decided to kickoff with the "Parallel coordinates" visualization method. Parallel coordinates is a common way of visualizing high-dimensional geometry and analyzing multivariate data. This methods enables us to compare how different features react on different galleries/images.
