@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+#BJ's log
 
 = Bart's Log =
 
@@ -25,6 +25,9 @@ Started a run Sunday evening<br>
 Looked at results from 2 hr run in Pajek total nodes about 40.000, maximum in degree 3, about 600 nodes with an out degree of at least one, nodes with out degree of 0 have been visited and have no watchers, or have not been visited. <br>
 
 = Tu 8-6-2010=
-Working from home,  send out a mail, i'm on Gchat if you guys need me
+Fixed networkscraper, made it less disk intensive, now automatically reads in partial results and continues, spend time researching why -az.deviantart.com does not work on unix. this is because it's an illegal url. on windows it does work. <br>
+Running scraper again <br>
+researched networks <br>
+
 = ToDo= 
-Weibull features, read network papers
+Weibull features.
