@@ -24,10 +24,14 @@ Started a run Sunday evening<br>
 = Mo 7-6-2010 = 
 Looked at results from 2 hr run in Pajek total nodes about 40.000, maximum in degree 3, about 600 nodes with an out degree of at least one, nodes with out degree of 0 have been visited and have no watchers, or have not been visited. <br>
 
-= Tu 8-6-2010=
+= Tu 8-6-2010 =
 Fixed network scraper, made it less disk intensive, now automatically reads in partial results and continues, spend time researching why -az.deviantart.com does not work on unix. this is because it's an illegal url. on windows it does work. <br>
 Running scraper again <br>
 researched networks <br>
 DONE wiki on networks, meeting and goals
+
+= We 9-6-2010 =
+Looked at previous mean-shift tracker code, if there is anything useful in there, its colorspaces, histograms and histogram distance. 
+
 = ToDo= 
 Weibull features.
