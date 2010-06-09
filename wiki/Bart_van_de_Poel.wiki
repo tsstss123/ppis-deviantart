@@ -55,4 +55,9 @@
  * avg hue, avg saturation & avg Intensity (about 10-50 per second)
  * number of faces in image (processes about 3 images per second)
  * number of corners in an image (5-10 per second)
+ * weibull fit  (Bart B.)
+
+= TODO =
+ * extend existing feature types with spatial information (for example: besides the edge ratio, possibly a grid with edge ratio's)
+ * more features 
  
