@@ -18,40 +18,61 @@ class BackEndUrlRetriever(SGMLParser):
 	backend = None
 	
 class BackEndParser(handler.ContentHandler):
-	def __init__(self, full_folder, thumb150_folder, thumb300W_folder):
-		self.full_folder = full_folder
-		self.thumb150_folder = thumb150_folder
-		self.thumb300W_folder = thumb300W_folder
+	def __init__(self, deviant):
+		global image_folder
+		
+		self.deviant = deviant
 		self.itemstarted = False
 		self.count = 0
 		self.stack = []
+		
+		# Create folders for the downloaded images if needed
+		deviant_folder = os.path.join(image_folder, deviant)
+		if not os.path.exists(deviant_folder):
+			os.mkdir(deviant_folder)
+		full_folder = os.path.join(deviant_folder, 'full')
+		if not os.path.exists(full_folder):
+			os.mkdir(full_folder)
+		thumb150_folder = os.path.join(deviant_folder, 'thumb150')
+		if not os.path.exists(thumb150_folder):
+			os.mkdir(thumb150_folder)
+		thumb300W_folder = os.path.join(deviant_folder, 'thumb300W')
+		if not os.path.exists(thumb300W_folder):
+			os.mkdir(thumb300W_folder)
+		
+		self.full_folder = full_folder
+		self.thumb150_folder = thumb150_folder
+		self.thumb300W_folder = thumb300W_folder
 
 	def startElement(self, name, attrs):
 		self.stack.append(name)
 		if name == 'item':
 			self.itemstarted = True
 			self.count += 1
-		elif self.download_full and name == 'media:content':
-			doctype = attrs.getValue('medium')
-			if doctype != 'image':
-				return
-			
-			self.downloadImageTo(self.full_folder, attrs.getValue('url'))
-			
-		elif name == 'media:thumbnail':
-			if self.download_thumb150 and attrs.getValue('height') == '150':
-				self.downloadImageTo(self.thumb150_folder, attrs.getValue('url'))
-			elif self.download_thumb300W and attrs.getValue('width') == '300':
-				self.downloadImageTo(self.thumb300W_folder, attrs.getValue('url'))
-			
-	def downloadImageTo(self, folder, url_name):
-		filename = os.path.basename(url_name)
 
+		if self.download_images:
+			if self.download_full and name == 'media:content':
+				doctype = attrs.getValue('medium')
+				if doctype != 'image':
+					return
+
+				self.downloadImageTo(self.full_folder, attrs.getValue('url'))
+
+			elif name == 'media:thumbnail':
+				if self.download_thumb150 and attrs.getValue('height') == '150':
+					self.downloadImageTo(self.thumb150_folder, attrs.getValue('url'))
+				elif self.download_thumb300W and attrs.getValue('width') == '300':
+					self.downloadImageTo(self.thumb300W_folder, attrs.getValue('url'))
+
+	def downloadImageTo(self, folder, url_name):
+		""" Downloads the image from the url to the specified folder
+			Retrieves the image filename from the url """
+		filename = os.path.basename(url_name)
 		url = urllib.urlopen(url_name)
 		f = open(os.path.join(folder, filename), 'wb')
 		f.write(url.read())
 		f.close()
-			
+
 	def endElement(self, name):
 		self.stack.pop()
 		if name == 'item':
@@ -61,10 +82,12 @@ class BackEndParser(handler.ContentHandler):
 		if len(self.stack) == 0:
 			return
 		tag = self.stack[len(self.stack)-1]
-	
+
 	def endDocument(self):
 		pass
 
+	# Image download settings
+	download_images = True
 	download_full = True
 	download_thumb150 = True
 	download_thumb300W = True
@@ -82,21 +105,9 @@ def parseDeviant(deviant):
 	
 	if not os.path.exists(image_folder):
 		os.mkdir(image_folder)
-	deviant_folder = os.path.join(image_folder, deviant)
-	if not os.path.exists(deviant_folder):
-		os.mkdir(deviant_folder)
-	full_folder = os.path.join(deviant_folder, 'full')
-	if not os.path.exists(full_folder):
-		os.mkdir(full_folder)
-	thumb150_folder = os.path.join(deviant_folder, 'thumb150')
-	if not os.path.exists(thumb150_folder):
-		os.mkdir(thumb150_folder)		
-	thumb300W_folder = os.path.join(deviant_folder, 'thumb300W')
-	if not os.path.exists(thumb300W_folder):
-		os.mkdir(thumb300W_folder)	
-		
+
 	# First retrieve the backend url
-	print('[%s] Retrieving backend url from gallery...' % (datetime.now() - starttime))
+	print('\t[%s] Retrieving backend url from gallery...' % (datetime.now() - starttime))
 	url = urllib.urlopen('%sgallery' % (page))
 	parser = BackEndUrlRetriever()
 	parser.feed(url.read())
@@ -104,26 +115,27 @@ def parseDeviant(deviant):
 	
 	# Parse all backend pages
 	backendurl = backendurl.rstrip('0')
-	print('[%s] Parsing backend pages...' % (datetime.now() - starttime))
+	print('\t[%s] Parsing backend pages...' % (datetime.now() - starttime))
 	count = 0
 	offset = 0
 	while offset == 0 or count > 0:
-		print '[%s] %s%d' % (datetime.now() - starttime, backendurl, offset)
+		print '\t[%s] %s%d' % (datetime.now() - starttime, backendurl, offset)
 		url = urllib.urlopen('%s%d' % (backendurl, offset))
 		
 		parser = make_parser()
-		handler = BackEndParser(full_folder, thumb150_folder, thumb300W_folder)
+		handler = BackEndParser(deviant)
 		parser.setContentHandler(handler)
 		parser.parse(url)
 		
 		count = handler.count
 		offset += count
-	print('Downloaded %d images' % (offset))
+	print('\tParsed/Downloaded %d images' % (offset))
 
 if __name__ == '__main__':
 	starttime = datetime.now()
 	
-	parseDeviant('omega300m')
+	#parseDeviant('omega300m')
+	parseDeviant('-az')
 	
 	print('[%s] Done!' % (datetime.now() - starttime))
 	
