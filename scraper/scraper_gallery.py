@@ -18,6 +18,11 @@ class BackEndUrlRetriever(SGMLParser):
 			self.backend = href[0]
 	backend = None
 	
+lastfilesize = 0
+def progressReporter(count, size, total):
+	global lastfilesize
+	lastfilesize = total
+	
 class BackEndParser(handler.ContentHandler):
 	def __init__(self, deviant):
 		global image_folder
@@ -25,6 +30,7 @@ class BackEndParser(handler.ContentHandler):
 		self.deviant = deviant
 		self.itemstarted = False
 		self.count = 0
+		self.totaldownloaded = 0
 		self.stack = []
 		
 		# Create folders for the downloaded images if needed
@@ -69,10 +75,8 @@ class BackEndParser(handler.ContentHandler):
 		""" Downloads the image from the url to the specified folder
 			Retrieves the image filename from the url """
 		filename = os.path.basename(url_name)
-		url = urllib.urlopen(url_name)
-		f = open(os.path.join(folder, filename), 'wb')
-		f.write(url.read())
-		f.close()
+		urllib.urlretrieve(url_name, os.path.join(folder, filename), progressReporter)
+		self.totaldownloaded += lastfilesize
 
 	def endElement(self, name):
 		self.stack.pop()
@@ -119,8 +123,9 @@ def parseDeviant(deviant):
 	print('\t[%s] Parsing backend pages...' % (datetime.now() - starttime))
 	count = 0
 	offset = 0
+	total = 0
 	while offset == 0 or count > 0:
-		print '\t[%s] %s%d' % (datetime.now() - starttime, backendurl, offset)
+		print '\t[%s] offset=%d' % (datetime.now() - starttime, offset)
 		url = urllib.urlopen('%s%d' % (backendurl, offset))
 		
 		parser = make_parser()
@@ -130,7 +135,8 @@ def parseDeviant(deviant):
 		
 		count = handler.count
 		offset += count
-	print('\tParsed/Downloaded %d images' % (offset))
+		total += handler.totaldownloaded
+	print('\tParsed/Downloaded %d images (%d MB)' % (offset, total / 1048576))
 	
 def main():
 	if len(sys.argv) < 2:
