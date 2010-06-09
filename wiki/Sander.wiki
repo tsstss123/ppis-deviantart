@@ -1,5 +1,8 @@
 #summary Sander's research log
 == 06/09/2010==
+  * Looking into saliency maps.
+    A straight forward way to compute the simalirity between two images would be to just substract two saliency maps.
+
   * Worked a bit more on the image download script.
     
     Usage: python scrapper_gallery deviant1 deviant2 deviant3 ..
