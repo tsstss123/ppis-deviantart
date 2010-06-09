@@ -16,7 +16,7 @@ Add your content here.  Format your content with:
 
 
 == 04/06/2010==
-Read the paper: _"Computational modeling of visual attention"_ of Laurent Itti and Christo Kock. 
+Read the paper: _"*Computational modeling of visual attention*"_ of Laurent Itti and Christo Kock. 
     * In the paper they present a general overview and some recent work on *computational models of focal visual attention*. _Five trends_ have emerged from the work: 
        * the perceptual saliency of stimuli critically depends on the surrounding context.
        * a unique saliency map that topographically encodes for stimulus perspicuity over the visual scene has proved to be an efficient an plausible bottom-up control strategy
@@ -25,7 +25,7 @@ Read the paper: _"Computational modeling of visual attention"_ of Laurent Itti a
        * scene understanding and object recognition strongly constrain the selection of attended location. 
     * The paper was interesting but a bit to general and to much focused on the neurobiological understanding of visual attention.
 
-Read the paper: _"A Model of Saliency-Based Visual Attention for Rapid Scene Analysis"_ of Laurent Itti, Christof Koch and Ernst Niebur.
+Read the paper: _"*A Model of Saliency-Based Visual Attention for Rapid Scene Analysis*"_ of Laurent Itti, Christof Koch and Ernst Niebur.
     * The paper is quite interesting and explain relly good the way they try to extract saliency locations from images. The process can be seen in the following image:
 http://img249.imageshack.us/img249/5981/saliencymodel.png
 
