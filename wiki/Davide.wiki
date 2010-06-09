@@ -56,7 +56,7 @@ http://img3.imageshack.us/img3/9028/archz.png
     * Some users save their pictures/fotos in galleries and in every gallery explored all the images belong to the same "topic". Maybe it could be interesting to find a way to suggest galleries instead of suggesting single images. 
     * DevianArt has categories (not based on the styles). The user is free to put its images under the category he prefer and often some pictures seems to be misclassified. 
     * Some categories contain very similar images (because the style is the same one) 
-    * A category called "Stock Images" (the ones with a commercial porpouse) contains images of completely different topics. 
+    * A category called "Stock Images" (the ones with a commercial target) contains images of completely different topics. 
 
     * We could extract 4-5 categories describing 4-5 different styles and we could classify them.
 
