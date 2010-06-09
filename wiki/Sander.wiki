@@ -3,6 +3,7 @@
   * Worked a bit more on the image download script.
     
     Usage: python scrapper_gallery deviant1 deviant2 deviant3 ..
+    
     Accepts a list of deviants. For each deviant it will download the full images and thumbtails to the folder images/deviant/
 
 == 06/08/2010==
