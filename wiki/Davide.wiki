@@ -27,7 +27,7 @@ Read the paper: _"*Computational modeling of visual attention*"_ of Laurent Itti
 
 Read the paper: _"*A Model of Saliency-Based Visual Attention for Rapid Scene Analysis*"_ of Laurent Itti, Christof Koch and Ernst Niebur.
     * The paper is quite interesting and explain relly good the way they try to extract saliency locations from images. The process can be seen in the following image:
-http://img249.imageshack.us/img249/5981/saliencymodel.png
+http://img3.imageshack.us/img3/9028/archz.png
 
 == 03/06/2010==
     * Explored DevianArt wepages. 
