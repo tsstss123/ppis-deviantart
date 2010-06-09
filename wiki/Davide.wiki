@@ -26,8 +26,11 @@ Read the paper: _"*Computational modeling of visual attention*"_ of Laurent Itti
     * The paper was interesting but a bit to general and to much focused on the neurobiological understanding of visual attention.
 
 Read the paper: _"*A Model of Saliency-Based Visual Attention for Rapid Scene Analysis*"_ of Laurent Itti, Christof Koch and Ernst Niebur.
-    * The paper is quite interesting and explain relly good the way they try to extract saliency locations from images. The process can be seen in the following image:
+    * The paper is quite interesting and explain really good the way they try to extract saliency locations from images. The process can be seen in the following image:
 http://img3.imageshack.us/img3/9028/archz.png
+
+    * Even more they compare the _saliency maps_ with a _spatial frequency (SFC) maps_. Results shows that the first one is much more robust to addition of noise to the image than the second one that seems to be very weakly. 
+    * Even if saliency maps are really robust to noise, they still get a bit confused in the noise (e.g. its color) directly conflict with the main feature of the target. 
 
 == 03/06/2010==
     * Explored DevianArt wepages. 
