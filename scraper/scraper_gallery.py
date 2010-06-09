@@ -2,6 +2,7 @@ import urllib
 from sgmllib import SGMLParser
 from xml.sax import make_parser, handler
 
+import sys
 from datetime import datetime
 import os
 
@@ -130,12 +131,18 @@ def parseDeviant(deviant):
 		count = handler.count
 		offset += count
 	print('\tParsed/Downloaded %d images' % (offset))
+	
+def main():
+	if len(sys.argv) < 2:
+		print('Usage: %s deviant1 deviant2 deviant3 ...' % sys.argv[0])
+		return
+		
+	deviants = sys.argv[1:len(sys.argv)]
+	for deviant in deviants:
+		parseDeviant(deviant)
+	
+	print('[%s] Done!' % (datetime.now() - starttime))
 
 if __name__ == '__main__':
 	starttime = datetime.now()
-	
-	#parseDeviant('omega300m')
-	parseDeviant('-az')
-	
-	print('[%s] Done!' % (datetime.now() - starttime))
-	
+	main()
