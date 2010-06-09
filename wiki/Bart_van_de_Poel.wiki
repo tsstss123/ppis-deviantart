@@ -5,6 +5,7 @@
 ==09/06==
  * Found a parameters in the facedetect source code that affects how easily something is detected as a face (something about positive neighbours). But even when I set it relatively high it gives a lot of false positives. 
  * Created a function that returns the number of detected faces as a feature (might also want to give location). But if the detections are too noisy, we may want to remove this feature.
+ * Created function that uses the opencv goodFeaturesForTracking function to detect corners and returns the number of corners in an image.
 
 ==08/06==
  * Wasted a couple of hours trying to get the opencv/matlab code that albert sent to work, but it won't compile correctly on mac. 
@@ -50,7 +51,8 @@
   * Codebook vector produced by koen's code
 
 = Implemented features =
- * edge/non-edge ratio (now with default parameters)
- * avg hue, avg saturation & avg Intensity
- * corner detection (theo has code for this on his website. Haven't looked at it extensively yet, but seems to work.
+ * edge/non-edge ratio (now with default parameters) (about 10-50 per second)
+ * avg hue, avg saturation & avg Intensity (about 10-50 per second)
+ * number of faces in image (processes about 3 images per second)
+ * number of corners in an image (5-10 per second)
  
