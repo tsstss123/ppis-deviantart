@@ -2,8 +2,12 @@
 
 =Research Log=
 
+==09/06==
+ * Found a parameters in the facedetect source code that affects how easily something is detected as a face (something about positive neighbours). But even when I set it relatively high it gives a lot of false positives. 
+ * Created a function that returns the number of detected faces as a feature (might also want to give location). But if the detections are too noisy, we may want to remove this feature.
+
 ==08/06==
- * Waisted a couple of hours trying to get the opencv/matlab code that albert sent to work, but it won't compile correctly on mac. 
+ * Wasted a couple of hours trying to get the opencv/matlab code that albert sent to work, but it won't compile correctly on mac. 
  * Finally works! Turned out to be a small compiler-dependent error in the source code. Tried canny edge, and rgb2hsv and they both were 10-50 times faster then the matlab versions.
  * Rewrote the feature extraction code so that the different feature codes just take one image as input and return the feature(vector) instead of being standalone pieces of code. And replaces builtin matlab functions with opencv functions where possible.
  * Tried the viola and jones face detector. Works, but haven't found out how to give parameters like the confidence threshold yet (otherwise it will give a lot of false positives). 
