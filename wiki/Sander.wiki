@@ -1,5 +1,7 @@
 #summary Sander's research log
 == 06/09/2010==
+  * Substracting two saliency maps does not work very well. Might have to do with the image resizing.
+
   * Looking into saliency maps.
     * A straight forward way to compute the simalirity between two images would be to just substract two saliency maps. Disadvantage: problems with different sized images and saliency spots that are just on a different position in the image while the images are still about the same.
     * Another way would be to look at the histogram of the saliency maps. In this case we would rather compare the distribution of the saliency.
