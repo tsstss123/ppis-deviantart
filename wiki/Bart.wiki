@@ -36,5 +36,6 @@ Refamiliarized with matlab <br>
 Made matlab feature extractor and image reader <br>
 implemented Weibull <br>
 GMailinglist since blackboard takes a day to mail. <br> 
-= ToDo = 
-better understand Weibull
+
+= todo = 
+better understand Weibull & Networks
