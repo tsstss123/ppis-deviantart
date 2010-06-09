@@ -2,6 +2,10 @@
 
 = Logbook =
 
+== 09/06/2010 ==
+  * Added column (feature) hiding.
+  * Added new class "View" which is the parent for all the View (plot) classes. The "View" class contains base functions for loading TSV/CSV data.
+
 == 08/06/2010 ==
   * Improved the "Parallel coordinates" plot:
     * Added axis + title + min/max value
