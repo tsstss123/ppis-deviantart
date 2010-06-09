@@ -1,27 +1,27 @@
-
+function numFaces = detectFaces(img)
 
 classifierFilename = 'haarcascade_frontalface_default.xml';
-
-% currentPath = [fileparts([mfilename('fullpath') '.m']) filesep];
-
+% classifierFilename = 'haarcascade_profileface.xml';
 classifierFileFullPath = ['haarcascades' filesep classifierFilename];
 
+% Bigger?
 minFaceSize = 25;
 
-
+% What is this?
 shouldViewElapsedTime = 1;
 
-
-img = imread('deviant/10_Xanxus_x_Squalo_by_LALAax.jpg'); %use your own jpg here
-
-imgGray = rgb2gray(img);
-
+if size(img,3) < 3
+    imgGray = img(:,:,1);
+else
+    imgGray = rgb2gray(img);
+end
+% compiled cvlib_mex with parameter min_neighbors=6 (default is 3)
 rectangleMatrix = cvlib_mex('facedetect',imgGray,classifierFileFullPath, minFaceSize, shouldViewElapsedTime );
 
-imshow(img);
-
-for iRectangle = 1:size(rectangleMatrix,1)
-
-    rectangle('Position',rectangleMatrix, 'EdgeColor', 'r')
+% imshow(img);
+numFaces = size(rectangleMatrix,1)/4
+% for i = 1:4:size(rectangleMatrix,1)
+%     rectangle('Position',rectangleMatrix(i:i+3,:), 'EdgeColor', 'r')
+% end 
 
 end
