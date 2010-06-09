@@ -35,5 +35,6 @@ Looked at previous mean-shift tracker code, if there is anything useful in there
 Refamiliarized with matlab <br>
 Made matlab feature extractor and image reader <br>
 implemented Weibull <br>
+GMailinglist since blackboard takes a day to mail. <br> 
 = ToDo = 
 better understand Weibull
