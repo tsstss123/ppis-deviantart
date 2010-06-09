@@ -124,7 +124,9 @@ def parseDeviant(deviant):
 	count = 0
 	offset = 0
 	total = 0
-	while offset == 0 or count > 0:
+	started = False
+	while not started or count > 0:
+		started = True
 		print '\t[%s] offset=%d (%d MB downloaded)' % (datetime.now() - starttime, offset, total / 1048576)
 		url = urllib.urlopen('%s%d' % (backendurl, offset))
 		
