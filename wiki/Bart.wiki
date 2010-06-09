@@ -31,7 +31,9 @@ researched networks <br>
 DONE wiki on networks, meeting and goals
 
 = We 9-6-2010 =
-Looked at previous mean-shift tracker code, if there is anything useful in there, its colorspaces, histograms and histogram distance. 
-
-= ToDo= 
-Weibull features.
+Looked at previous mean-shift tracker code, if there is anything useful in there, its colorspaces, histograms and histogram distance. <br>
+Refamiliarized with matlab <br>
+Made matlab feature extractor and image reader <br>
+implemented Weibull <br>
+= ToDo = 
+better understand Weibull
