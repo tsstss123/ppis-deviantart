@@ -7,6 +7,7 @@
   * Added new class "View" which is the parent for all the View (plot) classes. The "View" class contains base functions for loading TSV/CSV data.
   * Reorganizes app structure > Box to JPanel, JPanel supports (re)painting.
   * Now displaying the thumbnails of selected images. Create script to show fullsize in a popup window.
+     http://www.nickd.nl/dl/ai/is/parallel_coordinates_v0.3.png
 
 == 08/06/2010 ==
   * Improved the "Parallel coordinates" plot:
