@@ -12,15 +12,33 @@ Add your content here.  Format your content with:
   * Headings, paragraphs, and lists
   * Automatic links to other wiki pages
 
+== 08/06/2010==
+    * Used and changed Sender code to find similarity between two images (finding similarity between their saliency maps).
+    * The new code is applied to 25 images (the ones harvested yesterday) and try to find similarity between them)
 
+== 07/06/2010==
+    * Downloaded 25 images from DevianArt. Images "represent" 5 different styles and each style has 5 images associated. 
+    * Played with the toolbox with these new images. 
+    * Tries: 
+       - give different weights to color, intensity and orientations
+       - iterate different times using IOR and see how the different maps changes
+       - not tried yet different pyramid level
 
+== 07/06/2010==
+    * Installed and added the image processing toolbox to my Matlab 
+    * Downloaded the Dirk Walther's implementation of Itti's model at: http://www.saliencytoolbox.net/  
+    * Read the documentation about the toolbox 
+    * Played with the toolbox for simple images that were already proposed
+
+    * Attended the meeting with Albert
+    * Discussed about image and feature representation
 
 == 04/06/2010==
 Read the paper: _"*Computational modeling of visual attention*"_ of Laurent Itti and Christo Kock. 
     * In the paper they present a general overview and some recent work on *computational models of focal visual attention*. _Five trends_ have emerged from the work: 
        * the perceptual saliency of stimuli critically depends on the surrounding context.
        * a unique saliency map that topographically encodes for stimulus perspicuity over the visual scene has proved to be an efficient an plausible bottom-up control strategy
-       * Inhibition of return, that is the process by which the currently attended location is prevented from being attended again, is a crucial element of attentional deployment
+       * Inhibition of return (IOR), that is the process by which the currently attended location is prevented from being attended again, is a crucial element of attentional deployment
        * attention and eye movements tightly interplay, posing computational challenges with respect to the coordinate system used to control attention
        * scene understanding and object recognition strongly constrain the selection of attended location. 
     * The paper was interesting but a bit to general and to much focused on the neurobiological understanding of visual attention.
