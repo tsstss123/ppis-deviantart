@@ -1,15 +1,22 @@
 #summary Davide's research log
 
 
+== 09/06/2010==
+    * Searched for ways to compare two different saliency maps. 
+       * Read few papers talking about using binary classification and cross-validation to choose which feature are discriminant to a given dataset. The method is probably not useful for DevianArt where there are images completely different. 
+    * *Important question*: is a saliency map giving enough information to discriminate images into categories?? 
+   *  *Though*: a saliency map can be useful to understand what user likes, such as if he/she tends to have the subject of the image in the center or in an other position, or if the subject is usually close to the camera or far away from it.     At the same time if a user has few pictures and with different subjects in different locations/distances from the camera, saliency map can not be usuful to discriminate. 
+
+
 == 08/06/2010==
     * Worked with Sander about finding similarity between two images using their saliency maps. We used the 25 images downloaded yesterday (5 for every style). 
     * *Approaches tried*:
-       - The subtraction of the saliency maps of two images. This subtraction assigns good similarity to images that have saliency points located in the same part of the image. The _results_ have shown that this idea, applied alone, is not discriminant to divide the images in styles. Tacking into account only the exact location of a saliency object is not enough, because the same object could appear in a different location of the image, or in a different scale/size.
-       - The comparison of the distribution of the saliency in the images. Every saliency map can be seen as a vector of features, and counting them it is easy to create the histogram of the saliency map. Then it is easy to compare two histograms of two different saliency maps. The _results_ are again not really interesting. It discriminates images that have few saliency points from images that have a lot of them, but it is not useful to discriminate images into styles. 
+       * The subtraction of the saliency maps of two images. This subtraction assigns good similarity to images that have saliency points located in the same part of the image. The _results_ have shown that this idea, applied alone, is not discriminant to divide the images in styles. Tacking into account only the exact location of a saliency object is not enough, because the same object could appear in a different location of the image, or in a different scale/size.
+       * The comparison of the distribution of the saliency in the images. Every saliency map can be seen as a vector of features, and counting them it is easy to create the histogram of the saliency map. Then it is easy to compare two histograms of two different saliency maps. The _results_ are again not really interesting. It discriminates images that have few saliency points from images that have a lot of them, but it is not useful to discriminate images into styles. 
        
     * *Ideas & Issue*:
-       - Try also to define a circle of a certain radius around a saliency point/object of a map, and then see if the second image contain it two. In this way we consider the "shape" of the saliency point/object, but we loose the location information. 
-       - Combine the previous three ideas (the two implemented and the circle one) to see if they discriminate better. But how? 
+       * Try also to define a circle of a certain radius around a saliency point/object of a map, and then see if the second image contain it two. In this way we consider the "shape" of the saliency point/object, but we loose the location information. 
+       * Combine the previous three ideas (the two implemented and the circle one) to see if they discriminate better. But how? 
 
 
 
@@ -17,9 +24,9 @@
     * Downloaded 25 images from DevianArt. Images "represent" 5 different styles and each style has 5 images associated. 
     * Played with the toolbox with these new images. 
     * Tries: 
-       - give different weights to color, intensity and orientations
-       - iterate different times using IOR and see how the different maps changes
-       - not tried yet different pyramid level
+       * give different weights to color, intensity and orientations
+       * iterate different times using IOR and see how the different maps changes
+       * not tried yet different pyramid level
 
 == 07/06/2010==
     * Installed and added the image processing toolbox to my Matlab 
