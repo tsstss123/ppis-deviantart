@@ -2,6 +2,11 @@
 
 =Research Log=
 
+==09/07==
+
+ * Implemented code to convert data to PRTools dataset format and use it for KNN.
+ * Implemented code that given the features names return a dataset containing only those feature values. (Extension needed to extract only images we want but will need the information of the SQL database to know which images)  
+
 ==08/07==
  * Created code to classify a new image given the trained SVM classifier.
  * Created code to compute the similarity between users, now we have a ranking of which users are similar to the given user based on the features(for now hsv). Similarity measure was done using Euclidian distance on the gallery level(one vector representing all images of an user). User set are 8 different users, can be found in the Downloads section.
