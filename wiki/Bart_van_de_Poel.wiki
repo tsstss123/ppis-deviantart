@@ -68,5 +68,6 @@
 = NOTES =
  * not sure whether the opencv mex file expects BGR or RGB as input to the color space conversion method
  * not sure whether to use face detection (noisy), and if so, what parameters
+ * possible for the grid based edge feature to return for each grid cell the amount of edges that are present in that grid cell divided by the total amount of edges, instead of returning the amount of edges in that cell divided by the number of pixels in that cell. Not entirely sure if they are two different kinds of information. Need to think about it.
  
  
