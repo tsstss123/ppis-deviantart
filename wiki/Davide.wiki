@@ -16,7 +16,7 @@
        
     * *Ideas & Issue*:
        * Try also to define a circle of a certain radius around a saliency point/object of a map, and then see if the second image contain it two. In this way we consider the "shape" of the saliency point/object, but we loose the location information. 
-       * Combine the previous three ideas (the two implemented and the circle one) to see if they discriminate better. But how? 
+       * Combine the previous three ideas (the two implemented and the circle one) to see if they discriminate better. *But how?*
 
 
 
