@@ -9,6 +9,7 @@
    * It's beter to use setPreferredSize() instead setMaximumSize()
    * Finished first working version of the Scatter view.
    * Preparing slides for the Processing tutorial.
+     http://www.nickd.nl/dl/ai/is/parallel_coordinates_v0.35.png
 
 == 09/06/2010 ==
   * Added column (feature) hiding.
