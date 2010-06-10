@@ -13,8 +13,11 @@ Add your content here.  Format your content with:
   * Automatic links to other wiki pages
 
 == 08/06/2010==
-    * Used and changed Sender code to find similarity between two images (finding similarity between their saliency maps).
-    * The new code is applied to 25 images (the ones harvested yesterday) and try to find similarity between them)
+    * Worked with Sander about finding similarity between two images using their saliency maps. We used the 25 images downloaded yesterday (5 for every style). 
+    * *Approaches tried:
+       - The subtraction of the saliency maps of two images. This subtraction assigns good similarity to images that have saliency points located in the same part of the image. The _results_ have shown that this idea, applied alone, is not discriminant to divide the images in styles. 
+
+
 
 == 07/06/2010==
     * Downloaded 25 images from DevianArt. Images "represent" 5 different styles and each style has 5 images associated. 
