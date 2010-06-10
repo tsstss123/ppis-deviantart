@@ -2,6 +2,10 @@
 
 =Research Log=
 
+==10/06==
+ * fixed a small bug in my code
+ * put spatial information into the edge ratio feature. Besides the total edge ratio, it now also didvides the edge image into a grid (now set to 3x3 to discriminate between center, corner and top-down/left-right edges, but can handle other amounts of cells) and calculates the edge ratio within each grid cell. It reshapes the matrix containing the ratios for each cell and returns one feature vector. (NOTE: an alternative is to not give the edge ratio within a cell, but the ratio of how much edges there are in this specific cell compared to the entire image). 
+
 ==09/06==
  * Found a parameters in the facedetect source code that affects how easily something is detected as a face (something about positive neighbours). But even when I set it relatively high it gives a lot of false positives. 
  * Created a function that returns the number of detected faces as a feature (might also want to give location). But if the detections are too noisy, we may want to remove this feature.
