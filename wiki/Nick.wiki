@@ -4,6 +4,10 @@
 
 == 10/06/2010 ==
    * Changing drawing images in the footer to label, to make the images clickable. Having a lot of issues with Java Swing.
+   * Implemented custom mouse listener class for the Footer, that enables me to pass an additional argument for listener call (image that has been clicked).
+   * Fixed the alignment problem in the footer: use the FlowLayout manager and pass the FlowLayout.LEFT_ALIGNMENT argument.
+   * It's beter to use setPreferredSize() instead setMaximumSize()
+   * Finished first working version of the Scatter view.
 
 == 09/06/2010 ==
   * Added column (feature) hiding.
