@@ -9,7 +9,7 @@
 
 
 == 08/06/2010==
-    * Worked with Sander about finding similarity between two images using their saliency maps. We used the 25 images downloaded yesterday (5 for every style). 
+    * Worked with Sander about finding similarity between two images using their saliency maps. We used the 25 images downloaded yesterday (5 for each style). 
     * *Approaches tried*:
        * The subtraction of the saliency maps of two images. This subtraction assigns good similarity to images that have saliency points located in the same part of the image. The _results_ have shown that this idea, applied alone, is not discriminant to divide the images in styles. Tacking into account only the exact location of a saliency object is not enough, because the same object could appear in a different location of the image, or in a different scale/size.
        * The comparison of the distribution of the saliency in the images. Every saliency map can be seen as a vector of features, and counting them it is easy to create the histogram of the saliency map. Then it is easy to compare two histograms of two different saliency maps. The _results_ are again not really interesting. It discriminates images that have few saliency points from images that have a lot of them, but it is not useful to discriminate images into styles. 
