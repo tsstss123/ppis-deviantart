@@ -5,7 +5,7 @@
     * Searched for ways to compare two different saliency maps. 
        * Read few papers talking about using binary classification and cross-validation to choose which feature are discriminant to a given dataset. The method is probably not useful for DevianArt where there are images completely different. 
     * *Important question*: does a saliency map have enough information to discriminate images into categories?? 
-   *  *Thought*: a saliency map can be useful to understand what user likes, such as if he/she tends to have the subject of the image in the center or in an other position, or if the subject is usually close to the camera or far away from it.     At the same time if a user has few pictures and with different subjects in different locations/distances from the camera, saliency map can not be useful to discriminate. 
+   *  *Thought*: a saliency map can be useful to understand what user likes, such as if he/she tends to have the subject of the image in the center or in an other position, or if the subject is usually close to the camera or far away from it. But, if a user has few pictures and with different subjects in different locations/distances from the camera, saliency map can not be useful to discriminate. 
 
 
 == 08/06/2010==
