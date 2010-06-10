@@ -8,6 +8,7 @@
    * Fixed the alignment problem in the footer: use the FlowLayout manager and pass the FlowLayout.LEFT_ALIGNMENT argument.
    * It's beter to use setPreferredSize() instead setMaximumSize()
    * Finished first working version of the Scatter view.
+   * Preparing slides for the Processing tutorial.
 
 == 09/06/2010 ==
   * Added column (feature) hiding.
