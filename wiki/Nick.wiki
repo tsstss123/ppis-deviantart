@@ -2,6 +2,9 @@
 
 = Logbook =
 
+== 10/06/2010 ==
+   * Changing drawing images in the footer to label, to make the images clickable. Having a lot of issues with Java Swing.
+
 == 09/06/2010 ==
   * Added column (feature) hiding.
   * Added new class "View" which is the parent for all the View (plot) classes. The "View" class contains base functions for loading TSV/CSV data.
