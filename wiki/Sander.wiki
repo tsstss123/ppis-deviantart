@@ -1,4 +1,7 @@
 #summary Sander's research log
+== 06/10/2010==
+  * Comparing the saliency map histograms also doesn't seems to work too well. Might want to play with the params and features to get better results.
+
 == 06/09/2010==
   * Substracting two saliency maps does not work very well. Might have to do with the image resizing.
 
