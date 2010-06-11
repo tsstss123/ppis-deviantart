@@ -6,6 +6,8 @@
   - clean reusable code
 
  * Create a recommender system that can recommend a new picture given a gallery<br>
+ - Use multiple features and classifiers, find the best classifiers per gallery or per type of gallery. A new picture can be classified given the best classifiers per class which have to give a measure of it belonging to that class.
+ - Lots of experimentation on pure and combined features and pure and combined classifiers is needed.
 
  * Create visualization tools for visualizing high dimensional image feature data <br>
 
@@ -14,3 +16,13 @@
   - What is the influence on the "class" of features on the recommendation performance(class being statistical or human inspired) <br>
   - How can the rich data help us (network information) <br>
  
+= Features = 
+Edgeness
+Color
+Weibull
+Saliency
+Emotions
+
+= Classifiers = 
+SVM
+K-Means
