@@ -9,8 +9,16 @@
 = Meeting 11/06/2010 = 
 *BJ's notes
 
--copy blackboard discussions into wiki
--features we discussed: color, hue(median, mean), edge ratio, faces, saliency, weibull, emotions
+-copy blackboard discussions into wiki <br>
+-features we discussed: color, hue(median, mean), edge ratio, faces, saliency, weibull, emotions <br>
+== System ==
+ - user will pick an gallery image or other gallery will be recommended<br>
+ - system must be efficiently expandable in users features and classifiers<br>
+== Experiments ==
+ - Make an experimental setup that can be run with different combination of classifiers features and their (hybrid)combinations
+  --  for instance 5 fold validation on the same 5 folds <br>
+  --  never use the test set till the end. <br>
+More to come later
 
 
 = Meeting 07/06/2010 = 
@@ -23,7 +31,7 @@
  - make nice code <br>
  - make code that works on millions of images thus: <br>
   -- use openCV because it's quick <br>
-  -- use profiler to see where mos of the time is lost <br>
+  -- use profiler to see where most of the time is lost <br>
 -We can use classifiers as a distance measure as explained with the HMM's<br>
 -Some saliency stuff was discussed with Davide<br>
 -Some network stuff with BJ<br>
