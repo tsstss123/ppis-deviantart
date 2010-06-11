@@ -6,6 +6,13 @@
   * 02/06/2010 (group and supervisor)
   * 01/06/2010 (group and supervisor)
 
+= Meeting 11/06/2010 = 
+*BJ's notes
+
+-copy blackboard discussions into wiki
+-features we discussed: color, hue(median, mean), edge ratio, faces, saliency, weibull, emotions
+
+
 = Meeting 07/06/2010 = 
 *BJ's notes
 
