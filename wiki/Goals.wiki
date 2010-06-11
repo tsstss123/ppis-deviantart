@@ -17,12 +17,12 @@
   - How can the rich data help us (network information) <br>
  
 = Features = 
-Edgeness
-Color
-Weibull
-Saliency
-Emotions
+ - Edgeness<br>
+ - Color<br>
+ - Weibull<br>
+ - Saliency<br>
+ - Emotions<br>
 
 = Classifiers = 
-SVM
-K-Means
+ - SVM<br>
+ - K-Means<br>
