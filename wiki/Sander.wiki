@@ -1,6 +1,7 @@
 #summary Sander's research log
 == 06/10/2010==
   * Comparing the saliency map histograms also doesn't seems to work too well. Might want to play with the params and features to get better results.
+  * Played around with SIFT combined with saliency map. Not sure if it works yet and what's the best way how to use it.
 
 == 06/09/2010==
   * Substracting two saliency maps does not work very well. Might have to do with the image resizing.
