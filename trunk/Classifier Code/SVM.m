@@ -3,7 +3,7 @@ function [ cp ] = SVM( trainpercentage )
 class1name = 'trainclass1';
 class2name = 'trainclass2';
 
-% Load/Compute feature vectors * Future replacement with dataset calls!
+% Load/Compute feature vectors *Future replacement with dataset calls!
 fprintf('Creating Feature Vector Matrices\n');
 class1 = pseudotrainClassifier(class1name);
 class2 = pseudotrainClassifier(class2name);
@@ -18,7 +18,7 @@ fprintf('Creating and Labeling the Training set\n');
 trainingmatrix = vertcat(trainingclass1, trainingclass2);
 sizetraining = size(trainingmatrix);
 sizetrainingclass1 = size(trainingclass1);
-trainingobsmatrix = trainingmatrix(:,1:end);S
+trainingobsmatrix = trainingmatrix(:,1:end);
 
 % Labeling the training set
 traininggroundtruthvector = cell(sizetraining(1), 1);
