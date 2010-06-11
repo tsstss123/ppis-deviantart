@@ -7,6 +7,7 @@
   * Gave a Processing tutorial.
   * Made the header dynamic: buttons instead of 1 static image.
   * Added witching between views.
+  * Added application (zip) to the downloads. Extract the zip to your Eclipse working space. It should run out of the box.
 
 == 10/06/2010 ==
    * Changing drawing images in the footer to label, to make the images clickable. Having a lot of issues with Java Swing.
