@@ -13,7 +13,7 @@ givenpath = strcat('Feature Dataset\', givenartist, '.txt');
 files = dir('Feature Dataset');
 fileIndex = find(~[files.isdir]);
 
-% Compute the average images feature vector(Gallery Level)
+% Gallery Level Comparement: Compute the average images feature vector(Gallery Level)
 givenmatrixsize = size(givenvalues);
 averagefeaturevector = sum(givenvalues) / givenmatrixsize(1);
 
@@ -34,12 +34,12 @@ for k=1:length(fileIndex)
    classvector{k} = class{1};
 
    % Compute the Euclidian distance
-   t=averagevalues-averagefeaturevector;
-   t_2 = t.*t;
-   similarityvector(k) = sqrt(sum(t_2));
+   similarityvector(k) = euclidianDistance(averagevalues, averagefeaturevector);
 end
 
 % Create the Ranking
-[numberranking, indeces] = sortrows(similarityvector); 
+[numberranking, indeces] = sortrows(similarityvector);
 nameranking = classvector(indeces);
-
+filter = numberranking > 0;
+numberranking = numberranking(filter);
+nameranking = nameranking(filter);
