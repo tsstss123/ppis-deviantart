@@ -8,6 +8,7 @@
 
 ==10/06==
  * Created code to run a PRTools dataset format on different classifiers and outputted the scores, this helps in selecting what classifier performs the overall best. Also the function can be used for training a classifier to be used for classifying a new image.
+ * PRTools also contains tools for finding the best feature on a dataset this might be handy in the future.
 
 ==09/06==
 
