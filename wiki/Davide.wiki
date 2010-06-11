@@ -1,7 +1,7 @@
 #summary Davide's research log
 
 == 10/06/2010==
-Read the paper: _"*Adding texture to color: quantitative analysis of color emotions*"_ of Marcel P. Lucassen, Theo Gevers, Arjan Gijsenj
+Read the paper: _"*Adding texture to color: quantitative analysis of color emotions*"_ of Marcel P. Lucassen, Theo Gevers, Arjan Gijsenij
     * In the paper they describe some experiment where subjects ordered samples along four scales: Warm-Cool, Masculine-Feminine, Hard-Soft and Heavy-Light. Three sample types were used: uniform color, grayscale textures and color textures. 
     * *Thought*: I have no idea about how these experiments and their results can be useful in our project
 
