@@ -2,6 +2,13 @@
 
 =Research Log=
 
+==11/06==
+ * Organized all the .m files, it was getting a bit unclear. 
+ * Currently trying to create a workflow through matlab code but there are a lot of parameters.
+
+==10/06==
+ * Created code to run a PRTools dataset format on different classifiers and outputted the scores, this helps in selecting what classifier performs the overall best. Also the function can be used for training a classifier to be used for classifying a new image.
+
 ==09/06==
 
  * Implemented code to convert data to PRTools dataset format and use it for KNN.
