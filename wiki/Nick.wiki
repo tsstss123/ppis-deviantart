@@ -1,8 +1,20 @@
-#summary Nick's research log
+ #summary Nick's research log
 
 = Logbook =
 
-== 1106/2010 ==
+== 12/06/2010 ==
+
+Asked myself the question: *What is the final output of our system*:
+   * Overall [best/avg] performance of each [deviantART] *category*
+   * Overall [best/avg] performance of each *feature (statistical/cognitive)*
+   * Overall [best/avg] performance of each *classifier*
+
+   * Performance of each feature given a category
+   * Performance of each classifier given a category
+     http://www.nickd.nl/dl/ai/is/sketch.png
+
+
+== 11/06/2010 ==
   * Meeting with Albert.
   * Gave a Processing tutorial.
   * Made the header dynamic: buttons instead of 1 static image.
