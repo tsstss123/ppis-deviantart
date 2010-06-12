@@ -74,8 +74,9 @@ And then the feature extraction code will loop over the images in the directory 
  * weibull fit  (Bart B.)
 
 = TODO =
- * extend existing feature types with spatial information (for example: besides the edge ratio, possibly a grid with edge ratio's)
- * more features 
+ * also grid-based corner feature
+ * koen's color descriptors
+ * ... 
 
 = NOTES =
  * not sure whether the opencv mex file expects BGR or RGB as input to the color space conversion method
