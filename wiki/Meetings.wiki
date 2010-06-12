@@ -1,4 +1,4 @@
-#summary List of the meetings
+#summary List of the meetings and summaries - Please add organize as you wish
 
 <wiki:toc max_depth="1" />
   * 07/06/2010 (group and supervisor) @ 13.00 albert's office 
@@ -9,16 +9,30 @@
 = Meeting 11/06/2010 = 
 *BJ's notes
 
+== HOMEWORK ==
+make experimental setup
+
 -copy blackboard discussions into wiki <br>
--features we discussed: color, hue(median, mean), edge ratio, faces, saliency, weibull, emotions <br>
+-features we discussed: color, hue(median, mean), edge ratio, faces, saliency, weibull, emotions, color temperature, average color <br>
 == System ==
  - user will pick an gallery image or other gallery will be recommended<br>
  - system must be efficiently expandable in users features and classifiers<br>
+ - for instance use XML to store data so it is easily expandable <br>
+ - look at computation time if its feasible for millions of pics <br>
 == Experiments ==
  - Make an experimental setup that can be run with different combination of classifiers features and their (hybrid)combinations
-  --  for instance 5 fold validation on the same 5 folds <br>
-  --  never use the test set till the end. <br>
-More to come later
+  -- for instance 5 fold validation on the same 5 folds <br>
+  -- never use the test set till the end. <br>
+  -- look at mahalanobis distance for unnormalised distances between galleries
+  -- make ROC curves for the experiments
+  -- Everything is an experiment and a picture
+== Cognitive ==
+ - talked about discriminant saliency??? <br>
+ - a good journal is trends in cognitive sciences for cognitive grounding of chosen techniques <br>
+== Features in general ==
+ - Good features have large interclass similarities and small intraclass
+ - texture emotions and Weibull were discussed and Perlin? noise generated textures Bart has to look at Marcels work.
+
 
 
 = Meeting 07/06/2010 = 
