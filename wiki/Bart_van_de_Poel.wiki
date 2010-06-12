@@ -5,6 +5,7 @@
 ==12/06==
  * Used this xml package: http://www.mathworks.com/matlabcentral/fileexchange/4278
  * Rewrote the code such that for each image an xml file is generated that contains the feature. During the feature extraction these xml files are consulted so that only features are calculated that are not yet present for that image, or that have been flagged to be recomputed. 
+ * Uploaded the code to svn. I will make a wiki page tomorrow with the xml format and how to use the toolkit. 
 
 
 ==11/06==
