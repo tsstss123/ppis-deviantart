@@ -2,27 +2,15 @@
 
 =Research Log=
 
+==12/06==
+ * Used this xml package: http://www.mathworks.com/matlabcentral/fileexchange/4278
+ * Rewrote the code such that for each image an xml file is generated that contains the feature. During the feature extraction these xml files are consulted so that only features are calculated that are not yet present for that image, or that have been flagged to be recomputed. 
+
+
 ==11/06==
  * Meeting with everyone. Tutorial by Nick
- * Need to rewrite all the code so that the features are stored in XML files. Sent a possible format to everyone, and if they agree on it, I will try to rewrite it this weekend. Format:
+ * Need to rewrite all the code so that the features are stored in XML files. Sent a possible format to everyone, and if they agree on it, I will try to rewrite it this weekend. 
 
-<image> 
-    <filename>blablablabla.jpg</filename>	
-    <features>
-        <edgyness>
-            <length>1</length>
-            <data>0.03</data>
-        </edgyness>        
-        <gridedgyness> 
-            <length>9</length>
-            <data> 0.1,0.7,0.8,0.2,0.5,0.9,1,0.3,0.9 </data>   (IS THIS HOW YOU STORE MULTIPLE VALUES IN AN XML FILE??)
-        </gridedgyness>
-        <avgHue>
-            <length>1</length>
-            <data>120</data>
-        </avgHues>
-    </features>
-</image>
 
 And then the feature extraction code will loop over the images in the directory and for each image open the appropriate xml file (if it exists), parse it and decide which features to compute, compute them and finally update the xml file. 
 
