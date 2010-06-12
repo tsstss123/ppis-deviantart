@@ -11,7 +11,11 @@ Asked myself the question: *What is the final output of our system*:
 
    * Performance of each feature given a category
    * Performance of each classifier given a category
+   * *Do we have the performance for each each classifier given a feature?*
+
      http://www.nickd.nl/dl/ai/is/sketch.png
+     * The thickness of each line represents the performance.
+     * The color-coded bar below the name of an item represents the overall performance of that item. For example: category1 has the best classification performance of all the categories.
 
 
 == 11/06/2010 ==
