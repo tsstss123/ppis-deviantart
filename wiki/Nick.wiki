@@ -1,4 +1,4 @@
- #summary Nick's research log
+#summary Nick's research log
 
 = Logbook =
 
