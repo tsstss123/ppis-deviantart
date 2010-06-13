@@ -6,6 +6,7 @@
     extension = '.jpg';
    
     for i=1:size(path,2)
+        generateSaliencyMaps(path{i});
         for j=1:5
             imagestr{i+(j-1)*5,1} = horzcat(path{j},int2str(i),extension);
         end
