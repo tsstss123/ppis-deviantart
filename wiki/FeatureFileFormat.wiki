@@ -1,4 +1,4 @@
-#summary One-sentence summary of this page.
+# The format in which features are stored
 
 = XML file =
 Here is an example of an xml file for 1 image, which holds all features: 
