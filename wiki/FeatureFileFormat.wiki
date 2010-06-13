@@ -1,4 +1,4 @@
-# The format in which features are stored
+#summary The format in which features are stored
 
 = XML file =
 Here is an example of an xml file for 1 image, which holds all features: 
