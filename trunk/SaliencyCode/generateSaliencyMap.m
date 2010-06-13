@@ -13,11 +13,11 @@ function generateSaliencyMap(image_name)
     [salmap,salData] = makeSaliencyMap(img,params);
     
     % Write away
-    output_name = [image_name '.salmap.jpg'];
+    output_name = [image_name '.salmap'];
     imwrite(salmap.data, output_name, 'jpg');
     
     for i=1:length(salData)
-        output_name = [image_name '.' salData(i).label '.jpg'];
+        output_name = [image_name '.' salData(i).label];
         imwrite(salData(i).CM.data, output_name, 'jpg');
     end
 end
