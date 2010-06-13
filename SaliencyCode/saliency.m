@@ -16,7 +16,7 @@
     for i=1:size(imagestr,1)
         for j=1:size(imagestr,1)
             if ~((j<i)||(i==j)) 
-                matrix(i,j) = getSimilaritySalMapDiff(imagestr{i}, imagestr{j});
+                matrix(i,j) = getSimilaritySalMapEntropy(imagestr{i}, imagestr{j});
                 fprintf('\nSIMILARITY BETWEEN IMAGE %d AND IMAGE %d HAS BEEN COMPUTED', i,j)
             end
         end
