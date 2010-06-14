@@ -4,6 +4,8 @@
 
 == 14/06/2010 ==
   * Finished the feature selector panel. It's not perfect yet, because the nr of selected features is not limited on 2 for the scatter plot. The scatter plot picks the 'first' 2 active features from the visible features array.
+  * Created the basis for the radian view.
+     http://www.nickd.nl/dl/ai/is/parallel_coordinates_v0.4.png
 
 == 13/06/2010 ==
    * Started working on the feature selector (filter) panel.
