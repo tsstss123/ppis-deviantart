@@ -1,0 +1,24 @@
+#summary Dataset information
+
+== General information ==
+The dataset can be downloaded using scraper/scraper_gallery.py.
+As arguments it takes the usernames of the deviants we want to download
+
+Example:
+./scraper_gallery.py omega300m vyrl
+
+The images are downloaded to the images folder. For each deviant a folder is created. The folder contains for each image a xml file with the category information. It also contains another 3 folders with the full sizes images and thumbtail images.
+
+Example xml file (should be readable in matlab):
+
+{{{
+<?xml version="1.0"?>
+<!-- Written on 2010-06-15 13:10:50.043530 using Sanders awesome xml thing -->
+<root xml_tb_version="3.1" idx="1" type="struct" size="1 1">
+	<category idx="1" type="char" size="1 33">digitalart/paintings/people/pinup</category>
+</root>
+}}}
+
+
+== Todo ==
+For which users should we download the images?
