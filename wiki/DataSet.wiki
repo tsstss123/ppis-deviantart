@@ -22,3 +22,6 @@ Example xml file (should be readable in matlab):
 
 == Todo ==
 For which users should we download the images?
+
+DEKSTOP SCREENSHOT:
+ * giannisgx89
