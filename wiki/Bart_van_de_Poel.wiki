@@ -2,6 +2,12 @@
 
 =Research Log=
 
+==15/06==
+ * Worked at science park on rewriting gridCode such that it also works on a 3D matrix
+ * Attended Lev Manovich's presentation at VKS
+ * 
+ 
+
 ==12/06==
  * Used this xml package: http://www.mathworks.com/matlabcentral/fileexchange/4278
  * Rewrote the code such that for each image an xml file is generated that contains the feature. During the feature extraction these xml files are consulted so that only features are calculated that are not yet present for that image, or that have been flagged to be recomputed. 
@@ -68,11 +74,12 @@ And then the feature extraction code will loop over the images in the directory 
   * Codebook vector produced by koen's code
 
 = Implemented features =
- * edge/non-edge ratio (now with default parameters) (about 10-50 per second)
+ * edge/pixels ratio (now with default parameters) (about 10-50 per second)
  * avg hue, avg saturation & avg Intensity (about 10-50 per second)
  * number of faces in image (processes about 3 images per second)
- * number of corners in an image (5-10 per second)
+ * corners pixel ratio in image (5-10 per second)
  * weibull fit  (Bart B.)
+ * avg RGB
 
 = TODO =
  * koen's color descriptors
