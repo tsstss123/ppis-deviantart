@@ -5,7 +5,7 @@
 ==15/06==
  * Worked at science park on rewriting gridCode such that it also works on a 3D matrix
  * Attended Lev Manovich's presentation at VKS
- * 
+ * Added avg RGB  feature
  
 
 ==12/06==
