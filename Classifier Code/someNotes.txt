@@ -1,0 +1,23 @@
+- Recommender System
+	- General feature vector of user or set of images
+	- Compare with other images features
+	
+- Classify Image with a trained Classifier
+	- Current Class
+	- Other Classes
+	
+	Compute similarity:
+		- mahalauobis distance
+		- or with normalization
+	
+	Normalization methods (important)
+		- x - mean / stddev
+		- x - (xmin /xmax)
+		- can do +- .5 for some classifiers
+		
+	CR curve for verifying
+	
+	Compute for all or alot of classifiers for big range parameters
+	and only show the best results
+	
+	ROC Curve for results

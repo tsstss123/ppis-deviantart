@@ -1,4 +1,4 @@
-function ClassifyDataset( A, trainpercentage, varargin )
+function V = ClassifyDataset( A, trainpercentage, varargin )
 
 knn_neighbours = 3;
 bnn_nonodes = 3;
@@ -14,7 +14,7 @@ classifiernames = {'KNN', ...
                    'PERLC', ...
                    'NEURC'};
 
-classifierfunctions = {knnc([],knn_neighbours), ...
+classifierfunctions = {knnc([],NaN), ...
                        bpxnc([],bnn_nonodes), ...
                        ldc, ...
                        qdc, ...
@@ -34,22 +34,25 @@ end
 classifierfunctions = classifierfunctions(classifierinputvector==1);
 
 % Split in training and test set
-[train,test] = gendat(A, trainpercentage);
+%[train,test] = gendat(A, trainpercentage);
+train = A;
+
 
 % Train the classifiers
 V = train*classifierfunctions;
+getopt_pars;
 
 % Output the Classfier Statistics
-disp([newline 'Output Error Rate'])
-testc(test,V)
+%disp([newline 'Output Error Rate'])
+%testc(test,V)
 
-disp([newline 'Output Precision'])
-testc(test,V,'precision')
+%disp([newline 'Output Precision'])
+%testc(test,V,'precision')
 
-disp([newline 'Output False Negatives'])
-testc(test,V,'FN')
+%disp([newline 'Output False Negatives'])
+%testc(test,V,'FN')
 
-disp([newline 'Output True Positives'])
-testc(test,V,'TP')
+%disp([newline 'Output True Positives'])
+%testc(test,V,'TP')
 
 end

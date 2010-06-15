@@ -2,12 +2,23 @@
 % !!Inspect each featurefile to find the specified format!!
 % Returns dataset, imagenames and featurenames that correspond to the
 % columns.
-function [ featuredataset, imagenamecell, featurenames ] = createDataset( varargin )
+% Should also output the class name associated with the data
+function [ featuredataset, imagenamecell, featurenames ] = createDataset( categoryname, varargin )
 
 directoryname=['Features', filesep];
+datasetdirectory=['Dataset', filesep];
 
-featurenames={'Hue'; 'Saturation'; 'Intensity'};
-featurefiles={'hsvFeature.txt'; 'hsvFeature.txt'; 'hsvFeature.txt'};
+featurenames= { 'Hue'; ...
+                'Saturation'; ...
+                'Intensity'; ...
+                'Corner'; ...
+                'Edgeratio'};
+            
+featurefiles= { 'hsv_feature.txt'; ...
+                'hsv_feature.txt'; ...
+                'hsv_feature.txt'; ...
+                'corner_feature.txt'; ...
+                'edgeratio_feature.txt'}
 
 featureinputvector = zeros(length(featurenames), 1);
 for k=1:length(varargin)
@@ -18,19 +29,16 @@ end
 featurenames = featurenames(featureinputvector==1);
 featurefiles = featurefiles(featureinputvector==1);
 
-% Create imagename cell with filenames (for the filenames you want)
-% For now all images in hsvFeature.txt but in the end must be based
-% on 'gallery', 'user', 'just one image' or something else
-    path = [directoryname,featurefiles{1}];  
-    fid=fopen(path);
-    imagenamecell = textscan(fid, '%s %*s %*f %*f %*f', 'Delimiter','\t');
-    fclose(fid);
+% What are the positive images
+    path = [datasetdirectory,categoryname,filesep];  
+    files=dir(path);
+    fileIndex = find(~[files.isdir]);
     
 % Calculate dataset feature length for speed increase
 datasetlength = 0;
 for k=1:length(featurenames)
     switch featurenames{k} % Switch to find Feature length value
-        case {'Hue', 'Saturation', 'Intensity'} 
+        case {'Hue', 'Saturation', 'Intensity', 'Corner', 'Edgeratio'} 
             datasetlength = datasetlength + 1;
         otherwise
             fprintf('Feature %s is not implemented in this function yet(length)', featurenames{k});
@@ -50,7 +58,11 @@ for k=1:length(featurenames)
         case {'Saturation'} %Extract only 3rd column
             contents = textscan(fid, '%*s %*s %*f %f %*f', 'Delimiter','\t');         
         case {'Intensity'} %Extract only 4th column
-            contents = textscan(fid, '%*s %*s %*f %*f %f', 'Delimiter','\t');           
+            contents = textscan(fid, '%*s %*s %*f %*f %f', 'Delimiter','\t');
+        case {'Corner'}
+            contents = textscan(fid, '%*s %f', 'Delimiter',',');              
+        case {'Edgeratio'}
+            contents = textscan(fid, '%*s %f', 'Delimiter',',');             
         otherwise
             fprintf('Feature %s is not implemented in this function yet(textread)', featurenames{k});
     end
