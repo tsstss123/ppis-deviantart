@@ -6,7 +6,7 @@ import sys
 from datetime import datetime
 import os
 
-image_folder = 'images'
+image_folder = '../images'
 
 class BackEndUrlRetriever(SGMLParser):
 	""" Retrieves the backend url from a deviant's gallery page (http://$deviant$.deviantart.com/gallery)"""
@@ -28,11 +28,15 @@ class BackEndParser(handler.ContentHandler):
 		global image_folder
 		
 		self.deviant = deviant
-		self.itemstarted = False
 		self.count = 0
 		self.totaldownloaded = 0
 		self.stack = []
-		
+			
+		# Item info
+		self.itemstarted = False
+		self.imagefilename = None
+		self.imagecategory = None
+
 		# Create folders for the downloaded images if needed
 		deviant_folder = os.path.join(image_folder, deviant)
 		if not os.path.exists(deviant_folder):
@@ -47,6 +51,7 @@ class BackEndParser(handler.ContentHandler):
 		if not os.path.exists(thumb300W_folder):
 			os.mkdir(thumb300W_folder)
 		
+		self.deviant_folder = deviant_folder
 		self.full_folder = full_folder
 		self.thumb150_folder = thumb150_folder
 		self.thumb300W_folder = thumb300W_folder
@@ -62,6 +67,8 @@ class BackEndParser(handler.ContentHandler):
 				doctype = attrs.getValue('medium')
 				if doctype != 'image':
 					return
+
+				self.imagefilename = os.path.basename(attrs.getValue('url'))
 
 				self.downloadImageTo(self.full_folder, attrs.getValue('url'))
 
@@ -81,12 +88,25 @@ class BackEndParser(handler.ContentHandler):
 	def endElement(self, name):
 		self.stack.pop()
 		if name == 'item':
+			# Write away a xml file for this image
+			xmlname, ext = os.path.splitext(self.imagefilename)
+			xmlname = '%s.xml' % (xmlname)
+			fpxml = open(os.path.join(self.deviant_folder, xmlname), 'wb')
+			fpxml.write('<?xml version="1.0"?>\n')
+			fpxml.write('<!-- Written on %s using Sanders awesome xml thing -->\n' % (datetime.now()) )
+			fpxml.write('<root xml_tb_version="3.1" idx="1" type="struct" size="1 1">\n')
+			fpxml.write('\t<category idx="1" type="char" size="1 %s">%s</category>\n' % (len(self.imagecategory), self.imagecategory))
+			fpxml.write('</root>\n')
+			fpxml.close()
+
 			self.itemstarted = False
 			
 	def characters(self, content):
 		if len(self.stack) == 0:
 			return
 		tag = self.stack[len(self.stack)-1]
+		if tag == 'media:category':
+			self.imagecategory = content
 
 	def endDocument(self):
 		pass
