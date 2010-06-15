@@ -23,8 +23,9 @@ Example xml file (should be readable in matlab):
 == Todo ==
 For which users should we download the images?
 
-DEKSTOP SCREENSHOT:
+DESKTOP SCREENSHOT:
  * giannisgx89
+ * Eagle07 (he has a gallery called: Desktop)
 
 Nature/Landscapes:
  * my-shots (last pages are deviation in storage)
