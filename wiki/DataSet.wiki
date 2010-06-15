@@ -25,3 +25,6 @@ For which users should we download the images?
 
 DEKSTOP SCREENSHOT:
  * giannisgx89
+
+Nature/Landscapes:
+ * my-shots
