@@ -75,9 +75,9 @@ And then the feature extraction code will loop over the images in the directory 
  * weibull fit  (Bart B.)
 
 = TODO =
- * also grid-based corner feature
  * koen's color descriptors
- * ... 
+ * variance
+ * entropy
 
 = NOTES =
  * not sure whether the opencv mex file expects BGR or RGB as input to the color space conversion method
