@@ -1,4 +1,10 @@
 #summary Sander's research log
+== 06/15/2010==
+  * Possible features we can extract for saliency:
+    # Histogram. Save the values of all different bins to the xml file (for example save 25 bins)
+    # Entropy. Just one value. Matlab already has a function for this.
+    # PCA. For example reduce the image to 20 dimensions.
+
 == 06/11/2010==
   * Cleaned up saliency code, so the different similarity parts are nicely splitted up in different functions. Added the code to svn.
 
