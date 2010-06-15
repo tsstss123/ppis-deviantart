@@ -1,5 +1,7 @@
 #summary Sander's research log
 == 06/15/2010==
+  * Updated gallery scraper code to generate a xml file containing the category information for each image.
+
   * Possible features we can extract for saliency:
     # Histogram. Save the values of all different bins to the xml file (for example save 25 bins)
     # Entropy. Just one value. Matlab already has a function for this.
