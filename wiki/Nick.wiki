@@ -2,6 +2,13 @@
 
 = Logbook =
 
+== 15/06/2010 ==
+  * Discussed features with the group.
+  * Discussed experiment approach (dataset).
+  * Discussed the 'performance radian plot' with Quang. Also input file structure.
+  * Implemented part of the data structure to store the data that has been read from TSV file.
+  * Attended the presentation by Lev.
+
 == 14/06/2010 ==
   * Finished the feature selector panel. It's not perfect yet, because the nr of selected features is not limited on 2 for the scatter plot. The scatter plot picks the 'first' 2 active features from the visible features array.
   * Created the basis for the radian view.
