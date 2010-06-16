@@ -93,20 +93,22 @@ class BackEndParser(handler.ContentHandler):
 	def endElement(self, name):
 		self.stack.pop()
 		if name == 'item':	
-			# Write xml file
-			xmlname, ext = os.path.splitext(self.imagefilename)
-			xmlname = '%s.xml' % (xmlname)
-			fpxml = open(os.path.join(self.deviant_folder, xmlname), 'wb')
-			fpxml.write('<?xml version="1.0"?>\n')
-			fpxml.write('<!-- Written on %s using Sanders awesome xml thing -->\n' % (datetime.now()) )
-			fpxml.write('<root xml_tb_version="3.1" idx="1" type="struct" size="1 1">\n')
+			if self.imagefilename:
+				# Write xml file
+				xmlname, ext = os.path.splitext(self.imagefilename)
+				xmlname = '%s.xml' % (xmlname)
+				fpxml = open(os.path.join(self.deviant_folder, xmlname), 'wb')
+				fpxml.write('<?xml version="1.0"?>\n')
+				fpxml.write('<!-- Written on %s using Sanders awesome xml thing -->\n' % (datetime.now()) )
+				fpxml.write('<root xml_tb_version="3.1" idx="1" type="struct" size="1 1">\n')
 
-			for line in self.xmlcontent:
-				fpxml.write( line )
+				for line in self.xmlcontent:
+					fpxml.write( line )
 
-			fpxml.write('</root>\n')
-			fpxml.close()
+				fpxml.write('</root>\n')
+				fpxml.close()
 
+			self.imagefilename = None
 			self.itemstarted = False
 			
 	def characters(self, content):
@@ -149,9 +151,7 @@ def parseDeviant(deviant):
 	while not started or count > 0:
 		started = True
 		print '\t[%s] offset=%d (%d MB downloaded)' % (datetime.now() - starttime, offset, total / 1048576)
-		print '%s%d' % (backendurl, offset)
 		url = urllib.urlopen('%s%d' % (backendurl, offset))
-		print url
 		
 		parser = make_parser()
 		handler = BackEndParser(deviant)
