@@ -1,0 +1,49 @@
+function cornerRatio = detectCorners(image)
+    corners = cvlib_mex('goodfeatures',image);
+%     imshow(image);
+%     hold on;
+%     scatter(corners(:,1),corners(:,2));
+%     hold off;
+    cornerRatio = size(corners,1)/(size(image,1)*size(image,2));
+    
+    
+    
+    
+    
+    
+end
+
+function gridRatios = gridCorners(imageSize, corners)
+    xSize = imageSize(1);
+    ySize = isize(matrix,2);
+    xCellSize = round(xSize / X);
+    yCellSize = round(ySize / Y);
+    
+    avgGrid = zeros(X,Y);
+    for i = 1:X
+       for j = 1:Y
+           startPixelX = ((i-1)*xCellSize)+1;
+           startPixelY = ((j-1)*yCellSize)+1;                       
+           
+           % Because final row and column might nog have exactly the same
+           % cellsize
+           if(i == X)
+               endPixelX = size(matrix,1);               
+           else
+               endPixelX = startPixelX+xCellSize;
+           end
+           if(j == Y)
+               endPixelY = size(matrix,2);
+           else
+               endPixelY = startPixelY+yCellSize;
+           end
+           avgGrid(i,j) = mean(mean(matrix(startPixelX:endPixelX,startPixelY:endPixelY) ));
+       end
+
+    end   
+    
+    
+    
+
+
+end
