@@ -2,6 +2,10 @@
 
 =Research Log=
 
+==16/06==
+ * Added BartB's weibull fit code to the main feature extraction loop
+ * Rewrote feature extraction code such that can handle a file structure where the images are seperated bases on the artist. The code reads in the xml files that are created by the scraper en retrieves the artist, category and filename. It stores this in the feature xml together with the feature values so that all information is available to the visualization code. 
+
 ==15/06==
  * Worked at science park on rewriting gridCode such that it also works on a 3D matrix
  * Attended Lev Manovich's presentation at VKS
