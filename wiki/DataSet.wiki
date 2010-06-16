@@ -23,9 +23,9 @@ Example xml file (should be readable in matlab):
 == Todo ==
 For which users should we download the images?
 
-_Alberts deviants set_
+_Alberts deviants set (modified)_
 
-{{{K1lgore  Mallimaakari  catluvr2  Skarbog  erroid  iakobos  miss-mosh  LALAax  hybridinsurgency  Craniata  stereoflow  kamilsmala  wirestyle  Red-Priest-Usada  Swezzels  Udodelig  Pierrebfoto  woekan  fediaFedia  UdonNodu  gsphoto  sujawoto  sekcyjny  Mentosik8  One-Vox  zihnisinir  Knuxtiger4  Kitsunebaka91  NEDxfullMOon  nyctopterus  Jeysie  WarrenLouw }}}
+{{{omega300m K1lgore  Mallimaakari  catluvr2  Skarbog  erroid  iakobos  miss-mosh  LALAax Craniata  stereoflow  kamilsmala  wirestyle  Red-Priest-Usada  Swezzels  Udodelig  Pierrebfoto  woekan  fediaFedia  UdonNodu  gsphoto  sujawoto  sekcyjny  Mentosik8  One-Vox  zihnisinir  Knuxtiger4  Kitsunebaka91  NEDxfullMOon  nyctopterus }}}
 
 _Other_ 
 
