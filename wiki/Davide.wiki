@@ -14,7 +14,13 @@
     * Meeting with the group to list all the possible features
     * Discussed experiment approaches (dataset).
     * Written the code to extract entropy as feature from the saliency maps
-    * Attended the presentation by Lev. 
+    * Attended Lev's presentation 
+
+== 11/06/2010==
+    * Attended Nick's tutorial about processing
+    * Discussed with Albert and Sender about cognitive features
+        * PCA?  It requires to pre-compute a special amount of data, so it is probably not appropriate for our purpose.
+    * Written some new code and fixed some old ones, to read and write XML from Matlab. It could hopefully be useful to Bart. 
 
 == 10/06/2010==
 Read the paper: _"*Adding texture to color: quantitative analysis of color emotions*"_ of Marcel P. Lucassen, Theo Gevers, Arjan Gijsenij
