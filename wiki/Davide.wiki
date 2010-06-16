@@ -1,5 +1,20 @@
 #summary Davide's research log
 
+
+== 15/06/2010==
+    * Written the code to extract *few features* from the saliency maps and the related maps (color, intensity, orientation and skin):
+        * entropy for the saliency map (done the previous day)
+        * the sum of all the entropy values coming from the five maps 
+        * standard deviation of the saliency distribution
+        * the few most salient points (to get them some function from the Toolbox have been re-written and a WTA (winner takes all) competition using IOR (inhibition of return) has been implemented)
+        * amount of skin 
+
+== 14/06/2010==
+    * Meeting with the group to list all the possible features
+    * Discussed experiment approaches (dataset).
+    * Written the code to extract entropy as feature from the saliency maps
+    * Attended the presentation by Lev. 
+
 == 10/06/2010==
 Read the paper: _"*Adding texture to color: quantitative analysis of color emotions*"_ of Marcel P. Lucassen, Theo Gevers, Arjan Gijsenij
     * In the paper they describe some experiment where subjects ordered samples along four scales: Warm-Cool, Masculine-Feminine, Hard-Soft and Heavy-Light. Three sample types were used: uniform color, grayscale textures and color textures. 
