@@ -118,6 +118,21 @@ def pajek_writer(deviantsandlist, time, delete):
 			f.write('%d %d 1\r\n' %(value[0], friend))	
 	f.close
 	
+def matlab_writer(deviants, time):
+	print 'saving for matlab timestamp %d' %(time)
+	#open as binary so both in windows and unix we get the windows output
+	f = open('deviants_%d.vert' %(time), 'wb')
+	for (deviant, value) in deviants.iteritems():
+		f.write('%d,%s\r\n'%(value[0], deviant))
+	f.close
+	#open as binary so both in windows and unix we get the windows output
+	f = open('deviants_%d.arcs' %(time), 'wb')
+	for value in deviants.itervalues():
+		for friend in (value[1]):
+			f.write('%d,%d,1\r\n' %(value[0], friend))	
+	f.close
+	
+	
 def load_data():
 	mx = -1
 	mxf = ''
@@ -156,6 +171,7 @@ def start():
 	saveinterval = 300
 
 	if len(todolist) == 0 and len(errlist) > 0 and os.name == 'nt':
+		print 'Redoing errorlist'
 		todolist = errlist
 		errlist = []
 				
@@ -164,6 +180,7 @@ def start():
 			deviants.add(deviant)
 	while (len(todolist) > 0):
 		if (datetime.datetime.now()-starttime).seconds > (nextsavetime*saveinterval):
+		
 			pajek_writer([deviants, todolist, errlist, prevsavetime+nextsavetime+1], prevsavetime+nextsavetime, prevsavetime+nextsavetime-2)
 			nextsavetime += 1
 		deviant = todolist.pop(0)
@@ -172,8 +189,8 @@ def start():
 		except Exception as e:
 			print('Exception: %s %s, %s' %(deviant, type(e), e))
 			errlist.append(deviant)
-	pajek_writer([deviants, todolist, errlist, nextsavetime+prevsavetime], -99, -1)
-	
+	pajek_writer([deviants, todolist, errlist, nextsavetime+prevsavetime+1], prevsavetime+nextsavetime, prevsavetime+nextsavetime-2)
+	matlab_writer(deviants, prevsavetime+nextsavetime)
 if __name__ == '__main__':
 	start()
 #	cProfile.run('start()', 'prof')
