@@ -44,7 +44,25 @@ Nothing worth noting
 Meeting + notes in wiki
 
 = Sat 12-06-2010 = 
-More wiki notes
+More wiki notes of meeting
+
+= Sun 13-06-2010 = 
+Network crawling finished
+
+= Mon 14-06-2010 = 
+Mostly football and some research into networks and weibull
+
+= Tue 15-06-2010 =
+Called group meeting to integrate all the islands and discuss experiments
+Started network analysis in matlab Pajek cant handle nets this big
+Lev Meeting
+evening worked on having our files transformed for use with networking toolkit
+
+= Wed 16-06-2010
+helped think about classifier and integration
+more input into networking toolkit
+starting analysis in networking toolkit
+
 
 = todo = 
 better understand Weibull & Networks
