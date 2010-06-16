@@ -23,6 +23,12 @@ Example xml file (should be readable in matlab):
 == Todo ==
 For which users should we download the images?
 
+_Alberts deviants set_
+
+K1lgore  Mallimaakari  catluvr2  Skarbog  erroid  iakobos  miss-mos  LALAax  ybridinsurgency  Craniata  stereoflow  kamilsmala  wirestyle  Red-Priest-Usada  Swezzels  Udodelig  Pierrebfoto  woekan  fediaFedia  UdonNodu  gsphoto  sujawoto  sekcyjny  Mentosik8  One-Vox  zihnisinir  Knuxtiger4  Kitsunebaka91  NEDxfullMOon  nyctopterus  Jeysie  WarrenLouw 
+
+_Other_ 
+
 DESKTOP SCREENSHOT:
  * giannisgx89
  * Eagle07 (he has a gallery called: Desktop)
