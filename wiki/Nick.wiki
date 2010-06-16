@@ -2,6 +2,11 @@
 
 = Logbook =
 
+== 16/06/2010 ==
+  * Radian view is now working. Todo: select (multiple) items and highlight relevant connections.
+  * Wrote Java code to convert XML feature files into a single TSV file that is read by the viz. app.
+  * Features that consist of multiple numbers are split into sub-features for the viz. This results in a big feature list, that doesn't fit into one window. I'm adding a scrollbar to tackle this issue.
+
 == 15/06/2010 ==
   * Discussed features with the group.
   * Discussed experiment approach (dataset).
