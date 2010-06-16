@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!-- Written on 16-Jun-2010 13:11:23 using the XML Toolbox for Matlab -->
+<root xml_tb_version="3.1" idx="1" type="struct" size="1 1">
+  <filename idx="1" type="char" size="1 28">__BRAINS___by_Knuxtiger4.jpg</filename>
+  <features idx="1" type="struct" size="1 1">
+    <numFaces idx="1" type="struct" size="1 1">
+      <data idx="1" type="double" size="1 1">0</data>
+    </numFaces>
+    <cornerRatio idx="1" type="struct" size="1 1">
+      <data idx="1" type="double" size="1 1">0.002105022831050228</data>
+    </cornerRatio>
+    <edgeRatio idx="1" type="struct" size="1 1">
+      <data idx="1" type="double" size="1 1">0.1296164383561644</data>
+    </edgeRatio>
+    <gridEdgeRatio idx="1" type="struct" size="1 1">
+      <data idx="1" type="double" size="1 9">0.09040165028515945 0.1706103628200462 0.09292682926829263 0.146867289568418 0.2232738745297901 0.1976829268292683 0.06632128613132682 0.09275934377698285 0.08685950413223145</data>
+    </gridEdgeRatio>
+    <medianHue idx="1" type="struct" size="1 1">
+      <data idx="1" type="double" size="1 1">30</data>
+    </medianHue>
+    <avgSat idx="1" type="struct" size="1 1">
+      <data idx="1" type="double" size="1 1">5.164214611872142</data>
+    </avgSat>
+    <avgInt idx="1" type="struct" size="1 1">
+      <data idx="1" type="double" size="1 1">214.4476210045664</data>
+    </avgInt>
+    <medHueCells idx="1" type="struct" size="1 1">
+      <data idx="1" type="double" size="1 9">0 20 111 24 30 13 0 110 110</data>
+    </medHueCells>
+    <avgSatCells idx="1" type="struct" size="1 1">
+      <data idx="1" type="double" size="1 9">2.029446264611899 3.627391497795577 5.0531228156737 4.067022610524612 7.848359826881852 5.818963036059371 2.853252032520324 8.10065040650406 7.253223140495869</data>
+    </avgSatCells>
+    <avgIntCells idx="1" type="struct" size="1 1">
+      <data idx="1" type="double" size="1 9">233.8486025158759 219.5435828985154 232.9625426586078 214.7937548032197 182.2148606560692 210.9225360799311 232.7062195121952 189.1713821138211 212.6953719008265</data>
+    </avgIntCells>
+    <cornerRatioGrid idx="1" type="struct" size="1 1">
+      <data idx="1" type="double" size="1 9">37 72 38 57 87 83 28 22 37</data>
+    </cornerRatioGrid>
+    <avgR idx="1" type="struct" size="1 1">
+      <data idx="1" type="double" size="1 1">213.2352648401829</data>
+    </avgR>
+    <avgG idx="1" type="struct" size="1 1">
+      <data idx="1" type="double" size="1 1">212.801283105023</data>
+    </avgG>
+    <avgB idx="1" type="struct" size="1 1">
+      <data idx="1" type="double" size="1 1">213.2285479452059</data>
+    </avgB>
+    <avgRCells idx="1" type="struct" size="1 1">
+      <data idx="1" type="double" size="1 9">233.5461311329531 218.5411964567406 230.0414456642409 214.1302835416413 181.3989402580592 209.9401751572713 232.3375203252034 187.6241056910569 210.3588016528926</data>
+    </avgRCells>
+    <avgGCells idx="1" type="struct" size="1 1">
+      <data idx="1" type="double" size="1 9">233.2696274723941 218.2174897868378 230.5275687677317 213.5894915665575 180.0357561784573 209.3426257144033 231.9558130081302 186.7723170731707 210.2928512396694</data>
+    </avgGCells>
+    <avgBCells idx="1" type="struct" size="1 1">
+      <data idx="1" type="double" size="1 9">233.0990980059054 218.7202200380211 232.4158957279717 213.1827448125228 179.7217975164826 209.5890382796761 231.7920731707317 187.6757317073169 211.6480165289256</data>
+    </avgBCells>
+    <intEntropy idx="1" type="struct" size="1 1">
+      <data idx="1" type="double" size="1 1">5.520779235102633</data>
+    </intEntropy>
+    <intVariance idx="1" type="struct" size="1 1">
+      <data idx="1" type="double" size="1 1">4745.567881671169</data>
+    </intVariance>
+  </features>
+</root>
