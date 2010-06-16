@@ -18,3 +18,12 @@ Conclusion once we have the network we should look at: <br>
 these should be possible to cumpute using Pajek
 
 Then we can decide which model fits and hopefully draw conclusions from that
+
+= Our DA network =
+results <br>
+Some basic statistics:
+Number of Nodes: 103663 <br>
+Number of Links: 4483023 <br>
+Average Node Degree: 43.25 <br>
+Fraction of reciprocal links: 17.65% <br>
+Average Clustering Coefficient: 0.087% <br>
