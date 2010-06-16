@@ -7,6 +7,7 @@
   * Wrote Java code to convert XML feature files into a single TSV file that is read by the viz. app.
   * Features that consist of multiple numbers are split into sub-features for the viz. This results in a big feature list, that doesn't fit into one window. I'm adding a scrollbar to tackle this issue.
   * Solved the checkbox scoll issue by adding a JPanel that holds the checkboxes, and this JPanel is added to a JScrollPane. Scrolling is forced to vertical only.
+     http://www.nickd.nl/dl/ai/is/parallel_coordinates_v0.45.png
 
 == 15/06/2010 ==
   * Discussed features with the group.
@@ -18,7 +19,6 @@
 == 14/06/2010 ==
   * Finished the feature selector panel. It's not perfect yet, because the nr of selected features is not limited on 2 for the scatter plot. The scatter plot picks the 'first' 2 active features from the visible features array.
   * Created the basis for the radian view.
-     http://www.nickd.nl/dl/ai/is/parallel_coordinates_v0.4.png
 
 == 13/06/2010 ==
    * Started working on the feature selector (filter) panel.
