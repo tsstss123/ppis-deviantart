@@ -25,7 +25,6 @@
  * Need to rewrite all the code so that the features are stored in XML files. Sent a possible format to everyone, and if they agree on it, I will try to rewrite it this weekend. 
 
 
-And then the feature extraction code will loop over the images in the directory and for each image open the appropriate xml file (if it exists), parse it and decide which features to compute, compute them and finally update the xml file. 
 
 ==10/06==
  * fixed a small bug in my feature code, because opencv seems to return vsh instead of hsv.
