@@ -1,4 +1,9 @@
 #summary Sander's research log
+== 06/16/2010==
+  * Found a problem with the gallery downloader. For example it only downloads 1 image for  the user giannisgx89, while this user has a lot more.
+
+    Solved it by directly accessing http://backend.deviantart.com/rss.xml?q=gallery:giannisgx89&offset=0. This page does show all images, in contrary to the backend link the gallery page. It also makes the code a bit faster since the backend url doesn't needs to be retrieved from the gallery page.
+
 == 06/15/2010==
   * Updated gallery scraper code to generate a xml file containing the category information for each image.
 
