@@ -24,8 +24,8 @@ class BackEndParser(handler.ContentHandler):
 			
 		# Item info
 		self.itemstarted = False
+		self.xmlcontent = []
 		self.imagefilename = None
-		self.imagecategory = None
 
 		# Create folders for the downloaded images if needed
 		deviant_folder = os.path.join(image_folder, deviant)
@@ -49,28 +49,34 @@ class BackEndParser(handler.ContentHandler):
 	def startElement(self, name, attrs):
 		self.stack.append(name)
 		if name == 'item':
+			# Start a new xml file for this image
+			self.xmlcontent = []
+
 			self.itemstarted = True
 			self.count += 1
 
-		if self.download_images:
-			if self.download_full and name == 'media:content':
-				doctype = attrs.getValue('medium')
-				if doctype != 'image':
-					return
+		if name == 'media:content':
+			doctype = attrs.getValue('medium')
+			if doctype != 'image':
+				return
 
-				self.imagefilename = os.path.basename(attrs.getValue('url'))
+			self.imagefilename = os.path.basename(attrs.getValue('url'))
+			self.xmlcontent.append('\t<filename idx="1" type="char" size="1 %s">%s</filename>\n' % (len(self.imagefilename), self.imagefilename))
 
+			if self.download_full:
 				self.downloadImageTo(self.full_folder, attrs.getValue('url'))
 
-			elif name == 'media:thumbnail':
-				if self.download_thumb150 and attrs.getValue('height') == '150':
-					self.downloadImageTo(self.thumb150_folder, attrs.getValue('url'))
-				elif self.download_thumb300W and attrs.getValue('width') == '300':
-					self.downloadImageTo(self.thumb300W_folder, attrs.getValue('url'))
+		elif name == 'media:thumbnail':
+			if self.download_thumb150 and attrs.getValue('height') == '150':
+				self.downloadImageTo(self.thumb150_folder, attrs.getValue('url'))
+			elif self.download_thumb300W and attrs.getValue('width') == '300':
+				self.downloadImageTo(self.thumb300W_folder, attrs.getValue('url'))
 
 	def downloadImageTo(self, folder, url_name):
 		""" Downloads the image from the url to the specified folder
 			Retrieves the image filename from the url """
+		if not self.download_images:
+			return
 		filename = os.path.basename(url_name)
 		tries = 3
 		while 1:
@@ -86,15 +92,18 @@ class BackEndParser(handler.ContentHandler):
 
 	def endElement(self, name):
 		self.stack.pop()
-		if name == 'item':
-			# Write away a xml file for this image
+		if name == 'item':	
+			# Write xml file
 			xmlname, ext = os.path.splitext(self.imagefilename)
 			xmlname = '%s.xml' % (xmlname)
 			fpxml = open(os.path.join(self.deviant_folder, xmlname), 'wb')
 			fpxml.write('<?xml version="1.0"?>\n')
 			fpxml.write('<!-- Written on %s using Sanders awesome xml thing -->\n' % (datetime.now()) )
 			fpxml.write('<root xml_tb_version="3.1" idx="1" type="struct" size="1 1">\n')
-			fpxml.write('\t<category idx="1" type="char" size="1 %s">%s</category>\n' % (len(self.imagecategory), self.imagecategory))
+
+			for line in self.xmlcontent:
+				fpxml.write( line )
+
 			fpxml.write('</root>\n')
 			fpxml.close()
 
@@ -105,7 +114,9 @@ class BackEndParser(handler.ContentHandler):
 			return
 		tag = self.stack[len(self.stack)-1]
 		if tag == 'media:category':
-			self.imagecategory = content
+			self.xmlcontent.append('\t<category idx="1" type="char" size="1 %s">%s</category>\n' % (len(content), content))
+		elif tag == 'media:title':
+			self.xmlcontent.append('\t<title idx="1" type="char" size="1 %s">%s</title>\n' % (len(content), content))
 
 	def endDocument(self):
 		pass
@@ -138,7 +149,9 @@ def parseDeviant(deviant):
 	while not started or count > 0:
 		started = True
 		print '\t[%s] offset=%d (%d MB downloaded)' % (datetime.now() - starttime, offset, total / 1048576)
+		print '%s%d' % (backendurl, offset)
 		url = urllib.urlopen('%s%d' % (backendurl, offset))
+		print url
 		
 		parser = make_parser()
 		handler = BackEndParser(deviant)
