@@ -72,7 +72,16 @@ class BackEndParser(handler.ContentHandler):
 		""" Downloads the image from the url to the specified folder
 			Retrieves the image filename from the url """
 		filename = os.path.basename(url_name)
-		urllib.urlretrieve(url_name, os.path.join(folder, filename), progressReporter)
+		tries = 3
+		while 1:
+			try:
+				urllib.urlretrieve(url_name, os.path.join(folder, filename), progressReporter)
+				break
+			except ContentTooShortError:
+				tries -= 1
+				if tries == 0:
+					print('Failed to retrieve "%s"' % (url_name))
+					break
 		self.totaldownloaded += lastfilesize
 
 	def endElement(self, name):
