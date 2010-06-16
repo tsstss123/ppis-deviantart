@@ -50,15 +50,6 @@ Read the paper: _"*Emotion-Based Textile Indexing Using Colors and Texture*"_ of
        * Combine the previous three ideas (the two implemented and the circle one) to see if they discriminate better. *But how?*
 
 
-
-== 07/06/2010==
-    * Downloaded 25 images from DevianArt. Images "represent" 5 different styles and each style has 5 images associated. 
-    * Played with the toolbox with these new images. 
-    * Tries: 
-       * give different weights to color, intensity and orientations
-       * iterate different times using IOR and see how the different maps changes
-       * not tried yet different pyramid level
-
 == 07/06/2010==
     * Installed and added the image processing toolbox to my Matlab 
     * Downloaded the Dirk Walther's implementation of Itti's model at: http://www.saliencytoolbox.net/  
@@ -67,6 +58,13 @@ Read the paper: _"*Emotion-Based Textile Indexing Using Colors and Texture*"_ of
 
     * Attended the meeting with Albert
     * Discussed about image and feature representation
+
+    * Downloaded 25 images from DevianArt. Images "represent" 5 different styles and each style has 5 images associated. 
+    * Played with the toolbox with these new images. 
+    * Tries: 
+       * give different weights to color, intensity and orientations
+       * iterate different times using IOR and see how the different maps changes
+       * not tried yet different pyramid level
 
 == 04/06/2010==
 Read the paper: _"*Computational modeling of visual attention*"_ of Laurent Itti and Christo Kock. 
