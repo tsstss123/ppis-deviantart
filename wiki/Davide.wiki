@@ -5,7 +5,7 @@
     * Written the code to extract *few features* from the saliency maps and the related maps (color, intensity, orientation and skin):
         * entropy of the saliency map (done the previous day)
         * the sum of all the entropy values coming from the five maps 
-        * standard deviation of the saliency distribution
+        * standard deviation of the saliency distribution in the saliency map
         * the few most salient points (to get them some function from the Toolbox have been re-written and a WTA (winner takes all) competition using IOR (inhibition of return) has been implemented)
         * amount of skin 
    * Changed all the code in Bart's format, so it can be easily incorporate and ready to be computed. 
