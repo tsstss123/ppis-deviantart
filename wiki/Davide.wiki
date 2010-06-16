@@ -8,6 +8,7 @@
         * standard deviation of the saliency distribution
         * the few most salient points (to get them some function from the Toolbox have been re-written and a WTA (winner takes all) competition using IOR (inhibition of return) has been implemented)
         * amount of skin 
+   * Changed all the code in Bart's format, so it can be easily incorporate and ready to be computed. 
 
 == 14/06/2010==
     * Meeting with the group to list all the possible features
