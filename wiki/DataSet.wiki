@@ -35,3 +35,5 @@ DESKTOP SCREENSHOT:
 
 Nature/Landscapes:
  * my-shots (last pages are deviation in storage)
+
+Small dataset of giannisgx89, Eagle07 and my-shots: http://sandern.com/ppis/smallsample.tar.gz
