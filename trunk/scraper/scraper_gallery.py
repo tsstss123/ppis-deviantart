@@ -7,16 +7,6 @@ from datetime import datetime
 import os
 
 image_folder = '../images'
-
-class BackEndUrlRetriever(SGMLParser):
-	""" Retrieves the backend url from a deviant's gallery page (http://$deviant$.deviantart.com/gallery)"""
-	def start_link(self, attrs):
-		href = [v for k, v in attrs if k=='href'] 
-		rel = [v for k, v in attrs if k=='rel'] 
-		if rel[0] == 'alternate':
-			assert(self.backend == None)
-			self.backend = href[0]
-	backend = None
 	
 lastfilesize = 0
 def progressReporter(count, size, total):
@@ -125,21 +115,12 @@ def getDeviantForPage(page):
 def parseDeviant(deviant):
 	print('[%s] Parsing %s...' % (datetime.now() - starttime, deviant))
 	
-	# Get page and make a folder for our deviant
-	page = getDeviantPage(deviant)
-	
+	# make a folder for our deviant
 	if not os.path.exists(image_folder):
 		os.mkdir(image_folder)
 
-	# First retrieve the backend url
-	print('\t[%s] Retrieving backend url from gallery...' % (datetime.now() - starttime))
-	url = urllib.urlopen('%sgallery' % (page))
-	parser = BackEndUrlRetriever()
-	parser.feed(url.read())
-	backendurl = parser.backend
-	
 	# Parse all backend pages
-	backendurl = backendurl.rstrip('0')
+	backendurl = 'http://backend.deviantart.com/rss.xml?q=gallery:%s&offset=' % (deviant)
 	print('\t[%s] Parsing backend pages...' % (datetime.now() - starttime))
 	count = 0
 	offset = 0
@@ -161,11 +142,13 @@ def parseDeviant(deviant):
 	print('\tParsed/Downloaded %d images (%d MB)' % (offset, total / 1048576))
 	
 def main():
-	if len(sys.argv) < 2:
-		print('Usage: %s deviant1 deviant2 deviant3 ...' % sys.argv[0])
+	global image_folder
+	if len(sys.argv) < 3:
+		print('Usage: %s image_folder deviant1 deviant2 deviant3 ...' % sys.argv[0])
 		return
 		
-	deviants = sys.argv[1:len(sys.argv)]
+        image_folder = sys.argv[1]
+	deviants = sys.argv[2:len(sys.argv)]
 	for deviant in deviants:
 		parseDeviant(deviant)
 	
