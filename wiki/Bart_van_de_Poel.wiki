@@ -85,8 +85,7 @@ And then the feature extraction code will loop over the images in the directory 
 
 = TODO =
  * koen's color descriptors
- * variance
- * entropy
+ * entropy of edges?
 
 = NOTES =
  * not sure whether the opencv mex file expects BGR or RGB as input to the color space conversion method
