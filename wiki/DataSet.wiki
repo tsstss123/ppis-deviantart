@@ -15,7 +15,10 @@ Example xml file (should be readable in matlab):
 <?xml version="1.0"?>
 <!-- Written on 2010-06-15 13:10:50.043530 using Sanders awesome xml thing -->
 <root xml_tb_version="3.1" idx="1" type="struct" size="1 1">
-	<category idx="1" type="char" size="1 33">digitalart/paintings/people/pinup</category>
+	<guid idx="1" type="char" size="1 49">http://Udodelig.deviantart.com/art/8178-155400343</guid>
+	<title idx="1" type="char" size="1 4">8178</title>
+	<category idx="1" type="char" size="1 26">photography/people/emotive</category>
+	<filename idx="1" type="char" size="1 20">8178_by_Udodelig.jpg</filename>
 </root>
 }}}
 
