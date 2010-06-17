@@ -1,8 +1,8 @@
-function numFaces = detectFaces(img)
+function numFaces = detectFaces(imgGray,project_root)
 
 classifierFilename = 'haarcascade_frontalface_default.xml';
 % classifierFilename = 'haarcascade_profileface.xml';
-classifierFileFullPath = ['haarcascades' filesep classifierFilename];
+classifierFileFullPath = [project_root 'externalpackages' filesep 'openCV' filesep 'haarcascades' filesep classifierFilename];
 
 % Bigger?
 minFaceSize = 25;
@@ -10,11 +10,11 @@ minFaceSize = 25;
 % What is this?
 shouldViewElapsedTime = 1;
 
-if size(img,3) < 3
-    imgGray = img(:,:,1);
-else
-    imgGray = rgb2gray(img);
-end
+% if size(img,3) < 3
+%     imgGray = img(:,:,1);
+% else
+%     imgGray = rgb2gray(img);
+% end
 % compiled cvlib_mex with parameter min_neighbors=6 (default is 3)
 rectangleMatrix = cvlib_mex('facedetect',imgGray,classifierFileFullPath, minFaceSize, shouldViewElapsedTime );
 

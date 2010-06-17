@@ -1,7 +1,7 @@
 function [avgR,avgG,avgB,avgRCells,avgGCells,avgBCells] = calcRGB(image)
 cellRows = 3;
 cellColumns = 3;
-if size(image,3) == 3
+% if size(image,3) == 3
     
     meanRGB = mean(mean(image));
     avgR = meanRGB(1);
@@ -15,26 +15,26 @@ if size(image,3) == 3
 %     avgSatCells = reshape(gridCellsAvg(vsh(:,:,2),cellRows,cellColumns),1,cellRows*cellColumns);
 %     avgIntCells = reshape(gridCellsAvg(vsh(:,:,1),cellRows,cellColumns),1,cellRows*cellColumns);
 
-elseif size(image,3) == 1
-    meanRGB = mean(mean(image));
-    avgR = meanRGB(1);
-    avgG = meanRGB(1);
-    avgB = meanRGB(1);
-                
-    avgRCells = reshape(gridCellsAvg(image(:,:,1),cellRows,cellColumns),1,cellRows*cellColumns);
-    avgGCells = avgRCells;
-    avgBCells = avgRCells;    
-else
-    % OR SOMETHING ELSE?
-    meanRGB = mean(mean(image));
-    avgR = meanRGB(1);
-    avgG = meanRGB(1);
-    avgB = meanRGB(1);
-                
-    avgRCells = reshape(gridCellsAvg(image(:,:,1),cellRows,cellColumns),1,cellRows*cellColumns);
-    avgGCells = avgRCells;
-    avgBCells = avgRCells;  
-end
+% elseif size(image,3) == 1
+%     meanRGB = mean(mean(image));
+%     avgR = meanRGB(1);
+%     avgG = meanRGB(1);
+%     avgB = meanRGB(1);
+%                 
+%     avgRCells = reshape(gridCellsAvg(image(:,:,1),cellRows,cellColumns),1,cellRows*cellColumns);
+%     avgGCells = avgRCells;
+%     avgBCells = avgRCells;    
+% else
+%     % OR SOMETHING ELSE?
+%     meanRGB = mean(mean(image));
+%     avgR = meanRGB(1);
+%     avgG = meanRGB(1);
+%     avgB = meanRGB(1);
+%                 
+%     avgRCells = reshape(gridCellsAvg(image(:,:,1),cellRows,cellColumns),1,cellRows*cellColumns);
+%     avgGCells = avgRCells;
+%     avgBCells = avgRCells;  
+% end
 
 
 end
