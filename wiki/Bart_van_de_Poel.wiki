@@ -2,6 +2,11 @@
 
 =Research Log=
 
+==17/06==
+ * Changed feature extraction code such that rgb2gray conversion is done only once and then used by all features that need it.
+ * Incorporated saliency code into the main loop
+ * Added try/catch blocks to handle corrupt images or images that the saliency package cannot handle. The code will now skip these images and remove it's feature file (so basically remove it from the dataset)
+
 ==16/06==
  * Added BartB's weibull fit code to the main feature extraction loop
  * Rewrote feature extraction code such that can handle a file structure where the images are seperated bases on the artist. The code reads in the xml files that are created by the scraper en retrieves the artist, category and filename. It stores this in the feature xml together with the feature values so that all information is available to the visualization code. 
