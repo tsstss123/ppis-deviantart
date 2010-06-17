@@ -67,7 +67,13 @@ helped with saliency features <br>
 = Thu 17-06-2010
 Code cleanup <br>
 weird matlab crash and cmd window: should be fixed with KMP_DUPLICATE_LIB_OK=True as enviroment variable .
+more code cleanup
+more network analysis
+helped with saliency feature extraction integration
+helped with classify
 
+looked at this for networks
+Self-emergence of knowledge trees: Extraction of the Wikipedia hierarchies
 
 = todo = 
 better understand Weibull & Networks
