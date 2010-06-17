@@ -1,7 +1,11 @@
 function extractFeatures
+%setup paths should be moved to general setup file
+project_root = '..\..\'
+addpath(genpath([project_root, 'externalpackages\Using_OpenCV_in_MATLAB']))
+
 % calcEdgeRatios
 % imagedir = 'deviant';
-imagedir = 'smallsample';
+imagedir = [project_root, 'datasets\smallsample'];
 % DIR NEEDS TO EXIST
 featuredir = ['features' filesep];
 
