@@ -59,9 +59,14 @@ Lev Meeting
 evening worked on having our files transformed for use with networking toolkit
 
 = Wed 16-06-2010
-helped think about classifier and integration
-more input into networking toolkit
-starting analysis in networking toolkit
+helped think about classifier and integration <br>
+more input into networking toolkit <br>
+starting analysis in networking toolkit <br>
+helped with saliency features <br>
+
+= Thu 17-06-2010
+Code cleanup <br>
+weird matlab crash and cmd window: should be fixed with KMP_DUPLICATE_LIB_OK=True as enviroment variable .
 
 
 = todo = 
