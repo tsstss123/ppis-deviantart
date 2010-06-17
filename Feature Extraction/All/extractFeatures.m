@@ -3,8 +3,7 @@ function extractFeatures
 project_root = '..\..\'
 addpath(genpath([project_root, 'externalpackages\openCV']))
 addpath(genpath([project_root, 'externalpackages\Weibull']))
-
-
+addpath(genpath([project_root, 'externalpackages\xml_toolbox']))
 % calcEdgeRatios
 % imagedir = 'deviant';
 imagedir = [project_root, 'datasets\smallsample'];
