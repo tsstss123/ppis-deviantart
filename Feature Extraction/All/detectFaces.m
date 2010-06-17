@@ -8,7 +8,7 @@ classifierFileFullPath = [project_root 'externalpackages' filesep 'openCV' files
 minFaceSize = 25;
 
 % What is this?
-shouldViewElapsedTime = 1;
+shouldViewElapsedTime = 0;
 
 % if size(img,3) < 3
 %     imgGray = img(:,:,1);
