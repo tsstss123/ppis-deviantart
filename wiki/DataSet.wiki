@@ -42,3 +42,27 @@ Nature/Landscapes:
  * my-shots (last pages are deviation in storage)
 
 Small dataset of giannisgx89, Eagle07 and my-shots: http://sandern.com/ppis/smallsample.tar.gz
+
+Category Stats:
+{{{
+Analyzing deviant Eagle07
+	digitalart: 	86
+	photography: 	21
+	artisan: 	20
+	customization: 	14
+	cartoons: 	8
+	designs: 	5
+	darelated: 	4
+	traditional: 	2
+	literature: 	1
+	fanart: 	1
+	manga: 	1
+Analyzing deviant giannisgx89
+	customization: 	37
+	resources: 	6
+	designs: 	4
+Analyzing deviant my-shots
+	photography: 	308
+	digitalart: 	1
+	darelated: 	1
+}}}
