@@ -74,18 +74,20 @@ class BackEndParser(handler.ContentHandler):
 		if not self.download_images:
 			return
 		filename = os.path.basename(url_name)
-		if os.path.exists(os.path.join(folder, filename)) == True:
+		fullpath = os.path.join(folder, filename)
+		if os.path.exists(fullpath) == True:
 			return
 		tries = 2
 		while 1:
 			try:
-				urllib.urlretrieve(url_name, os.path.join(folder, filename), progressReporter)
+				urllib.urlretrieve(url_name, fullpath, progressReporter)
 				break
 			except urllib.ContentTooShortError:
 				print('ContentTooShortError: retrying %s...' % (url_name))
 				tries -= 1
 				if tries == 0:
 					print('Failed to retrieve "%s"' % (url_name))
+					os.remove(fullpath)
 					break
 		self.totaldownloaded += lastfilesize
 
