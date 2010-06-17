@@ -34,23 +34,24 @@ class BackEndParser(handler.ContentHandler):
 		full_folder = os.path.join(deviant_folder, 'full')
 		if not os.path.exists(full_folder):
 			os.mkdir(full_folder)
-		thumb150_folder = os.path.join(deviant_folder, 'thumb150')
-		if not os.path.exists(thumb150_folder):
-			os.mkdir(thumb150_folder)
-		thumb300W_folder = os.path.join(deviant_folder, 'thumb300W')
-		if not os.path.exists(thumb300W_folder):
-			os.mkdir(thumb300W_folder)
+		thumbbig_folder = os.path.join(deviant_folder, 'thumbbig')
+		if not os.path.exists(thumbbig_folder):
+			os.mkdir(thumbbig_folder)
+		thumbsmall_folder = os.path.join(deviant_folder, 'thumbsmall')
+		if not os.path.exists(thumbsmall_folder):
+			os.mkdir(thumbsmall_folder)
 		
 		self.deviant_folder = deviant_folder
 		self.full_folder = full_folder
-		self.thumb150_folder = thumb150_folder
-		self.thumb300W_folder = thumb300W_folder
+		self.thumbbig_folder = thumbbig_folder
+		self.thumbsmall_folder = thumbsmall_folder
 
 	def startElement(self, name, attrs):
 		self.stack.append(name)
 		if name == 'item':
 			# Start a new xml file for this image
 			self.xmlcontent = []
+			self.thumbnails = []
 
 			self.itemstarted = True
 			self.count += 1
@@ -67,10 +68,11 @@ class BackEndParser(handler.ContentHandler):
 				self.downloadImageTo(self.full_folder, attrs.getValue('url'))
 
 		elif name == 'media:thumbnail':
-			if self.download_thumb150 and attrs.getValue('height') == '150':
-				self.downloadImageTo(self.thumb150_folder, attrs.getValue('url'))
-			elif self.download_thumb300W and attrs.getValue('width') == '300':
-				self.downloadImageTo(self.thumb300W_folder, attrs.getValue('url'))
+			self.thumbnails.append( (attrs.getValue('url'), int(attrs.getValue('width')), int(attrs.getValue('height'))) )
+			#if self.download_thumb150 and attrs.getValue('height') == '150':
+			#	self.downloadImageTo(self.thumb150_folder, attrs.getValue('url'))
+			#elif self.download_thumb300W and attrs.getValue('width') == '300':
+			#	self.downloadImageTo(self.thumb300W_folder, attrs.getValue('url'))
 
 	def downloadImageTo(self, folder, url_name):
 		""" Downloads the image from the url to the specified folder
@@ -94,6 +96,15 @@ class BackEndParser(handler.ContentHandler):
 		self.stack.pop()
 		if name == 'item':	
 			if self.imagefilename:
+				# Download thumbs
+				assert(len(self.thumbnails) == 2)
+				if self.thumbnails[0][1]*self.thumbnails[0][2] > self.thumbnails[1][1]*self.thumbnails[1][2]:
+					self.downloadImageTo(self.thumbbig_folder, self.thumbnails[0][0])
+					self.downloadImageTo(self.thumbsmall_folder, self.thumbnails[1][0])
+				else:
+					self.downloadImageTo(self.thumbbig_folder, self.thumbnails[1][0])
+					self.downloadImageTo(self.thumbsmall_folder, self.thumbnails[0][0])
+	
 				# Write xml file
 				xmlname, ext = os.path.splitext(self.imagefilename)
 				xmlname = '%s.xml' % (xmlname)

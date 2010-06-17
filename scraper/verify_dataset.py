@@ -4,16 +4,16 @@ import os
 import xml.dom.minidom
 
 missing = []
-missing300W = []
-missing150 = []
+missingbig = []
+missingsmall = []
 
 def verifyDeviant(folder_name, deviant):
-	global missing, missing300W, missing150
+	global missing, missingbig, missingsmall
 	print('Verifying deviant %s' % (deviant))
 	deviant_folder = os.path.join(folder_name, deviant)
 	image_folder = os.path.join(deviant_folder, 'full')
-	thumb300W_folder = os.path.join(deviant_folder, 'thumb300W')
-	thumb150_folder = os.path.join(deviant_folder, 'thumb150')
+	thumbbig_folder = os.path.join(deviant_folder, 'thumbbig')
+	thumbsmall_folder = os.path.join(deviant_folder, 'thumbsmall')
 	for filename in os.listdir(deviant_folder):
 		fullpath = os.path.join(deviant_folder, filename)
 		if os.path.isdir(fullpath):
@@ -28,10 +28,10 @@ def verifyDeviant(folder_name, deviant):
 		image_filename = filename[0].childNodes[0].data
 		if os.path.exists(os.path.join(image_folder, image_filename) ) == False:
 			missing.append(image_filename)
-		if os.path.exists(os.path.join(thumb300W_folder, image_filename) ) == False:
-			missing300W.append(image_filename)
-		if os.path.exists(os.path.join(thumb150_folder, image_filename) ) == False:
-			missing150.append(image_filename)
+		if os.path.exists(os.path.join(thumbbig_folder, image_filename) ) == False:
+			missingbig.append(image_filename)
+		if os.path.exists(os.path.join(thumbsmall_folder, image_filename) ) == False:
+			missingsmall.append(image_filename)
 
 def main():
 	if len(sys.argv) < 2:
@@ -46,16 +46,16 @@ def main():
 	print('Full images missing list: ')
 	for m in missing:
 		print '\t%s' % (m)
-	print('Thumb300W images missing list: ')
-	for m in missing300W:
+	print('Thumbbig images missing list: ')
+	for m in missingbig:
 		print '\t%s' % (m)
-	print('Thumb150 images missing list: ')
-	for m in missing150:
+	print('Thumbsmall images missing list: ')
+	for m in missingsmall:
 		print '\t%s' % (m)
 
 	print('%d full images missing' % (len(missing)))
-	print('%d thumb 300W images missing' % (len(missing300W)))
-	print('%d thumb 150 images missing' % (len(missing150)))
+	print('%d thumb big images missing' % (len(missingbig)))
+	print('%d thumb small images missing' % (len(missingsmall)))
 
 if __name__ == '__main__':
 	main()
