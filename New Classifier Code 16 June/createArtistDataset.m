@@ -1,4 +1,4 @@
-function [ dataset, classvector, featurevector ] = createArtistDataset( datastruct, target, varargin )
+function [ dataset, classvector, featurevector, artistvector ] = createArtistDataset( datastruct, target, varargin )
 
         featurenames={'numFaces'; ...
                       'cornerRatio'; ...
@@ -14,6 +14,7 @@ function [ dataset, classvector, featurevector ] = createArtistDataset( datastru
                       };
 
         artistsnames=fieldnames(datastruct.artists);
+        
         % Check which features to use
         logusefeatures=zeros(length(featurenames),1);
         for i=1:length(varargin)
@@ -27,7 +28,8 @@ function [ dataset, classvector, featurevector ] = createArtistDataset( datastru
         datasetrows=0;
         datasetcolumns=0;
         
-        % featurenameslength=cell(usefeatures,1);
+        lengthoffeature=zeros(length(usefeatures),1);
+        featurei=1;
         
         foundfeaturevalues=zeros(length(usefeatures),1);
         foundallfeaturelengths=false;
@@ -50,8 +52,9 @@ function [ dataset, classvector, featurevector ] = createArtistDataset( datastru
                                                           (loadedfeatures{k}). ...
                                                           ('data');
                                 datasetcolumns = datasetcolumns + length(data);
-                                %loadedfeatures{k};
-                                foundfeaturevalues = foundfeaturevalues + logvec;
+                                lengthoffeature(featurei)=length(data);
+                                featurei=featurei+1;
+                                foundfeaturevalues = foundfeaturevalues + logvec; 
                                 if length(foundfeaturevalues(foundfeaturevalues>0)) ...
                                    == length(foundfeaturevalues)
                                     foundallfeaturelengths = true;
@@ -63,11 +66,24 @@ function [ dataset, classvector, featurevector ] = createArtistDataset( datastru
                         break;
                     end
                 end    
-         end
+        end
+        
+        % Create feature labels
+        featurevector=cell(sum(lengthoffeature),1);
+        for i=1:length(lengthoffeature)
+            for j=1:lengthoffeature(i)
+                if (lengthoffeature(i) ~= 1)
+                    featurevector(i+j-1)={[usefeatures{i} '_' int2str(j)]};
+                else
+                    featurevector(i+j-1)={usefeatures{i}};
+                end
+            end
+        end
         
         % Count number of feature values for the preallocated matrix
         dataset=zeros(datasetrows,datasetcolumns);
-        classvector=cell(datasetrows,1); 
+        classvector=cell(datasetrows,1);
+        artistvector=cell(datasetrows,1);
         datasetindex=1;
         
         for i=1:length(artistsnames)
@@ -109,8 +125,10 @@ function [ dataset, classvector, featurevector ] = createArtistDataset( datastru
                             else
                                 classvector(datasetindex)={'Negative'};
                             end
+                            artistvector(datasetindex,:)={artistsnames{i}};
                         else
                             classvector(datasetindex,:)={'NaN'};
+                            artistvector(datasetindex,:)={'NaN'};
                         end
                         datasetindex=datasetindex+1;
                 end
