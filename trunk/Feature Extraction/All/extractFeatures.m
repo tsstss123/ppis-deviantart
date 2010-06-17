@@ -8,6 +8,7 @@ addpath(genpath([project_root, 'externalpackages', filesep, 'SaliencyToolbox']))
 % calcEdgeRatios
 % imagedir = 'deviant';
 imagedir = ['..',filesep,'smallsample'];
+imagedir = ['..',filesep,'bigdataset'];
 % DIR NEEDS TO EXIST
 featuredir = ['..',filesep,'features', filesep];
 
@@ -15,7 +16,7 @@ featuredir = ['..',filesep,'features', filesep];
 users = dir(imagedir);
 % grouped features with same base (for example group total edge and grid edge features) because
 % calculating them independently is inefficient 
-features.calculate = {'saliency'};%{'edgeRatios','HSV','cornerRatio','RGB','intVariance','intEntropy','weibullFit1','weibullFit2','numFaces','saliency'};
+features.calculate = {'edgeRatios','HSV','cornerRatio','RGB','intVariance','intEntropy','weibullFit1','weibullFit2','numFaces','saliency'};
 features.recompute = {};%,'HSV'};
 features.useGrayscale = {'edgeRatios','intVariance','intEntropy','weibullFit1','weibullFit2','numFaces'};
 features.useHSV = {'HSV'};
@@ -195,29 +196,36 @@ for i = 1:size(users,1)
                     
                     % Amount of Skin normalized???????????????????
                     feature = 'saliency';
-                    if (sum(ismember(features.calculate,feature)) > 0) && ((~allFeatInStruct({'salEntropy','salMapCEntropy','salMapIEntropy','salMapOEntropy','salMapKEntropy'},xmlFeatures)) || sum(ismember(features.recompute,feature)) > 0)                        
+                    if (sum(ismember(features.calculate,feature)) > 0) && ((~allFeatInStruct({'salEntropy','salMapCEntropy','salMapIEntropy','salMapOEntropy','salMapKEntropy'},xmlFeatures)) || sum(ismember(features.recompute,feature)) > 0)
                         numberPoints = 3;
                         params = set_parameters(RGBImage);
-                        size(RGBImage)
-%                         filename
-                        [salMap, salData] = generateSaliencyMap(RGBImage, params);
-                        E = entropy(salMap.data);
-                        [EC, EI, EO, EK] = getMapsEntropy(salData);
-                        H = getSalMapHist(salMap.data);
-                        P = getMostSalientPoints(salMap, salData, params, numberPoints);
-                        Sk = getSkinAmount(salData(4));
-                        
-                        
-                        xmlFeatures.features.salEntropy.data = E;
-                        xmlFeatures.features.salMapCEntropy.data = EC;
-                        xmlFeatures.features.salMapIEntropy.data = EI;
-                        xmlFeatures.features.salMapOEntropy.data = EO;
-                        xmlFeatures.features.salMapKEntropy.data = EK;
-                        xmlFeatures.features.salHistDev.data = H;
-                        xmlFeatures.features.salPoints.data = reshape(P,1,size(P,1),size(P,2));
-                        xmlFeatures.features.salSkin.data = Sk;
-                        
-                        xmlUpdated = true;
+                        try
+                            [salMap, salData] = generateSaliencyMap(RGBImage, params);
+
+                            E = entropy(salMap.data);
+                            [EC, EI, EO, EK] = getMapsEntropy(salData);
+                            H = getSalMapHist(salMap.data);
+                            P = getMostSalientPoints(salMap, salData, params, numberPoints);
+                            Sk = getSkinAmount(salData(4));
+
+
+                            xmlFeatures.features.salEntropy.data = E;
+                            xmlFeatures.features.salMapCEntropy.data = EC;
+                            xmlFeatures.features.salMapIEntropy.data = EI;
+                            xmlFeatures.features.salMapOEntropy.data = EO;
+                            xmlFeatures.features.salMapKEntropy.data = EK;
+                            xmlFeatures.features.salHistDev.data = H;
+                            xmlFeatures.features.salPoints.data = reshape(P,1,size(P,1),size(P,2));
+                            xmlFeatures.features.salSkin.data = Sk;
+
+                            xmlUpdated = true;
+
+                        catch
+                            disp('Image cannot be processed by saliency package. Deleting feature file and skipping it...');
+                            delete([featuredir filename]);
+                            %                             xmlUpdated = false;
+                            continue;
+                        end
                     end
                 end
                 
