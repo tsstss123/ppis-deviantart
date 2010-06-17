@@ -54,6 +54,7 @@ class BackEndParser(handler.ContentHandler):
 			self.thumbnails = []
 
 			self.itemstarted = True
+			self.skipitem = False
 			self.count += 1
 		elif name == 'media:content':
 			doctype = attrs.getValue('medium')
@@ -88,6 +89,7 @@ class BackEndParser(handler.ContentHandler):
 				if tries == 0:
 					print('Failed to retrieve "%s"' % (url_name))
 					os.remove(fullpath)
+					self.skipitem = True
 					break
 		self.totaldownloaded += lastfilesize
 
@@ -110,19 +112,32 @@ class BackEndParser(handler.ContentHandler):
 					else:
 						assert(0)
 
-				# Write xml file
-				xmlname, ext = os.path.splitext(self.imagefilename)
-				xmlname = '%s.xml' % (xmlname)
-				fpxml = open(os.path.join(self.deviant_folder, xmlname), 'wb')
-				fpxml.write('<?xml version="1.0"?>\n')
-				fpxml.write('<!-- Written on %s using Sanders awesome xml thing -->\n' % (datetime.now()) )
-				fpxml.write('<root xml_tb_version="3.1" idx="1" type="struct" size="1 1">\n')
+				if self.skipitem:
+					# Remove unused images. This happens because one of the images failed to download
+					# In that case remove all others. Caused by dead links?
+					fullpath = os.path.join(self.full_folder, self.imagefilename)
+					if os.path.exists(fullpath):
+						os.remove(fullpath)
+					fullpath = os.path.join(self.thumbbig_folder, self.imagefilename)
+					if os.path.exists(fullpath):
+						os.remove(fullpath)
+					fullpath = os.path.join(self.thumbsmall_folder, self.imagefilename)
+					if os.path.exists(fullpath):
+						os.remove(fullpath)
+				else:
+					# Write xml file
+					xmlname, ext = os.path.splitext(self.imagefilename)
+					xmlname = '%s.xml' % (xmlname)
+					fpxml = open(os.path.join(self.deviant_folder, xmlname), 'wb')
+					fpxml.write('<?xml version="1.0"?>\n')
+					fpxml.write('<!-- Written on %s using Sanders awesome xml thing -->\n' % (datetime.now()) )
+					fpxml.write('<root xml_tb_version="3.1" idx="1" type="struct" size="1 1">\n')
 
-				for line in self.xmlcontent:
-					fpxml.write( line )
+					for line in self.xmlcontent:
+						fpxml.write( line )
 
-				fpxml.write('</root>\n')
-				fpxml.close()
+					fpxml.write('</root>\n')
+					fpxml.close()
 
 			self.imagefilename = None
 			self.itemstarted = False
