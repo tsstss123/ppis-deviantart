@@ -7,7 +7,7 @@ addpath(genpath([project_root, 'externalpackages',filesep,'xml_toolbox']))
 addpath(genpath([project_root, 'externalpackages', filesep, 'SaliencyToolbox']));
 % calcEdgeRatios
 % imagedir = 'deviant';
-imagedir = ['..',filesep,'smallsample'];
+% imagedir = ['..',filesep,'smallsample'];
 imagedir = ['..',filesep,'bigdataset'];
 % DIR NEEDS TO EXIST
 featuredir = ['..',filesep,'features', filesep];
@@ -27,8 +27,8 @@ for i = 1:size(users,1)
     % filter hidden files and '.' '..' elements
     if user ~= '.'
         files = dir([imagedir filesep user]);
-        for j = 1:20%size(files,1)
-            filename = files(j).name;
+        for j = 1:size(files,1)
+            filename = files(j).name
             isXmlFile = false;
             if size(filename,2) >= 4
                 if(strcmp(filename(size(filename,2)-2:size(filename,2)),'xml'))
@@ -49,9 +49,14 @@ for i = 1:size(users,1)
                    % assume that there is only one image with the same filename (so not .jpg and also .png) 
                    imageFilename = matchImages(1).name;                
                 end
-
-                image = imread([imagedir filesep user filesep 'full' filesep imageFilename]);
-
+                
+                try
+                   image = imread([imagedir filesep user filesep 'full' filesep imageFilename]);
+                catch
+                   disp('Corrupt image. Skipping it');
+                   continue
+                end
+                
                 xmlUpdated = false;
                 if (exist([featuredir filename],'file') > 0)
                     xmlFeatures = xml_load([featuredir filename]);
@@ -237,7 +242,6 @@ for i = 1:size(users,1)
                 % If features have been computed, save the new XML file
                 if xmlUpdated
                      disp('xml updated');
-                     filename
 %                    lala = fieldnames(xmlFeatures.features); 
 %                    for i = 1:size(lala,1)
 % %                       xmlFeatures
