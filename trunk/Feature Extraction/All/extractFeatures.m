@@ -1,12 +1,12 @@
 function extractFeatures
 %setup paths should be moved to general setup file
-project_root = '..\..\'
-addpath(genpath([project_root, 'externalpackages\openCV']))
-addpath(genpath([project_root, 'externalpackages\Weibull']))
-addpath(genpath([project_root, 'externalpackages\xml_toolbox']))
+project_root = ['..',filesep,'..',filesep]
+addpath(genpath([project_root, 'externalpackages',filesep,'openCV']))
+addpath(genpath([project_root, 'externalpackages',filesep,'Weibull']))
+addpath(genpath([project_root, 'externalpackages',filesep,'xml_toolbox']))
 % calcEdgeRatios
 % imagedir = 'deviant';
-imagedir = [project_root, 'datasets\smallsample'];
+imagedir = [project_root, 'datasets',filesep,'smallsample'];
 % DIR NEEDS TO EXIST
 featuredir = ['features' filesep];
 
@@ -14,7 +14,7 @@ featuredir = ['features' filesep];
 users = dir(imagedir);
 % grouped features with same base (for example group total edge and grid edge features) because
 % calculating them independently is inefficient 
-features.calculate = {'edgeRatios'};%,'HSV','numFaces','cornerRatio','RGB','intVariance','intEntropy','weibullFit1','weibullFit2'};
+features.calculate = {'edgeRatios','HSV','cornerRatio','RGB','intVariance','intEntropy','weibullFit1','weibullFit2'};%,'numFaces');
 features.recompute = {};%,'HSV'};
 
 
