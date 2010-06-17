@@ -1,4 +1,13 @@
 #summary Sander's research log
+== 06/17/2010==
+  * Solved various problems with the gallery scraper.
+    Failed downloads are nicely cleaned up, instead of xml files remaining while the images are not downloaded.
+    Executing the code again won't result in downloading the images again if they are already downloaded, so you can rerun in case images failed to download (in case the servers have problems)
+  
+  * Added extra info for each image: the link to the image on deviantart.
+
+  * Added a verification script, to ensure each xml file has existing images and thumbnails.
+
 == 06/16/2010==
   * Found a problem with the gallery downloader. For example it only downloads 1 image for  the user giannisgx89, while this user has a lot more.
 
