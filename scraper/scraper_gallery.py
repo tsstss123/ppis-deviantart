@@ -67,10 +67,6 @@ class BackEndParser(handler.ContentHandler):
 				self.downloadImageTo(self.full_folder, attrs.getValue('url'))
 		elif name == 'media:thumbnail':
 			self.thumbnails.append( (attrs.getValue('url'), int(attrs.getValue('width')), int(attrs.getValue('height'))) )
-			#if self.download_thumb150 and attrs.getValue('height') == '150':
-			#	self.downloadImageTo(self.thumb150_folder, attrs.getValue('url'))
-			#elif self.download_thumb300W and attrs.getValue('width') == '300':
-			#	self.downloadImageTo(self.thumb300W_folder, attrs.getValue('url'))
 
 	def downloadImageTo(self, folder, url_name):
 		""" Downloads the image from the url to the specified folder
@@ -78,7 +74,9 @@ class BackEndParser(handler.ContentHandler):
 		if not self.download_images:
 			return
 		filename = os.path.basename(url_name)
-		tries = 3
+		if os.path.exists(os.path.join(folder, filename)) == True:
+			return
+		tries = 2
 		while 1:
 			try:
 				urllib.urlretrieve(url_name, os.path.join(folder, filename), progressReporter)
