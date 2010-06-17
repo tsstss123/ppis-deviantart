@@ -55,8 +55,7 @@ class BackEndParser(handler.ContentHandler):
 
 			self.itemstarted = True
 			self.count += 1
-
-		if name == 'media:content':
+		elif name == 'media:content':
 			doctype = attrs.getValue('medium')
 			if doctype != 'image':
 				return
@@ -66,7 +65,6 @@ class BackEndParser(handler.ContentHandler):
 
 			if self.download_full:
 				self.downloadImageTo(self.full_folder, attrs.getValue('url'))
-
 		elif name == 'media:thumbnail':
 			self.thumbnails.append( (attrs.getValue('url'), int(attrs.getValue('width')), int(attrs.getValue('height'))) )
 			#if self.download_thumb150 and attrs.getValue('height') == '150':
@@ -97,7 +95,7 @@ class BackEndParser(handler.ContentHandler):
 		if name == 'item':	
 			if self.imagefilename:
 				# Download thumbs
-				if self.download_thumbs:
+				if self.download_images and self.download_thumbs:
 					if len(self.thumbnails) == 1:
 							self.downloadImageTo(self.thumbbig_folder, self.thumbnails[0][0])
 							self.downloadImageTo(self.thumbsmall_folder, self.thumbnails[0][0])
@@ -136,6 +134,8 @@ class BackEndParser(handler.ContentHandler):
 			self.xmlcontent.append('\t<category idx="1" type="char" size="1 %s">%s</category>\n' % (len(content), content))
 		elif tag == 'media:title':
 			self.xmlcontent.append('\t<title idx="1" type="char" size="1 %s">%s</title>\n' % (len(content), content))
+		elif tag == 'guid':
+			self.xmlcontent.append('\t<guid idx="1" type="char" size="1 %s">%s</guid>\n' % (len(content), content))
 
 	def endDocument(self):
 		pass
