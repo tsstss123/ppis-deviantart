@@ -4,6 +4,10 @@
 
 == 17/06/2010 ==
   * Asked the service desk for the Media Wall. Sjors is responsible for the content. His office is near the library. The dimensions are 1024x768px. Converting video is easy, slides are more difficult but possible (Powerpoint).
+  * Improved the performance of the scatter view: the 50x50 thumb of the plot are stored inside an item's data structure (DataImage).
+  * Fixed multiple bugs + many improvements.
+  * Added the 'center points' of each class to the scatter view.
+  * Added button for the Radial view to the header.
 
 == 16/06/2010 ==
   * Radian view is now working. Todo: select (multiple) items and highlight relevant connections.
