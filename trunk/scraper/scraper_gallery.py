@@ -97,14 +97,20 @@ class BackEndParser(handler.ContentHandler):
 		if name == 'item':	
 			if self.imagefilename:
 				# Download thumbs
-				assert(len(self.thumbnails) == 2)
-				if self.thumbnails[0][1]*self.thumbnails[0][2] > self.thumbnails[1][1]*self.thumbnails[1][2]:
-					self.downloadImageTo(self.thumbbig_folder, self.thumbnails[0][0])
-					self.downloadImageTo(self.thumbsmall_folder, self.thumbnails[1][0])
-				else:
-					self.downloadImageTo(self.thumbbig_folder, self.thumbnails[1][0])
-					self.downloadImageTo(self.thumbsmall_folder, self.thumbnails[0][0])
-	
+				if self.download_thumbs:
+					if len(self.thumbnails) == 1:
+							self.downloadImageTo(self.thumbbig_folder, self.thumbnails[0][0])
+							self.downloadImageTo(self.thumbsmall_folder, self.thumbnails[0][0])
+					elif len(self.thumbnails) == 2:
+						if self.thumbnails[0][1]*self.thumbnails[0][2] > self.thumbnails[1][1]*self.thumbnails[1][2]:
+							self.downloadImageTo(self.thumbbig_folder, self.thumbnails[0][0])
+							self.downloadImageTo(self.thumbsmall_folder, self.thumbnails[1][0])
+						else:
+							self.downloadImageTo(self.thumbbig_folder, self.thumbnails[1][0])
+							self.downloadImageTo(self.thumbsmall_folder, self.thumbnails[0][0])
+					else:
+						assert(0)
+
 				# Write xml file
 				xmlname, ext = os.path.splitext(self.imagefilename)
 				xmlname = '%s.xml' % (xmlname)
@@ -137,8 +143,7 @@ class BackEndParser(handler.ContentHandler):
 	# Image download settings
 	download_images = True
 	download_full = True
-	download_thumb150 = True
-	download_thumb300W = True
+	download_thumbs = True
 
 def getDeviantPage(deviant):
 	return 'http://%s.deviantart.com/' % (deviant)
