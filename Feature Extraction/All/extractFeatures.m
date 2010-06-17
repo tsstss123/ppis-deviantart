@@ -1,7 +1,9 @@
 function extractFeatures
 %setup paths should be moved to general setup file
 project_root = '..\..\'
-addpath(genpath([project_root, 'externalpackages\Using_OpenCV_in_MATLAB']))
+addpath(genpath([project_root, 'externalpackages\openCV']))
+addpath(genpath([project_root, 'externalpackages\Weibull']))
+
 
 % calcEdgeRatios
 % imagedir = 'deviant';
@@ -13,7 +15,7 @@ featuredir = ['features' filesep];
 users = dir(imagedir);
 % grouped features with same base (for example group total edge and grid edge features) because
 % calculating them independently is inefficient 
-features.calculate = {'edgeRatios'};%,'HSV','numFaces','cornerRatio','RGB','intVariance','intEntropy'};%,'weibullFit1','weibullFit2'};
+features.calculate = {'edgeRatios'};%,'HSV','numFaces','cornerRatio','RGB','intVariance','intEntropy','weibullFit1','weibullFit2'};
 features.recompute = {};%,'HSV'};
 
 
