@@ -30,7 +30,7 @@ _Alberts deviants set (modified)_
 
 {{{omega300m K1lgore  Mallimaakari  catluvr2  Skarbog  erroid  iakobos  miss-mosh  LALAax Craniata  stereoflow  kamilsmala  wirestyle  Red-Priest-Usada  Swezzels  Udodelig  Pierrebfoto  woekan  fediaFedia  UdonNodu  gsphoto  sujawoto  sekcyjny  Mentosik8  One-Vox  zihnisinir  Knuxtiger4  Kitsunebaka91  NEDxfullMOon  nyctopterus }}}
 
-http://sandern.com/ppis/bigdataset.tar
+http://sandern.com/ppis/bigdataset.tar.gz
 
 _Other_ 
 
