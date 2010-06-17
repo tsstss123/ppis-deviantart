@@ -2,6 +2,9 @@
 
 = Logbook =
 
+== 17/06/2010 ==
+  * Asked the service desk for the Media Wall. Sjors is responsible for the content. His office is near the library. The dimensions are 1024x768px. Converting video is easy, slides are more difficult but possible (Powerpoint).
+
 == 16/06/2010 ==
   * Radian view is now working. Todo: select (multiple) items and highlight relevant connections.
   * Wrote Java code to convert XML feature files into a single TSV file that is read by the viz. app.
