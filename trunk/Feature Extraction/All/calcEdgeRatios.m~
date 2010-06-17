@@ -1,9 +1,0 @@
-function [totalEdgeRatio] = calcEdgeRatios(image)
-% Change default Parameters ????????
-    edgeImage = cvlib_mex('canny',image);
-    totalEdgeRatio = sum(sum(edgeImage))/(size(edgeImage,1)*size(edgeImage,2));
-    
-    
-    
-end
-

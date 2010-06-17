@@ -1,6 +1,0 @@
-function variance = variance(image)
-    means = mean(mean(image));
-    repmat(means,size(image,1),size(image,2));
-    mean(mean(
-    
-end
