@@ -3,12 +3,13 @@ import os
 
 import xml.dom.minidom
 
+total = 0
 missing = []
 missingbig = []
 missingsmall = []
 
 def verifyDeviant(folder_name, deviant):
-	global missing, missingbig, missingsmall
+	global total, missing, missingbig, missingsmall
 	print('Verifying deviant %s' % (deviant))
 	deviant_folder = os.path.join(folder_name, deviant)
 	image_folder = os.path.join(deviant_folder, 'full')
@@ -20,7 +21,8 @@ def verifyDeviant(folder_name, deviant):
 			continue
 		dom = xml.dom.minidom.parse(fullpath)
 		filename = dom.getElementsByTagName("filename")
-		
+		total += 1
+
 		if len(filename) != 1:
 			print('%s has no filename or too many filenames' % (fullpath))
 			continue
@@ -34,6 +36,7 @@ def verifyDeviant(folder_name, deviant):
 			missingsmall.append(image_filename)
 
 def main():
+	global total, missing, missingbig, missingsmall
 	if len(sys.argv) < 2:
 		print('Usage: ./verify_dataset folder_name')
 		sys.exit(0)
@@ -53,6 +56,7 @@ def main():
 	for m in missingsmall:
 		print '\t%s' % (m)
 
+	print('%d total images' % (total))
 	print('%d full images missing' % (len(missing)))
 	print('%d thumb big images missing' % (len(missingbig)))
 	print('%d thumb small images missing' % (len(missingsmall)))
