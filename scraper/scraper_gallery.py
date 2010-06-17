@@ -83,7 +83,8 @@ class BackEndParser(handler.ContentHandler):
 			try:
 				urllib.urlretrieve(url_name, os.path.join(folder, filename), progressReporter)
 				break
-			except ContentTooShortError:
+			except urllib.ContentTooShortError:
+				print('ContentTooShortError: retrying %s...' % (url_name))
 				tries -= 1
 				if tries == 0:
 					print('Failed to retrieve "%s"' % (url_name))

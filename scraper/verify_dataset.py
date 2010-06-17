@@ -23,6 +23,8 @@ def verifyDeviant(folder_name, deviant):
 		filename = dom.getElementsByTagName("filename")
 		total += 1
 
+		assert( len(dom.getElementsByTagName("guid")) > 0 )
+
 		if len(filename) != 1:
 			print('%s has no filename or too many filenames' % (fullpath))
 			continue
