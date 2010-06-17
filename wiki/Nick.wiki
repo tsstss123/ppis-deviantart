@@ -8,6 +8,7 @@
   * Fixed multiple bugs + many improvements.
   * Added the 'center points' of each class to the scatter view.
   * Added button for the Radial view to the header.
+  * Added 'class labels' popup. Shows the names of the classes and enables you to hide classes. This makes the plot much better readable.
 
 == 16/06/2010 ==
   * Radian view is now working. Todo: select (multiple) items and highlight relevant connections.
