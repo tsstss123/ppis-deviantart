@@ -1,3 +1,9 @@
+%NOTE: change all the sum(ismember(....)) stuff
+%NOTE: Images that cannot be processed by saliency or facedetector code are
+%skipped. But when the feature extractor is executed with the saliency and facedetector
+% turned off, then these images might get processed for other features and 
+% then different images may have different amount of calculated features.
+
 function extractFeatures
 %setup paths should be moved to general setup file
 project_root = ['..',filesep,'..',filesep]
@@ -17,7 +23,8 @@ users = dir(imagedir);
 % grouped features with same base (for example group total edge and grid edge features) because
 % calculating them independently is inefficient 
 features.calculate = {'edgeRatios','HSV','cornerRatio','RGB','intVariance','intEntropy','weibullFit1','weibullFit2','numFaces','saliency'};
-features.recompute = {};%,'HSV'};
+
+features.recompute = {'HSV','RGB'};%,'HSV'};
 features.useGrayscale = {'edgeRatios','intVariance','intEntropy','weibullFit1','weibullFit2','numFaces'};
 features.useHSV = {'HSV'};
 features.useRGB = {'RGB','cornerRatio','saliency'};
@@ -26,7 +33,7 @@ features.useRGB = {'RGB','cornerRatio','saliency'};
 % Pierrebfoto,
 % One_Vox,NEDxfullMOon,Mentosik8,Mallimaakari,Knuxtiger4,Kitsunebaka91
 % K1lgore,Craniata
-skipUsers = {};{'Craniata','K1lgore','Kitsunebaka91','Knuxtiger4','LALAax','Mallimaakari','Mentosik8','NEDxfullMOon','One-Vox','Pierrebfoto','Red-Priest-Usada','Skarbog','Swezzels','Udodelig','UdonNodu','WarrenLouw','catluvr2','erroid','fediaFedia','gsphoto','iakobos','kamilsmala','miss-mosh','nyctopterus','sekcyjny','stereoflow','sujawoto','wirestyle','woekan','zihnisinir'}%,'omega300m'};
+skipUsers = {'catluvr2'};%{'Craniata','K1lgore','Kitsunebaka91','Knuxtiger4','LALAax','Mallimaakari','Mentosik8','NEDxfullMOon','One-Vox','Pierrebfoto','Red-Priest-Usada','Skarbog','Swezzels','Udodelig','UdonNodu','WarrenLouw','catluvr2','erroid','fediaFedia','gsphoto','iakobos','kamilsmala','miss-mosh','nyctopterus','sekcyjny','stereoflow','sujawoto','wirestyle','woekan','zihnisinir'}%,'omega300m'};
 
 for i = 1:size(users,1)
     user = users(i).name
@@ -129,22 +136,22 @@ for i = 1:size(users,1)
                         xmlUpdated = true;
                     end
                     
-                    feature = 'weibullFit1';
-                    if (sum(ismember(features.calculate,feature)) > 0) && ((~allFeatInStruct(feature,xmlFeatures)) || sum(ismember(features.recompute,feature)) > 0)
-%                         filename
-                        [scale shape location] = weibullMle(im2double(grayImage), 0, 0); % for raw data
-                        % Do all 3 parameter? or just 2?
-                        xmlFeatures.features.weibullFit1.data = [scale,shape,location];
-                        xmlUpdated = true;
-                    end
-
-                    feature = 'weibullFit2';
-                    if (sum(ismember(features.calculate,feature)) > 0) && ((~allFeatInStruct(feature,xmlFeatures)) || sum(ismember(features.recompute,feature)) > 0)
-                        [scale shape location] = integWeibullMle(im2double(grayImage),'x', 1, 0); % for raw data
-                        % Do all 3 parameter? or just 2?
-                        xmlFeatures.features.weibullFit2.data = [scale,shape,location];
-                        xmlUpdated = true;
-                    end
+%                     feature = 'weibullFit1';
+%                     if (sum(ismember(features.calculate,feature)) > 0) && ((~allFeatInStruct(feature,xmlFeatures)) || sum(ismember(features.recompute,feature)) > 0)
+% %                         filename
+%                         [scale shape location] = weibullMle(im2double(grayImage), 0, 0); % for raw data
+%                         % Do all 3 parameter? or just 2?
+%                         xmlFeatures.features.weibullFit1.data = [scale,shape,location];
+%                         xmlUpdated = true;
+%                     end
+% 
+%                     feature = 'weibullFit2';
+%                     if (sum(ismember(features.calculate,feature)) > 0) && ((~allFeatInStruct(feature,xmlFeatures)) || sum(ismember(features.recompute,feature)) > 0)
+%                         [scale shape location] = integWeibullMle(im2double(grayImage),'x', 1, 0); % for raw data
+%                         % Do all 3 parameter? or just 2?
+%                         xmlFeatures.features.weibullFit2.data = [scale,shape,location];
+%                         xmlUpdated = true;
+%                     end
 
 
                     % EDGE RATIOS of total image and of parts of image)
@@ -176,12 +183,19 @@ for i = 1:size(users,1)
                     % "HSV" flag. If this flag is set in features.calculate,
                     % then all HSV related features are calculated.
                     feature = 'HSV';
-                    if (sum(ismember(features.calculate,feature)) > 0) && ((~allFeatInStruct({'medianHue','avgSat','avgInt','medHueCells','avgSatCells','avgIntCells'},xmlFeatures)) || sum(ismember(features.recompute,feature)) > 0)
-                        [medianHue,avgSat,avgInt,medHueCells,avgSatCells,avgIntCells] = calcHSV(vshImage);
+                    if (sum(ismember(features.calculate,feature)) > 0) && ((~allFeatInStruct({'medianHue','medianSat','medianInt','avgHue','avgSat','avgInt','medHueCells','medSatCells','medIntCells','avgHueCells','avgSatCells','avgIntCells'},xmlFeatures)) || sum(ismember(features.recompute,feature)) > 0)
+%                         [medianHue,avgSat,avgInt,medHueCells,avgSatCells,avgIntCells] = calcHSV(vshImage);
+                        [medianHue,medianSat,medianInt,avgHue,avgSat,avgInt,medHueCells,medSatCells,medIntCells,avgHueCells,avgSatCells,avgIntCells] = calcHSV(vshImage);
                         xmlFeatures.features.medianHue.data = medianHue;
+                        xmlFeatures.features.medianSat.data = medianSat;
+                        xmlFeatures.features.medianInt.data = medianInt;
+                        xmlFeatures.features.avgHue.data = avgHue;
                         xmlFeatures.features.avgSat.data = avgSat;
                         xmlFeatures.features.avgInt.data = avgInt;
                         xmlFeatures.features.medHueCells.data = medHueCells;
+                        xmlFeatures.features.medSatCells.data = medSatCells;
+                        xmlFeatures.features.medIntCells.data = medIntCells;
+                        xmlFeatures.features.avgHueCells.data = avgHueCells;
                         xmlFeatures.features.avgSatCells.data = avgSatCells;
                         xmlFeatures.features.avgIntCells.data = avgIntCells;
                         xmlUpdated = true;
@@ -214,11 +228,18 @@ for i = 1:size(users,1)
 
                     % avg RGB
                     feature = 'RGB';
-                    if (sum(ismember(features.calculate,feature)) > 0) && ((~allFeatInStruct({'avgR','avgG','avgB'},xmlFeatures)) || sum(ismember(features.recompute,feature)) > 0)
-                        [avgR,avgG,avgB,avgRCells,avgGCells,avgBCells] = calcRGB(RGBImage);
+                    if (sum(ismember(features.calculate,feature)) > 0) && ((~allFeatInStruct({'medianR','medianG','medianB','avgR','avgG','avgB','medRCells','medGCells','medBCells','avgRCells','avgGCells','avgBCells'},xmlFeatures)) || sum(ismember(features.recompute,feature)) > 0)
+%                         [avgR,avgG,avgB,avgRCells,avgGCells,avgBCells] = calcRGB(RGBImage);
+                        [medianR,medianG,medianB,avgR,avgG,avgB,medRCells,medGCells,medBCells,avgRCells,avgGCells,avgBCells] = calcRGB(RGBImage);
+                        xmlFeatures.features.medianR.data = medianR;
+                        xmlFeatures.features.medianG.data = medianG;
+                        xmlFeatures.features.medianB.data = medianB;                        
                         xmlFeatures.features.avgR.data = avgR;
                         xmlFeatures.features.avgG.data = avgG;
                         xmlFeatures.features.avgB.data = avgB;
+                        xmlFeatures.features.medRCells.data = medRCells;
+                        xmlFeatures.features.medGCells.data = medGCells;
+                        xmlFeatures.features.medBCells.data = medBCells;
                         xmlFeatures.features.avgRCells.data = avgRCells;
                         xmlFeatures.features.avgGCells.data = avgGCells;
                         xmlFeatures.features.avgBCells.data = avgBCells;
