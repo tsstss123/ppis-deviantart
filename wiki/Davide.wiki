@@ -1,9 +1,9 @@
 #summary Davide's research log
 
 == 17/06/2010==
-    * Wrote the code to classify images using the libsvm (http://www.csie.ntu.edu.tw/~cjlin/libsvm/) of Chih-Chung Chang and Chih-Jen Lin. It is written in C and it is much faster than the prTools.
-    * Wrote the code to compute F-Measure
-    * Wrote the code to plot a Precision-Recall curve
+    * Written the code to classify images using the libsvm (http://www.csie.ntu.edu.tw/~cjlin/libsvm/) of Chih-Chung Chang and Chih-Jen Lin. It is written in C and it is much faster than the prTools.
+    * Written the code to compute F-Measure
+    * Written the code to plot a Precision-Recall curve
 
 
 == 15/06/2010==
