@@ -1,3 +1,6 @@
+""" Verification script for debugging 
+	Checks the images downloaded with scraper_gallery script.
+    For each xml file one full image, one big thumbnail and one small thumbnail should be present """
 import sys
 import os
 
@@ -23,12 +26,16 @@ def verifyDeviant(folder_name, deviant):
 		filename = dom.getElementsByTagName("filename")
 		total += 1
 
+		# Should have a link to the deviantart page
 		assert( len(dom.getElementsByTagName("guid")) > 0 )
 
+		# Should only have one filename
 		if len(filename) != 1:
 			print('%s has no filename or too many filenames' % (fullpath))
 			continue
 		assert( len(filename[0].childNodes) == 1 )
+
+		# Images for the full image and thumbnails should exist.
 		image_filename = filename[0].childNodes[0].data
 		if os.path.exists(os.path.join(image_folder, image_filename) ) == False:
 			missing.append(image_filename)
@@ -48,6 +55,7 @@ def main():
 	for name in os.listdir(folder_name):
 		verifyDeviant(folder_name, name)
 
+	# Report
 	print('Full images missing list: ')
 	for m in missing:
 		print '\t%s' % (m)

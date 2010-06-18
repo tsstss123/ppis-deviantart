@@ -174,6 +174,7 @@ def parseDeviant(deviant):
 		os.mkdir(image_folder)
 
 	# Parse all backend pages
+	# Keep increasing the offset until there are no more new items parsed
 	backendurl = 'http://backend.deviantart.com/rss.xml?q=gallery:%s&offset=' % (deviant)
 	print('\t[%s] Parsing backend pages...' % (datetime.now() - starttime))
 	count = 0
@@ -198,10 +199,10 @@ def parseDeviant(deviant):
 def main():
 	global image_folder
 	if len(sys.argv) < 3:
-		print('Usage: %s image_folder deviant1 deviant2 deviant3 ...' % sys.argv[0])
+		print('Usage: %s image_folder_path deviant1 deviant2 deviant3 ...' % sys.argv[0])
 		return
 		
-        image_folder = sys.argv[1]
+	image_folder = sys.argv[1]
 	deviants = sys.argv[2:len(sys.argv)]
 	for deviant in deviants:
 		parseDeviant(deviant)
