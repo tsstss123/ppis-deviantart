@@ -16,7 +16,11 @@ shouldViewElapsedTime = 0;
 %     imgGray = rgb2gray(img);
 % end
 % compiled cvlib_mex with parameter min_neighbors=6 (default is 3)
+
+
 rectangleMatrix = cvlib_mex('facedetect',imgGray,classifierFileFullPath, minFaceSize, shouldViewElapsedTime );
+
+    
 
 % imshow(img);
 numFaces = size(rectangleMatrix,1)/4;
