@@ -9,6 +9,7 @@
   * Improved the way input files are loaded: users selects one directory, the features and performance files are automatically loaded and attached to the corresponding view method.
   * *Major update*: the data of the views is not stored inside an external (Database) class. The gives better performance (only read a file once), but also allows you to keep the current settings (visible classes/features) when you switch to another view.
      http://www.nickd.nl/dl/ai/is/faces.png
+  * You need to run the Java app with the parameter "-Xmx500m" to increase the max. heap space
 
 == 17/06/2010 ==
   * Asked the service desk for the Media Wall. Sjors is responsible for the content. His office is near the library. The dimensions are 1024x768px. Converting video is easy, slides are more difficult but possible (Powerpoint).
