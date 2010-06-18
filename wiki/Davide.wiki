@@ -1,5 +1,10 @@
 #summary Davide's research log
 
+== 17/06/2010==
+    * Wrote the code to classify images using the libsvm (http://www.csie.ntu.edu.tw/~cjlin/libsvm/) of Chih-Chung Chang and Chih-Jen Lin. It is written in C and it is much faster than the prTools.
+    * Wrote the code to compute F-Measure
+    * Wrote the code to plot a Precision-Recall curve
+
 
 == 15/06/2010==
     * Written the code to extract *few features* from the saliency maps and the related maps (color, intensity, orientation and skin):
