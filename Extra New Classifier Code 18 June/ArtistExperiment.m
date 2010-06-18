@@ -1,13 +1,26 @@
 function A=ArtistExperiment( varargin )
-
+    addpath(genpath('../externalpackages/prtools_ac/prtools'));
+    
     % Auto Feature select aanzetten kan je als een featurenaam implementeren
     % moet je het dan wel herkennen als ie de featurecombo maakt en daar
     % meot je de featureselect AAN feature eruit knallen
-    experiments={{'numFaces'; 'medianHue'};
-                {'cornerRatio'};
-                {'avgSat'; 'avgSatCells'}};
+    experiments={{'numFaces'; ...
+                                                       'cornerRatio'; ...
+                                                       'edgeRatio'; ...
+                                                       'gridEdgeRatio'; ...
+                                                       'medianHue'; ...
+                                                       'avgSat'; ...
+                                                       'avgInt'; ...
+                                                       'medHueCells'; ...
+                                                       'avgSatCells'; ...
+                                                       'avgIntCells'; ...
+                                                       'cornerRatioGrid' ...
+                                                       }};
+%                 {'cornerRatio'};
+%                 {'avgSat'; 'avgSatCells'}
+%                     };
 
-    Datasetpath=['ArtistDataset' filesep];
+    Datasetpath=['ArtistDataset' filesep]
     splitpercentage=0.7;
 
     if(exist([Datasetpath 'Artist_train.mat'], 'file') == 0)
@@ -45,12 +58,8 @@ function A=ArtistExperiment( varargin )
         save([Datasetpath,'featurenames'], 'featurenames');
     end
 
-    temp=load([Datasetpath 'Artist_train']);
+    temp=load([Datasetpath 'Artist_train'])
     traindata=temp.train;
-    
-    % Function to filter out artist
-    filterArtists(traindata, {'artist_knuxtiger4'; 'artist_fediafedia'});
-    
     
     lablist=getlablist(traindata);
     [artistnumbers,~]=size(lablist);
