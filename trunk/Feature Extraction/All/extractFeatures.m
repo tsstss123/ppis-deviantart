@@ -21,9 +21,28 @@ features.recompute = {};%,'HSV'};
 features.useGrayscale = {'edgeRatios','intVariance','intEntropy','weibullFit1','weibullFit2','numFaces'};
 features.useHSV = {'HSV'};
 features.useRGB = {'RGB','cornerRatio','saliency'};
+% calcUsers = {'Eagle07','blablabla'}
+% catluvr2,WarrenLouw,UdonNodu,Udodelig,Skarbog,Red_Priest_Usada,
+% Pierrebfoto,
+% One_Vox,NEDxfullMOon,Mentosik8,Mallimaakari,Knuxtiger4,Kitsunebaka91
+% K1lgore,Craniata
+skipUsers = {};{'Craniata','K1lgore','Kitsunebaka91','Knuxtiger4','LALAax','Mallimaakari','Mentosik8','NEDxfullMOon','One-Vox','Pierrebfoto','Red-Priest-Usada','Skarbog','Swezzels','Udodelig','UdonNodu','WarrenLouw','catluvr2','erroid','fediaFedia','gsphoto','iakobos','kamilsmala','miss-mosh','nyctopterus','sekcyjny','stereoflow','sujawoto','wirestyle','woekan','zihnisinir'}%,'omega300m'};
 
 for i = 1:size(users,1)
     user = users(i).name
+      
+      if ismember(user,skipUsers)
+          continue
+      end
+%     flag = false;
+%     for calcUser = 1:size(calcUsers,2)
+%         if strcmp(user,calcUsers{calcUser})
+%             flag = true;
+%         end
+%     end
+%     if flag
+%         continue;
+%     end
     % filter hidden files and '.' '..' elements
     if user ~= '.'
         files = dir([imagedir filesep user]);
@@ -44,7 +63,8 @@ for i = 1:size(users,1)
 %                 imageFilename = dataXml.filename;
                 matchImages = dir([imagedir filesep user filesep 'full' filesep filename(1:size(filename,2)-3) '*']); 
                 if size(matchImages,1) < 1
-                   error(['No images with the same filename as the xml file:\n' filename '\nUser: ' user],'bla');   
+                   disp(['No images with the same filename as the xml file:\n' filename '\nUser: ' user]);   
+                   continue;
                 else
                    % assume that there is only one image with the same filename (so not .jpg and also .png) 
                    imageFilename = matchImages(1).name;                
@@ -82,9 +102,15 @@ for i = 1:size(users,1)
                     % number of faces detected
                     feature = 'numFaces';
                     if (sum(ismember(features.calculate,feature)) > 0) && ((~allFeatInStruct(feature,xmlFeatures)) || sum(ismember(features.recompute,feature)) > 0)
-                        numFaces = detectFaces(grayImage,project_root);
-                        xmlFeatures.features.numFaces.data = numFaces;
-                        xmlUpdated = true;
+                        try
+                            numFaces = detectFaces(grayImage,project_root);
+                            xmlFeatures.features.numFaces.data = numFaces;
+                            xmlUpdated = true;
+                        catch
+                            disp('Image cannot be processed by opencv face detector. Deleting feature file and skipping it...');
+                            delete([featuredir filename]);                            
+                            continue;
+                        end
                     end
                     
                     % entropy of the intensity image
@@ -103,22 +129,22 @@ for i = 1:size(users,1)
                         xmlUpdated = true;
                     end
                     
-%                     feature = 'weibullFit1';
-%                     if (sum(ismember(features.calculate,feature)) > 0) && ((~allFeatInStruct(feature,xmlFeatures)) || sum(ismember(features.recompute,feature)) > 0)
-% %                         filename
-%                         [scale shape location] = weibullMle(im2double(grayImage), 0, 0); % for raw data
-%                         % Do all 3 parameter? or just 2?
-%                         xmlFeatures.features.weibullFit1.data = [scale,shape,location];
-%                         xmlUpdated = true;
-%                     end
+                    feature = 'weibullFit1';
+                    if (sum(ismember(features.calculate,feature)) > 0) && ((~allFeatInStruct(feature,xmlFeatures)) || sum(ismember(features.recompute,feature)) > 0)
+%                         filename
+                        [scale shape location] = weibullMle(im2double(grayImage), 0, 0); % for raw data
+                        % Do all 3 parameter? or just 2?
+                        xmlFeatures.features.weibullFit1.data = [scale,shape,location];
+                        xmlUpdated = true;
+                    end
 
-%                     feature = 'weibullFit2';
-%                     if (sum(ismember(features.calculate,feature)) > 0) && ((~allFeatInStruct(feature,xmlFeatures)) || sum(ismember(features.recompute,feature)) > 0)
-%                         [scale shape location] = integWeibullMle(im2double(grayImage),'x', 1, 0); % for raw data
-%                         % Do all 3 parameter? or just 2?
-%                         xmlFeatures.features.weibullFit2.data = [scale,shape,location];
-%                         xmlUpdated = true;
-%                     end
+                    feature = 'weibullFit2';
+                    if (sum(ismember(features.calculate,feature)) > 0) && ((~allFeatInStruct(feature,xmlFeatures)) || sum(ismember(features.recompute,feature)) > 0)
+                        [scale shape location] = integWeibullMle(im2double(grayImage),'x', 1, 0); % for raw data
+                        % Do all 3 parameter? or just 2?
+                        xmlFeatures.features.weibullFit2.data = [scale,shape,location];
+                        xmlUpdated = true;
+                    end
 
 
                     % EDGE RATIOS of total image and of parts of image)
@@ -204,9 +230,27 @@ for i = 1:size(users,1)
                     if (sum(ismember(features.calculate,feature)) > 0) && ((~allFeatInStruct({'salEntropy','salMapCEntropy','salMapIEntropy','salMapOEntropy','salMapKEntropy'},xmlFeatures)) || sum(ismember(features.recompute,feature)) > 0)
                         numberPoints = 3;
                         params = set_parameters(RGBImage);
-                        try
-                            [salMap, salData] = generateSaliencyMap(RGBImage, params);
-
+                        salSucces = false;
+                        salCount = 0;
+                        salRGBImage = RGBImage;
+                        while (salSucces == false) && (salCount < 3)
+                           try
+                              [salMap, salData] = generateSaliencyMap(salRGBImage, params);
+                              salSucces = true;
+                           catch
+                              disp('Image cannot be processed by saliency package. Resizing it...');
+%                             delete([featuredir filename]);
+                              if size(salRGBImage,1)*size(salRGBImage,2) < 750000
+                                  salRGBImage = imresize(salRGBImage,2);
+                                  salCount = salCount+1;                                                            
+                              else
+                                  break;
+                              end
+%                               salRGBImage = imresize(salRGBImage,2);
+                              
+                           end
+                        end
+                        if salSucces
                             E = entropy(salMap.data);
                             [EC, EI, EO, EK] = getMapsEntropy(salData);
                             H = getSalMapHist(salMap.data);
@@ -224,13 +268,11 @@ for i = 1:size(users,1)
                             xmlFeatures.features.salSkin.data = Sk;
 
                             xmlUpdated = true;
-
-                        catch
+                        else
                             disp('Image cannot be processed by saliency package. Deleting feature file and skipping it...');
-                            delete([featuredir filename]);
-                            %                             xmlUpdated = false;
+                            delete([featuredir filename]);                            
                             continue;
-                        end
+                        end                                                
                     end
                 end
                 
