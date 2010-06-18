@@ -2,6 +2,11 @@
 
 = Logbook =
 
+== 18/06/2010 ==
+  * Added performance details to the radial view.
+  * Solved Windows issues.
+  * Created report skeleton on SVN.
+
 == 17/06/2010 ==
   * Asked the service desk for the Media Wall. Sjors is responsible for the content. His office is near the library. The dimensions are 1024x768px. Converting video is easy, slides are more difficult but possible (Powerpoint).
   * Improved the performance of the scatter view: the 50x50 thumb of the plot are stored inside an item's data structure (DataImage).
