@@ -1,4 +1,5 @@
 function [ datasetfeaturestruct ] = readallXML( datasetdirectory, featuredirectoryname )
+    addpath('../externalpackages/xml_toolbox')
     
     directories=dir(datasetdirectory);
     directoryIndex = find([directories.isdir]);
