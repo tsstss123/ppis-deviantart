@@ -2,6 +2,33 @@
 
 =Research Log=
 
+==18/06==
+ * Created the part of the experiment code where you can specify what kind of experiments you want to run. You just type in what features you want to use and the matlab file will create the dataset and run it through all the classifiers and return a struct with the result. The entire experiment file can now be used to classify all the artists using all the classifiers and different specified combination of features.
+ * An extra function must be build in to also specify which artists you want to train to so that for example you can find features that differentiate between 2,3,n artists.
+ * Davide recommended libSVM to use as the SVM classifier because libSVM is in C and compared to Matlab it is superfast. Davide halfly implemented the code in Matlab for me. I still have to structure that code so that all results will be saved in the result struct.
+
+==17/06==
+ 
+ * Discussion about what the report should look like and what we actually want to evaluate. In the end we did not know what to do and I should just save as much of the results as possible
+ * Modified the XML Reader to also create labels that seperate artists from each other. The createArtistDataset.m is now only read 1 time and the full dataset must be created and put inside a struct. This is needed for the new modified Experiment runner.
+ * Created another type of Experiment running. This experiment saves all the results acquired. The average error estimate, fp/tp, fn/tn, precision, recall of the results that are outputted from the classifiers.
+ * Also The feature selection tool can be used with inter intra distance which seems like a good criteria.
+ *  I have checked some results of the KNN classifier and it seems that it classifies almost everything to negative. This increases when the K gets larger. This is caused because of a large negative training examples compared to the positive ones.
+
+==16/06==
+
+ * Created another XML reader based on the new XML output format. Given the features you want to have and the target artist it creates a dataset with positive(target artist) and negative(the other artists) labels for the artists. 
+ * Created Experiment that calls KNN and Naive Bayes in order to classify the created dataset and output the results.
+
+==15/06==
+
+ * Created an experiment file that should be used for experimenting. Given the features it reads all XML files and label it positive or negative according to the target artist. Reading XML files takes 2 minutes, maybe reading it once and storing it in a struct would be better.
+ * Also the experiment splits the dataset in training and test set. The training set is used with 5 fold cross validation to optimize the parameters of the classifier used. PRtools also has a build in optimizer but it requires about 100 calls to the classifier. For SVM this would be a problem. 
+
+==14/06==
+
+ * Played with a feature select tool in PRtools that can be used to select the best feature set. This selection tool can use the error estimate of a classifier as a criteria. This tool is also called in the literature as a sequential feature selection algorithm. It can either be used forward or backward.
+
 ==11/06==
  * Organized all the .m files, it was getting a bit unclear. 
  * Currently trying to create a workflow through matlab code but there are a lot of parameters.
