@@ -1,4 +1,11 @@
 #summary Sander's research log
+== 06/18/2010==
+  * Updated category analyzer to also show per sub category (as an option). Also added an option to show the total categories, instead of per user.
+
+  * Tried to get libcv for matlab working. Still pending..
+
+  * Played around with svmlib.
+
 == 06/17/2010==
   * Solved various problems with the gallery scraper.
     Failed downloads are nicely cleaned up, instead of xml files remaining while the images are not downloaded.
