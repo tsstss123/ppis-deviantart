@@ -58,22 +58,31 @@ Started network analysis in matlab Pajek cant handle nets this big
 Lev Meeting
 evening worked on having our files transformed for use with networking toolkit
 
-= Wed 16-06-2010
+= Wed 16-06-2010 =
 helped think about classifier and integration <br>
 more input into networking toolkit <br>
 starting analysis in networking toolkit <br>
 helped with saliency features <br>
 
-= Thu 17-06-2010
+= Thu 17-06-2010 =
 Code cleanup <br>
-weird matlab crash and cmd window: should be fixed with KMP_DUPLICATE_LIB_OK=True as enviroment variable .
-more code cleanup
-more network analysis
-helped with saliency feature extraction integration
-helped with classify
+weird matlab crash and cmd window: should be fixed with KMP_DUPLICATE_LIB_OK=True as enviroment variable . <br>
+more code cleanup <br>
+more network analysis <br>
+helped with saliency feature extraction integration <br>
+helped with classify <br>
 
-looked at this for networks
-Self-emergence of knowledge trees: Extraction of the Wikipedia hierarchies
+looked at this for networks <br>
+Self-emergence of knowledge trees: Extraction of the Wikipedia hierarchies <br>
+
+= Fri 18-06-2010 = 
+Helped Quan n Nick, generakl trouble shooting  <br>
+Had meeting about report and why we do what experiments <br>
+1st version of LDA, PCA code <br>
+
+= Sat 19-06-2010 = 
+improved LDA, PCA code
+troubleshooting Weibull, te veel absoluut 0 geeft problemen met NaN, im(im==0)=eps; is de oplossing <br>
 
 = todo = 
 better understand Weibull & Networks
