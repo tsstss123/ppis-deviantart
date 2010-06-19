@@ -4,7 +4,8 @@
 
 == 19/06/2010 ==
   * Merge two folders under Mac OS X (copy new thumbs to dataset): {{{ ditto ./ ~/Documents/School/Eclipse/deviantART/data/albert/dataset/ }}}
-   * Processing's {{{ smooth() }}} causes the delay in the Parallel Coordinates plot.
+  * Processing's {{{ smooth() }}} causes the delay in the Parallel Coordinates plot.
+  * When more data classes are added to the parallel coordinates plot, the alpha of each line is decreased. This makes it more easily to recognize clusters, even when the plot is "overcrowded". {{{ lineAlpha = 100.0 - (countVisibleClasses / countClasses) * 75.0 }}}
 
 == 18/06/2010 ==
   * Added performance details to the radial view.
