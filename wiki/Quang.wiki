@@ -5,6 +5,7 @@
 ==19/06==
  * Computer broke down yesterday had to format/reinstall everything.
  * Rewritten the readallXML.m function to make it handle the new feature xml files.
+ * Rewritten createArtistDataset.m function to make it handle the new feature xml files. There are 1 or 2 hard coded lines in it but it works for now.
 
 ==18/06==
  * Created the part of the experiment code where you can specify what kind of experiments you want to run. You just type in what features you want to use and the matlab file will create the dataset and run it through all the classifiers and return a struct with the result. The entire experiment file can now be used to classify all the artists using all the classifiers and different specified combination of features.
