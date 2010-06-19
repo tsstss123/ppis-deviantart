@@ -2,6 +2,9 @@
 
 = Logbook =
 
+== 19/06/2010 ==
+  * Merge two folders under Mac OS X (copy new thumbs to dataset): {{{ ditto ./ ~/Documents/School/Eclipse/deviantART/data/albert/dataset/ }}}
+
 == 18/06/2010 ==
   * Added performance details to the radial view.
   * Solved Windows issues.
