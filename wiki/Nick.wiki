@@ -4,6 +4,7 @@
 
 == 19/06/2010 ==
   * Merge two folders under Mac OS X (copy new thumbs to dataset): {{{ ditto ./ ~/Documents/School/Eclipse/deviantART/data/albert/dataset/ }}}
+   * Processing's {{{ smooth() }}} causes the delay in the Parallel Coordinates plot.
 
 == 18/06/2010 ==
   * Added performance details to the radial view.
