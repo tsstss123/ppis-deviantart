@@ -6,18 +6,23 @@ function features = featureExtractor(images, featurelist)
 %
 % Created by: bjbuter
 
-features = cell(3, length(images));
+features = zeros(length(featurelist), length(images),3);
 featurelist = sort(featurelist);
 for i = [1:length(images)]
     list = featurelist;
-    im = rgb2gray(images{i});
+    if size(images{i},3)==3
+        im = rgb2gray(images{i});
+    else
+        im = images{i};
+    end
+    
     if (numel(list)~= 0) & (list(1) == 1) 
         disp(' ') 
         disp('Feature: Weibull Maximum Likelihood Estimation')
         list = list(2:end);
         [scale shape location] = weibullMle(im, 0, 0); % for raw data
         fprintf('scale = %g, shape = %g, location = %g for raw data\n', scale, shape, location);
-        features(1,i) = {[scale, shape, location]};
+        features(1,i,:) = [scale, shape, location];
     end
     if (numel(list)~= 0) & (list(1) == 2)
         disp(' ') 
@@ -25,7 +30,7 @@ for i = [1:length(images)]
         list = list(2:end);
         [scale shape location] = integWeibullMle(im, 'x', 1, 0); % for raw data
         fprintf('scale = %g, shape = %g, location = %g for raw data\n', scale, shape, location);
-        features(2,i) = {[scale, shape, location]};
+        features(2,i,:) = [scale, shape, location];
     end
     if (numel(list)~= 0) & (list(1) == 3)
         disp(' ') 
