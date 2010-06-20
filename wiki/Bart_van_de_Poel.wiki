@@ -94,16 +94,18 @@
   * Codebook vector produced by koen's code
 
 = Implemented features =
- * edge/pixels ratio (now with default parameters) (about 10-50 per second)
- * avg hue, avg saturation & avg Intensity (about 10-50 per second)
- * number of faces in image (processes about 3 images per second)
- * corners pixel ratio in image (5-10 per second)
- * weibull fit  (Bart B.)
- * avg RGB
+ * edge/pixels ratio (also grid version) (now with default parameters) (about 10-50 per second)
+ * avg&median hue,saturation,Intensity (also grid version) (about 10-50 per second)
+ * number of faces in image (very bad face detection) (processes about 3 images per second)
+ * corners pixel ratio in image (also grid version) (5-10 per second)
+ * weibull fit  (Bart B.) (Currently not used due to unexplicable bug in the external weibull code)
+ * avg&median R,G,B
+ * Entropy of intensity
+ * Variance of intensity
+ * Several saliency features (Davide&Sander)
 
 = TODO =
- * koen's color descriptors
- * entropy of edges?
+ * koen's color descriptors? (not very low-level & not intuitive for non-computer-scientists)
 
 = NOTES =
  * not sure whether the opencv mex file expects BGR or RGB as input to the color space conversion method
