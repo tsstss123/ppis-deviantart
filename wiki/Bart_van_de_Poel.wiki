@@ -1,6 +1,14 @@
 #summary Bart's research log
 
 =Research Log=
+==20/06==
+ * Added a fix for the weibull features to the feature extraction code, because the weibull package returns NaN on a lot of images. Replacing all zero values by a very small positive value seems to fix this.
+ * Turns out that the weibull fix doesn't work on all images, so I decided to remove the whole feature from the code.  
+
+==18/06==
+ * Calculated features for whole dataset
+ * Added code for median features for all the HSV and RGB features that only had average features, and added average features to all the ones that only had median. 
+ * Calculated the new features for the big dataset
 
 ==17/06==
  * Changed feature extraction code such that rgb2gray conversion is done only once and then used by all features that need it.
