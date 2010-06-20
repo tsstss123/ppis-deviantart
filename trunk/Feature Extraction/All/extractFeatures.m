@@ -24,7 +24,7 @@ users = dir(imagedir);
 % calculating them independently is inefficient 
 features.calculate = {'edgeRatios','HSV','cornerRatio','RGB','intVariance','intEntropy','weibullFit1','weibullFit2','numFaces','saliency'};
 
-features.recompute = {'HSV','RGB'};%,'HSV'};
+features.recompute = {};%,'HSV'};
 features.useGrayscale = {'edgeRatios','intVariance','intEntropy','weibullFit1','weibullFit2','numFaces'};
 features.useHSV = {'HSV'};
 features.useRGB = {'RGB','cornerRatio','saliency'};
@@ -136,22 +136,25 @@ for i = 1:size(users,1)
                         xmlUpdated = true;
                     end
                     
-%                     feature = 'weibullFit1';
-%                     if (sum(ismember(features.calculate,feature)) > 0) && ((~allFeatInStruct(feature,xmlFeatures)) || sum(ismember(features.recompute,feature)) > 0)
-% %                         filename
-%                         [scale shape location] = weibullMle(im2double(grayImage), 0, 0); % for raw data
-%                         % Do all 3 parameter? or just 2?
-%                         xmlFeatures.features.weibullFit1.data = [scale,shape,location];
-%                         xmlUpdated = true;
-%                     end
-% 
-%                     feature = 'weibullFit2';
-%                     if (sum(ismember(features.calculate,feature)) > 0) && ((~allFeatInStruct(feature,xmlFeatures)) || sum(ismember(features.recompute,feature)) > 0)
-%                         [scale shape location] = integWeibullMle(im2double(grayImage),'x', 1, 0); % for raw data
-%                         % Do all 3 parameter? or just 2?
-%                         xmlFeatures.features.weibullFit2.data = [scale,shape,location];
-%                         xmlUpdated = true;
-%                     end
+                    feature = 'weibullFit1';
+                    epsilon = 0.001;
+                    weibullGray = im2double(grayImage);                    
+                    weibullGray(weibullGray == 0) = epsilon;
+                    if (sum(ismember(features.calculate,feature)) > 0) && ((~allFeatInStruct(feature,xmlFeatures)) || sum(ismember(features.recompute,feature)) > 0)
+%                         filename
+                        [scale shape location] = weibullMle(weibullGray, 0, 0); % for raw data
+                        % Do all 3 parameter? or just 2?
+                        xmlFeatures.features.weibullFit1.data = [scale,shape,location];
+                        xmlUpdated = true;
+                    end
+
+                    feature = 'weibullFit2';
+                    if (sum(ismember(features.calculate,feature)) > 0) && ((~allFeatInStruct(feature,xmlFeatures)) || sum(ismember(features.recompute,feature)) > 0)
+                        [scale shape location] = integWeibullMle(weibullGray,'x', 1, 0); % for raw data
+                        % Do all 3 parameter? or just 2?
+                        xmlFeatures.features.weibullFit2.data = [scale,shape,location];
+                        xmlUpdated = true;
+                    end
 
 
                     % EDGE RATIOS of total image and of parts of image)
