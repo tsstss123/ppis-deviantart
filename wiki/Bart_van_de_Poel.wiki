@@ -5,6 +5,7 @@
  * Added a fix for the weibull features to the feature extraction code, because the weibull package returns NaN on a lot of images. Replacing all zero values by a very small positive value seems to fix this.
  * Turns out that the weibull fix doesn't work on all images, so I decided to remove the whole feature from the code since the other components (classifier and visualization) expect the same number of features for each image.
  * removed a small bug from the extraction of the salient points. It wrote a matrix to the xml file instead of a rolled out vector. Now recalculating the features. 
+ * Wrote a little bit in the report
 
 ==18/06==
  * Calculated features for whole dataset
