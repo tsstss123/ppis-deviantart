@@ -1,4 +1,7 @@
 #summary Sander's research log
+== 06/19/2010==
+  * Redownloaded thumbs big dataset, because a lot of the thumbnails were corrupt.
+
 == 06/18/2010==
   * Updated category analyzer to also show per sub category (as an option). Also added an option to show the total categories, instead of per user.
 
