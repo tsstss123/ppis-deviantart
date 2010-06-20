@@ -2,6 +2,9 @@
 
 =Research Log=
 
+==20/06==
+ * Filtering on artists/categories works perfectly now.
+
 ==19/06==
  * Computer broke down yesterday had to format/reinstall everything.
  * Rewritten the readallXML.m function to make it handle the new feature xml files.
