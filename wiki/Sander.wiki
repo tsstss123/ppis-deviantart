@@ -11,20 +11,15 @@
 
 == 06/18/2010==
   * Updated category analyzer to also show per sub category (as an option). Also added an option to show the total categories, instead of per user.
-
   * Tried to get libcv for matlab working. Still pending..
-
   * Played around with svmlib.
 
 == 06/17/2010==
   * Solved various problems with the gallery scraper.
     Failed downloads are nicely cleaned up, instead of xml files remaining while the images are not downloaded.
     Executing the code again won't result in downloading the images again if they are already downloaded, so you can rerun in case images failed to download (in case the servers have problems)
-  
   * Added extra info for each image: the link to the image on deviantart.
-
   * Added a verification script, to ensure each xml file has existing images and thumbnails.
-
   * Made a script to list per user how many images belong to each category.
 
 == 06/16/2010==
@@ -34,7 +29,6 @@
 
 == 06/15/2010==
   * Updated gallery scraper code to generate a xml file containing the category information for each image.
-
   * Possible features we can extract for saliency:
     # Histogram. Save the values of all different bins to the xml file (for example save 25 bins)
     # Entropy. Just one value. Matlab already has a function for this.
