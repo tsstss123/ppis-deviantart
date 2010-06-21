@@ -29,3 +29,4 @@ Fraction of reciprocal links: 17.65% <br>
 Average Clustering Coefficient: 0.087% <br>
 
 max recursive out degree 44, 1471 nodes <br>
+max recursive in degree 43, 1701 nodes <br>
