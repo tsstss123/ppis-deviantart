@@ -123,7 +123,7 @@ function [doPca, doLda, doClasses, classes, settings] = parseInputs(type, class,
 type = lower(type);
 class = lower(class);
 
-types = {'pca', 'lda'};
+types = {'pca', 'lda', 'all'};
 classes = {'artist', 'catfulll', 'catmiddle', 'cattop', 'catall', 'all'};
 settingsStrs = {'all', 'standard'};
 
