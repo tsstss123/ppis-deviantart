@@ -25,6 +25,7 @@ function createExperimentFiles(datastruct)
         fulldataset=addlabels(fulldataset, categorymatrix(:,1), 'category1');
         fulldataset=addlabels(fulldataset, categorymatrix(:,2), 'category2');
         fulldataset=addlabels(fulldataset, categorymatrix(:,3), 'category3');
+        artistvector
         fulldataset=addlabels(fulldataset, artistvector, 'artist');
         fulldataset=setfeatlab(fulldataset, featurevector);
         

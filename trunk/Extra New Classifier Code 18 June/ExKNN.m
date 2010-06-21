@@ -1,7 +1,7 @@
 function [ ClassStruct ] = ExKNN( data, R, crossfolds )
     %KNN Classifier
     Classifiername='KNN_Classifier';
-    Kmax=1;
+    Kmax=9;
 
     knnstruct=struct(Classifiername,[]);
     

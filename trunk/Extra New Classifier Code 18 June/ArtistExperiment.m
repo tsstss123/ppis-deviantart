@@ -1,24 +1,13 @@
-function A=ArtistExperiment(categorytype)
-
-    % On what artists or categories
-    %names={'gsphoto','Knuxtiger4'};
-    %names={'all'};
-    
-    % Categoriesnames
-    names={'all'};
-
-    experiments={%{'numFaces', 'avgSat', 'salPoints'}
-                 %{'cornerRatio'};
-                 %{'avgSat'};
-                 {'all'}
-                 };         
+function A=ArtistExperiment(categorytype, names, experiments, autoselect, optimalselect) 
     
     %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
      
     Datasetpath=['ArtistDataset' filesep];
     
+    prwarning(0);
+    
     if(exist([Datasetpath 'Artist_train.mat'], 'file') == 0)
-        createExperimentFiles()
+        createExperimentFiles();
     end
 
     temp=load([Datasetpath 'Artist_train']);
@@ -39,7 +28,10 @@ function A=ArtistExperiment(categorytype)
     if(sum(strcmp(names, 'all'))==0)
         traindata=filterArtists(traindata,names);
     end
-
+    
+    % Filter out all the small classes which are lower or equal to 10
+    traindata=remclass(traindata,6);
+    
     lablist=getlablist(traindata);
     [artistnumbers,~]=size(lablist);
     
@@ -56,10 +48,9 @@ function A=ArtistExperiment(categorytype)
             trainset=traindata;
         end
         
-        for i=1:artistnumbers
-            disp(lablist(i,:));
+            disp(lablist(1,:));
             imagelabels=getnlab(trainset);
-            positiveimages=imagelabels==i;
+            positiveimages=imagelabels==1;
 
             pos=trainset(positiveimages,:);
             neg=trainset(positiveimages==0,:);
@@ -73,17 +64,15 @@ function A=ArtistExperiment(categorytype)
             
             artistdataset=[newdpos;newdneg];
             artistdataset=setfeatlab(artistdataset,f);
-            %artistdataset=setprior(artistdataset,0);
             
-            [classifierstruct,featurestruct]=createArtistExperiment(artistdataset,j,lablist{i});
+            [classifierstruct,featurestruct]=createArtistExperiment(artistdataset,j,lablist{1}, autoselect, optimalselect);
 
-            name=lablist(i,:);
+            name=lablist(1,:);
             cleanedname=strrep(name, ' ', '');
             exst=['Experiment_' int2str(j)];
             
             resultsstruct.('results').(cleanedname{1}).(exst).('Classifiers')=classifierstruct.('Classifiers');
             resultsstruct.('results').(cleanedname{1}).(exst).('Features')=featurestruct.('Features');
-        end
     end
     A=resultsstruct;
 end
