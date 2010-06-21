@@ -1,6 +1,11 @@
 #summary Bart's research log
 
 =Research Log=
+
+==21/06==
+ * Group meeting
+ * Helped quang with classifier /experiment code
+
 ==20/06==
  * Added a fix for the weibull features to the feature extraction code, because the weibull package returns NaN on a lot of images. Replacing all zero values by a very small positive value seems to fix this.
  * Turns out that the weibull fix doesn't work on all images, so I decided to remove the whole feature from the code since the other components (classifier and visualization) expect the same number of features for each image.
