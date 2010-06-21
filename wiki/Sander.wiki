@@ -1,5 +1,12 @@
 #summary Sander's research log
-== 06/19/2010==
+== 06/21/2010 ==
+  * Updated gallery implementation section. Added small part about the category analyser script.
+  * Added draft for Technical Details Deviantart section.
+
+== 06/20/2010 ==
+  * Wrote initial gallery implementation section.
+
+== 06/19/2010 ==
   * Redownloaded thumbs big dataset, because a lot of the thumbnails were corrupt.
 
 == 06/18/2010==
