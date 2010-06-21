@@ -19,7 +19,6 @@ printperuser = False
 
 def reportDeviant(folder_name, deviant):
 	global totalcategories
-	#print('Analyzing deviant %s' % (deviant))
 	deviant_folder = os.path.join(folder_name, deviant)
 	usercategories = defaultdict( lambda : [0, createSubCategory()] )
 	for filename in os.listdir(deviant_folder):
