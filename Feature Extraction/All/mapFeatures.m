@@ -1,4 +1,4 @@
-function mapFeatures(type, class, settings)
+function [pcaLda, projected] = mapFeatures(type, class, settings)
 
 minimalClassSize = 10;
 
@@ -78,19 +78,22 @@ end
    
 
 %make datasets and do pca lda, store as projected
-projected = cell(length(settings), doPca+length(doClasses));
+projected = cell(length(settings), doPca+(length(doClasses)*doLda));
+pcaLda = cell(length(settings), doPca+(length(doClasses)*doLda));
 for i=1:length(settings)
     setting = settings(i);
     index = ismember(features, setting.features);
     feature = cell2mat(featureCell(:,index));
     if doPca
         data = dataset(feature, labels(:,1)); % have to provide labels even for pca
-        projected(i,1) = {data*pca(data, setting.projectDim)};
+        pcaLda (i,1) = {pca(data, setting.projectDim)};
+        projected(i,1) = {data*pcaLda{i,1}};
     end
     if doLda
         for j = 1:length(doClasses)
             data = dataset(feature, labels(:,doClasses(j)));
-            projected(i,doPca+j) = {data*fisherm(data, setting.projectDim)};
+            pcaLda(i,doPca+j) = {fisherm(data, setting.projectDim)};
+            projected(i,doPca+j) = {data*pcaLda{i,doPca+j}};
         end
     end
 end
@@ -125,7 +128,7 @@ class = lower(class);
 
 types = {'pca', 'lda', 'all'};
 classes = {'artist', 'catfulll', 'catmiddle', 'cattop', 'catall', 'all'};
-settingsStrs = {'all', 'standard'};
+settingsStrs = {'all', 'standard', 'allfeatures'};
 
 if ~ischar(type) || ~ismember(type, types)
     error(['Wrong parameter type, this has to be a "pca","lda" or "all"']);
@@ -136,7 +139,7 @@ if ~ischar(class) || ~ismember(class, classes)
 end
 if ischar(settings) 
     if ~ismember(settings, settingsStrs)
-        error(['Wrong parameter settings, this has to be a string "standard","all" or a struct']);
+        error(['Wrong parameter settings, this has to be a string "standard","all","allFeatures" or a struct']);
     end
 elseif ~isstruct(settings)
     error(['Wrong parameter settings, this has to be a string "standard","all" or a struct']);
@@ -173,7 +176,8 @@ end
 
 % reasonable standard settings.
 % project higher dimensional features to 2 dimensions
-if ischar(settings)
+C = cell(3,0);
+if ischar(settings) && (strcmpi(settings, 'all') || strcmpi(settings, 'standard'))
     doFeats = {{'gridEdgeRatio'}, {'medHueCells'}, {'avgSatCells'},...
         {'avgIntCells'}, {'cornerRatioGrid'}, {'avgRCells'}, {'avgGCells'},...
         {'avgBCells'}, {'salPoints'}, {'medSatCells'}, {'medIntCells'}, ...
@@ -183,7 +187,7 @@ if ischar(settings)
     C = [featNames; doFeats; projectDim];
 end
 % for "all" add a setting to project all features together to 2 dimensions
-if strcmpi(settings, 'all')
+if ischar(settings) && (strcmpi(settings, 'all') || strcmpi(settings, 'allfeatures'))
     featuresAll = {'numFaces', 'intEntropy', 'intVariance', 'edgeRatio', 'gridEdgeRatio', ...
         'medianHue', 'avgSat', 'avgInt', 'medHueCells', 'avgSatCells', 'avgIntCells', ...
         'cornerRatio', 'cornerRatioGrid', 'avgR', 'avgG', 'avgB', 'avgRCells', 'avgGCells', ...
