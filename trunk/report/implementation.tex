@@ -6,6 +6,7 @@
 
 \subsubsection{Network}
 
+\subsubsection{Galleries}
 % gallery/images
 % Initial approach
 % 1. Retrieve backend url from http://deviant.deviantart.com/gallery (using the SMGL Parser included with python)
@@ -22,7 +23,6 @@
 % - Instead of retrieving the backend url from the gallery page follow this link directly:
 %    http://backend.deviantart.com/rss.xml?q=gallery:$deviant$&offset=0
 %   Don't safe the xml file for the failed images. Remove corrupted images. Try to download again at a later point.
-\subsubsection{Galleries}
 In order to create our dataset we needed to download the images from Deviantart. 
 The \textit{Gallery Scraper} is written in Python and retrieves all images for a given 
 list of deviants. In our initial approach we retrieved 
@@ -31,12 +31,13 @@ SGML parser included in the sgmllib Python module. The backend link points
 to a xml file containing the first 60 images of the deviant. TO retrieve the other 
 xml files we needed to change the offset in the url. 
 
+We parsed the xml files using the xml.sax module included with Python. 
 For each item in the xml file a link to the full sized image, a big thumbnail and 
 a small thumbnail are provided. The big thumbnails are usually around 300 width and 
 the small thumbnails around 150 height. For each deviant we created a seperate folder, which
 contains three subfolders for the different sized images. 
 
-For each image of the deviant a xml file is written containing the filename, deviantart link and title.
+For each image of the deviant a xml file is written containing the filename, category, deviantart link and title.
 An example of such a xml file looks like this:
 
 (Insert example here)
@@ -52,6 +53,18 @@ We solved this by removing corrupt downloads and not generating a xml file for t
 point we run the scraper and try to download the missing images again. 
 
 % quick analysis tool
+\subsubsection{Quick Analysis Tool}
+% Prints category statistics per user or over the whole dataset
+% Option to print sub categories
+% Example print
+To retrieve statistics about the dataset we made a quick analysis tool. It reads in
+all image xml files using the xml.minidom Python module  and counts the categories. 
+It has an option to this per user or for the whole dataset. It also has an option
+to only print the top category statistics or also print per sub category.
+
+An analysis including the sub categories looks like this:
+
+(Insert example here)
 
 \subsection{Feature extraction}
 [Bart P, Davide (Sander)]
