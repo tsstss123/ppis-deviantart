@@ -84,7 +84,7 @@ for i=1:length(settings)
     index = ismember(features, setting.features);
     feature = cell2mat(featureCell(:,index));
     if doPca
-        data = dataset(feature);
+        data = dataset(feature, labels(:,1)); % have to provide labels even for pca
         projected(i,1) = {data*pca(data, setting.projectDim)};
     end
     if doLda
@@ -174,11 +174,12 @@ end
 % reasonable standard settings.
 % project higher dimensional features to 2 dimensions
 if ischar(settings)
-    doFeats = {{'cornerRatioGrid'}, {'gridEdgeRatio'}, {'medHueCells'},...
-        {'avgSatCells'}, {'avgIntCells'}, {'cornerRatioGrid'},...
-        {'avgRCells'}, {'avgGCells'}, {'avgBCells'}, {'salPoints'}};
+    doFeats = {{'gridEdgeRatio'}, {'medHueCells'}, {'avgSatCells'},...
+        {'avgIntCells'}, {'cornerRatioGrid'}, {'avgRCells'}, {'avgGCells'},...
+        {'avgBCells'}, {'salPoints'}, {'medSatCells'}, {'medIntCells'}, ...
+        {'avgHueCells'}, {'medRCells'}, {'medGCells'}, {'medRCells'}};
     featNames = [doFeats{:}];
-    projectDim = {2,2,2,2,2,2,2,2,2,2};
+    projectDim = num2cell(2*ones(1,length(doFeats)));
     C = [featNames; doFeats; projectDim];
 end
 % for "all" add a setting to project all features together to 2 dimensions
@@ -187,7 +188,9 @@ if strcmpi(settings, 'all')
         'medianHue', 'avgSat', 'avgInt', 'medHueCells', 'avgSatCells', 'avgIntCells', ...
         'cornerRatio', 'cornerRatioGrid', 'avgR', 'avgG', 'avgB', 'avgRCells', 'avgGCells', ...
         'avgBCells', 'salEntropy', 'salMapCEntropy', 'salMapIEntropy', 'salMapOEntropy', ...
-        'salMapKEntropy', 'salHistDev', 'salPoints', 'salSkin' };
+        'salMapKEntropy', 'salHistDev', 'salPoints', 'salSkin', 'medianSat', 'medianInt', ...
+        'avgHue', 'medSatCells', 'medIntCells', 'avgHueCells', 'medianR', 'medianG', 'medianB',...
+        'medRCells', 'medGCells', 'medBCells'};
     C = [C, {'all'; featuresAll; 2}];
 end 
 if ischar(settings)
