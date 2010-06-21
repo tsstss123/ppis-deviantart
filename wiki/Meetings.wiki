@@ -6,6 +6,34 @@
   * 02/06/2010 (group and supervisor)
   * 01/06/2010 (group and supervisor)
 
+
+= 21-06 = 
+every feature needs 2 images
+between galleries kullback leiber-divergence over feature space.
+questions - what is network structure, image features for patterns, as a recommender system, specific featres for daily deviations can we find a representative work. can we find the mean image of a person. cluster a persons style. 
+show distance between galleries
+failures
+
+presentation
+why DA <br>
+questions <br>
+patterns we wanna see <br>
+present a system <br>
+usecase, what is info flow in system <br>
+growth of network mowmany new servers <br>
+classiefiers, seperating <br>
+
+
+= literature study = 
+network image data
+what did they do and reference
+
+=  experiments =
+say what you did
+not detailed results for failures
+
+
+
 = Meeting 11/06/2010 = 
 *BJ's notes
 
