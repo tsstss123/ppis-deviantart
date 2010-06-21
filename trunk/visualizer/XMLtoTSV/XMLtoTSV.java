@@ -5,7 +5,11 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Hashtable;
+import java.util.Vector;
 
+import java.util.Iterator;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -22,13 +26,17 @@ public class XMLtoTSV {
 	public String dir;
 	public String classNode;
 	public boolean firstFile				= true;
-	public ArrayList<String> featureNames	= new ArrayList<String>();
 	public File sourceDir;
 	public File outputFile;
 	public BufferedWriter out;
 
 	public Document dom;
 	
+	public Hashtable<String,Integer> features	= new Hashtable<String,Integer>();
+	public Vector<String> sortedFeatures;
+	public ArrayList<Record> records			= new ArrayList<Record>();
+
+
 	public XMLtoTSV(String dir, String classNode) {
 		this.dir		= dir;
 		this.classNode	= classNode;
@@ -44,12 +52,18 @@ public class XMLtoTSV {
 		    out = new BufferedWriter(fstream);
 		    
 			listAllFiles();
+			
+			// sort
+			sortedFeatures = new Vector<String>(features.keySet());
+		    Collections.sort(sortedFeatures);
+
+			writeHeader();
+			writeRecords();
 			out.close();
 
 		} catch (Exception e) {
 			System.err.println("Error: " + e.getMessage());
 		}
-
 
 		System.out.println("Completed all XML files from " + dir + "xml/");
 	}
@@ -60,19 +74,18 @@ public class XMLtoTSV {
 	    int dotPos;
 
 	    for (int i = 0; i < listOfFiles.length; i++) {
-	    	if (listOfFiles[i].isFile()) {
-	    		
-	    		filename = listOfFiles[i].getName();
+	    	if (!listOfFiles[i].isFile())
+	    		continue;
 
-	    		dotPos = filename.lastIndexOf(".");
-	            String extension = filename.substring(dotPos+1);
+	    	filename = listOfFiles[i].getName();
+    		dotPos = filename.lastIndexOf(".");
+            String extension = filename.substring(dotPos+1);
 
-	            if (extension.equals("xml"))
-	            	parseXMLFile(listOfFiles[i]);
-	    	}
+            if (extension.equals("xml"))
+            	parseXMLFile(listOfFiles[i]);
 	    }
 	}
-	
+
 	private void parseXMLFile(File file) {
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 
@@ -81,9 +94,7 @@ public class XMLtoTSV {
 			
 			try {
 				dom = db.parse(file);
-				
 				parseDocument();
-
 			} catch (SAXException e) {
 				e.printStackTrace();
 			} catch (IOException e) {
@@ -105,10 +116,8 @@ public class XMLtoTSV {
 		String classname;
 		String artist;
 		String category;
-		
-		String featuresString = "";
 
-		
+
 		// filename
 		list = dom.getElementsByTagName("filename");
 		if (list.getLength() < 1) System.err.println("Filename is missing!");		
@@ -133,6 +142,9 @@ public class XMLtoTSV {
 			classname = category;
 
 		
+		Record r = new Record(filename, classname);
+		records.add(r);
+
 		// features
 		list = dom.getElementsByTagName("features");
 		if (list.getLength() < 1) System.err.println("Features are missing!");
@@ -143,81 +155,103 @@ public class XMLtoTSV {
 			feature = features.item(i);
 			
 			if (feature.getNodeType() == Node.ELEMENT_NODE)
-				featuresString += parseFeature(feature);
-		}
-
-		
-		// header
-		if (firstFile)
-			writeHeader();
-
-
-		// content
-		try {
-			out.write("\n" + filename + spacer + classname + featuresString);
-		} catch (IOException e) {
-			e.printStackTrace();
+				parseFeature(r, feature);
 		}
 	}
 	
 	private void writeHeader() {
-		if (!firstFile) return;
+		String featureName;
+		String featureString = "";
+		int featureCount;
+		int recordCount = records.size();
 		
+		Iterator<String> it = sortedFeatures.iterator();
+	    while (it.hasNext()) {		
+			featureName = (String)it.next();
+			featureCount = features.get(featureName);
+			
+			if (featureCount < recordCount) {
+				System.err.println("Removing feature " + featureName);
+				//sortedFeatures.remove(featureName);
+				it.remove();
+			}
+
+			featureString += spacer + featureName;
+		}
+
 		try {
-			out.write("img_src" + spacer + "class" + spacer + featureNamesToString());
+			out.write("img_src" + spacer + "class" + featureString);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	private void writeRecords() {
+		String featureString	= "";
+		String key				= "";
+		String value			= "";
+		Iterator<String> it;
 
-		firstFile = false;
+		for (Record r : records) {
+			featureString = "";
+			
+			it = sortedFeatures.iterator();
+		    while (it.hasNext()) {		
+		    	key		= (String)it.next();
+				value	= (String) r.featureValues.get(key);
+				
+				if (value == null) {
+					System.err.println("Feature " + key + " is missing for picture " + r.filename);
+					System.exit(0);
+				}
+				
+				featureString += spacer + value;					
+			}
+
+			try {
+				out.write("\n" + r.filename + spacer + r.name + featureString);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
-	private String parseFeature(Node feature) {
-		String res = "";
-		String name;
+	private void parseFeature(Record r, Node feature) {
+		String name 	= "";
+		String fullName	= "";
 		String val;
 		
 		name = feature.getNodeName();
-
 		NodeList featureList = feature.getChildNodes();
 
 		for (int i=0; i<featureList.getLength(); i++) {
 		
-			if (featureList.item(i).getNodeType() == Node.ELEMENT_NODE) {
+			// skip wrong XML nodes
+			if (featureList.item(i).getNodeType() != Node.ELEMENT_NODE)
+				continue;
 
-				val = featureList.item(i).getTextContent();
-				String[] tmp = val.split(" ");
+			val = featureList.item(i).getTextContent();
+			String[] tmp = val.split(" ");
 				
-				for (int j=0; j<tmp.length; j++) {
-					if (firstFile) {
-						if (tmp.length == 1)
-							featureNames.add(name);
-						else
-							featureNames.add(name + Integer.toString(j));
-					}
+			for (int j=0; j<tmp.length; j++) {
 
-					res += spacer + tmp[j];
-				}
+				if (tmp.length > 1)
+					fullName = name + Integer.toString(j);
+				else
+					fullName = name;
+
+				// add features
+				Integer count = (Integer) features.get(fullName);
+
+				if (count == null)
+					features.put(fullName, 1);
+				else
+					features.put(fullName, count + 1);
+
+				r.featureValues.put(fullName, tmp[j]);
 			}
 		}
-
-		return res;
 	}
-
-	private String featureNamesToString() {
-		String res = "";
-
-		for (int i=0; i<featureNames.size(); i++) {
-			if (i > 0) res += spacer;
-			
-			res += featureNames.get(i);
-		}	
-
-		return res;
-	}
-
-	
-
 
 	static public void main(String[] args) {
 		String dir			= "./data/albert/";
