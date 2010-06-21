@@ -6,6 +6,10 @@
   * Introduction to deviantART (report).
   * Design of de slides for wednesday.
   * Extended the XMLtoTSV converter: ignore features that are not present in all files. Sorting features on name.
+  * [ScatterPlot] The class centers are now clickable to make the corresponding class highlighted.
+  * Fixed bug that caused the Y-axis positions to be swapped (high values at the bottom).
+  * [ScatterPlot] Improved the dimming of non-highlighted images: V of the borders decreased, image intensify decreased instead of image alpha.
+  * Fixed a bug causing the class centers to be wrong when a class was highlighted (positions of class members added twice).
 
 == 19/06/2010 ==
   * Merge two folders under Mac OS X (copy new thumbs to dataset): {{{ ditto ./ ~/Documents/School/Eclipse/deviantART/data/albert/dataset/ }}}
