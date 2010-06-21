@@ -27,3 +27,5 @@ Number of Links: 4483023 <br>
 Average Node Degree: 43.25 <br>
 Fraction of reciprocal links: 17.65% <br>
 Average Clustering Coefficient: 0.087% <br>
+
+max recursive out degree 44, 1471 nodes <br>
