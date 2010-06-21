@@ -2,6 +2,11 @@
 
 = Logbook =
 
+== 21/06/2010 ==
+  * Introduction to deviantART (report).
+  * Design of de slides for wednesday.
+  * Extended the XMLtoTSV converter: ignore features that are not present in all files. Sorting features on name.
+
 == 19/06/2010 ==
   * Merge two folders under Mac OS X (copy new thumbs to dataset): {{{ ditto ./ ~/Documents/School/Eclipse/deviantART/data/albert/dataset/ }}}
   * Processing's {{{ smooth() }}} causes the delay in the Parallel Coordinates plot.
