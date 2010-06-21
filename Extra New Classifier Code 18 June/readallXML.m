@@ -4,8 +4,49 @@ function [ datasetfeaturestruct ] = readallXML( featuredirectoryname )
     featurefiles=dir(featuredirectoryname);
     featurefilesIndex=find(~[featurefiles.isdir]);
     
+    featurenames={'numFaces';
+                  'intEntropy';
+                  'intVariance';
+                  'edgeRatio';
+                  'gridEdgeRatio';
+                  'medianHue';
+                  'avgSat';
+                  'avgInt';
+                  'medHueCells';
+                  'avgSatCells';
+                  'avgIntCells';
+                  'cornerRatio';
+                  'cornerRatioGrid';
+                  'avgR';
+                  'avgG';
+                  'avgB';
+                  'avgRCells';
+                  'avgGCells';
+                  'avgBCells';
+                  'salEntropy';
+                  'salMapCEntropy';
+                  'salMapIEntropy';
+                  'salMapOEntropy';
+                  'salMapKEntropy';
+                  'salHistDev';
+                  'salPoints';
+                  'salSkin';
+                  'medianSat';
+                  'medianInt';
+                  'avgHue';
+                  'medSatCells';
+                  'medIntCells';
+                  'avgHueCells';
+                  'medianR';
+                  'medianG';
+                  'medianB';
+                  'medRCells';
+                  'medGCells';
+                  'medBCells'
+                 };
+      
     artiststruct=struct('artists',[]);
-    
+     
     for i=1:length(featurefilesIndex)
         featurefileName=featurefiles(featurefilesIndex(i)).name;
         disp(featurefileName);
@@ -33,9 +74,22 @@ function [ datasetfeaturestruct ] = readallXML( featuredirectoryname )
                                      
         artiststruct.artists.(artistname).(['image_' imagenumberstr]) ...
                                          .('artist')=loadedxml.artist;
-
-        artiststruct.artists.(artistname).(['image_' imagenumberstr]) ...
-                                         .('features')=loadedxml.features;                              
+                                     
+        artistfieldnames=fieldnames(loadedxml.features);
+        
+        for j=1:length(artistfieldnames)
+            for k=1:length(featurenames)
+                if strcmp(featurenames{k},artistfieldnames{j})
+                    artiststruct.artists.(artistname) ...
+                                        .(['image_' imagenumberstr]) ...
+                                        .('features') ...
+                                        .(featurenames{k})= ...
+                                        loadedxml.features.(featurenames{k});
+                end
+            end
+        end
+                                     
+                                     
     end
     datasetfeaturestruct=artiststruct;
 end

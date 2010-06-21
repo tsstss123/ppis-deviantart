@@ -10,6 +10,7 @@ function [ dataset, artistvector, ...
         
         artistsnames=fieldnames(datastruct.artists);
         foundallfeaturelengths=false;
+        length(artistsnames)
         
         for i=1:length(artistsnames)
             artistimages=fieldnames(datastruct.artists.(artistsnames{i}));
@@ -27,17 +28,12 @@ function [ dataset, artistvector, ...
                                            (artistimages{1}). ...
                                            ('features'). ...
                                            (loadedfeatures{k}). ...
-                                           ('data');
-                    if strcmp(loadedfeatures{k}, 'salPoints')
-                       data=reshape(data,1,6); 
-                    end                                       
+                                           ('data');                           
                     datasetcolumns = datasetcolumns + length(data);
                     featurenames{k}=loadedfeatures{k};
                     lengthoffeature(k)=length(data);
                     foundallfeaturelengths = true;
                 end
-            else
-                break;
             end  
         end
         
@@ -80,14 +76,21 @@ function [ dataset, artistvector, ...
                                                 ('features'). ...
                                                 (loadedfeatures{k}). ...
                                                 ('data');
-                            if strcmp(loadedfeatures{k}, 'salPoints')
-                               loadeddat=reshape(loadeddat,1,6); 
-                            end
                             createrow=cat(2, createrow, loadeddat);
                         end
-                        dataset(datasetindex,:)=createrow;
-                        artistvector{datasetindex}=artistsnames{i};
                         
+                        if(length(createrow)==datasetcolumns)
+                            dataset(datasetindex,:)=createrow;
+                            artistvector{datasetindex}=artistsnames{i};
+                        else    
+                        loadedfeatures=datastruct.artists. ...
+                                    (artistsnames{i}). ...
+                                    (artistimages{j}). ...
+                                    ('filename')
+                        length(createrow)
+                        end
+
+                                
                         category=datastruct.artists. ...
                                                    (artistsnames{i}). ...
                                                    (artistimages{j}). ...
@@ -108,5 +111,7 @@ function [ dataset, artistvector, ...
                         datasetindex=datasetindex+1;
                 end
         end
+        
+        %Filter out all the unassigned rows
 end
 

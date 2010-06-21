@@ -22,5 +22,6 @@ function [ filtereddata ] = filterFeatures( traindata, featurecombo )
         end
     end
     filtereddata=trainset;
+    
 end
 

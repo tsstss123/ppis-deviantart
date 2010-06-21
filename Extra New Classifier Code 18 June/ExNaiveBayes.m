@@ -1,7 +1,7 @@
 function [ ClassStruct ] = ExNaiveBayes( data, R, crossfolds )
     %Naive Bayes Classifier
     Classifiername='NaiveBayes_Classifier';
-    Binmax=6;
+    Binmax=24;
     Binmin=6;
     Binstep=2;
     
