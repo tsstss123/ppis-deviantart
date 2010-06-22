@@ -1,7 +1,7 @@
 #summary Davide's research log
 
 == 22/06/2010==
-    * Tried to analyze the data: 
+    * Tried to analyze the new results: 
        * Some users has few images and weighting positive and negative predictions with the same value bring, in these cases, the classifier to classify everything as negative. Therefore the weighs have been changes (the positive one have been increased)
        * Some results are quite significant: a nude photograph has similarities only with an other nude's photograph and with a user with a lot of portraits (faces and bodies).
     * Started doing the presentation slides for the cognitive features
