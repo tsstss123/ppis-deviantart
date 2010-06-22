@@ -1,10 +1,21 @@
 #summary Davide's research log
 
 == 22/06/2010==
+    * Tried to analyze the data: 
+       * Some users has few images and weighting positive and negative predictions with the same value bring, in these cases, the classifier to classify everything as negative. Therefore the weighs have been changes (the positive one have been increased)
+       * Some results are quite significant: a nude photograph has similarities only with an other nude's photograph and with a user with a lot of portraits (faces and bodies).
+    * Started doing the presentation slides for the cognitive features
 
 == 21/06/2010==
+    * Discussed with Albert and the group about the presentation
+    * Found images from devianArt webpage and computed their saliency maps. Those images (and their saliency maps) are good to explain the cognitive features during the presentation.
+    * Helped Quang with the classification:
+       * Used 5-fold cross validation to set the classifier (SVM)
+       * Used 5-fold cross validation to set the slack variable of the SVM
+       * Changed a bit the code to be able to do a 1vs1 users classification 
+       * Now the code is ready to classify 1vs1 all the users and to store their results (F-Measure)
+       * Quang will run the code during the night
 
-== 18/06/2010==
 
 == 18/06/2010==
     * Written the code to classify images using the libsvm (http://www.csie.ntu.edu.tw/~cjlin/libsvm/) of Chih-Chung Chang and Chih-Jen Lin. It is written in C and it is much faster than the prTools.
