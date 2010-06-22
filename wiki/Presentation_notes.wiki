@@ -24,3 +24,4 @@
  * fix slide numbering
  * PCA/LCA slide in additional material (only if someone asks)
  * More pictures of girls in slides
+ * show scatter plot visualization of some features
