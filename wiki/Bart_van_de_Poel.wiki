@@ -1,6 +1,9 @@
 #summary Bart's research log
 
 =Research Log=
+==22/06==
+ * Analysed some of last nights results with quang and davide
+ * Worked on presentation
 
 ==21/06==
  * Group meeting
