@@ -1,89 +1,66 @@
-function GraphExportToFile(Graph,FileName,varargin)
-% Exports Graph into file for use outside the toolbox
+function Graph = myGraphNodeRemove(Graph, Nodes)
+% Remove a node or a list of nodes from the graph. The graph is squeezed after the nodes are removed.
+%
 %
 % Receives:
-%   Graph       -   struct  -   struct, representing the graph
-%   FileName    -   string  -   the name of the file to store the exported graph
-%   varargin            -       FLEX IO -   The input is in FlexIO format.  The following parameters are allowed:
-%                                               Parameter Name          |  Type             |  Optional     |   Default Value |   Description
-%                                                   Separator           |   string          |   Yes         |   '\t'          |   separates output values in file
-%                                                   EnsureUniqueLinks   |   boolean         |   Yes         |    1 (true)     | If true, 'GraphRemoveDuplicateLinks' is called
-%                                                   Triangular          |   boolean         |   Yes         |    0 (false)    | If true, only links (i,j) where i<j are exported
-%                                                   Format              |   string          |   Yes         |   'links'       | Case insensitive. Can be 'links' (produces list of links) or 
-%                                                                                                                               'list' - list of linked nodes for each node.
-%
-%
-%
-%
-%
-%
-%
-%
+%   Graph       -   Graph Struct                                -   the graph loaded with GraphLoad
+%   Nodes       -   vector                                            -   list of nodes to be removed from the graph.
 %
 % Returns:
-%   Nothing 
+%   Graph       -   Graph Struct                                -   the graph loaded with GraphLoad
 %
 % See Also:
-%   GraphRemoveDuplicateLinks
+%       GraphLoad, mexGraphSqueeze
 %
 % Created:
-% Lev Muchnik    01/12/2005, Tel.: 972-054-4326496
+% Lev Muchnik    18/06/2004, Tel.: 972-054-4326496, Train Cologne->Amsterdam
 %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Major Changes:
+%   Lev Muchnik, 31/05/2006
+%   A minor bug, related to delition of removed node names is corrected.
 
-%% varify input
-error(nargchk(1,inf,nargin));
-error(nargoutchk(0,0,nargout));
+error(nargchk(2,2,nargin));
+error(nargoutchk(0,1,nargout));
 
-if ~FIOProcessInputParameters(varargin,GetDefaultInput)
-    error('The function input is not FlexIO compatible');
+ObjectIsType(Graph,'Graph','The operation can only be performed on Graphs');
+
+IndecesX = [];
+for i = 1 : numel(Nodes)
+    [CurrentIndecesI       CurrentIndecesJ] = find(Graph.Data(:,1:2)==Nodes(i));
+    IndecesX = [IndecesX; CurrentIndecesI ];
 end
-
-%% precompute
-if EnsureUniqueLinks
-    Graph = GraphRemoveDuplicateLinks(Graph);
+IndecesX = unique(IndecesX);
+Graph.Data(IndecesX,:) = [];
+if isfield(Graph,'Index')
+    IndecesX = [];
+    for i = 1 : numel(Nodes)
+        CurrentIndeces = find(Graph.Index.Values==Nodes(i));
+        IndecesX = [IndecesX CurrentIndeces ];
+    end
+    if ~isempty(IndecesX)
+        Graph.Index.Names(IndecesX) = [];
+        Graph.Index.Values(IndecesX) = [];
+    end
 end
-if Triangular
-   Indeces = find(Graph.Data(:,1)>=Graph.Data(:,2));
-   Graph.Data(Indeces,:) = [];
-end
+%
+% if numel(Nodes) < 0.5*GraphCountNumberOfNodes(Graph)
+%     for i = 1 : numel(Nodes)
+%         [CurrentIndecesI       CurrentIndecesJ] = find(Graph.Data(:,1:2)==Nodes(i));
+%         IndecesX = [IndecesX; CurrentIndecesI ];
+%     end
+%     IndecesX = unique(IndecesX);
+%     Graph.Data(IndecesX,:) = [];
+% else
+%     Nodes = setdiff([1 : GraphCountNumberOfNodes(Graph)],Nodes);
+%     Data = zeros(0,3);
+%     for i  = 1 : numel(Nodes)
+%         [CurrentIndecesI       CurrentIndecesJ] = find(Graph.Data(:,1:2)==Nodes(i));
+%         IndecesX = [IndecesX; CurrentIndecesI ];
+%     end
+%     IndecesX = unique(IndecesX);
+%     Data = Graph.Data(IndecesX,:);
+% end
 
-%% export
-h = fopen(FileName,'wt');
-try
-    switch lower(Format)
-        case 'links'            
-            for i = 1 : size(Graph.Data,1)
-                fprintf(h,['%d' Separator '%d\n'],Graph.Data(i,1),Graph.Data(i,2));
-            end
-        case 'list'
-            MaxNode = max(max(Graph.Data(:,1:2)));
-            for i = 1 : MaxNode
-                fprintf(h,['%d'],i);
-                Targets = find(Graph.Data(:,1)==i);
-                for j = 1 : numel(Targets)
-                    fprintf(h,[Separator '%d'],Targets(j));
-                end
-                fprintf(h,'\n');
-            end
-    end    
-catch
-   disp(['Fatal Error: ' lasterr]); 
-end
 
-fclose(h);
-%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Set default input parameters
-function DefaultInput  = GetDefaultInput
-DefaultInput = {};
-
-DefaultInput    =   FIOAddParameter(DefaultInput,'Separator','\t'); 
-DefaultInput    =   FIOAddParameter(DefaultInput,'EnsureUniqueLinks',1); 
-DefaultInput    =   FIOAddParameter(DefaultInput,'Triangular',0); 
-DefaultInput    =   FIOAddParameter(DefaultInput,'Format','links'); 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+Graph =  mexGraphSqueeze(Graph);
 
