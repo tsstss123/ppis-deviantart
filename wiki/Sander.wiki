@@ -1,4 +1,7 @@
 #summary Sander's research log
+== 06/22/2010 ==
+  * Working on slides about the gallery scraper
+
 == 06/21/2010 ==
   * Added initial text for Technical Details Deviantart section.
   * Updated gallery implementation section. Added small part about the category analyser script.
