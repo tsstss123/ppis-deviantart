@@ -4,7 +4,7 @@
     * Tried to analyze the new results: 
        * Some users has few images and weighting positive and negative predictions with the same value brings, in these cases, the classifier to classify everything as negative. Therefore the weighs have been changes (the positive one have been increased)
        * Some results are quite significant: a nude photograph has similarities only with an other nude's photograph and with a user with a lot of portraits (faces and bodies).
-    * Started doing the presentation slides for the cognitive features
+    * Prepared the slides for the part of the presentation about the cognitive features
 
 == 21/06/2010==
     * Discussed with Albert and the group about the presentation
