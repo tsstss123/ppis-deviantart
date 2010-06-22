@@ -2,6 +2,11 @@
 
 = Logbook =
 
+== 22/06/2010 ==
+  * Fixed small XMLtoTSV bug, causing removed features to appear in the header line of the TSV file.
+  * Added "Select None" button to the feature selector popup.
+  * Worked on the presentation. Merged all slides together.
+
 == 21/06/2010 ==
   * Introduction to deviantART (report).
   * Design of de slides for wednesday.
