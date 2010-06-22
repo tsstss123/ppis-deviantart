@@ -13,6 +13,7 @@
  * Outputted initial results which was 1 artist versus all artists. The initial results were with KNN(K=1-9), Nearest Mean and Naive Bayes(Bin 6-24). The results were ranked to the best classifier Fmeasure. It showed that my_shots(nature guy) was no.1 with 0.85~ Fmeasure Pierrebfoto(nude) no.2 and the rest of the top 20 was between Kitsunebaka(drawings) and gsphoto(nude).
  * The above results gave an indication about which artist were actually quite distinct from the rest. But then we are just focusing on a few artists.
  * A new idea from Albert is to use classify 1 vs 1 for all artists and output a matrix consisting of all results. The values of the matrix is in Fmeasure score for all features and top 1,2,3,4,5 features.
+ * Davide helped me with the Experimental Setup for the Matrixresults. We used SVM based in libSVM which was a lot faster than the PRTools SVM and Davide helped me optimize general parameters. Using 5 fold validation on the training set we found out that the average C giving the best performance is 0.9.
 
 ==20/06==
  * Filtering on artists/categories works perfectly now.
