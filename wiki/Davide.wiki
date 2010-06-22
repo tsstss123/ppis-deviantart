@@ -1,12 +1,18 @@
 #summary Davide's research log
 
-== 17/06/2010==
+== 22/06/2010==
+
+== 21/06/2010==
+
+== 18/06/2010==
+
+== 18/06/2010==
     * Written the code to classify images using the libsvm (http://www.csie.ntu.edu.tw/~cjlin/libsvm/) of Chih-Chung Chang and Chih-Jen Lin. It is written in C and it is much faster than the prTools.
     * Written the code to compute F-Measure
     * Written the code to plot a Precision-Recall curve
 
 
-== 15/06/2010==
+== 16/06/2010==
     * Written the code to extract *few features* from the saliency maps and the related maps (color, intensity, orientation and skin):
         * entropy of the saliency map (done the previous day)
         * the sum of all the entropy values coming from the five maps 
@@ -15,7 +21,7 @@
         * amount of skin 
    * Changed all the code in Bart's format, so it can be easily incorporate and ready to be computed. 
 
-== 14/06/2010==
+== 15/06/2010==
     * Meeting with the group to list all the possible features
     * Discussed experiment approaches (dataset).
     * Written the code to extract entropy as feature from the saliency maps
