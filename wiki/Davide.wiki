@@ -10,7 +10,7 @@
     * Discussed with Albert and the group about the presentation
     * Found images from devianArt webpage and computed their saliency maps. Those images (and their saliency maps) are good to explain the cognitive features during the presentation.
     * Helped Quang with the classification:
-       * Used 5-fold cross validation to set the classifier (SVM)
+       * Used 5-fold cross validation to choose the classifier (SVM)
        * Used 5-fold cross validation to set the slack variable of the SVM
        * Changed a bit the code to be able to do a 1vs1 users classification 
        * Now the code is ready to classify 1vs1 all the users and to store their results (F-Measure)
