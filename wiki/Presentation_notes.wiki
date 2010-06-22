@@ -22,4 +22,5 @@
  * Interface could be open to users on the internet with dots instead of images (copyright issues)
  * Scrape categories and create network of categories. Create circle for each category according to the number of images that belong to that category and connect the categories according to how many people produce both categories.
  * fix slide numbering
- * 
+ * PCA/LCA slide in additional material (only if someone asks)
+ * More pictures of girls in slides
