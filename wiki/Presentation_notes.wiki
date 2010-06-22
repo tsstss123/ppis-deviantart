@@ -14,7 +14,7 @@
  * replace the saliency image with the one in the review paper and remove text (just talk about it).
  * look at the skin image. Why is the black background not 0 skin?
  * show some experiment with multiple classifiers to justify why SVM was used for the final experiment
- * Cross-validation instead of crossvalidation
+ * ~~Cross-validation instead of crossvalidation~~
  * dont use "C" parameters range because the formula isnt introduced
  * Talk about measure of success before talking about classification
  * explain TP, precision, fmeasure
