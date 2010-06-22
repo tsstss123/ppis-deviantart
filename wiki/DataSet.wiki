@@ -35,6 +35,25 @@ From this group the following users are premium members:
 
 http://sandern.com/ppis/bigdataset.tar.gz
 
+General statistics:
+photography: 2244
+customization: 906
+traditional: 842
+digitalart: 587
+fanart: 239
+darelated: 139
+manga: 102
+designs: 89
+resources: 43
+anthro: 38
+artisan: 33
+flash: 31
+cartoons: 14
+contests: 13
+literature: 3
+projects: 2
+scraps: 1
+
 _Other_ 
 
 DESKTOP SCREENSHOT:
