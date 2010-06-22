@@ -84,8 +84,17 @@ Had meeting about report and why we do what experiments <br>
 improved LDA, PCA code
 troubleshooting Weibull, te veel absoluut 0 geeft problemen met NaN, im(im==0)=eps; is de oplossing <br>
 
-= Mon 20-06-2010=
-Pca, lda onm big dataset
+= Mon 20-06-2010 =
+Pca, lda onm big dataset <br>
+Meeting <br>
+Literature on Networks google search on, "social networks" "online social netwoks" + art + artist + flickr.
+
+= Tue 21-06-2010 =
+made slides on network, pca, networks slides.
+Literature in Bibtex on Weibull
+
+
+
 first few pca eigenvalues(out of 156)
     0.2581
     0.0159
