@@ -2,6 +2,18 @@
 
 =Research Log=
 
+==22/06==
+ * Results were computer overnight.
+ * Davide, BartP and me looked into the results and checked what the top feature combinations were. We also looked at the artists that were not seperable(low score) or high seperable(high score) and see that our observation correspond to the classification.
+ * Some artists pairs had when one artist is taken as positive a high Fmeasure but turning around results in a low Fmeasure. We found out that it means that the classifier either classifies everything to positive or negative. Whenever both ways the Fmeasure score is stable then it looks like it seems more like a viable score.
+ * Because that some artists still have a lot of photos(+-600) compared to some others(+-7) we are running the results again with giving a weight 10 times higher to the positive example. Initial results look better this way.
+ * Running the given feature combinations from the classifier for the best ones in the Nick visualization to check if they really cluster gave good observations too.
+
+==21/06==
+ * Outputted initial results which was 1 artist versus all artists. The initial results were with KNN(K=1-9), Nearest Mean and Naive Bayes(Bin 6-24). The results were ranked to the best classifier Fmeasure. It showed that my_shots(nature guy) was no.1 with 0.85~ Fmeasure Pierrebfoto(nude) no.2 and the rest of the top 20 was between Kitsunebaka(drawings) and gsphoto(nude).
+ * The above results gave an indication about which artist were actually quite distinct from the rest. But then we are just focusing on a few artists.
+ * A new idea from Albert is to use classify 1 vs 1 for all artists and output a matrix consisting of all results. The values of the matrix is in Fmeasure score for all features and top 1,2,3,4,5 features.
+
 ==20/06==
  * Filtering on artists/categories works perfectly now.
  * Created function to compute the Fmeasure from the results and sort the Classifiers+Parameter+Features+Artist combo in a cell array according to the Fmeasure in descending order. So throwing in a dataset into the system it can calculate what the best Classifiers+Parameter+Features+Artist is according to the Fmeasure criteria.
