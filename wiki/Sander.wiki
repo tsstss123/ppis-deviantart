@@ -1,5 +1,6 @@
 #summary Sander's research log
 == 06/22/2010 ==
+  * Working on the report.
   * Working on slides about the gallery scraper
 
 == 06/21/2010 ==
