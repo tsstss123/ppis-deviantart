@@ -2,6 +2,12 @@
 
 = Logbook =
 
+== 23/06/2010 ==
+  * Improved "visualization" part of the slides.
+  * Merging new slides from everybody together.
+  * Checking all slides together with whole group.
+  * Presentation @ Nikhef
+
 == 22/06/2010 ==
   * Fixed small XMLtoTSV bug, causing removed features to appear in the header line of the TSV file.
   * Added "Select None" button to the feature selector popup.
