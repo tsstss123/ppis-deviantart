@@ -7,6 +7,8 @@ import xml.dom.minidom
 from collections import defaultdict
 from operator import itemgetter
 
+import getopt
+
 def createSubCategory(depth=6):
 	if depth == 0:
 		return [0, None] 
@@ -14,7 +16,7 @@ def createSubCategory(depth=6):
 
 totalcategories = defaultdict( lambda : [0, createSubCategory()] )
 
-printsubcategories = True
+printsubcategories = False
 printperuser = False
 
 def reportDeviant(folder_name, deviant):
@@ -25,9 +27,16 @@ def reportDeviant(folder_name, deviant):
 		fullpath = os.path.join(deviant_folder, filename)
 		if os.path.isdir(fullpath):
 			continue
-		dom = xml.dom.minidom.parse(fullpath)
-		category = dom.getElementsByTagName("category")[0].childNodes[0].data
+		try:
+			dom = xml.dom.minidom.parse(fullpath)
+		except xml.parsers.expat.ExpatError:
+			continue
 		
+		try:
+			category = dom.getElementsByTagName("category")[0].childNodes[0].data
+		except:
+			continue
+	
 		addToCategories(totalcategories, category)
 		addToCategories(usercategories, category)
 
@@ -53,16 +62,20 @@ def printCategories(categories, indent='\t', printsub=True):
 
 def main():
 	global totalcategories, printsubcategories, printperuser
-	if len(sys.argv) < 2:
-		print('Usage: ./category_analyzer folder_name')
+
+	opt, args = getopt.getopt(sys.argv[1:], 'us')
+	
+	if len(args) != 1:
+		print('Usage: ./category_analyzer [options] folder_name')
 		sys.exit(0)
 
-	folder_name = sys.argv[1]
+	folder_name = args[0]
 	
-	if len(sys.argv) > 2:
-		printperuser = eval(sys.argv[2])
-	if len(sys.argv) > 3:
-		printsubcategories = eval(sys.argv[3])
+	for o in opt:
+		if o[0] == '-u':
+			printperuser = True
+		if o[0] == '-s':		
+			printsubcategories = True
 		
 	for name in os.listdir(folder_name):
 		reportDeviant(folder_name, name)
