@@ -200,7 +200,7 @@ def load_deviants(filename):
 	file = open(filename, 'r')
 	deviant_list = file.readlines()
 	file.close()
-	return [deviant.strip('"\n \t') for deviant in deviant_list ]
+	return [deviant.strip('"\n \t\r') for deviant in deviant_list ]
 	
 	
 	
