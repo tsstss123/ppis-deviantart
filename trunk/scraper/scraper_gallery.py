@@ -13,6 +13,20 @@ def progressReporter(count, size, total):
 	global lastfilesize
 	lastfilesize = total
 	
+class ErrorHandler:
+    def error(self, exception):
+        "Handle a recoverable error."
+        raise exception
+
+    def fatalError(self, exception):
+        "Handle a non-recoverable error."
+        #raise exception
+        pass
+
+    def warning(self, exception):
+        "Handle a warning."
+        print exception
+
 class BackEndParser(handler.ContentHandler):
 	def __init__(self, deviant):
 		global image_folder
@@ -134,7 +148,7 @@ class BackEndParser(handler.ContentHandler):
 					fpxml.write('<root xml_tb_version="3.1" idx="1" type="struct" size="1 1">\n')
 
 					for line in self.xmlcontent:
-						fpxml.write( line )
+						fpxml.write( line.encode('UTF-8') )
 
 					fpxml.write('</root>\n')
 					fpxml.close()
@@ -157,7 +171,7 @@ class BackEndParser(handler.ContentHandler):
 		pass
 
 	# Image download settings
-	download_images = True
+	download_images = False
 	download_full = True
 	download_thumbs = True
 
@@ -189,6 +203,7 @@ def parseDeviant(deviant):
 		parser = make_parser()
 		handler = BackEndParser(deviant)
 		parser.setContentHandler(handler)
+		parser._err_handler = ErrorHandler()
 		parser.parse(url)
 		
 		count = handler.count
