@@ -1,4 +1,8 @@
 #summary Sander's research log
+== 06/23/2010 ==
+  * Found bug in the network scaper, causing the friends name to fall off when the http:// part of the url is stripped. Only happens in cases of special characters.
+  * Added nice command options to the category analyser.
+
 == 06/22/2010 ==
   * Playing around with the visualization tool
   * Working on the report.
