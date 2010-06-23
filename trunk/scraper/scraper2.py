@@ -93,7 +93,7 @@ def parseFriends(deviant, deviants, todolist):
 def getDeviantPage(deviant):
 	return 'http://%s.deviantart.com/' % (deviant)
 def getDeviantForPage(page):
-	return page.strip('http://').split('.')[0]
+	page.split('http://', 1)[1].split('.')[0]
 	
 def pajek_writer(deviantsandlist, time, delete):
 	print 'saving timestamp %d, found errors %s' %(time, deviantsandlist[2])
