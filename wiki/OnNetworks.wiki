@@ -31,3 +31,24 @@ Average Clustering Coefficient: 0.087% <br>
 max recursive out degree 44, 1471 nodes <br>
 max recursive in degree 43, 1701 nodes <br>
 max recursive all degree 185, 1099 nodes <br>
+
+CoOccurences in in,out, all core <br>
+        1701         541          54<br>
+          541        1471         286<br>
+          54         286        1099<br>
+Occurence in all 3:<br>
+14<br>
+    'blackwhiters'
+    'swmmp'
+    'armaina'
+    'vsconcepts'
+    'norke'
+    'stelthman'
+    'clintonkun'
+    'duhcoolies'
+    'cheeks-74'
+    'moonbeam13'
+    'artisticaunjuli'
+    'elicoronel16'
+    'ctjemm'
+    'cocodrillo'
