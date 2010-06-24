@@ -1,11 +1,11 @@
-%artistnames={'Craniata','K1lgore','Kitsunebaka91','Knuxtiger4','LALAax','Mallimaakari','Mentosik8','NEDxfullMOon','One_Vox','Pierrebfoto','Red_Priest_Usada','Skarbog','Swezzels','Udodelig','UdonNodu','WarrenLouw','erroid','fediaFedia','gsphoto','iakobos','kamilsmala','miss_mosh','nyctopterus','sekcyjny','stereoflow','sujawoto','wirestyle','woekan','zihnisinir','omega300m'};
-artistnames={'gsphoto', 'Pierrebfoto'};
+artistnames={'Craniata','K1lgore','Kitsunebaka91','Knuxtiger4','LALAax','Mallimaakari','Mentosik8','NEDxfullMOon','One_Vox','Pierrebfoto','Red_Priest_Usada','Skarbog','Swezzels','Udodelig','UdonNodu','WarrenLouw','erroid','fediaFedia','gsphoto','iakobos','kamilsmala','miss_mosh','nyctopterus','sekcyjny','stereoflow','sujawoto','wirestyle','woekan','zihnisinir','omega300m'};
+
 experiments={
              {'all'}
             };
         
-autoselect=[0,1,1,1,1,1];
-optimalselect=[0,1,2,3,4,5];
+autoselect=[1,1,1,1,1];
+optimalselect=[1,2,3,4,5];
 
 train=load('ArtistDataset/Artist_train');
 train=train.train;
@@ -28,7 +28,7 @@ fmatrix4=zeros(rowcolumnlength, rowcolumnlength);
 fmatrix5=zeros(rowcolumnlength, rowcolumnlength);
 fmatrix6=zeros(rowcolumnlength, rowcolumnlength);
 
-confmatrix=[{fmatrix1}, {fmatrix2}, {fmatrix3}, {fmatrix4}, {fmatrix5}, {fmatrix6}];
+confmatrix=[{fmatrix1},{fmatrix2}, {fmatrix3}, {fmatrix4}, {fmatrix5}, {fmatrix6}];
 
 cmatrix1=cell(rowcolumnlength, rowcolumnlength);
 cmatrix2=cell(rowcolumnlength, rowcolumnlength);
@@ -37,7 +37,7 @@ cmatrix4=cell(rowcolumnlength, rowcolumnlength);
 cmatrix5=cell(rowcolumnlength, rowcolumnlength);
 cmatrix6=cell(rowcolumnlength, rowcolumnlength);
 
-conffeaturematrix=[{cmatrix1}, {cmatrix2}, {cmatrix3}, {cmatrix4}, {cmatrix5}, {cmatrix6}];
+conffeaturematrix=[{cmatrix1},{cmatrix2}, {cmatrix3}, {cmatrix4}, {cmatrix5}, {cmatrix6}];
 
 prwarning(0);
 
@@ -93,8 +93,8 @@ for i=1:length(artistnames)
                 confmatrix{k}(i,j)=Fmeasure;
                 conffeaturematrix{k}{i,j}=features;
                 
-                savefile1=['ConfusionMatrixOutput', filesep, 'confmatrix_', int2str(i),'_', int2str(j), '_', int2str(k)];
-                savefile2=['ConfusionMatrixOutput', filesep, 'conffeaturematrix_', int2str(i),'_', int2str(j), '_', int2str(k)];
+                savefile1=['ConfusionMatrixOutput3', filesep, 'confmatrix_', int2str(i),'_', int2str(j), '_', int2str(k)];
+                savefile2=['ConfusionMatrixOutput3', filesep, 'conffeaturematrix_', int2str(i),'_', int2str(j), '_', int2str(k)];
                 
                 save(savefile1, 'confmatrix');
                 save(savefile2, 'conffeaturematrix');
