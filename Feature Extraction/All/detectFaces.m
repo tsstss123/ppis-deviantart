@@ -22,7 +22,7 @@ rectangleMatrix = cvlib_mex('facedetect',imgGray,classifierFileFullPath, minFace
 
     
 
-% imshow(img);
+% imshow(imgGray);
 numFaces = size(rectangleMatrix,1)/4;
 % for i = 1:4:size(rectangleMatrix,1)
 %     rectangle('Position',rectangleMatrix(i:i+3,:), 'EdgeColor', 'r')

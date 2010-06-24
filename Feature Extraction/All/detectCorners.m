@@ -46,7 +46,7 @@ function ratioGrid = gridCorners(imageSize, corners,X,Y)
            %Dimensions in the corner matrix returned by openCV are flipped.
            cellCorners = sum((corners(:,2) >= startPixelX) & (corners(:,2) < endPixelX) ...
                & (corners(:,1) >= startPixelY) & (corners(:,1) < endPixelY));
-           ratioGrid(i,j) = cellCorners;% / (xCellSize*yCellSize);
+           ratioGrid(i,j) = cellCorners / (xCellSize*yCellSize);
            
 %            avgGrid(i,j) = mean(mean(matrix(startPixelX:endPixelX,startPixelY:endPixelY) ));
        end
