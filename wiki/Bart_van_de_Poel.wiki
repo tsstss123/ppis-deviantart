@@ -2,6 +2,10 @@
 
 
 =Research Log=
+==24/06==
+ * Fixed two bugs in the feature extraction code: corner feature was still the absolute number of corners instead of the corner-pixel ratio. And also found out that the third channel in HSV is not exactly the same as the intensity (but very similar). Added the real intensity channel as a feature, and renamed the third channel of HSV to "value"
+ * Had meeting with the group about the contents of the report
+
 ==23/06==
  * Finished presentation
  * Did presentation
