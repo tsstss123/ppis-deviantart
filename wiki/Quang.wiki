@@ -2,8 +2,14 @@
 
 =Research Log=
 
+==23/06==
+ * Ran a new Parameter Optimization run because the last run of the 1 vs all experiment can not be compared to the 1vs1 run of the SVM. Therefore I have created a new 1vs1 experiment to optimize parameters and find out which classifier computes the best average score. This experiment can give an argument as to why SVM was chosen as the final classifier for our project.
+ * Created Intensity plots for the result matrix that was computed from the 1v1 experiment  with SVM, these plots are better readable and you can see which artists score high.
+ * Created functions to extract information from the result matrix. It extracts information like which artist is distinct from the rest by counting from how many artists it is seperated. The score for this results matrix is defined in F-measure
+ * Looking at only the F-measure of one artist is not reliable to find pairs of artists that are really seperable. Because of the non-uniform dataset the F-measure of one artist does not tell me enough that 2 artists are seperable. It could happen that the classifier classifies everything as positive this will give 1 artist a F-measure of 1 and the other 0. Therefore finding artists that seperable the F-measure score should be around the same value.
+
 ==22/06==
- * Results were computer overnight.
+ * Results were computed overnight.
  * Davide, BartP and me looked into the results and checked what the top feature combinations were. We also looked at the artists that were not seperable(low score) or high seperable(high score) and see that our observation correspond to the classification.
  * Some artists pairs had when one artist is taken as positive a high Fmeasure but turning around results in a low Fmeasure. We found out that it means that the classifier either classifies everything to positive or negative. Whenever both ways the Fmeasure score is stable then it looks like it seems more like a viable score.
  * Because that some artists still have a lot of photos(+-600) compared to some others(+-7) we are running the results again with giving a weight 10 times higher to the positive example. Initial results look better this way.
