@@ -1,4 +1,4 @@
-function [medianHue,medianSat,medianInt,avgHue,avgSat,avgInt,medHueCells,medSatCells,medIntCells,avgHueCells,avgSatCells,avgIntCells] = calcHSV(vsh)
+function [medianHue,medianSat,medianVal,avgHue,avgSat,avgVal,medHueCells,medSatCells,medValCells,avgHueCells,avgSatCells,avgValCells] = calcHSV(vsh)
 cellRows = 3;
 cellColumns = 3;
 %         if size(image,3) == 3
@@ -11,21 +11,21 @@ cellColumns = 3;
             meanVSH = mean(mean(vsh(:,:,1:3)));            
             medianHue = median(reshape(vsh(:,:,3),1,size(vsh,1)*size(vsh,2)));
             medianSat = median(reshape(vsh(:,:,2),1,size(vsh,1)*size(vsh,2)));
-            medianInt = median(reshape(vsh(:,:,1),1,size(vsh,1)*size(vsh,2)));
+            medianVal = median(reshape(vsh(:,:,1),1,size(vsh,1)*size(vsh,2)));
             
 %             avgHue = means(3);                        
             avgHue = meanVSH(3);
             avgSat = meanVSH(2);
-            avgInt = meanVSH(1);
+            avgVal = meanVSH(1);
                         
-            medHueSatIntCells = gridCellsMedian(vsh(:,:,1:3),cellRows,cellColumns);
-            medHueCells = reshape(medHueSatIntCells(:,:,3),1,cellRows*cellColumns);
-            medSatCells = reshape(medHueSatIntCells(:,:,2),1,cellRows*cellColumns);
-            medIntCells = reshape(medHueSatIntCells(:,:,1),1,cellRows*cellColumns);            
-            avgIntSatHueCells = gridCellsAvg(vsh(:,:,1:3),cellRows,cellColumns);
-            avgIntCells = reshape(avgIntSatHueCells(:,:,1),1,cellRows*cellColumns);
-            avgSatCells = reshape(avgIntSatHueCells(:,:,2),1,cellRows*cellColumns);
-            avgHueCells = reshape(avgIntSatHueCells(:,:,3),1,cellRows*cellColumns);    
+            medHueSatValCells = gridCellsMedian(vsh(:,:,1:3),cellRows,cellColumns);
+            medHueCells = reshape(medHueSatValCells(:,:,3),1,cellRows*cellColumns);
+            medSatCells = reshape(medHueSatValCells(:,:,2),1,cellRows*cellColumns);
+            medValCells = reshape(medHueSatValCells(:,:,1),1,cellRows*cellColumns);            
+            avgValSatHueCells = gridCellsAvg(vsh(:,:,1:3),cellRows,cellColumns);
+            avgValCells = reshape(avgValSatHueCells(:,:,1),1,cellRows*cellColumns);
+            avgSatCells = reshape(avgValSatHueCells(:,:,2),1,cellRows*cellColumns);
+            avgHueCells = reshape(avgValSatHueCells(:,:,3),1,cellRows*cellColumns);    
 %             avgSatCells = reshape(gridCellsAvg(vsh(:,:,2),cellRows,cellColumns),1,cellRows*cellColumns);
 %             avgIntCells = reshape(gridCellsAvg(vsh(:,:,1),cellRows,cellColumns),1,cellRows*cellColumns);
             
