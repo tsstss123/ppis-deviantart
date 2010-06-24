@@ -5,6 +5,7 @@ import sys
 import os
 
 import xml.dom.minidom
+import getopt
 
 total = 0
 missing = []
@@ -46,11 +47,12 @@ def verifyDeviant(folder_name, deviant):
 
 def main():
 	global total, missing, missingbig, missingsmall
-	if len(sys.argv) < 2:
+	opt, args = getopt.getopt(sys.argv[1:], '', '')
+	if len(args) < 1:
 		print('Usage: ./verify_dataset folder_name')
 		sys.exit(0)
 
-	folder_name = sys.argv[1]
+	folder_name = args[0]
 	
 	for name in os.listdir(folder_name):
 		verifyDeviant(folder_name, name)

@@ -9,16 +9,34 @@ from operator import itemgetter
 
 import getopt
 
+# Global settings
+printsubcategories = False
+printperuser = False
+
+# Categories
 def createSubCategory(depth=6):
 	if depth == 0:
 		return [0, None] 
 	return defaultdict( lambda : [0, createSubCategory(depth-1)] )
 
+def addToCategories(categoriesdict, category):
+	category = category.split('/')
+	for c in category:
+		categoriesdict[c][0] += 1
+		categoriesdict = categoriesdict[c][1]
+
+def printCategories(categories, indent='\t', printsub=True):
+	if not categories:
+		return
+	categories = sorted(categories.iteritems(), key=itemgetter(1), reverse=True)
+	for k, v in categories:
+		print '%s%s: %d' % (indent, k, v[0])
+		if printsub:
+			printCategories(v[1], indent = '%s\t' % (indent))
+
 totalcategories = defaultdict( lambda : [0, createSubCategory()] )
 
-printsubcategories = False
-printperuser = False
-
+# Count categories for a given deviant
 def reportDeviant(folder_name, deviant):
 	global totalcategories
 	deviant_folder = os.path.join(folder_name, deviant)
@@ -44,22 +62,6 @@ def reportDeviant(folder_name, deviant):
 		print('Analyzing deviant %s' % (deviant))
 		printCategories(usercategories, '\t', printsubcategories)
 		
-
-def addToCategories(categoriesdict, category):
-	category = category.split('/')
-	for c in category:
-		categoriesdict[c][0] += 1
-		categoriesdict = categoriesdict[c][1]
-
-def printCategories(categories, indent='\t', printsub=True):
-	if not categories:
-		return
-	categories = sorted(categories.iteritems(), key=itemgetter(1), reverse=True)
-	for k, v in categories:
-		print '%s%s: %d' % (indent, k, v[0])
-		if printsub:
-			printCategories(v[1], indent = '%s\t' % (indent))
-
 def main():
 	global totalcategories, printsubcategories, printperuser
 
@@ -71,10 +73,10 @@ def main():
 
 	folder_name = args[0]
 	
-	for o in opt:
-		if o[0] == '-u':
+	for o, v in opt:
+		if o == '-u':
 			printperuser = True
-		if o[0] == '-s':		
+		if o == '-s':		
 			printsubcategories = True
 		
 	for name in os.listdir(folder_name):

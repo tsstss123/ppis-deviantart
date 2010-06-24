@@ -5,9 +5,8 @@ from xml.sax import make_parser, handler
 import sys
 from datetime import datetime
 import os
+import getopt
 
-image_folder = '../images'
-	
 lastfilesize = 0
 def progressReporter(count, size, total):
 	global lastfilesize
@@ -27,14 +26,21 @@ class ErrorHandler:
         "Handle a warning."
         print exception
 
-class BackEndParser(handler.ContentHandler):
-	def __init__(self, deviant):
-		global image_folder
-		
+class GalleryBackEndParser(handler.ContentHandler):
+	""" Downloads images and info from the backend url of deviantART.  
+		Set downloadfull to False to not download the full images
+		Set downloadthumbs to False to not download the thumbnails (2 for each image) 
+		Set removefailed to True in case you want the xml files removed when one of the images
+		fails to download."""
+	def __init__(self, deviant, imagefolder, downloadfullimages, downloadthumbnails, removefailed):
 		self.deviant = deviant
 		self.count = 0
 		self.totaldownloaded = 0
 		self.stack = []
+
+		self.downloadfullimages = downloadfullimages
+		self.downloadthumbnails = downloadthumbnails
+		self.removefailed = removefailed
 			
 		# Item info
 		self.itemstarted = False
@@ -42,7 +48,7 @@ class BackEndParser(handler.ContentHandler):
 		self.imagefilename = None
 
 		# Create folders for the downloaded images if needed
-		deviant_folder = os.path.join(image_folder, deviant)
+		deviant_folder = os.path.join(imagefolder, deviant)
 		if not os.path.exists(deviant_folder):
 			os.mkdir(deviant_folder)
 		full_folder = os.path.join(deviant_folder, 'full')
@@ -78,7 +84,7 @@ class BackEndParser(handler.ContentHandler):
 			self.imagefilename = os.path.basename(attrs.getValue('url'))
 			self.xmlcontent.append('\t<filename idx="1" type="char" size="1 %s">%s</filename>\n' % (len(self.imagefilename), self.imagefilename))
 
-			if self.download_full:
+			if self.downloadfullimages:
 				self.downloadImageTo(self.full_folder, attrs.getValue('url'))
 		elif name == 'media:thumbnail':
 			self.thumbnails.append( (attrs.getValue('url'), int(attrs.getValue('width')), int(attrs.getValue('height'))) )
@@ -86,8 +92,6 @@ class BackEndParser(handler.ContentHandler):
 	def downloadImageTo(self, folder, url_name):
 		""" Downloads the image from the url to the specified folder
 			Retrieves the image filename from the url """
-		if not self.download_images:
-			return
 		filename = os.path.basename(url_name)
 		fullpath = os.path.join(folder, filename)
 		if os.path.exists(fullpath) == True:
@@ -101,9 +105,10 @@ class BackEndParser(handler.ContentHandler):
 				print('ContentTooShortError: retrying %s...' % (url_name))
 				tries -= 1
 				if tries == 0:
-					print('Failed to retrieve "%s"' % (url_name))
+					print('Failed to retrieve "%s", removing corrupt image...' % (url_name))
 					os.remove(fullpath)
-					self.skipitem = True
+					if self.removefailed:
+						self.skipitem = True
 					break
 		self.totaldownloaded += lastfilesize
 
@@ -112,7 +117,7 @@ class BackEndParser(handler.ContentHandler):
 		if name == 'item':	
 			if self.imagefilename:
 				# Download thumbs
-				if self.download_images and self.download_thumbs:
+				if self.downloadthumbnails:
 					if len(self.thumbnails) == 1:
 							self.downloadImageTo(self.thumbbig_folder, self.thumbnails[0][0])
 							self.downloadImageTo(self.thumbsmall_folder, self.thumbnails[0][0])
@@ -170,22 +175,13 @@ class BackEndParser(handler.ContentHandler):
 	def endDocument(self):
 		pass
 
-	# Image download settings
-	download_images = False
-	download_full = True
-	download_thumbs = True
-
 def getDeviantPage(deviant):
 	return 'http://%s.deviantart.com/' % (deviant)
 def getDeviantForPage(page):
-	return page.strip('http://').split('.')[0]
+	return page.split('http://')[1].split('.')[0]
 	
-def parseDeviant(deviant):
+def parseDeviant(deviant, imagefolder, downloadfullimages, downloadthumbnails, removefailed):
 	print('[%s] Parsing %s...' % (datetime.now() - starttime, deviant))
-	
-	# make a folder for our deviant
-	if not os.path.exists(image_folder):
-		os.mkdir(image_folder)
 
 	# Parse all backend pages
 	# Keep increasing the offset until there are no more new items parsed
@@ -201,7 +197,8 @@ def parseDeviant(deviant):
 		url = urllib.urlopen('%s%d' % (backendurl, offset))
 		
 		parser = make_parser()
-		handler = BackEndParser(deviant)
+		handler = GalleryBackEndParser(deviant, imagefolder, 
+						downloadfullimages, downloadthumbnails, removefailed)
 		parser.setContentHandler(handler)
 		parser._err_handler = ErrorHandler()
 		parser.parse(url)
@@ -212,18 +209,40 @@ def parseDeviant(deviant):
 	print('\tParsed/Downloaded %d images (%d MB)' % (offset, total / 1048576))
 	
 def main():
-	global image_folder
-	if len(sys.argv) < 3:
-		print('Usage: %s image_folder_path deviant1 deviant2 deviant3 ...' % sys.argv[0])
+	downloadfullimages = True
+	downloadthumbnails = True
+	removefailed = False
+
+	opt, args = getopt.getopt(sys.argv[1:], 'ftr')
+
+	if len(args) < 2:
+		print('Usage: %s [options] image_folder_path deviant1 deviant2 deviant3 ...' % sys.argv[0])
 		return
 		
-	image_folder = sys.argv[1]
-	deviants = sys.argv[2:len(sys.argv)]
+	imagefolder = args[0]
+	deviants = args[1:]
+
+	for o, v in opt:
+		if o == '-f':
+			downloadfullimages = bool(v)
+		elif o == '-t':
+			downloadthumbnails = bool(v)
+		elif o == '-r':
+			removefailed = True
+
+	if not os.path.exists(imagefolder):
+		os.mkdir(imagefolder)
+
+ 	print('Downloading full images: %s' % (downloadfullimages))
+	print('Downloading thumbnails: %s' % (downloadthumbnails))
+
+	# Parse all deviants
 	for deviant in deviants:
-		parseDeviant(deviant)
-	
+		parseDeviant(deviant, imagefolder, downloadfullimages, downloadthumbnails, removefailed)
+
 	print('[%s] Done!' % (datetime.now() - starttime))
 
 if __name__ == '__main__':
 	starttime = datetime.now()
 	main()
+
