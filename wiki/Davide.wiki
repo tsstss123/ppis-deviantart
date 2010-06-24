@@ -61,6 +61,8 @@ Read the paper: _"*Emotion-Based Textile Indexing Using Colors and Texture*"_ of
     * The proposed system is composed of physical feature extraction and fuzzy-rule based evaluation. 
     * The considered physical features are: colors and textures. First, each feature is independently investigated against human emotion and then their combinations against it.
 
+It could be interesting to try to extract some emotional features from color and texture.
+
 == 09/06/2010==
     * Searched for ways to compare two different saliency maps. 
        * Read few papers talking about using binary classification and cross-validation to choose which feature are discriminant to a given dataset. The method is probably not useful for DevianArt where there are images completely different. 
