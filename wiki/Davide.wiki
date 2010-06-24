@@ -1,7 +1,11 @@
 #summary Davide's research log
 
 == 23/06/2010==
-    * Prepared some slides 
+    * Worked with the presentation:
+       * Merged all the parts
+       * Reviewed the slides
+       * Discussed about it with the others
+       * Divided the presentation's parts withing the group members
 
 == 22/06/2010==
     * Tried to analyze the new results: 
@@ -116,12 +120,12 @@ http://img3.imageshack.us/img3/9028/archz.png
     * Some categories contain very similar images (because the style is the same one) 
     * A category called "Stock Images" (the ones with a commercial target) contains images of completely different topics. 
 
-    * We could extract 4-5 categories describing 4-5 different styles and we could classify them.
+    * We could extract 4-5 categories describing 4-5 different styles and we could see if we are be able to distinguish them (using classification).
 
 
 
 == 02/06/2010==
 
     * Meeting about the project and tasks at Science Park
-    * My task is the extraction of cognitive features 
+    * My task is the extraction of cognitive-inspired features 
     * Discussed some data-structure ideas with Bart 
