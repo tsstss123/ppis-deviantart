@@ -1,0 +1,30 @@
+\contentsline {section}{\numberline {I}Introduction}{1}
+\contentsline {subsection}{\numberline {A}deviantART}{1}
+\contentsline {subsection}{\numberline {B}Why interesting as a data source}{1}
+\contentsline {subsection}{\numberline {C}Research questions}{1}
+\contentsline {subsection}{\numberline {D}Solution - framework}{1}
+\contentsline {subsection}{\numberline {E}Overview of the paper}{1}
+\contentsline {section}{\numberline {II}Previous work}{1}
+\contentsline {subsection}{\numberline {A}Online social network (art - pictures)}{1}
+\contentsline {subsection}{\numberline {B}Image features}{1}
+\contentsline {subsection}{\numberline {C}Classification of image features}{1}
+\contentsline {subsection}{\numberline {D}Visualization of image features}{1}
+\contentsline {section}{\numberline {III}Implementation}{1}
+\contentsline {subsection}{\numberline {A}Toolkit introduction}{1}
+\contentsline {subsection}{\numberline {B}Data collection}{1}
+\contentsline {subsection}{\numberline {C}Feature extraction}{1}
+\contentsline {subsection}{\numberline {D}Classification}{1}
+\contentsline {subsection}{\numberline {E}Visualization}{1}
+\contentsline {subsection}{\numberline {F}Data collection}{1}
+\contentsline {subsection}{\numberline {G}Feature extraction}{2}
+\contentsline {subsubsection}{\numberline {G.1}Statistical features}{2}
+\contentsline {subsubsection}{\numberline {G.2}Cognitively-inspired features}{2}
+\contentsline {subsection}{\numberline {H}Classification}{2}
+\contentsline {subsection}{\numberline {I}Visualization}{2}
+\contentsline {section}{\numberline {IV}Experiments}{2}
+\contentsline {subsection}{\numberline {A}Image experiments}{2}
+\contentsline {subsubsection}{\numberline {A.1}1 vs all artists - distinct artists}{2}
+\contentsline {subsubsection}{\numberline {A.2}1 vs 1 artists - classification performance}{2}
+\contentsline {subsection}{\numberline {B}Network experiments}{2}
+\contentsline {section}{\numberline {V}Future work}{2}
+\contentsline {section}{\numberline {VI}Conclusion}{2}
