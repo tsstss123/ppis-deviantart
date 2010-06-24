@@ -1,5 +1,8 @@
 #summary Davide's research log
 
+== 23/06/2010==
+    * Prepared some slides 
+
 == 22/06/2010==
     * Tried to analyze the new results: 
        * Some users has few images and weighting positive and negative predictions with the same value brings, in these cases, the classifier to classify everything as negative. Therefore the weighs have been changes (the positive one have been increased)
