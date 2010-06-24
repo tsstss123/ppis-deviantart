@@ -17,18 +17,18 @@
         inline,
         %twoside,
         ]{ieee}
-%\usepackage[left=3.5cm,right=3.5cm,nohead,nofoot,top=3cm,bottom=3cm]{geometry}
 
 \usepackage{ieeefig}
 \RequirePackage{graphicx}
 \RequirePackage{subfig}
 \RequirePackage{url}
 
+\makeindex
+
 \begin{document}
 
-\title[DeviantART Image Analysis]{%
-       DeviantART Image Analysis using Statistical and Cognitive Image Features}
-\author{Bart Buter  \and Nick Dijkshoorn \and Davide Modolo  \and Quang Nguyen \and Sander van Noort \and Bart van de Poel}
+\title[TADA: Toolkit for Analysis of DeviantART]{TADA: Toolkit for Analysis of DeviantART}
+\author{Bart Buter \and Nick Dijkshoorn \and Davide Modolo \and Quang Nguyen \and Sander van Noort \and Bart van de Poel}
 
 \maketitle
 
@@ -39,7 +39,7 @@
 
 
 \begin{keywords}
-image analysis, image classification, image features, statistical features, cognitive features, deviantART
+image analysis, image features, classification, deviantART, art, online social network
 \end{keywords}
 
 
@@ -51,15 +51,13 @@ image analysis, image classification, image features, statistical features, cogn
 \input{previouswork}
 
 
-\section{Toolkit}
-\input{toolkit}
+\section{Implementation}
+\input{implementation}
 
 
-\section{Results}
-\input{results}
+\section{Experiments}
+\input{experiments}
 
-\section{Discussion}
-\input{discussion}
 
 \section{Future work}
 \input{futurework}
@@ -70,5 +68,8 @@ image analysis, image classification, image features, statistical features, cogn
 \nocite{*}
 \bibliographystyle{plain}
 \bibliography{bibtex}
+
+\pagebreak
+\tableofcontents
 
 \end{document}

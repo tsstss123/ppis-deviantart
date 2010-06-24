@@ -1,0 +1,54 @@
+\begin{thebibliography}{1}
+
+\bibitem{Weibull_Physical}
+Jan-Mark Geusebroek and Arnold W.~M. Smeulders.
+\newblock A physical explanation for natural image statistics.
+\newblock In {\em International Workshop on Texture Analysis and Synthesis},
+  2002.
+\newblock Observations on 45,000 stock photos of natural images, covering a
+  wide variety of topics, revealed that 60% of all images have strict
+  Weibull-shaped contrast distributions. The remaining percentage of images has
+  a distribution close to Weibull or is highly regular. These images are
+  typically composed of two (or more) parts in the image, each having a
+  distinct Weibull contrast distribution.
+
+\bibitem{Weibull_Brain}
+Arnold W. M. Smeulders Victor A. F.~Lamme H.~Steven Scholte Sennay~Ghebreab,
+  Lourens~Waldorp.
+\newblock Brain responses strongly correlate with weibull image statistics when
+  processing natural images.
+\newblock {\em Journal of Vision}, 2009.
+\newblock UvA research, the brain is capable of approximating the beta and
+  gamma underlying the contrast distribution in natural images.
+
+\bibitem{Weibull_6stimulus}
+Arnold W. M.~Smeulders Jan-Mark~Geusebroek.
+\newblock A six-stimulus theory for stochastic texture.
+\newblock {\em International Journal of Computer Vision}, 2005.
+\newblock Apparently, the Weibull parameters form a six-stimulus basis for
+  stochastic texture description. The results indicate that texture perception
+  can be approached like the experimental science of colorimetry.We have
+  experimentally verified that the Weibull distribution characterizes spatial
+  statistics for ergodic stochastic textures.
+
+\bibitem{label4399}
+C.J. Veenman C.G.M. Snoek~A.W.M.Smeulders J.C.~van Gemert, J.~Geusebroek.
+\newblock Robust scene categorization by learning image statistics in context.
+\newblock {\em Unknown Journal}, 2010.
+\newblock Learning image categories using Weibull features and color invariant
+  edges to represent texture and othe r natural image statistics.
+
+\bibitem{van2006robust}
+J.C. van Gemert, J.~Geusebroek, C.J. Veenman, C.G.M. Snoek, and A.W.M.
+  Smeulders.
+\newblock Robust scene categorization by learning image statistics in context.
+\newblock In {\em 2006 Conference on Computer Vision and Pattern Recognition
+  Workshop}, pages 105--105, 2006.
+\newblock Observations on 45,000 stock photos of natural images, covering a
+  wide variety of topics, revealed that 60% of all images have strict
+  Weibull-shaped contrast distributions. The remaining percentage of images has
+  a distribution close to Weibull or is highly regular. These images are
+  typically composed of two (or more) parts in the image, each having a
+  distinct Weibull contrast distribution.
+
+\end{thebibliography}
