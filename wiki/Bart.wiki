@@ -105,7 +105,7 @@ read literature
 wrote average image function to show dataset in report
 
 = Fri 24-06-2010 = 
-Write
+Write Weibull, Futurework
 
 
 first few pca eigenvalues(out of 156)
