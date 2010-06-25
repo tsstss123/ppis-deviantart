@@ -1,5 +1,5 @@
 \subsection{Toolkit introduction}
-4 components, what should it do (online/offline), image2image, gal2gal, cat2cat, albert drawing
+4 components, what should it do (online/offline), image2image, gal2gal, cat2cat
 
 \begin{figure}[htb]
   \centering
@@ -62,15 +62,7 @@ In the extraction of image features, a distinction was made between low-level st
 
 \subsubsection{Statistical features}
 As statistical features, many relatively simple low-level features were extracted from the images.
-The first type of statistical features that were used are color-based features, which should capture the color-usage in the artwork. Many artists produce collections of art pieces with similar colors, and should therefore be (partially) distinguishable with color-based features. For each of the three RGB channels, an average and median is calculated over all the channel values. The image is also converted into the HSV color space, from which the average and median Hue, Saturation and Value are extracted.  
-
-The second group of features is the edge to pixel and corner to pixel ratio. The edge to pixel ratio is calculated by performing Canny edge detection on the image to construct an image of edges. The number of edge pixels in this image, divided by the total number of pixels is then used as a feature. The same is done using a corner detector. These two features should be helpful in distinguishing many photography artwork from other genres such as cartoons and manga. The latter two tend to have large patches of plain color patches, which will decrease the amount of edges and corners. They are also somewhat indicative to the type of scenes in photography. A blue sky will not produce many edges or corners, whereas a busy street will.  
-
-For the final group of features, the artworks are converted to an intensity image. First of all, the average and median value of this intensity image is extracted. These values give information about the lightness or darkness of art. The second intensity feature is the variance, which reacts to the contrast between lightness and darkness in images. The final feature that is extracted from the intensity image is the entropy. The entropy is a statistical measure of randomness that somewhat characterizes the texture in an image.  
-
-The features described above only contain global information about images. In order to capture localized information, several of the features described above were extracted from different regions of the image to produce a feature vector
-
-
+The first type of statistical features are colour-based features, which should capture the color-usage in the artwork. To capture
 
 %\begin{itemize}
 %\item Edge ratio: description
@@ -128,7 +120,7 @@ The full version of a miniature image can be displayed to inspect it in more det
 \end{figure}
 
 The scatter plot is limited to displaying only two features at the same time.
-Fig.~\ref{fig:visualization_parallel} shows the \textit{parallel coordinates} visualization technique, a common way of visualizing high-dimensional.
+Fig.~\ref{fig:visualization_parallel} shows the \textit{parallel coordinates} visualization technique~\cite{andrienko2001constructing}, a common way of visualizing high-dimensional.
 This enabled us to visualize beyond two features at the same time.
 The two axises of the scatter plot are now replaced by n vertical parallel lines to represent n features (n-dimensional space).
 An image is now represented as a polyline with vertices on the parallel axes.
