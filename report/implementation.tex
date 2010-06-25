@@ -77,11 +77,11 @@ This knowledge can be used to describe the art style of an artist or even determ
 Also classification can be extended to other category level to determine what the image features of a category are.
 
 \subsubsection{Pre-processing}
-Before classifiers can be used to find image features, several pre-processing steps on the dataset and the classifiers needs to be taken.
+Before classifiers can be used to find image features, several pre-processing steps are required on the dataset.
 
-Naturally, functions that read in feature XML files, convert it to a dataset and splitting it into a train and test set are incorporated.
+Naturally, functions that read in XML files containing the feature values, convert it to a dataset and splitting it into a train and test set are incorporated.
 Also Min/Max normalization can be used on the dataset.
-Normalization is important because the features that were extracted all uses different ranges of values, by scaling these values to the same range(e.g. [-0.5,0.5]) the classifiers are more effective in their task to find image features that separates an artist.
+Normalization is important because the features that were extracted all uses different ranges of values, by scaling these values to the same range(e.g. [-0.5,0.5]) the classifiers are more effective in their task to find image features that separates a class from the other classes.
 
 Furthermore filtering on classes and features can be performed on the dataset, this is to provide flexibility in a way that the user can do classification on just a few interesting classes or features instead of everything that is inside the dataset.
 
@@ -89,10 +89,11 @@ Furthermore filtering on classes and features can be performed on the dataset, t
 The classification part of the toolkit is implemented using the Matlab environment. In total there are four different classifiers that be called upon.
 
 \begin{itemize}
-	\item \textbf{k-Nearest Neighbour}, [DESC]
-	\item \textbf{Naive Bayes}, [DESC]
-	\item \textbf{Nearest Mean}, [DESC]
-	\item \textbf{Support Vector Machine}, [DESC]
+	\item \textbf{k-Nearest Neighbour}: It classifies images based on the closest training examples.[REF WHY]
+	\item \textbf{Naive Bayes): It calculates the probability of an image belonging to a class.[REF WHY]
+	\item \textbf{Nearest Mean}: It calculates the mean value of a class and classifies new images based on how close it lays to the mean of a class.[REF WHY]
+	\item \textbf{Support Vector Machine}: It creates a model based on a set of training examples which belongs to two classes.
+	The SVM tries to divide the training examples by a clear gap and then predicts the class of a new example based on which side of the gap it lays. [REF WHY]
 \end{itemize}
 
 The classifiers were implemented using PRTools[REF] and libSVM[REF], which are existing implementations of the classifiers.
@@ -110,8 +111,11 @@ At the end the F-measure score of every parameter combination is compared and th
 Whenever a person wants to find the image features that best separates two classes, that person wants to have a small list containing image features that does that.
 Therefore a feature selection algorithm is needed to make sure that the classifier will only choose a few features(e.g. 1,2,3) instead of a whole list of features which does not say anything interesting.
 
-Features were selected based on their inter-intra distance using the sequential forward feature selection algorithm[REF].
-The inter-intra distance[FORMULA] for each feature is computed by minimizing the distance within the class while maximizing the distance with the other classes.
+Features were selected by using the \textit{Sequential forward feature selection}[MAYBE FORMULA].
+It selects features by first choosing the most informative feature and then iteratively add the next most informative feature to it.
+
+Selecting the most informative feature is done using the inter-intra distance of the features.
+The inter-intra distance[FORMULA] value is computed by minimizing the distance within the class while maximizing the distance with the other classes.
 Therefore the features that are selected are the features that clusters the class and eliminates the overlap between that cluster and the other classes.
 
 % which classifiers
