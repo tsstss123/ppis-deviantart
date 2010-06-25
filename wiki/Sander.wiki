@@ -3,6 +3,7 @@
 
 == 06/24/2010 ==
   * Football
+  * Cleaned up gallery scraper code. Made downloading images a command line option.
   * Rewrote data collection section to be more general and shorter.
   * Discussion report
 
