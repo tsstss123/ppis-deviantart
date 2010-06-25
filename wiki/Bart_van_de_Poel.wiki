@@ -3,7 +3,7 @@
 
 =Research Log=
 ==25/06==
- * recomputed the intensity and corner ratio features, and added the HSV value feature as "avgVal", "medVal" etc.
+ * recomputed the intensity and corner ratio features, and added the HSV value feature as "avgVal", "medVal" etc so that nick can use the updated features in his visualization screenshots. (Features added under downloads)
  * worked on report
 
 ==24/06==
