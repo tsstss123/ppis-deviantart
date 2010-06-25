@@ -90,6 +90,8 @@ This provides an effective way to find patterns in the dataset, analyze classifi
 The visualization application combines three different visualization techniques into one application.
 The large blue, purple and brown buttons in the header of the application are used to switch between these visualization techniques.
 Each visualization technique offers a different look on the dataset.
+The visualization application is written in the Java programming language.
+The visualizations 
 
 \begin{figure}[htb]
   \centering
@@ -126,10 +128,14 @@ The color of a polyline represents the class (artist, category) to which an imag
 \begin{figure}[htb]
   \centering
   \includegraphics[width=1\linewidth]{img/visualization_radial.png}
-  \caption{The visualization application displaying a radial plot that expresses the performance of the classification.}
+  \caption{DEMO IMG - ARTIFICIAL DATA - The visualization application displaying a radial plot that expresses the performance of the classification.}
   \label{fig:visualization_radial}
 \end{figure}
 
 Fig.~\ref{fig:visualization_radial} shows the \textit{radial plot} visualization technique.
-This visualization is not used to visualize the dataset, but to display the performance of the classification.
-The circle is split into the regions (purple: artists or categories, yellow: features, green: classifiers), each of them representing a variables that play an important role in the classification of images.
+This visualization is not used to visualize the dataset, but to display the performance of the classification, e.g., how a certain feature performs on separating an artist from the other artists.
+The circle is split into three regions (variables): artists or categories (purple), features (yellow), classifiers (green).
+%Each of these regions represent a variable that plays an important role in the classification of images.
+%Each variables consists of a limited number of values that were used during classification.
+The thickness of a line between two nodes expresses the performance of the classification when both nodes are used together, i.e., thicker lines means higher performance.
+For example, a thick line between artist X and feature Y, means that feature Y is a good feature to separate artist X from the other artists.
