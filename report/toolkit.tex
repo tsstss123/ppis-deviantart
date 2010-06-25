@@ -136,7 +136,9 @@ Furthermore filtering on classes and features can be performed on the dataset, t
 
 Another important aspect of classification is to do parameter optimization. 
 Optimization of parameters will lead to better classification results because the classifier is more fine tuned to the type of task that lies ahead. 
-The way the optimization is presented in this toolkit is by cross-validation on the trainset.
+The way the optimization is presented in this toolkit is by cross-validation on the trainset. 
+For every parameter in the classifier cross-validation is performed on the trainset to compute the F-measure score. 
+At the end the F-measure score of every parameter combination is compared and the parameter which yields the highest average F-measure score is the parameter which optimizes the classifier.
 
 % which classifiers
 % how they work
