@@ -110,7 +110,34 @@ In our project we focus on computational models of focal visual attention. Atten
 "Visually salient" are those location in the visual wolrd that automatically attract attention.
 
 \subsection{3. Classification}
-[Quang]
+An important aspect of analyzing images is to determine what makes them distinct.
+In this tookit, classification is used to compare image sets and extract the image features that best separates them.
+This knowledge can be used to describe the art style of an artist or even determine if there is an artist that uses an unique style.
+Also classification can be extended to other category level to determine what the image features of a category are.
+
+The classification part of the toolkit is implemented using the Matlab environment. In total there are four different classifiers that be called upon.
+
+\begin{itemize}
+	\item \textbf{k-Nearest Neighbour}, [DESC]
+	\item \textbf{Naive Bayes}, [DESC]
+	\item \textbf{Nearest Mean}, [DESC]
+	\item \textbf{Support Vector Machine}, [DESC]
+\end{itemize}
+
+The classifiers were implemented using PRTools[REF] and libSVM[REF], which are existing implementations of the classifiers.
+
+Before the classifiers can be used to find image features, several pre-processing steps on the dataset and the classifiers needs to be taken.
+
+Naturally, functions that read in feature XML files, convert it to a dataset and splitting it into a train and test set are incorporated.
+Also Min/Max normalization can be used on the dataset.
+Normalization is important because the features that were extracted all uses different ranges of values, by scaling these values to the same range(e.g. [-0.5,0.5]) the classifiers are more effective in their task to find image features that separates an artist.
+
+Furthermore filtering on classes and features can be performed on the dataset, this is to provide flexibility in a way that the user can do classification on just a few interesting classes or features instead of everything that is inside the dataset.
+
+Another important aspect of classification is to do parameter optimization. 
+Optimization of parameters will lead to better classification results because the classifier is more fine tuned to the type of task that lies ahead. 
+The way the optimization is presented in this toolkit is by cross-validation on the trainset.
+
 % which classifiers
 % how they work
 % how they operate in the system
