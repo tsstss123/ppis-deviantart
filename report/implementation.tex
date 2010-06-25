@@ -19,26 +19,16 @@
 % xml format
 % network
 
-DeviantArt provides users, also called deviants, galleries of their images. 
-When someone visits such a gallery a featured page will be shown. Furthermore
-the user is provided with options to browse the gallery or visit a sub gallery
-defined by the user. There are various types of members: normal members, premium 
-members, banned members, staff members, etc. Premium members have extra benefits
-like no ads, gallery customization, beta-test new site features and more.
+The data collection is the first component in our toolkit.
+It deals with downloading information and galleries from the deviantART website,
+although the component can be replaced to deal with different art or picture related community websites. 
 
 DeviantArt does not provide a web api to download images. This makes it more 
-difficult to download images. On top of that changes to the website can possible break
-down the downloading application.
+difficult to download galleries from the users. 
+On top of that changes to the website can possible break the functionality of the component.
 
-DeviantArt does provide rss, which allows us to download xml files containing 
-information about the users galleries. RSS XML files are more easy to parse
-than the html gallery pages.
-
-For each image the full sized image and two different sized thumbnails are 
-available. DeviantArt supports png, jpeg, bmp and gif image formats.
-
-For the data collection of the galleries we followed the backend links to
-the RSS XML files. Our \textit{scraper} is implemented in python and uses
+We followed the backend links of the galleries to the RSS XML files to access
+the image data. Our \textit{gallery scraper} is implemented in python and uses
 built-in libraries to parse the XML files. For each image we stored general 
 information like the category, deviantART link and filename and we downloaded
 the full image and the thumbnails.
