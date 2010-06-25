@@ -1,5 +1,13 @@
 #summary Sander's research log
+== 06/25/2010 ==
+
+== 06/24/2010 ==
+  * Football
+  * Rewrote data collection section to be more general and shorter.
+  * Discussion report
+
 == 06/23/2010 ==
+  * Presentation
   * Found bug in the network scaper, causing the friends name to fall off when the http:// part of the url is stripped. Only happens in cases of special characters.
   * Added nice command options to the category analyser.
 
