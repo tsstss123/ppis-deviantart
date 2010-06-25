@@ -92,7 +92,20 @@ Literature on Networks google search on, "social networks" "online social netwok
 = Tue 21-06-2010 =
 made slides on network, pca, networks slides.
 Literature in Bibtex on Weibull
+investigated more into core network
 
+= Wed 22-06-2010 = 
+Pre-presentation work
+Presentation
+Debug of network scraper code Oops
+
+= Thu 23-06-2010 = 
+big report meeting
+read literature
+wrote average image function to show dataset in report
+
+= Fri 24-06-2010 = 
+Write
 
 
 first few pca eigenvalues(out of 156)
@@ -284,4 +297,4 @@ rotatie matrix
     0.0000   -0.0001
 
 = todo = 
-better understand Weibull & Networks
+better understand  & Networks
