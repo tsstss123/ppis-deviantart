@@ -71,7 +71,49 @@ The model work as follow: an input image is decomposed through several pre-atten
 The toolkit has been used to create the saliency maps and the intermediate maps (color, intensity, orientation and skin). Features that have been extracted from those maps are: \textit{Shannon entropy} of the five maps, \textit{Standard deviation} of the distribution of attention in the saliency map, \textit{Location} of the most salient points (defined as the centers of the most salient regions) and \textit{Skin intensity} of the skin map. Skin is not a default channel in the Itti's model, but it has been found out to be really interesting and useful in devianART to distinguish artists and artworks, where there is a huge presence of photographer that create nude art. 
 
 \subsection{Classification}
-[Quang]
+An important aspect of analyzing images is to determine what makes them distinct.
+In this tookit, classification is used to compare image sets and extract the image features that best separates them.
+This knowledge can be used to describe the art style of an artist or even determine if there is an artist that uses an unique style.
+Also classification can be extended to other category level to determine what the image features of a category are.
+
+\subsubsection{Pre-processing}
+Before classifiers can be used to find image features, several pre-processing steps on the dataset and the classifiers needs to be taken.
+
+Naturally, functions that read in feature XML files, convert it to a dataset and splitting it into a train and test set are incorporated.
+Also Min/Max normalization can be used on the dataset.
+Normalization is important because the features that were extracted all uses different ranges of values, by scaling these values to the same range(e.g. [-0.5,0.5]) the classifiers are more effective in their task to find image features that separates an artist.
+
+Furthermore filtering on classes and features can be performed on the dataset, this is to provide flexibility in a way that the user can do classification on just a few interesting classes or features instead of everything that is inside the dataset.
+
+\subsubsection{Classifiers}
+The classification part of the toolkit is implemented using the Matlab environment. In total there are four different classifiers that be called upon.
+
+\begin{itemize}
+	\item \textbf{k-Nearest Neighbour}, [DESC]
+	\item \textbf{Naive Bayes}, [DESC]
+	\item \textbf{Nearest Mean}, [DESC]
+	\item \textbf{Support Vector Machine}, [DESC]
+\end{itemize}
+
+The classifiers were implemented using PRTools[REF] and libSVM[REF], which are existing implementations of the classifiers.
+
+\subsubsection{Parameter Optimization(Precision, Recall, F-Measure)}
+Another important aspect of classification is to do parameter optimization. 
+Optimization of parameters will lead to better classification results because the classifier is more fine tuned to the type of task that lies ahead. 
+The way the optimization is presented in this toolkit is by cross-validation on the trainset.
+For every parameter in the classifier cross-validation is performed on the trainset to compute the F-measure score.
+The F-measure[FORMULA] score is the weighted average of the precision[FORMULA] and recall[FORMULA].
+At the end the F-measure score of every parameter combination is compared and the parameter which yields the highest average F-measure score is the parameter which optimizes the classifier.
+(NEEDS A BIT MORE TEXT ABOUT EVALUATION SCORES AND WHAT THEY MEAN FOR THIS APPLICATION)
+
+\subsubsection{Feature Selection}
+Whenever a person wants to find the image features that best separates two classes, that person wants to have a small list containing image features that does that.
+Therefore a feature selection algorithm is needed to make sure that the classifier will only choose a few features(e.g. 1,2,3) instead of a whole list of features which does not say anything interesting.
+
+Features were selected based on their inter-intra distance using the sequential forward feature selection algorithm[REF].
+The inter-intra distance[FORMULA] for each feature is computed by minimizing the distance within the class while maximizing the distance with the other classes.
+Therefore the features that are selected are the features that clusters the class and eliminates the overlap between that cluster and the other classes.
+
 % which classifiers
 % how they work
 % how they operate in the system
