@@ -92,6 +92,44 @@ In our project we focus on computational models of focal visual attention. Atten
 % which classifiers
 % how they work
 % how they operate in the system
+
 \subsection{Visualization}
-[Nick]
-% 3 views
+The final component of the toolkit is the visualization application.
+This visualization is used to present the information that has been gathered by the other components of the toolkit.
+The collected images are used together with the extracted image features (Fig.~\ref{fig:components}) to visualize the dataset.
+This provides an effective way to find patterns in the dataset, analyze classification results and filter information.
+The visualization application combines three different visualization techniques into one application.
+The large blue, purple and brown buttons in the header of the application are used to switch between these visualization techniques.
+Each visualization technique offers a different look on the dataset.
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=1\linewidth]{img/visualization_scatter.png}
+  \caption{The visualization application displaying a scatter plot of 2 artists.}
+  \label{fig:visualization_scatter}
+\end{figure}
+
+Fig.~\ref{fig:visualization_scatter} shows the \textit{scatter plot} visualization technique.
+The scatter plot displays values for two variables, which are image features that has been computed by the \textit{Feature extraction} component.
+The data is displayed as a collection of miniature images.
+Each having the value of one feature determining the position on the horizontal axis and the value of the other feature determining the position on the vertical axis.
+The border around each image represents the class (artists or category) to which an image belongs.
+For example, the images with a green border belong to the artist Kitsunebaka91 and the images with a red pink border belong to the artist Woekan.
+The user has full control over which classes are displayed in the visualization.
+The users can also control which two features are used as variables on the horizontal and vertical axis of the scatter plot.
+A single image or all the images belonging to one class can be highlighted, making it more easy to recognize patterns.
+The full version of a miniature image can be displayed to inspect it in more detail.
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=1\linewidth]{img/visualization_parallel.png}
+  \caption{The visualization application displaying a parallel coordinates plot of 3 artists and 5 features.}
+  \label{fig:visualization_parallel}
+\end{figure}
+
+The scatter plot is limited to displaying only two features at the same time.
+Fig.~\ref{fig:visualization_parallel} shows the \textit{parallel coordinates} visualization technique, a common way of visualizing high-dimensional.
+This enabled us to visualize beyond two features at the same time.
+The two axises of the scatter plot are now replaced by n vertical parallel lines to represent n features (n-dimensional space).
+An image is now represented as a polyline with vertices on the parallel axes.
+The color of a polyline represents the class (artist, category) to which an image belongs.
