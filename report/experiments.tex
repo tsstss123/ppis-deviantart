@@ -49,12 +49,14 @@ Therefore this experiment is focused on using one artist as the positive class w
 For this experiment, three classifiers were used: kNN, Naive Bayes and the Nearest Mean classifiers.
 The Nearest Mean classifier does not use any parameters but the other two classifiers do.
 kNN uses 1 K 9 and Naive Bayes uses 6 Bins 24.
-All the classifiers were trained on a training set which consists of 70 percent of the entire dataset and the F-measure is used to score the classifiers on how well they perform on each fold.
+All the classifiers were trained using cross-validation on a training set which is 70 percent of the entire dataset and all the computed image features were used in this experiment.
 The average of the F-measure is used to assign the overall performance of a classifier and its parameter.
 (SHOULD IT INCLUDE WHY NO SVM BECAUSE OF NOT IMPLEMENTED YET??)
 
 \subsubsection{Experiment 1: Results}
-The results from this experiment can be found in table \ref{ex1results}(SHOUDL IT INCLUDE ARTISTNAMES??). This table shows the top 10 classifiers with the average F-measure score using cross-validation on the train set. The table shows that the artists Kitsunebaka91 and gsphoto are multiple times in the top 10. 
+The results from this experiment can be found in table \ref{ex1results}(SHOUDL IT INCLUDE ARTISTNAMES??). This table shows the top 10 classifiers with the average F-measure score using cross-validation on the train set. 
+The table shows that the artists Kitsunebaka91 and gsphoto are multiple times in the top 10 meaning that they are easily seperable from the other artists using these classifiers.
+
 
 \begin{table}
     \centering
