@@ -24,7 +24,7 @@ The top five categories are listed in table \ref{datasetstats}.
     \label{datasetstats}
 \end{table}
 
-\subsubsection{Experiment 1: 1 vs all artists}
+\subsubsection{Experiment 1: 1 artist against all artists}
 The first experiment using this toolkit is to find out if there are any artists in our dataset that uses an unique style.
 The experiment is performed using two feature combination, the statistical features and the cognitive features.
 Also it is focused on using one artist as the positive class while all the other artists are in the negative class resulting in a two class problem.
@@ -106,8 +106,25 @@ Using the results of this experiment it is hard to describe why this is happenin
 An experiment showing which features contributes to the separation of an artist from all other artists is important in order to describe why the style of an artist is unique compared to the other artists in the dataset.
 The next section describes an experiment that gives a clear view over these questions.
 
-\subsubsection{1 vs 1 artists - classification performance}
-The real experiment must give a message that this toolkit and deviantart is an interesting research area.
+\subsubsection{Experiment 2: 1 artist against 1 artist}
+For this experiment each artist is compared to one other artist.
+The motivation of this approach is that each artist can be evaluated separately and it can give more clarity for cases where the performance of a classifier is low.
+The experiment is done for all the artists in the dataset meaning that an artist is compared to every other artist in the dataset.
+Also this experiment uses the feature selection algorithm to determine the features that best separates an artist from another artist.
+
+For this experiment the kNN, Naive Bayes, Nearest Mean and the SVM classifiers were optimized and trained on the train set using 5 fold cross-validation and the highest average $F_1$-measure determines the classifier that is used on the test set.
+
+\subsubsection{Experiment 2: Results}
+
+Figure \ref{fig:experiment2results} shows
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=1\linewidth]{img/experiment2results.png}
+  \caption{The results of experiment 2 using different lengths of feature combinations. From left to right: 1 Feature, 2 Features, 3 Features, 4 Features, 5 Features and All Features.}
+  \label{fig:experiment2results}
+\end{figure}
+
 
 \subsection{Network experiments}
 dataset
