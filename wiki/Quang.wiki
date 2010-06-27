@@ -2,6 +2,17 @@
 
 =Research Log=
 
+==26/06==
+ * Wrote Experiment 1: One against all artist from the report
+ * Possibly missing: Formula's!
+
+==25/06==
+ * Wrote the Classifier part of the report
+ * Possibly missing: Formula's!
+
+==24/06==
+ * Started on the Classifier and experiment part of the report
+
 ==23/06==
  * Ran a new Parameter Optimization run because the last run of the 1 vs all experiment can not be compared to the 1vs1 run of the SVM. Therefore I have created a new 1vs1 experiment to optimize parameters and find out which classifier computes the best average score. This experiment can give an argument as to why SVM was chosen as the final classifier for our project.
  * Created Intensity plots for the result matrix that was computed from the 1v1 experiment  with SVM, these plots are better readable and you can see which artists score high.
