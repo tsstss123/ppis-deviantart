@@ -1,5 +1,23 @@
 \subsection{Toolkit introduction}
-4 components, what should it do (online/offline), image2image, gal2gal, cat2cat
+Our toolkit consists out of four components and each component is replacable.
+
+The first component is the data collections and the expected output are the galleries
+for each artist. For each image in the galleries we store a XML file containing image information.
+
+The second component is the feature extraction. This component reads in the image XML files from 
+the previous step and updates those files with the feature values.
+
+The features can then be used in the visualization component or in the classification component.
+In the visualization component the features can be compared by manual inspectation. The classification
+component evaluates the performance of the features and outputs again XML files. The output of the
+classification can also be loaded in the visualization component.
+
+The data collection, feature extraction and classifcation are all done offline, while the visualization 
+can be done both online as offline. For a complete overview see picture \ref{fig:components}.
+
+Online/Offline
+
+image2image, gal2gal, cat2cat
 
 \begin{figure}[htb]
   \centering
@@ -21,15 +39,15 @@ DeviantArt does not provide a web api to download images. This makes it more
 difficult to download galleries from the users. 
 On top of that changes to the website can possible break the functionality of the component.
 
-We followed the backend links of the galleries to the RSS XML files to access
-the image data. Our \textit{gallery scraper} is implemented in python and uses
-built-in libraries to parse the XML files. For each image we stored general 
-information like the category, deviantART link and filename and we downloaded
-the full image and the thumbnails.
+The backend links of the galleries to the RSS XML files were followed to access
+the image data. The \textit{gallery scraper} is implemented in python and uses
+built-in libraries to parse the XML files. For each image general information is 
+stored like the category, deviantART link and filename and the full image and 
+thumbnails are downloaded.
 
-For the network information collection we parsed the HTML watchers pages
-of the users, since no RSS XML files are provided by deviantART for this
-information.
+For the network information collection the friends pages 
+of the users are parsed. No RSS XML files are provided by deviantART for this
+information, instead the HTML pages were parsed.
 
 \subsection{Feature extraction}
 When working with images, it is usually not possible to work with the raw image data (the pixel values). The reason for this is the high dimensionality of images, which can easily exist in a space of more than a million dimensions. By extracting features from images, they can be represented in a lower dimensional feature-space.  This feature extraction process has several advantages:
