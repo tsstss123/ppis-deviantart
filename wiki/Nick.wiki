@@ -2,6 +2,16 @@
 
 = Logbook =
 
+== 27/06/2010 ==
+  * Wrote previous work on image feature visualizations.
+
+== 25/06/2010 ==
+  * Wrote implementation of the visualization.
+
+== 24/06/2010 ==
+  * Discussed report structure.
+  * Created schematic figure of the components and data flow.
+
 == 23/06/2010 ==
   * Improved "visualization" part of the slides.
   * Merging new slides from everybody together.
