@@ -678,7 +678,7 @@
 \def\ext@table{lot}
 \def\fnum@table{TABLE~\thetable}
 \def\table{\@float{table}}
-\let\endtable\end@float
+\def\endtable{\end@float}
 \@namedef{table*}{\@dblfloat{table}}
 \@namedef{endtable*}{\end@dblfloat}
 

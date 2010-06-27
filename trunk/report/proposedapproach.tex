@@ -18,4 +18,26 @@ Note finding all shortest paths can be performed using the Floyd-Warshall algori
 For networks where $n\gg k\gg ln(n) \gg1$, the ring lattice will have $L_{lattice}\approx\frac{n}{2k}$ and $C_{lattice}\approx\frac{3}{4}$.
 A large random network  $ L_{random}\approx\frac{\ln(n)}{\ln(k)}$ and $C_{random}=\frac{k}{n}$. A network is considered small world when $L_G\approx L_{random}$ and $C_G \gg C_{random}$
 
+To find the core of most connected components we recursively remove all vertices from our network of degree $x$, starting at $1$. If there are vertices left in the network we repeat this with $x+1$. Once an empty network is obtained the previous network is deemed the core, because  recursively removing nodes of heigher degree will inevitably lead to an empty network. 
+\algsetup{indent=2em}
+\newcommand{\FindCore}{\ensuremath{\mbox{\sc FindCore}}}
+\begin{algorithm}[h!]
+\caption{$\FindCore(Network)$}\label{alg:findcore}
+\begin{algorithmic}
+\REQUIRE A Network $G=(V,E)$.
+\ENSURE The Core of Graph $G$ and the degree $x$ at which the core is found.
+\medskip
+\STATE $x\gets 1$
+\WHILE {$|V| > 0$}
+	\STATE $remove\gets \{j\in V | k_j<x\}$
+	\STATE $Gprevious \gets G$
+	\WHILE {$|remove| > 0$}
+		\STATE $G\gets removeNodes(G, remove)$ 
+	\ENDWHILE
+	\STATE $i \gets x+1$
+\ENDWHILE
+\RETURN $Gprevious, x-1$
+\end{algorithmic}
+\end{algorithm}
+
 %\end{document}
