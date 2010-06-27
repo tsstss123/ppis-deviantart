@@ -200,14 +200,23 @@ Figure \ref{fig:experiment2results} shows the results for this experiment using 
 From left to right the figure shows the results of using: \textit{1} feature, \textit{2} features, \textit{3} features, \textit{4} features, \textit{5} features and \textit{all} features as the feature combination that is used by the classifier to classify images.
 The results are plotted using an intensity mapping where each square represents the $F_1$-measure performance of separating the \textit{x} and \textit{y} artist.
 
-The figure shows that artists can be better separated by using more features.
+The first thing that is noticable is that the intensity mappings are not symmetric.
+This is because the $F_1$-measure was used here to evaluate the performance.
+The measure is calculated by looking at the precision and recall of the positive class, so when the classes are turned around the $F_1$-measure will also turn into a different value.
+Therefore in order to determine if two artists are separable, there is a need to look at the $F_1$-measure for both artists.
+This is because for some artist pairs the $F_1$-measure of one artist has a value of 1 while the other has a value of 0.
+This means that for those artist pairs the classifier has classified all images to one artist, which most of the time is caused by the non-uniform dataset.
+
+Furthermore the figure shows that artists can be better separated by using more features.
 The intensity mapping using all features shows that it has the highest overall $F_1$-measure.
 However the more interesting mappings are the ones where only the top 1,2,3,4,5 features were used for classification.
 Eventhough their performance is lower than using all the features it gives information about the most defining features that is used to separate an artist from another artist.
 
 The intensity mappings using 1 and 2 features contains artists that have an overall high $F_1$-measure which shows that some artists can be separated from all other artists using only a few features.
 Also there are some artists which have an overall low $F_1$-measure in every intensity mapping which means that they can not be separated at all.
-A closer inspection on these two cases is needed to describe this.
+A closer inspection on these two cases are needed to describe this.
+
+Table shows 
 
 \subsection{Network experiments}
 dataset
