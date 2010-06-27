@@ -109,6 +109,10 @@ Wrote Weibull, <br>
 Wrote Future work <br>
 Wrote Previous work, working through network references <br>
 
+= Sat 25-06-2010 =
+sick
+
+= Sun 26-06-2010 = 
 
 
 first few pca eigenvalues(out of 156)
