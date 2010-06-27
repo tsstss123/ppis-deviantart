@@ -1,0 +1,21 @@
+% Here the formulas and description of what we used theoretically
+\documentclass{article}
+\begin{document}
+\subsection{Networks}
+
+Three network models of particular relevance for this project are the small-world model \cite{watts1998collective} from Watts and Strogatz and the Erd\"{o}s-R\'{e}nyi model for random networks \cite{erdos1960evolution} and regular ring latices. Small-world networks inhabit the space between the regular networks or lattices and random networks. Many practical networks have been shown to have a small-world topology, such as the nternet, the power grid amd neural networks,  for some more examples see \cite{albert2002statistical}. Small world-networks have a high cluster coefficient and low characteristic path length, means that  whereas random networks have a low characteristic path and low cluster coefficient and lattices have high cluster coefficients but long characteristic path length.
+
+Coloquially explained in terms of my social network, a large(close to 1 ) cluster coefficient means that many of my friends know each other. A low characteristic path length means that I am connected to anyone on the world through small friends-of-friends chains.
+
+Formally, let $G=(V, E)$ be a graph, where $V$ is a set of vertices, and $E$ a set of edges between vertices in $V$, here $e_{ij}$ denotes the edge connecting $i$ and $j$.  The \textit{neighborhood} of $v_i$, $$N_i:=\{v_j|e_{ij}\in E \lor e_{ji}\in E\}.$$ The \textit{degree} of vertex $v_i$, $k_i:=|N_i|$ is the number of vertices in the neighborhood of $v_i$. The directional clustering coefficient for $v_i$can now be defined as:
+$$C_i :=\frac{|\{e_{jk}\}|}{k_i(k_i-1)},$$
+where $v_j,v_k\in N_i$ and $e_{jk}\in E$, let $n=|V|$ denote the number vertices the \textit{directional clustering coefficient} for $G$ is defined as:
+$$C_G:=\frac{\sum_{i\in V} C_i}{n}.$$
+The \textit{characteristic path length} $L_G$ of graph $G$ is the average shortest path length between vertices in $G$. Land  $L_{Gij}$ denote the length of the shortest path between vertices $i$ and $j$. 
+$$L_G:= \frac{\sum_{i\in V} \sum_{j \in V\setminus i}L_{Gij}}{n(n-1)}.$$ 
+Note finding all shortest paths can be performed using the Floyd-Warshall algorithm which has $O(|V|^3)$ complexity\cite{Floyd}.
+
+For networks where $n\gg k\gg ln(n) \gg1$, the ring lattice will have $L_{lattice}\approx\frac{n}{2k}$ and $C_{lattice}\approx\frac{3}{4}$.
+A large random network  $ L_{random}\approx\frac{\ln(n)}{\ln(k)}$ and $C_{random}=\frac{k}{n}$. A network is considered small world when $L_G\approx L_{random}$ and $C_G \gg C_{random}$
+
+\end{document}
