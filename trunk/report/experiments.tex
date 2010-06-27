@@ -159,8 +159,11 @@ For this experiment each artist is compared to one other artist.
 The motivation of this approach is that each artist can be evaluated separately and it can give more clarity for cases where the performance of a classifier is low.
 The experiment is done for all the artists in the dataset meaning that an artist is compared to every other artist in the dataset.
 Also this experiment uses the feature selection algorithm to determine the features that best separates an artist from another artist.
+The feature selection algorithm selects features up to a combination of 5 different features for every artist pair.
 
 For this experiment the kNN, Naive Bayes, Nearest Mean and the SVM classifiers were optimized and trained on the train set using 5 fold cross-validation and the highest average $F_1$-measure determines the classifier that is used to produce the results.
+
+For every artist pair the $F_1$-measure is calculated on the test set to evaluate the performance of the classifier separating those artists.
 
 \subsubsection{Experiment 2: Results}
 
@@ -186,8 +189,6 @@ The linear SVM classifier obtained the highest average $F_1$-measure however the
 Note that the main goal of this experiment is to find feature combinations that distinguish artists.
 Therefore the focus should not go to maximizing the $F_1$-measure on the test set meaning that one classifier should be enough for this type of task.
 
-Figure \ref{fig:experiment2results} shows the results for this experiment using the linear SVM which was chosen in a greedy fashion based on the results found in table \ref{ex2optimizeresults}.
-
 \begin{figure*}[htb]
   \centering
   \includegraphics[width=1\linewidth]{img/experiment2results.png}
@@ -195,6 +196,18 @@ Figure \ref{fig:experiment2results} shows the results for this experiment using 
   \label{fig:experiment2results}
 \end{figure*}
 
+Figure \ref{fig:experiment2results} shows the results for this experiment using the linear SVM which was chosen in a greedy fashion based on the results found in table \ref{ex2optimizeresults}.
+From left to right the figure shows the results of using: \textit{1} feature, \textit{2} features, \textit{3} features, \textit{4} features, \textit{5} features and \textit{all} features as the feature combination that is used by the classifier to classify images.
+The results are plotted using an intensity mapping where each square represents the $F_1$-measure performance of separating the \textit{x} and \textit{y} artist.
+
+The figure shows that artists can be better separated by using more features.
+The intensity mapping using all features shows that it has the highest overall $F_1$-measure.
+However the more interesting mappings are the ones where only the top 1,2,3,4,5 features were used for classification.
+Eventhough their performance is lower than using all the features it gives information about the most defining features that is used to separate an artist from another artist.
+
+The intensity mappings using 1 and 2 features contains artists that have an overall high $F_1$-measure which shows that some artists can be separated from all other artists using only a few features.
+Also there are some artists which have an overall low $F_1$-measure in every intensity mapping which means that they can not be separated at all.
+A closer inspection on these two cases is needed to describe this.
 
 \subsection{Network experiments}
 dataset
