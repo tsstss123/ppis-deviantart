@@ -19,6 +19,7 @@ For networks where $n\gg k\gg ln(n) \gg1$, the ring lattice will have $L_{lattic
 A large random network  $ L_{random}\approx\frac{\ln(n)}{\ln(k)}$ and $C_{random}=\frac{k}{n}$. A network is considered small world when $L_G\approx L_{random}$ and $C_G \gg C_{random}$
 
 To find the core of most connected components we recursively remove all vertices from our network of degree $x$, starting at $1$. If there are vertices left in the network we repeat this with $x+1$. Once an empty network is obtained the previous network is deemed the core, because  recursively removing nodes of heigher degree will inevitably lead to an empty network. 
+
 \algsetup{indent=2em}
 \newcommand{\FindCore}{\ensuremath{\mbox{\sc FindCore}}}
 \begin{algorithm}[h!]
