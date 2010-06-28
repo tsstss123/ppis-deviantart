@@ -1,7 +1,6 @@
 \subsection{Image experiments}
 For the image experiments we collected our dataset by downloading the complete galleries from around 30 artists.
 Those artists were selected from the daily deviations of a random day and includes both premium and non premium members.
-Daily deviations are featured images of artists selected by the staff members of DeviantART.
 In total we downloaded around 5000 images. 
 For each image we also stored the category information.
 The dataset is unbalanced since some artists only have around 50 images, while other artists have over 500 images.
@@ -213,11 +212,35 @@ The intensity mapping using all features shows that it has the highest overall $
 However the more interesting mappings are the ones where only the top 1,2,3,4,5 features were used for classification.
 Eventhough their performance is lower than using all the features it gives information about the most defining features that is used to separate an artist from another artist.
 
-The intensity mappings using 1 and 2 features contains artists that have an overall high $F_1$-measure which shows that some artists can be separated from all other artists using only a few features.
-Also there are some artists which have an overall low $F_1$-measure in every intensity mapping which means that they can not be separated at all.
-A closer inspection on these two cases are needed to describe this.
+The intensity mappings using 1 to 5 features contains artists that have an overall high $F_1$-measure which shows that some artists can be separated from all other artists using only a few features.
 
-Table shows 
+\begin{table}[htb]
+    \centering
+    \begin{tabular}
+        { | l | c |} 
+        \hline
+        Feature & Counts \\
+        \hline
+        gridEdgeRatio\_5 & 9 \\ 
+        intEntropy & 4 \\ 
+        edgeRatio & 4 \\ 
+        avgRCells\_9 & 4 \\ 
+        medIntCells\_2 & 3 \\
+        medIntCells\_7 & 3 \\
+        \hline 
+    \end{tabular}
+    \caption{Counts of features that were used to separate \textit{Kitsunebaka91} from the other artists.}
+    \label{kitsune}
+\end{table}
+
+Table \ref{kitsune} shows the top 6 feature counts of features that were used to distinct \textit{Kitsunebaka91} from the other artists.
+The features were counted whenever the $F_1$-measure of \textit{Kitsunebaka91} had an $F_1$-measure higher than 0.9, which indicates that the artist is separable from the other artist.
+So the table details the reason why \textit{Kitsunebaka91} was separable.
+The artwork of \textit{Kitsunebaka91} consists mostly of images where there is a white background with a drawing in the center of it.
+This corresponds to the features found using this toolkit because table \ref{kitsune} shows that the edgeratio and intensity of the images are the dominant features to separate this artist from other artists.
+Also the table shows that the \textit{GridEdgeRatio\_5} feature is used multiple times to separate this artist.
+This again corresponds to the artist style because the \textit{GridEdgeRatio\_5} is the edgeratio value of the center cell of an image, the cell where the drawing of the artist lies.
+
 
 \subsection{Network experiments}
 The network experiments have multiple goals, to analyse the dA network to establish global characteristics of the network, but also to find interesting sub-networks of artists and artworks which are of particular interest to investigate.
@@ -246,7 +269,6 @@ The results of the network experiments are presented in table \ref{tab:netstatis
 
 \begin{table}[htb]
     \centering
-	{\footnotesize
     \begin{tabular}
         { | l | c | c | c | c | c | c|} 
         \hline
@@ -263,7 +285,6 @@ The results of the network experiments are presented in table \ref{tab:netstatis
 	$C_{random}$ & & 0.048 & 0.059 & 0.140 \\
 	\hline
     \end{tabular}
-	}
     \caption{Network statistics}
     \label{tab:netstatistics}
 \end{table}
