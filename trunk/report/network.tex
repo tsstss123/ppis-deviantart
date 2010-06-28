@@ -25,7 +25,7 @@ A large random network  $ L_{random}\approx\frac{\ln(n)}{\ln(k)}$ and $C_{random
 To find the core of most connected vertices we use the corefind algorithm, showin in Algorithm \ref{alg:findcore}.This algorithm recursively removes all vertices of degree $x$ from the network, starting at $1$. If there are vertices left in the network we repeat this with $x+1$. Once an empty network is obtained the previous network is deemed the core, because recursively removing nodes of higher degree will inevitably lead to an empty network. The choice of the $degree(j)$ - standard, in-degree, out-degree,  or in+out-degree - facilitates in finding cores with different characteristics.
 
 
-\algsetup{indent=2em}
+%\algsetup{indent=2em}
 \newcommand{\FindCore}{\ensuremath{\mbox{\sc FindCore}}}
 \begin{algorithm}[h!]
 \caption{$\FindCore(Network)$}\label{alg:findcore}
