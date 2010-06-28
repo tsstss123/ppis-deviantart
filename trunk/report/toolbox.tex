@@ -1,10 +1,3 @@
-\subsection{Toolkit introduction}
-Our toolkit consists out of four components and each component is replacable.
-Each component writes the output away to a XML file, like image information,
-features and classification performance. The first three components are all executed
-"offline" (precalculated), while the visualization component allows "online" interaction with the 
-images, features and classification results. For a complete overview see figure \ref{fig:components}.
-
 \begin{figure}[htb]
   \centering
   \includegraphics[width=1\linewidth]{img/components.pdf}
@@ -12,11 +5,16 @@ images, features and classification results. For a complete overview see figure 
   \label{fig:components}
 \end{figure}
 
+Our toolkit consists out of four components and each component is replacable.
+Each component writes the output (e.g. image information and features) to a XML file.
+The first three components are all executed \textit{offline} (precalculated), while the visualization component allows \textit{online} interaction with the images, features and classification results.
+For a complete overview see Fig.~\ref{fig:components}.
+
 % toolboxes used
 \subsection{Data collection}
 It deals with downloading information and galleries from the deviantART website and it can easily be replaced to allow the toolkit to be flexible and be able to deal with different art community webpages
 
-DeviantArt does not provide a web api to download images and therefor the backend links of the galleries to the RSS XML files were followed to access
+DeviantArt does not provide a web API to download images and therefor the backend links of the galleries to the RSS XML files were followed to access
 the image data. For each image general information such as category, deviantART link and filename are stored, and the full image and 
 thumbnails are downloaded.
 
@@ -93,8 +91,7 @@ The feature extraction is implemented in the MATLAB programming language. Part o
 
 As it has already been explained in section \ref{proposed-cognitive}, the research focused also on the extraction of some cognitive-inspired features. First a saliency map and 4 conspicuity maps (color, intensity, orientation and skin) are computed and then the features are extracted. To create the maps it has been used the Itti's model \cite{Itti_model} due to its low computentional time and the existense of a free toolkit \footnote{http://www.saliencytoolbox.net/} made by Dirk Walther. Both the toolkit and the code to extract the features are written in Matlab. 
 
-The XML-processing was done using an open-source XML-toolkit for MATLAB [ref to link: http://www.mathworks.com/matlabcentral/fileexchange/4278] 
-\cite{geusebroek2005six}
+The XML-processing was done using an open-source XML-toolkit for MATLAB~\footnote{\url{http://www.mathworks.com/matlabcentral/fileexchange/4278}}~\cite{geusebroek2005six}.
 
 
 
