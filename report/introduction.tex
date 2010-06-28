@@ -4,10 +4,10 @@ The platform allows emerging and established artists to exhibit, promote, and sh
 All artwork is organized according to a comprehensive category structure, including photographs, drawings, manga and short animations.
 dA is a highly interactive and dynamic community where artists have their own profile containing their artwork.
 Artists can explore the profiles of other artists and leave comments on their artwork.
-Each artist can add other artists to the "friends list" to automatically receive updates (e.g. newly added artwork) from these artists.
+Each artist can add other artists to the \textit{friends list} to automatically receive updates (e.g. newly added artwork) about these artists.
 The dataset deviantART proposes is very rich and full of interesting information. There has been research into social networks, feature extraction and classification of images and image visualisation of large datasets, however there has been no research combining all these aspects. Also dA has been researched little compared to it's peers such as flickr.
 
-This study is meant as \textbf{explorative research} on the dA community, trying to provide answers on art-related questions.
+This study is meant as \textit{explorative research} on the dA community, trying to provide answers on art-related questions.
 As a starting point for our explorative research we envisioned the following use case for a humanities researcher wanting to explore dA. In particular, a database of the dA network is explored with a free available complex network analysis tools such as Pajek. This enables the researcher to identify interesting artwork collections based on their role in the network. These collections can consist of groups of individual artworks, artists' galleries or categories of artworks.  All data relevant for the identified collections is retrieved and stored offline. The software automatically extracts image features from the artworks which are also stored offline. Through a simple interface a classifier is started to try to learn the boundary between classes indicated by the researcher. The result of this classifier will enable the researcher to see which features are most discriminative, but will also enable other artworks to be identified as being a member of or closely resembling one of the indicated classes. A visualiser should make this whole experience visual and intuitive, showing the art collections and how they relate to the features and classifier performace. Moreover, it relates the features, classifier performance and art collections back to the network.
 
 Besides the use case of a humanities researcher doing research, we proposed multiple art-related questions that would be interesting for such a researcher to see answered.
@@ -16,7 +16,7 @@ Besides the use case of a humanities researcher doing research, we proposed mult
 \item Can artists and/or styles be distinguished?
 \item Are artists influencing each other?
 \item Do art styles change over time?
-\item Are there none-artists interesting for deviantART?
+\item Are there none-artists (dA users that do not produce art, but favorite art from other artists) that are interesting for deviantART?
 \end{itemize}
 
 To take steps towards making part of the use case reality as well as answering parts of the posed questions, we have embarked on three lines of research. The first was to create a database of a significat part of the network and research the network retrieved. Another line researched feature extraction and classification of about 5000 images from deviant art relating to around 30 artists. The last pillar of research is the visualiser which enables a quick visual overview of the features and artworks for the whole dataset used for feature extraction and classification.
