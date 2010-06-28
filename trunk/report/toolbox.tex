@@ -93,7 +93,33 @@ As it has already been explained in section \ref{proposed-cognitive}, the resear
 
 The XML-processing was done using an open-source XML-toolkit for MATLAB~\footnote{\url{http://www.mathworks.com/matlabcentral/fileexchange/4278}}~\cite{geusebroek2005six}.
 
-
+\begin{table}[htb]
+    \centering
+    \begin{tabular}	{ | l | } 
+		\hline
+		Feature \\
+		\hline
+		Average: Intensity, Red, Blue, Green, Hue, Saturation \\
+		\hline
+		Median: Intensity, Red, Blue, Green, Hue, Saturation \\
+		\hline
+		Variance: Intensity \\
+		\hline
+		Edge detection \\
+		\hline 
+		Corner detection \\
+		\hline
+		Face detection \\
+		\hline
+		stdev: saliency map, conspicuity maps \\
+		\hline
+		Entropy: Intensity, saliency map, conspicuity maps \\
+		\hline
+\hline
+    \end{tabular}
+    \caption{Overview of features}
+    \label{tab:featurelist}
+\end{table}
 
 \subsection{Classification}
 An important aspect of analyzing images is to determine what makes them distinct.
