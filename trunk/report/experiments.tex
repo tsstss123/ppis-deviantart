@@ -241,6 +241,10 @@ This corresponds to the features found using this toolkit because table \ref{kit
 Also the table shows that the \textit{GridEdgeRatio\_5} feature is used multiple times to separate this artist.
 This again corresponds to the artist style because the \textit{GridEdgeRatio\_5} is the edgeratio value of the center cell of an image, the cell where the drawing of the artist lies.
 
+Eventhough \textit{Kitsunebaka91} was seperable from most other artists, pairing \textit{Kitsunebaka91} with the artist \textit{Knuxtiger4} resulted in a lower $F_1$-measure of 0.7397 wheras the mean of all the scores was 0.91.
+Inspecting the images of \textit{Knuxtiger4} showed that the artist mostly contained images that were drawings on a white background similar to that of \textit{Kitsunebaka91}.
+Therefore it is not surprising that the score for that pair was lower than the average because the classifier could not seperate those images.
+These results indicates that these results can be used to create a recommender system.
 
 \subsection{Network experiments}
 The network experiments have multiple goals, to analyse the dA network to establish global characteristics of the network, but also to find interesting sub-networks of artists and artworks which are of particular interest to investigate.
