@@ -116,9 +116,9 @@ sick
 Studied & wrote networks section<br>
 and Appendix
 
-= TODO =
-edit, results
-
+= Mon 27-06-2010 = 
+wrote networks experiments
+rewrote introduction
 
 
 
