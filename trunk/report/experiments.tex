@@ -1,3 +1,63 @@
+\subsection{Network experiments}
+The network experiments have multiple goals, to analyse the dA network to establish global characteristics of the network, but also to find interesting sub-networks of artists and artworks which are of particular interest to investigate.
+
+The dA network consists of 13 million registered users, doing a full analysis of the the whole network was impossible within the scope of the project. Therefore a network of the dA watchers functionality\footnote{a watcher is someone who indicates he likes an artist and would like to receive updates when that artist produces new artwork.} was extracted for all but casual artists, these latter can be destiguished with a $~$, indicating that they do not have a paid membership. This network formed the basis of our network experiments.
+
+From this large network of professional artists three core-networks were extracted using the corefind algorithm, described in Algorithm \ref{alg:findcore}. The three cores correspond to three types of the $degree(j)$ function in that algorithm, namely - in-degree, out-degree and in+out-degree -. This has resulted in a core of artists that are "power-watchers" a core with "popular-watched" artists, and a last a mix of both.
+
+%\begin{table}[htb]
+%    \centering
+ %   \begin{tabular}
+  %      { | l | c | c | c | c | c | c|} 
+ %       \hline
+ %       Network & no. nodes & no. links & avg. node degree & corefind degree $x$ & $L_G$ & $L_{random}$ & $C_G$ & $C_{random}$ \\
+%        \hline
+%	prof. artists & 103'663 & 4'483'023 & 43.25 & & & & & \\
+%         watchers-core & 1'701 & 139'285 & 81.88 & 43 & 2.15 & 1.69 & 0.20 & 0.048\\
+%	watched-core & 1471 & 127'837 & 86.90 & 44 & 2.27 &  1.63 & 0.22 & 0.059\\
+%	mixed-core & 1099 & 166'244 & 151.27 & 185 & 2.14  & 1.40 & 0.20 & 0.140 \\
+ %   \end{tabular}
+ %   \caption{Network statistics}
+ %   \label{netstatistics}
+%\end{table}
+%\subsubsection{results}
+The results of the network experiments are presented in table \ref{tab:netstatistics}, as well as figure \ref{fig:results_core}.  For all networks statistics were extracted, unfortunately for the large professional users network statistics such as the characteristic path length were not possible to compute within the given time period.
+
+\begin{table}[htb]
+    \centering
+    \begin{tabular}
+        { | l | c | c | c | c | c | c|} 
+        \hline
+        Network &  prof.  & watchers & watched & mixed\\
+	            &  artists & core & core & core \\
+        \hline
+	no. nodes $(n)$& 103'663 & 1'701 & 1471 & 1099 \\
+	no. links & 4'483'023 & 139'285 & 127'837  & 166'244 \\
+	avg. degree $(k)$& 43.25 & 81.88 & 86.90 & 151.27 \\
+	corefind $\max x$ & & 43 & 44 & 185\\
+	$L_G$ & & 2.15 & 2.27 & 2.14 \\
+	$L_{random}$ & & 1.69 & 1.63 & 1.40 \\
+	$C_G$ & & 0.20 & 0.22 & 0.20 \\
+	$C_{random}$ & & 0.048 & 0.059 & 0.140 \\
+	\hline
+    \end{tabular}
+    \caption{Network statistics}
+    \label{tab:netstatistics}
+\end{table}
+
+
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=1\linewidth]{img/core.png}
+  \caption{Core networks, the degree of watching versus being watched.  The green dots represent the whole professional network, while the blue represends the watchers-core, red the watched and pink the mixed core, the last subfigure shows the power-law behavior of the degree distributions.}
+  \label{fig:results_core}
+\end{figure}
+
+\paragraph{discussion}
+As described in section \ref{proposed}.\ref{proposed_networks}, a network can be considered small-world when $L_G\approx L_{random}$ and $C_G \gg C_{random}$. All core networks have a clustering coefficient larger than a comparable random network, though the mixed core is close to the random network. The characteristic path lengths are longer than their random network equivalents. This is most likely due to the relatively small size of the networks, the paths are still significantly smaller than $L_{lattice}=\frac{n}{2k}$. We therefore conclude that the core's of dA can be considered small-world networks.  
+
+
+
 \subsection{Image experiments}
 For the image experiments we collected our dataset by downloading the complete galleries from around 30 artists.
 Those artists were selected from the daily deviations of a random day and includes both premium and non premium members.
@@ -5,6 +65,45 @@ In total we downloaded around 5000 images.
 For each image we also stored the category information.
 The dataset is unbalanced since some artists only have around 50 images, while other artists have over 500 images.
 The top five categories are listed in table \ref{datasetstats}.
+
+
+\begin{table}[htb]
+    \centering
+    \begin{tabular}
+        { | l | c | l | c|} 
+        \hline
+        Name & count & Name & count \\
+        \hline
+    Craniata &  61 & K1lgore & 63 \\
+    Kitsunebaka91 & 272  & Knuxtiger4 & 193 \\
+    LALAax & 82  & Mallimaakari & 151 \\
+    Mentosik8 & 110 & NEDxfullMOon & 116 \\
+    One-Vox & 74 & Pierrebfoto & 188 \\
+    Red-Priest-Usada & 132 & Skarbog & 229 \\
+    Swezzels & 9 & Udodelig & 54 \\
+    UdonNodu & 38 & WarrenLouw & 51 \\
+    catluvr2 & 793 & erroid & 146 \\
+    fediaFedia & 303 & gsphoto & 661 \\
+    iakobos & 47 & kamilsmala & 39 \\
+    miss-mosh & 307 & nyctopterus & 68 \\
+    omega300m & 483 & sekcyjny & 55 \\
+    stereoflow & 166 & sujawoto & 33 \\
+    wirestyle & 143 & woekan & 49 \\
+    zihnisinir & 177 \\
+
+        \hline 
+    \end{tabular}
+    \caption{Dataset artist statistics}
+    \label{datasetstats2}
+\end{table}
+
+\begin{figure}[htb]
+%  \centering
+  \includegraphics[width=1\linewidth]{img/datasetAvg.png}
+  \caption{mean image per artist, left to right, top to bottom, in order of table \ref{datasetstats2}: Craniata, K1lgore, Kitsunebaka91, ..., zihnisinir }
+  \label{fig:avgDataset}
+\end{figure}
+
 
 \begin{table}[htb]
     \centering
@@ -37,7 +136,7 @@ The classifiers were trained on a train set which consists of 70\% of the entire
 Training was done with a 5 fold cross-validation and the performance of each classifier can be computed by calculating the average of the $F_1$-measure gathered from all folds.
 Because this is an orientation experiment, no test set was incorporated in this experiment.
 
-\subsubsection{Experiment 1: Results}
+%\subsubsection{Experiment 1: Results}
 
 %\begin{table*}
 %    \centering
@@ -165,7 +264,7 @@ For this experiment the kNN, Naive Bayes, Nearest Mean and the SVM classifiers w
 
 For every artist pair the $F_1$-measure is calculated on the test set to evaluate the performance of the classifier separating those artists.
 
-\subsubsection{Experiment 2: Results}
+%\subsubsection{Experiment 2: Results}
 
 \begin{table}[htb]
     \centering
@@ -245,60 +344,3 @@ Eventhough \textit{Kitsunebaka91} was seperable from most other artists, pairing
 Inspecting the images of \textit{Knuxtiger4} showed that the artist mostly contained images that were drawings on a white background similar to that of \textit{Kitsunebaka91}.
 Therefore it is not surprising that the score for that pair was lower than the average because the classifier could not seperate those images.
 These results indicates that these results can be used to create a recommender system.
-
-\subsection{Network experiments}
-The network experiments have multiple goals, to analyse the dA network to establish global characteristics of the network, but also to find interesting sub-networks of artists and artworks which are of particular interest to investigate.
-
-The dA network consists of 13 million registered users, doing a full analysis of the the whole network was impossible within the scope of the project. Therefore a network of the dA watchers functionality\footnote{a watcher is someone who indicates he likes an artist and would like to receive updates when that artist produces new artwork.} was extracted for all but casual artists, these latter can be destiguished with a $~$, indicating that they do not have a paid membership. This network formed the basis of our network experiments.
-
-From this large network of professional artists three core-networks were extracted using the corefind algorithm, described in Algorithm \ref{alg:findcore}. The three cores correspond to three types of the $degree(j)$ function in that algorithm, namely - in-degree, out-degree and in+out-degree -. This has resulted in a core of artists that are "power-watchers" a core with "popular-watched" artists, and a last a mix of both.
-
-%\begin{table}[htb]
-%    \centering
- %   \begin{tabular}
-  %      { | l | c | c | c | c | c | c|} 
- %       \hline
- %       Network & no. nodes & no. links & avg. node degree & corefind degree $x$ & $L_G$ & $L_{random}$ & $C_G$ & $C_{random}$ \\
-%        \hline
-%	prof. artists & 103'663 & 4'483'023 & 43.25 & & & & & \\
-%         watchers-core & 1'701 & 139'285 & 81.88 & 43 & 2.15 & 1.69 & 0.20 & 0.048\\
-%	watched-core & 1471 & 127'837 & 86.90 & 44 & 2.27 &  1.63 & 0.22 & 0.059\\
-%	mixed-core & 1099 & 166'244 & 151.27 & 185 & 2.14  & 1.40 & 0.20 & 0.140 \\
- %   \end{tabular}
- %   \caption{Network statistics}
- %   \label{netstatistics}
-%\end{table}
-\subsubsection{results}
-The results of the network experiments are presented in table \ref{tab:netstatistics}, as well as figure \ref{fig:results_core}.  For all networks statistics were extracted, unfortunately for the large professional users network statistics such as the characteristic path length were not possible to compute within the given time period.
-
-\begin{table}[htb]
-    \centering
-    \begin{tabular}
-        { | l | c | c | c | c | c | c|} 
-        \hline
-        Network &  prof.  & watchers & watched & mixed\\
-	            &  artists & core & core & core \\
-        \hline
-	no. nodes $(n)$& 103'663 & 1'701 & 1471 & 1099 \\
-	no. links & 4'483'023 & 139'285 & 127'837  & 166'244 \\
-	avg. degree $(k)$& 43.25 & 81.88 & 86.90 & 151.27 \\
-	corefind $\max x$ & & 43 & 44 & 185\\
-	$L_G$ & & 2.15 & 2.27 & 2.14 \\
-	$L_{random}$ & & 1.69 & 1.63 & 1.40 \\
-	$C_G$ & & 0.20 & 0.22 & 0.20 \\
-	$C_{random}$ & & 0.048 & 0.059 & 0.140 \\
-	\hline
-    \end{tabular}
-    \caption{Network statistics}
-    \label{tab:netstatistics}
-\end{table}
-
-
-\begin{figure}[htb]
-  \centering
-  \includegraphics[width=1\linewidth]{img/core.png}
-  \caption{Core networks, the degree of watching versus being watched.  The green dots represent the whole professional network, while the blue represends the watchers-core, red the watched and pink the mixed core, the last subfigure shows the power-law behavior of the degree distributions.}
-  \label{fig:results_core}
-\end{figure}
-\subsubsection{discussion}
-As described in section \ref{proposed}.\ref{proposed_networks}, a network can be considered small-world when $L_G\approx L_{random}$ and $C_G \gg C_{random}$. All core networks have a clustering coefficient larger than a comparable random network, though the mixed core is close to the random network. The characteristic path lengths are longer than their random network equivalents. This is most likely due to the relatively small size of the networks, the paths are still significantly smaller than $L_{lattice}=\frac{n}{2k}$. We therefore conclude that the core's of dA can be considered small-world networks.  
