@@ -7,7 +7,7 @@ Three network models of particular relevance for this project are the small-worl
 
 Coloquially explained in terms of my social network, a large(close to 1 ) cluster coefficient means that many of my friends know each other. A low characteristic path length means that I am connected to anyone on the world through small friends-of-friends chains.
 
-Formally, let $G=(V, E)$ be a graph, where $V$ is a set of vertices, and $E$ a set of edges between vertices in $V$, here $e_{ij}$ denotes the edge connecting $i$ and $j$.  The \textit{neighborhood} of $v_i$, $$N_i:=\{v_j|e_{ij}\in E \lor e_{ji}\in E\}.$$ The \textit{degree} of vertex $v_i$, $k_i:=|N_i|$ is the number of vertices in the neighborhood of $v_i$. The directional clustering coefficient for $v_i$can now be defined as:
+Formally, let $G=(V, E)$ be a graph, where $V$ is a set of vertices, and $E$ a set of edges between vertices in $V$, here $e_{ij}$ denotes the edge connecting $i$ and $j$.  The \textit{out-neighborhood} of $v_i$, $N_i^{out}:=\{v_j|e_{ij}\in E\}$, the \textit{in-neighborhood} $N_i^{in}:=\{v_j|e_{ji}\in E\}$. The \textit{neighborhood} of $v_i$, $N_i:=N_i^{out}\cup N_i^{in}$. The \textit{degree} of vertex $v_i$, $k_i:=|N_i|$ is the number of vertices in the neighborhood of $v_i$, this can similarly be defined for in and out neigborhoods. The directional clustering coefficient for $v_i$ with $k_i>1$ can now be defined as:
 $$C_i :=\frac{|\{e_{jk}\}|}{k_i(k_i-1)},$$
 where $v_j,v_k\in N_i$ and $e_{jk}\in E$, let $n=|V|$ denote the number vertices the \textit{directional clustering coefficient} for $G$ is defined as:
 $$C_G:=\frac{\sum_{i\in V} C_i}{n}.$$
@@ -18,7 +18,7 @@ Note finding all shortest paths can be performed using the Floyd-Warshall algori
 For networks where $n\gg k\gg ln(n) \gg1$, the ring lattice will have $L_{lattice}\approx\frac{n}{2k}$ and $C_{lattice}\approx\frac{3}{4}$.
 A large random network  $ L_{random}\approx\frac{\ln(n)}{\ln(k)}$ and $C_{random}=\frac{k}{n}$. A network is considered small world when $L_G\approx L_{random}$ and $C_G \gg C_{random}$
 
-To find the core of most connected components we recursively remove all vertices from our network of degree $x$, starting at $1$. If there are vertices left in the network we repeat this with $x+1$. Once an empty network is obtained the previous network is deemed the core, because  recursively removing nodes of heigher degree will inevitably lead to an empty network. 
+To find the core of most connected vertices we use the corefind algorithm, showin in Algorithm \ref{alg:findcore}.This algorithm recursively removes all vertices of degree $x$ from the network, starting at $1$. If there are vertices left in the network we repeat this with $x+1$. Once an empty network is obtained the previous network is deemed the core, because recursively removing nodes of heigher degree will inevitably lead to an empty network. The choice of the $degree(j)$ - standard, in-degree, out-degree,  or in+out-degree - facilitates in finding cores with different characteristics.
 
 \algsetup{indent=2em}
 \newcommand{\FindCore}{\ensuremath{\mbox{\sc FindCore}}}
@@ -26,14 +26,14 @@ To find the core of most connected components we recursively remove all vertices
 \caption{$\FindCore(Network)$}\label{alg:findcore}
 \begin{algorithmic}
 \REQUIRE A Network $G=(V,E)$.
-\ENSURE The Core of Graph $G$ and the degree $x$ at which the core is found.
+\ENSURE The Core of Network $G$ and the degree $x$ at which the core is found.
 \medskip
 \STATE $x\gets 1$
 \WHILE {$|V| > 0$}
-	\STATE $remove\gets \{j\in V | k_j<x\}$
+	
 	\STATE $Gprevious \gets G$
-	\WHILE {$|remove| > 0$}
-		\STATE $G\gets removeNodes(G, remove)$ 
+	\WHILE {$|\{j\in V | degree(j)<x\}| > 0$}
+		\STATE $G\gets removeNodes(G, \{j\in V | degree(j)<x\})$ 
 	\ENDWHILE
 	\STATE $i \gets x+1$
 \ENDWHILE
