@@ -31,7 +31,7 @@ For the network information collection the friends pages
 of the users are parsed. No RSS XML files are provided by deviantART for this
 information, instead the HTML pages were parsed.
 
-%\subsection{Feature extraction}
+
 %When working with images, it is usually not possible to work with the raw image data (the pixel values). The reason for this is the high dimensionality of images, which can easily exist in a space of more than a million dimensions. By extracting features from images, they can be represented in a lower dimensional feature-space.  This feature extraction process has several advantages:
 %\begin{itemize}
 %\item The data becomes computationally easier to work with due to the smaller number of dimensions
@@ -96,13 +96,14 @@ information, instead the HTML pages were parsed.
 %The toolkit has been used to create the saliency maps and the intermediate maps (color, intensity, orientation and skin). Features that have been extracted from those maps are: \textit{Shannon entropy} of the five maps, \textit{Standard deviation} of the distribution of attention in the saliency map, \textit{Location} of the most salient points (defined as the centers of the most salient regions) and \textit{Skin intensity} of the skin map. Skin is not a default channel in the Itti's model, but it has been found out to be really interesting and useful in devianART to distinguish artists and artworks, where there is a huge presence of photographer that create nude art. 
 
 \subsection{Feature extraction}
-The feature extraction is implemented in the MATLAB programming language. Part of the feature calculations were done using MATLAB-compiled openCV [REF] code to speed up the feature extraction. openCV was used for color-space transformations, edge, corner and face-detection.
+The feature extraction is implemented in the MATLAB programming language. Part of the statistical feature calculations were done using MATLAB-compiled openCV [REF] code to speed up the feature extraction. openCV was used for color-space transformations, edge,corner and face-detection.
+
+As it has already been explained in section \ref{proposed-cognitive}, the research focused also on the extraction of some cognitive-inspired features. First a saliency map and 4 conspicuity maps (color, intensity, orientation and skin) are computed and then the features are extracted. To create the maps it has been used the Itti's model \cite{Itti_model} due to its low computentional time and the existense of a free toolkit \footnote{http://www.saliencytoolbox.net/} made by Dirk Walther. Both the toolkit and the code to extract the features are written in Matlab. 
 
 The XML-processing was done using an open-source XML-toolkit for MATLAB [ref to link: http://www.mathworks.com/matlabcentral/fileexchange/4278] 
+\cite{geusebroek2005six}
 
-For Weibull fitting, a toolkit based on the work of Geusebroek and Smeulders \cite{geusebroek2005six} was used. 
 
-Finally, all the saliency-inspired features were calculated using components of the saliency toolbox created by blabla[REF]
 
 \subsection{Classification}
 An important aspect of analyzing images is to determine what makes them distinct.
