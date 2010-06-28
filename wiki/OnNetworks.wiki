@@ -29,7 +29,14 @@ Fraction of reciprocal links: 17.65% <br>
 Average Clustering Coefficient: 0.087% <br>
 
 max recursive out degree 44, 1471 nodes <br>
+Number of unreachable pairs: 8820<br>
+Average distance among reachable pairs: 2.27161<br>
 max recursive in degree 43, 1701 nodes <br>
+Number of unreachable pairs: 360400 <br>
+Average distance among reachable pairs: 2.15401 <br>
+Number of unreachable pairs: 97299 <br>
+Average distance among reachable pairs: 2.13630 <br>
+
 max recursive all degree 185, 1099 nodes <br>
 
 CoOccurences in in,out, all core <br>
