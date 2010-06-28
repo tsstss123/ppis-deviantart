@@ -95,6 +95,15 @@ information, instead the HTML pages were parsed.
 %The model work as follow: an input image is decomposed through several pre-attentive feature detection mechanisms which operate in parallel channels over the entire visual scene, and four conspicuity maps (color, orientation, intensity and skin) are created. After few different intermediate steps, the model finally combines the four conspicuity maps into a unique saliency map. 
 %The toolkit has been used to create the saliency maps and the intermediate maps (color, intensity, orientation and skin). Features that have been extracted from those maps are: \textit{Shannon entropy} of the five maps, \textit{Standard deviation} of the distribution of attention in the saliency map, \textit{Location} of the most salient points (defined as the centers of the most salient regions) and \textit{Skin intensity} of the skin map. Skin is not a default channel in the Itti's model, but it has been found out to be really interesting and useful in devianART to distinguish artists and artworks, where there is a huge presence of photographer that create nude art. 
 
+\subsection{Feature extraction}
+The feature extraction is implemented in the MATLAB programming language. Part of the feature calculations were done using MATLAB-compiled openCV [REF] code to speed up the feature extraction. openCV was used for color-space transformations, edge,corner and face-detection.
+
+The XML-processing was done using an open-source XML-toolkit for MATLAB [ref to link: http://www.mathworks.com/matlabcentral/fileexchange/4278] 
+
+\cite{geusebroek2005six}
+
+
+
 \subsection{Classification}
 An important aspect of analyzing images is to determine what makes them distinct.
 In this tookit, classification is used to compare image sets and extract the image features that best separates them.
