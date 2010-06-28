@@ -105,8 +105,10 @@ The top five categories are listed in table \ref{datasetstats}.
 \end{figure}
 
 
-\begin{table}[htb]
-    \centering
+\begin{table}[ht]
+	\centering
+	\subtable[]{
+	
     \begin{tabular}
         { | l | c | } 
         \hline
@@ -119,6 +121,27 @@ The top five categories are listed in table \ref{datasetstats}.
         fanart & 239 \\ 
         \hline 
     \end{tabular}
+	}
+	
+	\subtable[]{
+	\begin{tabular} { |l|c| }
+		\hline
+		Users & 31 \\
+		\hline
+		Image count & ~5000 \\
+		\hline 
+		Average image width & ... \\
+		\hline
+		Average image height & ... \\
+		\hline
+		Total Size & 1.4gb \\
+		\hline
+		Avg image size & over 9000kb \\
+		\hline
+		Avg image count & 100 \\
+		\hline
+	\end{tabular}
+	}
     \caption{Dataset category statistics}
     \label{datasetstats}
 \end{table}
