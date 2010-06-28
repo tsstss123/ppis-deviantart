@@ -113,6 +113,13 @@ Wrote Previous work, working through network references <br>
 sick
 
 = Sun 26-06-2010 = 
+Studied & wrote networks section<br>
+and Appendix
+
+= TODO =
+edit, results
+
+
 
 
 first few pca eigenvalues(out of 156)
