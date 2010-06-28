@@ -1,23 +1,9 @@
 \subsection{Toolkit introduction}
 Our toolkit consists out of four components and each component is replacable.
-
-The first component is the data collections and the expected output are the galleries
-for each artist. For each image in the galleries we store a XML file containing image information.
-
-The second component is the feature extraction. This component reads in the image XML files from 
-the previous step and updates those files with the feature values.
-
-The features can then be used in the visualization component or in the classification component.
-In the visualization component the features can be compared by manual inspectation. The classification
-component evaluates the performance of the features and outputs again XML files. The output of the
-classification can also be loaded in the visualization component.
-
-The data collection, feature extraction and classifcation are all done offline, while the visualization 
-can be done both online as offline. For a complete overview see figure \ref{fig:components}.
-
-Online/Offline
-
-image2image, gal2gal, cat2cat
+Each component writes the output away to a XML file, like image information,
+features and classification performance. The first three components are all executed
+"offline" (precalculated), while the visualization component allows "online" interaction with the 
+images, features and classification results. For a complete overview see figure \ref{fig:components}.
 
 \begin{figure}[htb]
   \centering
@@ -28,9 +14,6 @@ image2image, gal2gal, cat2cat
 
 % toolboxes used
 \subsection{Data collection}
-% xml format
-% network
-
 The data collection is the first component in our toolkit.
 It deals with downloading information and galleries from the deviantART website,
 although the component can be replaced to deal with different art or picture related community websites. 
