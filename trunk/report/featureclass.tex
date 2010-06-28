@@ -75,61 +75,105 @@ Til now the saliency map has been used as information channel in scene understan
 %- SAY SOMETHING ABOUT FEATURE SELECTION AND HOW WE DO IT! (refer to the description above!! remember feature extraction and classification are in the SAME section and they work together)
 %- HOPE THOSE INFORMATION CAN BE USEFUL! ;)
 
+The most important aspect in this project is to describe images, artists or categories using the features that were extracted.
+In this approach, classifiers are used to give a performance score to a set of features that is used to either describe an artist or a category.
 
+\paragraph{Data normalization}
 
-An important aspect of analyzing images is to determine what makes them distinct.
-In this research classification has been used to compare images, galleries and artists, and to find the best features that best separate two classes.
+Classifiers improve their classification performance when the dataset that is used is normalized.
+In this case every extracted feature in the dataset has a different value range, it is important to translate all the different ranges to one defined value range so that the data is normalized.
 
-This knowledge can be used to describe the art style of an artist or even determine if there is an artist that uses an unique style.
-Also classification can be extended to other category level to determine what the image features of a category are.
+\begin{equation}
+\label{minmax}
+y_n=\frac{x_n - \max(x_n)}{\max(x_n)-\min(x_n)} \bullet (B-A)
+\end{equation}
 
-\paragraph{Pre-processing}
-Before classifiers can be used to find image features, several pre-processing steps are required on the dataset.
-
-Naturally, functions that read in XML files containing the feature values, convert it to a dataset and splitting it into a train and test set are incorporated.
-Also Min/Max normalization can be used on the dataset.
-Normalization is important because the features that were extracted all uses different ranges of values, by scaling these values to the same range(e.g. [-0.5,0.5]), classifiers are more effective in their task to find image features that separates a class from the other classes.
-
-Furthermore filtering on classes and features can be performed on the dataset, this is to provide flexibility in a way that the user can do classification on just a few interesting classes or features instead of everything that is inside the dataset.
+Equation \ref{minmax} shows the Min/Max normalization that was used to normalize the data in our approach.
+In this equation $A$ and $B$ represents the range [$A$,$B$] where the values are normalized to.
+$x$ represents the unnormalized values of feature $n$ whereas $y$ represents the normalized values of feature $n$.
 
 \paragraph{Classifiers}
-The classification part of the toolkit is implemented using the Matlab environment. In total there are four different classifiers that be called upon.
+In our approach, four different classifiers were incorporated to calculate the performance of a set of features.
+All classifiers were chosen based on their performance in earlier work except for the Nearest Mean classifier.
 
-\begin{itemize}
-	\item \textbf{k-Nearest Neighbour}: It classifies images based on the closest training examples.
-	This classifier uses a parameter $k$ that can be optimized. 
-	The parameter indicates how many of the training examples the classifier should compare the new image with before it can classify to what class an image belongs to.
-	\item \textbf{Naive Bayes}: It calculates the probability of a new image belonging to a class.
-	This classifier takes every feature seperately and divide it into $N$ bins, it will then count the number of training examples for every class in all the bins and uses this to compute the posterior probability.
-	$N$ is used here as a parameter that can be optimized.
-	\item \textbf{Nearest Mean}: It calculates the mean value of a class and classifies new images based on how close it lays to the mean of a class.
-	\item \textbf{Support Vector Machine}: It creates a model based on a set of training examples which belongs to two classes.
-	The SVM tries to divide the training examples by a clear gap and then predicts the class of a new example based on which side of the gap it lays.
-\end{itemize}
+The \textit{k-Nearest Neighbour} \ref{korn1996fast} classifies an artwork based on the training examples that are close to it.
+The euclidian distance is used here to measure how far a training example is located from the artwork.
 
-The classifiers were implemented using PRTools \cite{Duin00prtoolsversion} and libSVM \cite{chang2001libsvm}, which are existing implementations of the classifiers.
+The \textit{Naive Bayes} \ref{keren2003recognizing} first divides the value range for each feature in $n$ bins.
+It then counts the frequency of a training example for each of the classes in every bin and uses that to classify an artwork belonging to the class that gives the maximum posterior probability.
+
+The \textit{Nearest Mean} classifies an artwork based on the euclidian distance to the mean of a class.
+The classifier was chosen because it might give a high performance for when the right features are used to describe a class.
+This is because the right features of a class will make the artwork of that class cluster.
+
+At last the \textit{Support Vector Machine} \ref{chapelle1999svms} classifies an artwork using a model created with training examples.
+The model represents the training examples in a way that separates the two classes by a clear gap that is as wide as possible.
+The artwork is classified by the model based on which side of the gap they fall on.
 
 \paragraph{Feature Selection}
-Whenever a person wants to find the image features that best separates two classes, that person wants to have a small list containing image features that does that.
-Therefore a feature selection algorithm is needed to make sure that the classifier will only choose a few features(e.g. 1, 2, 3) instead of a whole list of features which does not say anything interesting.
+The classifiers are used in our approach to compute the performance score of a set of features.
+On the other hand a feature selection algorithm is used to extract a set of features out of all the features that were pre-computed.
+This is important because we want to have the smallest set of features to describe a class.
 
-Features were selected by using the \textit{Sequential forward feature selection} \cite{pudil1994floating}.
-It selects features by first choosing the most informative feature and then iteratively add the next most informative feature to it.
-Selecting the most informative feature is done using the inter-intra criterion \cite{pekalska2005pairwise}.
-This criterion is computed based on the average dispersion of a class around its mean and the distance of mean to the overall average value of the dataset.
-Therefore the features that are selected are the features that clusters the class while eliminating the overlap between that cluster and the other classes.
+The feature selection in our approach starts by selecting the most informative feature and for each step iteratively adds the next most informative feature to it in a greedy fashion.
 
-\paragraph{Evaluation Measures}
-For classification \textit{precision} and \textit{recall} are used as evaluation measures.
-The precision is computed by measuring how many percent of the examples were correctly classified as positive as opposed to how many of all examples were classified as positive.
-The recall is computed by measuring how many percent of the positive examples were indeed classified as positive.
-The total performance score of the classifier can be calculated using the $F_1-measure$.
-The $F_1$-measure is the weighted average of the precision and recall scores where they are both weighted as equally importance.
-For our toolkit a high $F_1$-measure means that the features that were used to classify an artist are reliable features to separate the artist from the other artists in the set.
+\begin{equation}
+\label{featureselect}
+F := F \cup f, where f: \max{J(f_i)} \wedge f_i \epsilon F
+\end{equation}
 
-\paragraph{Parameter Optimization}
-Another important aspect of classification is to do parameter optimization. 
-Optimization of parameters will lead to better classification results because the classifier will be more fine tuned to the type of task that lies ahead. 
-The way the optimization is presented in this toolkit is by cross-validation on the train set.
-For every parameter in the classifier cross-validation is performed on the trainset to compute the F-measure score.
-The average F-measure score of every fold is used as an evaluation measure to indicate how well the classifier performs.
+Formula \ref{featureselect} is a formally written representation of this algorithm.
+In this formula, $F$ represents the entire feature set, $f$ one single feature and $J$ the criterion that is used to define if a feature is informative.
+
+The inter-intra distance is used as the criterion to define if a feature is informative.
+This criterion works by measuring the inner-scatter of a class over a feature and measures it against the scatter of that class around the average of the feature.
+For a two class problem like in our approach the inter-intra distance can be written as:
+
+\begin{equation}
+\label{interintra}
+J = \frac{|m_1-m_2|}{\sqrt(s^2_1 + s^2_2)}
+\end{equation}
+
+In this equation $m_1$ and $m_2$ are the average mean of class 1 and class 2, $s_1$ and $s_2$ are the standard deviations of those classes.
+This equation is also equivalent to the Fisher criterion \ref{malina1981extended}.
+
+\paragraph{Performance measures}
+A performance measure is needed to assign a performance score to a set of features.
+Because our approach requires the need of classifiers, it is arbitrary that the performance measure is the same as the evaluation measure of the classifier.
+
+Every prediction of the classifier is labeled into one of the following four types,
+depending on whether or not the classification was correct:
+
+\begin{tabular}{r|c|c|}
+\multicolumn{1}{r}{}
+ &  \multicolumn{1}{c}{predicted positive}
+ & \multicolumn{1}{c}{predicted negative} \\
+\cline{2-3}
+positive & \textbf{tp} (true positive) & \textbf{fp} (false positive) \\
+\cline{2-3}
+negative & \textbf{fn} (false negative) & \textbf{tn} (true negative) \\
+\cline{2-3}
+\end{tabular}
+
+With these standard classification measures two more evaluation measures can be computed from it.
+These are the precision and the recall.
+The $precision$ is defined as the number of relevant artwork correctly classified as positive divided by the total number of positive classified artwork.
+
+\begin{equation}
+Precision = \frac{tp}{tp + fp}
+\end{equation}
+
+The $recall$ is defined as the number of relevant artwork correctly classified as positive divided by the total number of positive examples in the dataset.
+
+\begin{equation}
+Recall = \frac{tp}{tp + fn}
+\end{equation}
+
+The precision and recall are measures that are used to compute the $F-measure$.
+This measure is the weighted harmonic mean of the precision and recall and can be defined as:
+
+\begin{equation}
+F_\beta = \frac{(1+\beta)^2 (Precision * Recall)}{(\beta ^2 * Precision) + Recall}
+\end{equation}
+
+In our case we use $\beta$=1 which means that the precision and recall are evenly weighted.
