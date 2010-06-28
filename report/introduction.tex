@@ -1,14 +1,14 @@
-\subsection{deviantART}
-\subsection{Why interesting as a data source}
-\subsection{Research questions}
-\subsection{Solution - framework}
-\subsection{Overview of the paper}
-
-deviantART\footnote{\url{http://www.deviantart.com}} (commonly abbreviated as \textit{dA}) is one of the largest online community showcasing various forms of user-made artwork. The website was launched in 2000 and has over 13 million registered members.
+deviantART\footnote{\url{http://www.deviantart.com}} (commonly abbreviated as \textit{dA}) is one of the largest online community showcasing various forms of user-made artwork.
+The website was launched in 2000 and has over 13 million registered members.
 The platform allows emerging and established artists to exhibit, promote, and share their works within a peer community dedicated to the arts. 
-The site features a wide variety of creative expressions including animations, photographs, web skins, films, and literature, which are categorised within the customisable dA gallery according to a comprehensive structure. 
-It is an highly interactive and dynamic community where members have their own profile with their galleries and images and they can explore other users profiles, comment other members artworks and follow them. Moreover, members are able to form communities of interest, link other artworks, and take inspirations.
-The dataset deviantART proposes is very rich and full of interesting information. Therefor the research proposed in this paper focus on the analysis of some aspects of this community. 
+%The site features a wide variety of creative expressions including animations, photographs, web skins, films, and literature.
+All artwork is organized according to a comprehensive category structure, including photographs, drawings, manga and short animations.
+dA is an highly interactive and dynamic community where artists have their own profile containing their artwork.
+Artists can explore the profiles of other artists and leave comments on their artwork.
+Each artist can add other artists to the "friends list" to automatically receive updates (e.g. newly added artwork) from these artists.
+%Moreover, artists are able to form communities of interest, link other artworks, and take inspirations.
+The dataset deviantART proposes is very rich and full of interesting information.
+%Therefor the research proposed in this paper focus on the analysis of some aspects of this community. 
 
 %It provides users, also called deviants, to share galleries and images.  When someone visits such a gallery a featured page will be shown. Furthermore the user is provided with options to browse the gallery or visit a sub gallery defined by the user. There are various types of members: normal members, premium members, banned members, staff members, etc. Premium members have extra benefits like no ads, gallery customization, beta-test new site features and more.
 % Newly added art is submitted to the constantly-changing \textit{Newest} listing, where it is viewable by the general public. 
@@ -16,10 +16,11 @@ The dataset deviantART proposes is very rich and full of interesting information
 % Through the publicity process, some pieces become \textit{Popular}, and are added to a ranked list of \textit{Most Popular} in the last 8 hours, 1 day, 3 days, 1 week, 1 month, and \textit{All time}.
 % During their browsing, members are also allowed to comment on one anothers art and on their profiles, making for a highly interactive and dynamic community.
 
-[social aspects/networks] Bart B.
+%[social aspects/networks] Bart B.
 
-[why relevant, problem with current research] Research questions\\
 
+This study is meant as \textbf{explorative research} on the dA community, trying to provide answers on art-related questions.
+We proposed multiple art-related research questions that form the basis for our explorative research.
 \begin{itemize}
 \item Can we visualize important aspects of deviantART?
 \item Can artists and/or styles be distinguished?
@@ -28,4 +29,7 @@ The dataset deviantART proposes is very rich and full of interesting information
 \item Are there none-artists interesting for deviantART?
 \end{itemize}
 
-[goals - framework]
+In order to explore dA and answer the research questions we have developed a toolkit.
+This toolkit provides functionality to capture a dataset from the dA website and annotate the images with state of the art image features.
+These images features are used to cluster images using different classifiers.
+The visualization that is part of the toolkit is used to explore and analyze the dataset.
