@@ -1,9 +1,6 @@
-\subsubsection{Previous work}
+Computer vision is an important and maturing engineering science. It underpins an increasing variety of applications that require the acquisition, analysis, and interpretation of visual information.
 
-
-\subsubsection{Proposed approach}
-
-\paragraph{Feature extraction}
+\subsubsection{Feature extraction}
 When working with images, it is usually not possible to work with the raw image data (the pixel values). The reason for this is the high dimensionality of images, which can easily exist in a space of more than a million dimensions. By extracting features from images, they can be represented in a lower dimensional feature-space.  This feature extraction process has several advantages:
 \begin{itemize}
 \item The data becomes computationally easier to work with due to the smaller number of dimensions
@@ -12,8 +9,7 @@ When working with images, it is usually not possible to work with the raw image 
 \item Features can have an intuitive basis, which makes it easier for non-computer-scientists to analyze (sets of) images
 \end{itemize}
 
-% Computer vision is an important and maturing engineering science. It underpins an increasing variety of applications that require the acquisition, analysis, and interpretation of visual information.
-In the extraction of image features, a distinction was made between low-level statistical features and higher level cognitive-based features....
+In the extraction of image features, a distinction was made between low-level statistical features and higher level cognitive-based features.
 
 \paragraph{Statistical features}
 As statistical features, many relatively simple low-level features were extracted from the images.
@@ -70,8 +66,20 @@ Til now the saliency map has been used as information channel in scene understan
 
 
 \subsubsection{Classification}
+
+REVIEW THIS PART!!!
+- FOCUS ON DESCRIBING WHY WE NEED TO CLASSIFY IN OUR PROJECT
+- WHICH CLASSIFIER WE USE AND FOR WHAT REASONS (WE CAN REFER TO SOME PAPERS ////////////////////////// THAT SHOW RESULTS IN VISUAL CLASSIFICATION)
+- EXPLAIN THE EVALUATION MEASURE USED (introduce precision and recall, but they are intermediate measure used to compute the F-Measure!!! P&R never appear in the final results)
+- INTRODUCE THE IDEA OF A DATASET WITHOUT GROUND TRUTH AND WITH THE NEED OF USING 5-FOLD CROSS VALIDATION (check the paper I sent you! ;) )
+- SAY SOMETHING ABOUT FEATURE SELECTION AND HOW WE DO IT! (refer to the description above!! remember feature extraction and classification are in the SAME section and they work together)
+- HOPE THOSE INFORMATION CAN BE USEFUL! ;)
+
+
+
 An important aspect of analyzing images is to determine what makes them distinct.
-In this tookit, classification is used to compare image sets and extract the image features that best separates them.
+In this research classification has been used to compare images, galleries and artists, and to find the best features that best separate two classes.
+
 This knowledge can be used to describe the art style of an artist or even determine if there is an artist that uses an unique style.
 Also classification can be extended to other category level to determine what the image features of a category are.
 
@@ -103,7 +111,7 @@ The classifiers were implemented using PRTools \cite{Duin00prtoolsversion} and l
 
 \paragraph{Feature Selection}
 Whenever a person wants to find the image features that best separates two classes, that person wants to have a small list containing image features that does that.
-Therefore a feature selection algorithm is needed to make sure that the classifier will only choose a few features(e.g. 1,2,3) instead of a whole list of features which does not say anything interesting.
+Therefore a feature selection algorithm is needed to make sure that the classifier will only choose a few features(e.g. 1, 2, 3) instead of a whole list of features which does not say anything interesting.
 
 Features were selected by using the \textit{Sequential forward feature selection} \cite{pudil1994floating}.
 It selects features by first choosing the most informative feature and then iteratively add the next most informative feature to it.
@@ -112,7 +120,7 @@ This criterion is computed based on the average dispersion of a class around its
 Therefore the features that are selected are the features that clusters the class while eliminating the overlap between that cluster and the other classes.
 
 \paragraph{Evaluation Measures}
-For classification the \textit{precision} and \textit{recall} are used as evaluation measures for how well a classifier performs.
+For classification \textit{precision} and \textit{recall} are used as evaluation measures.
 The precision is computed by measuring how many percent of the examples were correctly classified as positive as opposed to how many of all examples were classified as positive.
 The recall is computed by measuring how many percent of the positive examples were indeed classified as positive.
 The total performance score of the classifier can be calculated using the $F_1-measure$.
@@ -121,7 +129,7 @@ For our toolkit a high $F_1$-measure means that the features that were used to c
 
 \paragraph{Parameter Optimization}
 Another important aspect of classification is to do parameter optimization. 
-Optimization of parameters will lead to better classification results because the classifier is more fine tuned to the type of task that lies ahead. 
+Optimization of parameters will lead to better classification results because the classifier will be more fine tuned to the type of task that lies ahead. 
 The way the optimization is presented in this toolkit is by cross-validation on the train set.
 For every parameter in the classifier cross-validation is performed on the trainset to compute the F-measure score.
 The average F-measure score of every fold is used as an evaluation measure to indicate how well the classifier performs.
