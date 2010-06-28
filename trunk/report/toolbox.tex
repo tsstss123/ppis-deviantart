@@ -5,14 +5,14 @@
   \label{fig:components}
 \end{figure}
 
-Our toolkit consists out of four components and each component is replacable.
-Each component writes the output (e.g. image information and features) to a XML file.
-The first three components are all executed \textit{offline} (precalculated), while the visualization component allows \textit{online} interaction with the images, features and classification results.
-For a complete overview see Fig.~\ref{fig:components}.
+Our toolkit consists out of four replacable components.
+Each component writes its output (e.g. image information and features) to a XML file.
+The first three components are all executed \textit{offline} (pre-calculated), while the visualization component allows \textit{online} interaction with the images, features and classification results.
+Fig.~\ref{fig:components} provides an overview of all components and the data flow between those components.
 
 % toolboxes used
 \subsection{Data collection}
-It deals with downloading information and galleries from the deviantART website and it can easily be replaced to allow the toolkit to be flexible and be able to deal with different art community webpages
+The data collection component deals with downloading information and galleries from the deviantART website and it can easily be replaced to allow the toolkit to be flexible and be able to deal with different art community webpages.
 
 DeviantArt does not provide a web API to download images and therefor the backend links of the galleries to the RSS XML files were followed to access
 the image data. For each image general information such as category, deviantART link and filename are stored, and the full image and 
@@ -182,20 +182,20 @@ The XML-processing was done using an open-source XML-toolkit for MATLAB~\footnot
 % how they work
 % how they operate in the system
 
+
 \subsection{Visualization}
 The final component of the toolkit is the visualization application.
 This visualization is used to present the information that has been gathered by the other components of the toolkit.
 The collected images are used together with the extracted image features (Fig.~\ref{fig:components}) to visualize the dataset.
 This provides an effective way to find patterns in the dataset, analyze classification results and filter information.
 The visualization application combines three different visualization techniques into one application.
-%The large blue, purple and brown buttons in the header of the application are used to switch between these visualization techniques.
 Each visualization technique offers a different look on the dataset.
 
 There are multiple data visualization applications and toolkits~\footnote{Wikiviz \url{http://www.wikiviz.org/wiki/Tools}} that are able to create visualizations out of the box.
 But these applications and toolkits offer only generic displays and interactions, which do not capture the dataset in its full potential.
 This disadvantage convinced us to create our own application.
 The visualization application is written in the Java programming language.
-The open source Processing API \footnote{\url{http://www.processing.org}} is used to draw all three visualizations.
+The open source Processing API \footnote{\url{http://www.processing.org}} is used to draw the visualizations of the application.
 The Processing API contains classes and functions that simplify drawing, animations and interactions in Java.
 Processing was an obvious choice, because it has the right combination of cost, ease of use and speed~\cite{fry08}.
 
@@ -207,11 +207,11 @@ Processing was an obvious choice, because it has the right combination of cost, 
 \end{figure}
 
 Fig.~\ref{fig:visualization_scatter} shows the \textit{scatter plot} visualization technique.
-The scatter plot displays values for two variables, which are image features that has been computed by the \textit{Feature extraction} component.
-The data is displayed as a collection of miniature images.
-Each having the value of one feature determining the position on the horizontal axis and the value of the other feature determining the position on the vertical axis.
+The scatter plot displays values for two variables, which are image features that has been computed by the \textit{feature extraction} component.
+The data is displayed as a collection of thumbnail images.
+Each thumbnail has the value of one feature determining the position on the horizontal axis and the value of the other feature determining the position on the vertical axis.
 The border around each image represents the class (artists or category) to which an image belongs.
-For example, the images with a green border belong to the artist Kitsunebaka91 and the images with a red pink border belong to the artist Woekan.
+For example, the images with a green border belong to the artist \textit{Kitsunebaka91} and the images with a red pink border belong to the artist \textit{Woekan}.
 The user has full control over which classes are displayed in the visualization.
 The users can also control which two features are used as variables on the horizontal and vertical axis of the scatter plot.
 A single image or all the images belonging to one class can be highlighted, making it more easy to recognize patterns.
