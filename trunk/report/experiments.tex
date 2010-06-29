@@ -63,35 +63,10 @@ Those artists were selected from the daily deviations of a random day and includ
 In total we downloaded around 5000 images. 
 For each image we also stored the category information.
 The dataset is unbalanced since some artists only have around 50 images, while other artists have over 500 images.
-The top five categories are listed in table \ref{datasetstats}.
+Some more detailed statistics about the dataset are listed in table \ref{datasetstats}.
 
 
 \begin{table}[htb]
-    \centering
-    \begin{tabular}
-        { | l | c | l | c|} 
-        \hline
-        Name & count & Name & count \\
-        \hline
-    Craniata &  61 & K1lgore & 63 \\
-    Kitsunebaka91 & 272  & Knuxtiger4 & 193 \\
-    LALAax & 82  & Mallimaakari & 151 \\
-    Mentosik8 & 110 & NEDxfullMOon & 116 \\
-    One-Vox & 74 & Pierrebfoto & 188 \\
-    Red-Priest-Usada & 132 & Skarbog & 229 \\
-    Swezzels & 9 & Udodelig & 54 \\
-    UdonNodu & 38 & WarrenLouw & 51 \\
-    catluvr2 & 793 & erroid & 146 \\
-    fediaFedia & 303 & gsphoto & 661 \\
-    iakobos & 47 & kamilsmala & 39 \\
-    miss-mosh & 307 & nyctopterus & 68 \\
-    omega300m & 483 & sekcyjny & 55 \\
-    stereoflow & 166 & sujawoto & 33 \\
-    wirestyle & 143 & woekan & 49 \\
-    zihnisinir & 177 \\
-
-        \hline 
-    \end{tabular}
     \caption{Dataset artist statistics}
     \label{datasetstats2}
 \end{table}
@@ -106,42 +81,69 @@ The top five categories are listed in table \ref{datasetstats}.
 
 \begin{table}[ht]
 	\centering
-	\subtable[]{
-	
-    \begin{tabular}
-        { | l | c | } 
-        \hline
-        Category & count \\
-        \hline
-        photography & 2244 \\ 
-        customization & 906 \\ 
-        traditional & 842 \\ 
-        digitalart & 587 \\ 
-        fanart & 239 \\ 
-        \hline 
-    \end{tabular}
+
+	\subtable[General statistics]{
+		\begin{tabular} { |l|c| }
+			\hline
+			Total Size & 1.4gb \\
+			\hline
+			Users & 31 \\
+			\hline
+			Image count & 5324 \\
+			\hline 
+			Average image width & 671 \\
+			\hline
+			Average image height & 689 \\
+			\hline
+			Average image size & 250kb \\
+			\hline
+			Average image count & 171 \\
+			\hline
+		\end{tabular}
 	}
-	
-	\subtable[]{
-	\begin{tabular} { |l|c| }
-		\hline
-		Total Size & 1.4gb \\
-		\hline
-		Users & 31 \\
-		\hline
-		Image count & 5324 \\
-		\hline 
-		Average image width & 671 \\
-		\hline
-		Average image height & 689 \\
-		\hline
-		Average image size & 250kb \\
-		\hline
-		Average image count & 171 \\
-		\hline
-	\end{tabular}
+
+	\subtable[Artist image statistics]{
+		\begin{tabular}
+		    { | l | c | l | c|} 
+		    \hline
+		    Name & count & Name & count \\
+		    \hline
+		Craniata &  61 & K1lgore & 63 \\
+		Kitsunebaka91 & 272  & Knuxtiger4 & 193 \\
+		LALAax & 82  & Mallimaakari & 151 \\
+		Mentosik8 & 110 & NEDxfullMOon & 116 \\
+		One-Vox & 74 & Pierrebfoto & 188 \\
+		Red-Priest-Usada & 132 & Skarbog & 229 \\
+		Swezzels & 9 & Udodelig & 54 \\
+		UdonNodu & 38 & WarrenLouw & 51 \\
+		catluvr2 & 793 & erroid & 146 \\
+		fediaFedia & 303 & gsphoto & 661 \\
+		iakobos & 47 & kamilsmala & 39 \\
+		miss-mosh & 307 & nyctopterus & 68 \\
+		omega300m & 483 & sekcyjny & 55 \\
+		stereoflow & 166 & sujawoto & 33 \\
+		wirestyle & 143 & woekan & 49 \\
+		zihnisinir & 177 \\
+
+		    \hline 
+		\end{tabular}
 	}
-    \caption{Dataset category statistics}
+
+	\subtable[Category statistics]{
+		\begin{tabular}
+		    { | l | c | } 
+		    \hline
+		    Category & count \\
+		    \hline
+		    photography & 2244 \\ 
+		    customization & 906 \\ 
+		    traditional & 842 \\ 
+		    digitalart & 587 \\ 
+		    fanart & 239 \\ 
+		    \hline 
+		\end{tabular}
+		}
+    \caption{Dataset statistics}
     \label{datasetstats}
 \end{table}
 
