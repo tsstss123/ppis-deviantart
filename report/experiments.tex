@@ -58,82 +58,42 @@ Furthermore the co-occurrences between the watchers and watched network is about
 
 
 \subsection{Image experiments}
-For the image experiments we collected our dataset by downloading the complete galleries from 31 artists.
+For the image experiments we collected our dataset by downloading the complete galleries from around 30 artists.
 Those artists were selected from the daily deviations of a random day and includes both premium and non premium members.
-Daily Deviations are featured images of artists selected by the staff members of DeviantArt.
 In total we downloaded around 5000 images. 
 For each image we also stored the category information.
 The dataset is unbalanced since some artists only have around 50 images, while other artists have over 500 images.
-Some dataset statistics are listed in table \ref{datasetstats}.
+The top five categories are listed in table \ref{datasetstats}.
 
-\begin{table}[ht]
-	\centering
-	\subtable[General]{
-		\begin{tabular} { |l|c| }
-			\hline
-			Total Size & 1.4gb \\
-			\hline
-			Users & 31 \\
-			\hline
-			Total image count & 5324 \\
-			\hline 
-			Average image width & 671 \\
-			\hline
-			Average image height & 689 \\
-			\hline
-			Average image size & 250kb \\
-			\hline
-			Average image count per artist & 171 \\
-			\hline
-			Image formats & jpg, png, gif \\
-			\hline
-		\end{tabular}
-	}
 
-    \subtable[Category]{
-		\begin{tabular}
-		    { | l | c | } 
-		    \hline
-		    Category & count \\
-		    \hline
-		    photography & 2244 \\ 
-		    customization & 906 \\ 
-		    traditional & 842 \\ 
-		    digitalart & 587 \\ 
-		    fanart & 239 \\ 
-		    \hline 
-		\end{tabular}
-	}
+\begin{table}[htb]
+    \centering
+    \begin{tabular}
+        { | l | c | l | c|} 
+        \hline
+        Name & count & Name & count \\
+        \hline
+    Craniata &  61 & K1lgore & 63 \\
+    Kitsunebaka91 & 272  & Knuxtiger4 & 193 \\
+    LALAax & 82  & Mallimaakari & 151 \\
+    Mentosik8 & 110 & NEDxfullMOon & 116 \\
+    One-Vox & 74 & Pierrebfoto & 188 \\
+    Red-Priest-Usada & 132 & Skarbog & 229 \\
+    Swezzels & 9 & Udodelig & 54 \\
+    UdonNodu & 38 & WarrenLouw & 51 \\
+    catluvr2 & 793 & erroid & 146 \\
+    fediaFedia & 303 & gsphoto & 661 \\
+    iakobos & 47 & kamilsmala & 39 \\
+    miss-mosh & 307 & nyctopterus & 68 \\
+    omega300m & 483 & sekcyjny & 55 \\
+    stereoflow & 166 & sujawoto & 33 \\
+    wirestyle & 143 & woekan & 49 \\
+    zihnisinir & 177 \\
 
-	\subtable[Artist]{
-		\begin{tabular}
-		    { | l | c | l | c|} 
-		    \hline
-		    Name & count & Name & count \\
-		    \hline
-		Craniata &  61 & K1lgore & 63 \\
-		Kitsunebaka91 & 272  & Knuxtiger4 & 193 \\
-		LALAax & 82  & Mallimaakari & 151 \\
-		Mentosik8 & 110 & NEDxfullMOon & 116 \\
-		One-Vox & 74 & Pierrebfoto & 188 \\
-		Red-Priest-Usada & 132 & Skarbog & 229 \\
-		Swezzels & 9 & Udodelig & 54 \\
-		UdonNodu & 38 & WarrenLouw & 51 \\
-		catluvr2 & 793 & erroid & 146 \\
-		fediaFedia & 303 & gsphoto & 661 \\
-		iakobos & 47 & kamilsmala & 39 \\
-		miss-mosh & 307 & nyctopterus & 68 \\
-		omega300m & 483 & sekcyjny & 55 \\
-		stereoflow & 166 & sujawoto & 33 \\
-		wirestyle & 143 & woekan & 49 \\
-		zihnisinir & 177 \\
-
-		    \hline 
-		\end{tabular}
-	}
-    \caption{Dataset statistics}
-    \label{datasetstats}
-
+        \hline 
+    \end{tabular}
+    \caption{Dataset artist statistics}
+    \label{datasetstats2}
 \end{table}
 
 \begin{figure}[htb]
@@ -142,6 +102,48 @@ Some dataset statistics are listed in table \ref{datasetstats}.
   \caption{mean image per artist, left to right, top to bottom, in order of table \ref{datasetstats2}: Craniata, K1lgore, Kitsunebaka91, ..., zihnisinir }
   \label{fig:avgDataset}
 \end{figure}
+
+
+\begin{table}[ht]
+	\centering
+	\subtable[]{
+	
+    \begin{tabular}
+        { | l | c | } 
+        \hline
+        Category & count \\
+        \hline
+        photography & 2244 \\ 
+        customization & 906 \\ 
+        traditional & 842 \\ 
+        digitalart & 587 \\ 
+        fanart & 239 \\ 
+        \hline 
+    \end{tabular}
+	}
+	
+	\subtable[]{
+	\begin{tabular} { |l|c| }
+		\hline
+		Total Size & 1.4gb \\
+		\hline
+		Users & 31 \\
+		\hline
+		Image count & 5324 \\
+		\hline 
+		Average image width & 671 \\
+		\hline
+		Average image height & 689 \\
+		\hline
+		Average image size & 250kb \\
+		\hline
+		Average image count & 171 \\
+		\hline
+	\end{tabular}
+	}
+    \caption{Dataset category statistics}
+    \label{datasetstats}
+\end{table}
 
 %\subsubsection{Experiment 1: One against all artists}
 
@@ -275,15 +277,15 @@ Some dataset statistics are listed in table \ref{datasetstats}.
 \subsubsection{Experimental Setup}
 
 This experiment is focused on finding the most defining features of every artist in the dataset.
+For every artist, the feature selection algorithm selects the best 5 features that according to the inter-intra criterion can separate that artist with another artist.
+This will be done for every artist pair that can be found in the dataset, meaning that the best 5 features can differ depending on what kind of artist pair is used.
+
 At first, a classifier needs to be selected which is going to be used to give a performance score for each set of features that the feature selection algorithm is computing.
 The classifier is selected by optimizing the parameters for each classifier using 5 fold cross-validation on the training set, which is 70 percent of the dataset.
 The classifier selected will be the one that gives the highest performance score.
 
-For every artist, the feature selection algorithm selects the best 5 features that according to the inter-intra criterion can separate that artist with another artist.
-This will be done for every artist pair that can be found in the dataset, meaning that the best 5 features can differ depending on what kind of artist pair is used.
-
-For every artist pair a performance score is computed based on how well the classifier can separate those artists given the features.
-Therefore the performance measure chosen is the $F_1$-measure.
+For every artist pair a performance score is computed based on how well the selected classifier can separate those artists given the features.
+Therefore the performance measure used here is the $F_1$-measure.
 
 %For this experiment each artist is compared to one other artist.
 %The motivation of this approach is that each artist can be evaluated separately and it can give more clarity for cases where the performance of a classifier is low.
@@ -295,7 +297,7 @@ Therefore the performance measure chosen is the $F_1$-measure.
 %
 %For every artist pair the $F_1$-measure is calculated on the test set to evaluate the performance of the classifier separating those artists.
 
-%\subsubsection{Experiment 2: Results}
+\subsubsection{Image Experiment Results}
 
 \begin{table}[htb]
     \centering
@@ -314,6 +316,10 @@ Therefore the performance measure chosen is the $F_1$-measure.
     \label{ex2optimizeresults}
 \end{table}
 
+The results of optimizing the classifiers and then validating them using the train set are shown in table \ref{ex2optimizeresults}.
+The results show that the linear SVM has got the highest mean $F_1$-measure score and also the second highest standard deviation.
+Based on these scores, it is best to select the linear SVM to assign performance scores because this classifier can best separate artists.
+
 %Table \ref{ex2optimizeresults} shows the results After the optimization and training of the classifiers.
 %The linear SVM classifier obtained the highest average $F_1$-measure however the Naive Bayes classifier did not perform significantly worse than the SVM.
 %Note that the main goal of this experiment is to find feature combinations that distinguish artists.
@@ -322,9 +328,19 @@ Therefore the performance measure chosen is the $F_1$-measure.
 \begin{figure*}[htb]
   \centering
   \includegraphics[width=0.75\linewidth]{img/experiment2results.png}
-  \caption{The results of experiment 2 using different lengths of feature combinations. From left to right: 1-5 features and the last one is the result using all features.}
+  \caption{The intensity mapping of the results using the linear SVM in combination with different sets of features.
+  The mapping is divided into 30x30 squares where each square represents the $F_1$-measure of artist x with artist y.
+  The artists are represented on both the x and the y axis, which results into the phenomenon that the squares in the diagonal of the matrix are all blue($F_1$-measure=0).
+  Also the red color represents the highest value($F_1$-measure=1).
+  In the upperleft mapping, the performance using only \textit{the most} informative feature according to the selection algorithm is mapped.
+  In the upperright mapping, the performance of using the \textit{3} most informative features are mapped.
+  In the lowerleft mapping, the performance of using the \textit{5} most informative features are mapped.
+  In the lowerright mapping, the performance of using \textit{all} the features are mapped.
+  }
   \label{fig:experiment2results}
 \end{figure*}
+
+The results of using the trained linear SVM on the test set is shown in figure \ref{fig:experiment2results}. 
 
 \begin{table*}[htb]
     \centering
