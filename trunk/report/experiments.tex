@@ -276,15 +276,15 @@ The next section describes an experiment that gives a clear view over these ques
 
 \subsubsection{Experiment 2: One against one artist}
 
-For this experiment each artist is compared to one other artist.
-The motivation of this approach is that each artist can be evaluated separately and it can give more clarity for cases where the performance of a classifier is low.
-The experiment is done for all the artists in the dataset meaning that an artist is compared to every other artist in the dataset.
-Also this experiment uses the feature selection algorithm to determine the features that best separates an artist from another artist.
-The feature selection algorithm selects features up to a combination of 5 different features for every artist pair.
-
-For this experiment the kNN, Naive Bayes, Nearest Mean and the SVM classifiers were optimized and trained on the train set using 5 fold cross-validation and the highest average $F_1$-measure determines the classifier that is used to produce the results.
-
-For every artist pair the $F_1$-measure is calculated on the test set to evaluate the performance of the classifier separating those artists.
+%For this experiment each artist is compared to one other artist.
+%The motivation of this approach is that each artist can be evaluated separately and it can give more clarity for cases where the performance of a classifier is low.
+%The experiment is done for all the artists in the dataset meaning that an artist is compared to every other artist in the dataset.
+%Also this experiment uses the feature selection algorithm to determine the features that best separates an artist from another artist.
+%The feature selection algorithm selects features up to a combination of 5 different features for every artist pair.
+%
+%For this experiment the kNN, Naive Bayes, Nearest Mean and the SVM classifiers were optimized and trained on the train set using 5 fold cross-validation and the highest average $F_1$-measure determines the classifier that is used to produce the results.
+%
+%For every artist pair the $F_1$-measure is calculated on the test set to evaluate the performance of the classifier separating those artists.
 
 %\subsubsection{Experiment 2: Results}
 
@@ -305,10 +305,10 @@ For every artist pair the $F_1$-measure is calculated on the test set to evaluat
     \label{ex2optimizeresults}
 \end{table}
 
-Table \ref{ex2optimizeresults} shows the results After the optimization and training of the classifiers.
-The linear SVM classifier obtained the highest average $F_1$-measure however the Naive Bayes classifier did not perform significantly worse than the SVM.
-Note that the main goal of this experiment is to find feature combinations that distinguish artists.
-Therefore the focus should not go to maximizing the $F_1$-measure on the test set meaning that one classifier should be enough for this type of task.
+%Table \ref{ex2optimizeresults} shows the results After the optimization and training of the classifiers.
+%The linear SVM classifier obtained the highest average $F_1$-measure however the Naive Bayes classifier did not perform significantly worse than the SVM.
+%Note that the main goal of this experiment is to find feature combinations that distinguish artists.
+%Therefore the focus should not go to maximizing the $F_1$-measure on the test set meaning that one classifier should be enough for this type of task.
 
 \begin{figure*}[htb]
   \centering
@@ -317,52 +317,95 @@ Therefore the focus should not go to maximizing the $F_1$-measure on the test se
   \label{fig:experiment2results}
 \end{figure*}
 
-Figure \ref{fig:experiment2results} shows the results for this experiment using the linear SVM which was chosen in a greedy fashion based on the results found in table \ref{ex2optimizeresults}.
-From left to right the figure shows the results of using: \textit{1} feature, \textit{2} features, \textit{3} features, \textit{4} features, \textit{5} features and \textit{all} features as the feature combination that is used by the classifier to classify images.
-The results are plotted using an intensity mapping where each square represents the $F_1$-measure performance of separating the \textit{x} and \textit{y} artist.
-
-The first thing that is noticable is that the intensity mappings are not symmetric.
-This is because the $F_1$-measure was used here to evaluate the performance.
-The measure is calculated by looking at the precision and recall of the positive class, so when the classes are turned around the $F_1$-measure will also turn into a different value.
-Therefore in order to determine if two artists are separable, there is a need to look at the $F_1$-measure for both artists.
-This is because for some artist pairs the $F_1$-measure of one artist has a value of 1 while the other has a value of 0.
-This means that for those artist pairs the classifier has classified all images to one artist, which most of the time is caused by the non-uniform dataset.
-
-Furthermore the figure shows that artists can be better separated by using more features.
-The intensity mapping using all features shows that it has the highest overall $F_1$-measure.
-However the more interesting mappings are the ones where only the top 1,2,3,4,5 features were used for classification.
-Eventhough their performance is lower than using all the features it gives information about the most defining features that is used to separate an artist from another artist.
-
-The intensity mappings using 1 to 5 features contains artists that have an overall high $F_1$-measure which shows that some artists can be separated from all other artists using only a few features.
-
-\begin{table}[htb]
+\begin{table*}[htb]
     \centering
     \begin{tabular}
-        { | l | c |} 
+        { | l | c | c | l | } 
         \hline
-        Feature & Counts \\
+        Name & mean $F_1$-measure & stddev $F_1$-measure & Most defining features\\
         \hline
-        gridEdgeRatio\_5 & 9 \\ 
-        intEntropy & 4 \\ 
-        edgeRatio & 4 \\ 
-        avgRCells\_9 & 4 \\ 
-        medIntCells\_2 & 3 \\
-        medIntCells\_7 & 3 \\
+    Craniata &  0.6314 & 0.1864 & Center average Hue, Center corner detection, Center edge detection\\
+    K1lgore & 0.6078 & 0.1813 & Entropy of the Intensity, Variance of the Intensity, Edge detection \\
+    Kitsunebaka91 & 0.8827 & 0.1756 & Center edge detection, Entropy of the Intensity, Edge detection \\
+    Knuxtiger4 & 0.7751 & 0.1822 & Variance of the Intensity, Entropy of the Intensity, Center edge detection \\
+    LALAax & 0.6498 & 0.1902 & Edgeratio, Entropy of the Intensity, Variance of the Intensity \\
+    Mallimaakari & 0.7548 & 0.1824 & Variance of the Intensity, Center edge detection, Center average Hue\\
+    Mentosik8 & 0.6807 & 0.1876 & Entropy of the Intensity, Variance of the Intensity, Lowerleft edge detection \\ 
+    NEDxfullMOon & 0.7071 & 0.1880 & Center edge detection, Center avg B, Entropy of the Intensity\\
+    One-Vox & 0.6570 & 0.1833 & Entropy of the Intensity, Edge detection, Center edge detection  \\
+    Pierrebfoto & 0.8375 & 0.1852 & salMapKEntropy, Center average Hue, Edge detection\\
+    Red-Priest-Usada & 0.7376 & 0.1851 & salMapIEntropy, Center Edge detection, salMapOEntropy\\
+    Skarbog & 0.7875 & 0.1869 & Entropy of the Intensity, Center average saturation, Lowerright average R \\
+    Swezzels & 0.3296 & 0.2281 & - \\ 
+    Udodelig & 0.5798 & 0.1887 & Entropy of the Saliency, Entropy of the Intensity, salhistdev \\
+    UdonNodu & 0.5352 & 0.2158 & SalmapOentropy, Variance of the Intensity, Uppermiddel average Hue \\ 
+    WarrenLouw & 0.6235 & 0.1864 & Entropy of the Intensity, median B, Upperright median Intensity\\
+    erroid & 0.7535 & 0.1833 & Variance of the Intensity, Center edge detection, Entropy of the Intensity\\
+    fediaFedia & 0.8270 & 0.1804 & Center edge detection, corner detection, Variance of the Intensity \\
+    gsphoto & 0.9172 & 0.1779 & Entropy of the Intensity, Variance of the Intensity, Center edge detection \\
+    iakobos & 0.5764 & 0.1899 & Edge detection, upperleft average saturation, upperleft median G \\
+    kamilsmala & 0.6359 & 0.1978 & Variance of the Intensity, Entropy of the Intensity, middleleft edge detection\\
+    miss-mosh & 0.8205 & 0.1811 & upperleft corner detection, Number of faces, Entropy of the Intensity \\
+    nyctopterus & 0.6324 & 0.1950 & Variance of the Intensity, Center median Hue, center average Hue\\
+    sekcyjny & 0.5875 & 0.1983 & Entropy of the Intensity, Downmiddle edge detection, salmapOEntropy\\
+    stereoflow & 0.7576 & 0.1904 & Center average Hue, Variance of the Intensity, Corner detection \\
+    sujawoto & 0.4752 & 0.1873 & SalmapIEntropy, Entropy of the Intensity, Downmiddle edge detection\\
+    wirestyle & 0.7138 & 0.1931 & SalmapIEntropy, Variance of the Intensity, Center average B\\ 
+    woekan & 0.5529 & 0.1881 & Entropy of the Intensity, Variance of the Intensity, Upperleft edge detection\\
+    zihnisinir & 0.7632 & 0.1918 & Entropy of the Intensity, Center average saturation, SalMapIEntropy\\
+    omega300m & 0.8318 & 0.2403 & Entropy of the Intensity, Center edge detection, Downright average Intensity \\
         \hline 
     \end{tabular}
-    \caption{Counts of features that were used to separate \textit{Kitsunebaka91} from the other artists.}
-    \label{kitsune}
-\end{table}
+    \caption{Dataset artist statistics}
+    \label{experiment2stats}
+\end{table*}
 
-Table \ref{kitsune} shows the top 6 feature counts of features that were used to distinct \textit{Kitsunebaka91} from the other artists.
-The features were counted whenever the $F_1$-measure of \textit{Kitsunebaka91} had an $F_1$-measure higher than 0.9, which indicates that the artist is separable from the other artist.
-So the table details the reason why \textit{Kitsunebaka91} was separable.
-The artwork of \textit{Kitsunebaka91} consists mostly of images where there is a white background with a drawing in the center of it.
-This corresponds to the features found using this toolkit because table \ref{kitsune} shows that the edgeratio and intensity of the images are the dominant features to separate this artist from other artists.
-Also the table shows that the \textit{GridEdgeRatio\_5} feature is used multiple times to separate this artist.
-This again corresponds to the artist style because the \textit{GridEdgeRatio\_5} is the edgeratio value of the center cell of an image, the cell where the drawing of the artist lies.
-
-Eventhough \textit{Kitsunebaka91} was seperable from most other artists, pairing \textit{Kitsunebaka91} with the artist \textit{Knuxtiger4} resulted in a lower $F_1$-measure of 0.7397 wheras the mean of all the scores was 0.91.
-Inspecting the images of \textit{Knuxtiger4} showed that the artist mostly contained images that were drawings on a white background similar to that of \textit{Kitsunebaka91}.
-Therefore it is not surprising that the score for that pair was lower than the average because the classifier could not seperate those images.
-These results indicates that these results can be used to create a recommender system.
+%Figure \ref{fig:experiment2results} shows the results for this experiment using the linear SVM which was chosen in a greedy fashion based on the results found in table \ref{ex2optimizeresults}.
+%From left to right the figure shows the results of using: \textit{1} feature, \textit{2} features, \textit{3} features, \textit{4} features, \textit{5} features and \textit{all} features as the feature combination that is used by the classifier to classify images.
+%The results are plotted using an intensity mapping where each square represents the $F_1$-measure performance of separating the \textit{x} and \textit{y} artist.
+%
+%The first thing that is noticable is that the intensity mappings are not symmetric.
+%This is because the $F_1$-measure was used here to evaluate the performance.
+%The measure is calculated by looking at the precision and recall of the positive class, so when the classes are turned around the $F_1$-measure will also turn into a different value.
+%Therefore in order to determine if two artists are separable, there is a need to look at the $F_1$-measure for both artists.
+%This is because for some artist pairs the $F_1$-measure of one artist has a value of 1 while the other has a value of 0.
+%This means that for those artist pairs the classifier has classified all images to one artist, which most of the time is caused by the non-uniform dataset.
+%
+%Furthermore the figure shows that artists can be better separated by using more features.
+%The intensity mapping using all features shows that it has the highest overall $F_1$-measure.
+%However the more interesting mappings are the ones where only the top 1,2,3,4,5 features were used for classification.
+%Eventhough their performance is lower than using all the features it gives information about the most defining features that is used to separate an artist from another artist.
+%
+%The intensity mappings using 1 to 5 features contains artists that have an overall high $F_1$-measure which shows that some artists can be separated from all other artists using only a few features.
+%
+%\begin{table}[htb]
+%    \centering
+%    \begin{tabular}
+%        { | l | c |} 
+%        \hline
+%        Feature & Counts \\
+%        \hline
+%        gridEdgeRatio\_5 & 9 \\ 
+%        intEntropy & 4 \\ 
+%        edgeRatio & 4 \\ 
+%        avgRCells\_9 & 4 \\ 
+%        medIntCells\_2 & 3 \\
+%        medIntCells\_7 & 3 \\
+%        \hline 
+%    \end{tabular}
+%    \caption{Counts of features that were used to separate \textit{Kitsunebaka91} from the other artists.}
+%    \label{kitsune}
+%\end{table}
+%
+%Table \ref{kitsune} shows the top 6 feature counts of features that were used to distinct \textit{Kitsunebaka91} from the other artists.
+%The features were counted whenever the $F_1$-measure of \textit{Kitsunebaka91} had an $F_1$-measure higher than 0.9, which indicates that the artist is separable from the other artist.
+%So the table details the reason why \textit{Kitsunebaka91} was separable.
+%The artwork of \textit{Kitsunebaka91} consists mostly of images where there is a white background with a drawing in the center of it.
+%This corresponds to the features found using this toolkit because table \ref{kitsune} shows that the edgeratio and intensity of the images are the dominant features to separate this artist from other artists.
+%Also the table shows that the \textit{GridEdgeRatio\_5} feature is used multiple times to separate this artist.
+%This again corresponds to the artist style because the \textit{GridEdgeRatio\_5} is the edgeratio value of the center cell of an image, the cell where the drawing of the artist lies.
+%
+%Eventhough \textit{Kitsunebaka91} was seperable from most other artists, pairing \textit{Kitsunebaka91} with the artist \textit{Knuxtiger4} resulted in a lower $F_1$-measure of 0.7397 wheras the mean of all the scores was 0.91.
+%Inspecting the images of \textit{Knuxtiger4} showed that the artist mostly contained images that were drawings on a white background similar to that of \textit{Kitsunebaka91}.
+%Therefore it is not surprising that the score for that pair was lower than the average because the classifier could not seperate those images.
+%These results indicates that these results can be used to create a recommender system.
