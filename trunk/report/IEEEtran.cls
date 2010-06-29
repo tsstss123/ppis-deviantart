@@ -4694,6 +4694,8 @@ Use \@IEEEbackslash #2 instead.}}
 \typeout{** WARNING: \string\overrideIEEEmargins \space no longer supported (line \the\inputlineno).}%
 \typeout{** Use the \string\CLASSINPUTinnersidemargin, \string\CLASSINPUToutersidemargin \space controls instead.}}
 
+\usepackage{caption}
+\renewcommand\captionfont{\itshape\small}
 
 \endinput
 

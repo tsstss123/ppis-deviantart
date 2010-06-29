@@ -129,7 +129,7 @@ Equation \ref{minmax} shows the Min/Max normalization that was used to normalize
 In this equation $A$ and $B$ represents the range [$A$,$B$] where the values are normalized to.
 $x$ represents the unnormalized values of feature $n$ whereas $y$ represents the normalized values of feature $n$.
 
-\paragraph{Classifiers}
+\paragraph{\textit{Classifiers}}
 In our approach, four different classifiers were incorporated to calculate the performance of a set of features.
 All classifiers were chosen based on their performance in earlier work except for the Nearest Mean classifier.
 
@@ -147,7 +147,7 @@ At last the \textit{Support Vector Machine}~\cite{chapelle1999svms} classifies a
 The model represents the training examples in a way that separates the two classes by a clear gap that is as wide as possible.
 The artwork is classified by the model based on which side of the gap they fall on.
 
-\paragraph{Feature Selection}
+\paragraph{\textit{Feature selection}}
 The classifiers are used in our approach to compute the performance score of a set of features.
 On the other hand a feature selection algorithm is used to extract a set of features out of all the features that were pre-computed.
 This is important because we want to have the smallest set of features to describe a class.
@@ -179,8 +179,7 @@ A performance measure is needed to assign a performance score to a set of featur
 Because our approach requires the need of classifiers, it is arbitrary that the performance measure is the same as the evaluation measure of the classifier.
 
 Every prediction of the classifier is labeled into one of the following four types,
-depending on whether or not the classification was correct:
-
+depending on whether or not the classification was correct:\\
 
 \begin{tabular}{r|c|c|}
 \multicolumn{1}{r}{}
@@ -191,8 +190,7 @@ positive & \textbf{tp} (true positive) & \textbf{fp} (false positive) \\
 \cline{2-3}
 negative & \textbf{fn} (false negative) & \textbf{tn} (true negative) \\
 \cline{2-3}
-\end{tabular}
-
+\end{tabular}\\\\
 
 With these standard classification measures two more evaluation measures can be computed from it.
 These are the precision and the recall.
