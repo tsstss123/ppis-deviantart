@@ -13,6 +13,9 @@ missingbig = []
 missingsmall = []
 
 def verifyDeviant(folder_name, deviant):
+	""" Loops through all xml files in the given folder name
+		Loads in the information. Checks if the image file is present
+		in the image folders."""
 	global total, missing, missingbig, missingsmall
 	print('Verifying deviant %s' % (deviant))
 	deviant_folder = os.path.join(folder_name, deviant)
