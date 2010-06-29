@@ -56,6 +56,7 @@ For the final group of features, the artworks are converted from RGB image $m$ t
      \subfigure[Red]{\label{lssample}\includegraphics[scale=0.22]{img/redFlower}}
      \subfigure[Green]{\label{lssample}\includegraphics[scale=0.22]{img/greenFlower}}
      \subfigure[Blue]{\label{lssample}\includegraphics[scale=0.22]{img/blueFlower}}
+     \subfigure[3x3 grid for compositional edge-pixel ratio]{\label{gridExample}\includegraphics[scale=0.22]{img/gridEdgesFlower}}
 
   \end{center}
   \caption{Illustration of different statistical features}
@@ -63,14 +64,15 @@ For the final group of features, the artworks are converted from RGB image $m$ t
 \end{figure}
 
 
-The features described above only contain global information about images. In order to capture localized information as well, several of the features described above are also extracted from different regions of the image. The regions of the image are obtained by dividing the image along both dimensions into NxM equal-sized regions. Since feature values will most likely vary from region region, these compositional features should provide valuable additional information about an image. Figure \ref{gridImage} shows an example of 
+The features described above only contain global information about images. In order to capture localized information as well, several of the features described above are also extracted from different regions of the image. The regions of the image are obtained by dividing the image along both dimensions into NxM equal-sized regions. Since feature values will most likely vary from region region, these compositional features should provide valuable additional information about an image. Figure \ref{gridExample} shows an example of localized edge-pixel ratios using 3x3 equal-sized regions.   
 
-\begin{figure}
-\label{gridImage}
-\begin{center}
-\includegraphics[scale=0.4]{img/gridEdgesFlower}   
-\end{center}
-\end{figure}
+%\begin{figure}
+%\label{gridImage}
+%\caption{3x3 grid for compositional edge-pixel ratio}
+%\begin{center}
+%\includegraphics[scale=0.4]{img/gridEdgesFlower}   
+%\end{center}
+%\end{figure}
 %\textbf{add reference to opencv somewhere}
 
 
