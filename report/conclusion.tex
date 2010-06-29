@@ -1,7 +1,10 @@
-We have proposed a toolkit that provides functionality to capture a dataset from the dA website and annotate the images with state of the art image features.
-These image features are used to cluster images using different classifiers.
-The visualization that is part of the toolkit is used to explore and analyze the dataset.
+We started the research with an inspirational usecase and research questions that a humanities researcher could pose.
+Some aspects the usecase have been implemented in the toolkit. The experiments conducted have started to answer some research questions.
+We have reported the first research into deviantArt as well as made the first attempts to combine online social networks with image analysis.
 
-Experimental results show that artists can be separated from other artists using simple image features.
-The maximum $F_1$-Measure for separating artists (0.8742) was achieved using a linear SVM classifier.
-Some features provide better discriminative power between artists then other features.
+Our toolkit provides functionality to capture an rich dataset containing images from the dA website, after which the images are annotated with state of the art image features. These image features are used to cluster images using different classifiers. The visualization application is used to explore and analyze the dataset.
+
+Our research has shown that we can identify users based on the location of their artwork in feature space. Furthermore, we have also been able to identify relevant features per artist collection, which shows that artists can be separated from other artists using simple image features. Our best classification result was a $F_1$-measure of 0.8742 for separating artists; this was achieved using a linear SVM classifier.
+
+Last, we have been able to identify cores of interesting dA artists. Moreover these cores exhibit small-world topology. We propose that future dA research focusses on these cores.
+
