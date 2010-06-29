@@ -276,6 +276,17 @@ The top five categories are listed in table \ref{datasetstats}.
 
 \subsubsection{Experimental Setup}
 
+This experiment is focused on finding the most defining features of every artist in the dataset.
+At first, a classifier needs to be selected which is going to be used to give a performance score for each set of features that the feature selection algorithm is computing.
+The classifier is selected by optimizing the parameters for each classifier using 5 fold cross-validation on the training set, which is 70 percent of the dataset.
+The classifier selected will be the one that gives the highest performance score.
+
+For every artist, the feature selection algorithm selects the best 5 features that according to the inter-intra criterion can separate that artist with another artist.
+This will be done for every artist pair that can be found in the dataset, meaning that the best 5 features can differ depending on what kind of artist pair is used.
+
+For every artist pair a performance score is computed based on how well the classifier can separate those artists given the features.
+Therefore the performance measure chosen is the $F_1$-measure.
+
 %For this experiment each artist is compared to one other artist.
 %The motivation of this approach is that each artist can be evaluated separately and it can give more clarity for cases where the performance of a classifier is low.
 %The experiment is done for all the artists in the dataset meaning that an artist is compared to every other artist in the dataset.
