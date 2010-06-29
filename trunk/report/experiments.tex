@@ -291,17 +291,17 @@ The next section describes an experiment that gives a clear view over these ques
 \begin{table}[htb]
     \centering
     \begin{tabular}
-        { | l | c |} 
+        { | l | c | c |} 
         \hline
-        Classifier & Average $F_1$-measure  \\
+        Classifier & Mean $F_1$-measure & Stddev $F_1$-measure  \\
         \hline
-        kNN & 0.7644 \\ 
-        Naive Bayes & 0.8157 \\ 
-        Nearest Mean & 0.7383 \\ 
-        Linear SVM & 0.8278 \\ 
+        kNN & 0.7074 & 0.1731 \\ 
+        Naive Bayes & 0.7897 & 0.1030 \\ 
+        Nearest Mean & 0.7383 & 0.1086 \\ 
+        Linear SVM & 0.8278 & 0.1450 \\ 
         \hline 
     \end{tabular}
-    \caption{The average $F_1$-measure of every classifier on the train set}
+    \caption{The mean $F_1$-measure and the standard deviation performance score of each optimized classifier on the train set using 5-fold cross-validation}
     \label{ex2optimizeresults}
 \end{table}
 
