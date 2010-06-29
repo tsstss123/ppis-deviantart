@@ -10,7 +10,7 @@ A network model of particular relevance for this project is the small-world mode
 In terms of a social network, a large (close to 1) cluster coefficient means that many of a persons friends know each other.  A low characteristic path length means that on average two persons are connected through small friends-of-friends chains.
 Small-world networks are those networks that have a high cluster coefficient and low characteristic path length.  Whereas random networks have a low characteristic path and low cluster coefficient and lattices have high cluster coefficients but long characteristic path length. 
 
-Formally, let $G=(V, E)$ be a graph, where $V$ is a set of vertices, and $E$ a set of edges between vertices in $V$, here $e_{ij}$ denotes the edge connecting $i$ and $j$.  The \textit{out-neighborhood} of $v_i$, $N_i^{out}:=\{v_j|e_{ij}\in E\}$, the \textit{in-neighborhood} $N_i^{in}:=\{v_j|e_{ji}\in E\}$. The \textit{neighborhood} of $v_i$, $N_i:=N_i^{out}\cup N_i^{in}$. The \textit{degree} of vertex $v_i$, $k_i:=|N_i|$ is the number of vertices in the neighborhood of $v_i$, this can similarly be defined for in and out neighborhoods. The directional clustering coefficient for $v_i$ with $k_i>1$ can now be defined as:
+Formally, let $G=(V, E)$ be a graph, where $V$ is a set of vertices, and $E$ a set of edges between vertices in $V$, here $e_{ij}$ denotes the edge connecting $i$ and $j$.  The \textit{out-neighborhood} of $v_i$, $N_i^{out}:=\{v_j|e_{ij}\in E\}$, the \textit{in-neighborhood} $N_i^{in}:=\{v_j|e_{ji}\in E\}$. The \textit{neighborhood} of $v_i$, $N_i:=N_i^{out}\cup N_i^{in}$. The \textit{degree} of vertex $v_i$, $k_i:=|N_i|$ is the number of vertices in the neighborhood of $v_i$, this can similarly be defined for in and out neighborhoods. The \textit{directional clustering coefficient} for $v_i$ with $k_i>1$ can now be defined as:
 $$C_i :=\frac{|\{e_{jk}\}|}{k_i(k_i-1)},$$
 where $v_j,v_k\in N_i$ and $e_{jk}\in E$, let $n=|V|$ denote the number vertices the \textit{directional clustering coefficient} for $G$ is defined as:
 $$C_G:=\frac{\sum_{i\in V} C_i}{n}.$$
@@ -23,13 +23,13 @@ A large random network  $ L_{random}\approx\frac{\ln(n)}{\ln(k)}$ and $C_{random
 
 To find the core of most connected vertices the findcore algorithm, show in Algorithm \ref{alg:findcore} is proposed. This algorithm recursively removes all vertices of degree $x$ from the network, starting at $1$. If there are vertices left in the network this is repeated with  $x+1$. Once an empty network is obtained the previous network is deemed the core, because recursively removing nodes of higher degree will inevitably lead to an empty network. The choice of the $degree(j)$ - standard, in-degree, out-degree,  or in+out-degree - facilitates in finding cores with different characteristics.
 
-\algsetup{indent=2em}
+\algsetup{indent=1em}
 \newcommand{\FindCore}{\ensuremath{\mbox{\sc FindCore}}}
 \begin{algorithm}[htb]
 \caption{$\FindCore(Network)$}\label{alg:findcore}
 \begin{algorithmic}
 \REQUIRE A Network $G=(V,E)$.
-\ENSURE The Core of Network $G$ and the degree $x$ at which the core is found.
+\ENSURE The core of network $G$ and the degree $x$ at which the core is found.
 \medskip
 \STATE $x\gets 1$
 \WHILE {$|V| > 0$}
