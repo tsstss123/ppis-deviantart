@@ -33,7 +33,7 @@ $H_{m,i} = \left\{
 60 \left(\frac{G_{m,i}-B_{m,i}}{C_{m,i}} \mbox{mod} 6 \right) & \mbox{if $M_{m,i} = R_{m,i}$};\\
 60 \left(\frac{B_{m,i}-R_{m,i}}{C_{m,i}} + 2 \right) & \mbox{if $M_{m,i} = G_{m,i}$};\\
 60 \left(\frac{R_{m,i}-G_{m,i}}{C_{m,i}} + 4 \right) & \mbox{if $M_{m,i} = B_{m,i}$}; \\
-\end{array} 
+\end{array} sub
 \right\}$
 Where $M_{m,i} = \max(R_{m,i},G_{m,i},B_{m,i})$ and $C_{m,i} =  M - \min(R_{m,i},G_{m,i},B_{m,i})$. The value channel is given by $V_{m,i} =  M_{m,i}$ and the saturation channel is  by $S_{m,i} = \frac{C_{m,i}}{V_{m,i}}$
 
@@ -81,7 +81,17 @@ The model work as follow: an input image is decomposed through several pre-atten
 Til now the saliency map has been used as information channel in scene understanding and object recognition. In this reasearch, image features have extracted from the map and then used in the classification and visualization task. Features that have been extracted from those maps are: \textit{Shannon entropy} of the five maps, \textit{Standard deviation} of the distribution of attention in the saliency map, \textit{Location} of the most salient points (defined as the centers of the most salient regions) and \textit{Skin intensity} of the skin map. Skin is not a default channel in the Itti's model, but it has been found out to be really interesting and useful in devianART to distinguish artists and artworks, where there is a huge presence of photographer that create nude art. 
 
 
+\begin{figure}[h!]
+\centering
+\subfigure[]{\includegraphics[scale=0.135]{Saliency_images/A_landscape_pic_with_a_loli_bg_by_CroireIgeen.png}\label{fig:saliencyimg1}}
+\subfigure[]{\includegraphics[scale=0.33]{Saliency_images/color.PNG}\label{fig:saliencyimgc1}}
+\subfigure[]{\includegraphics[scale=0.33]{Saliency_images/intensity.PNG}\label{fig:saliencyimgc2}}
+\subfigure[]{\includegraphics[scale=0.33]{Saliency_images/orientation.PNG}\label{fig:saliencyimgc3}}
+\subfigure[]{\includegraphics[scale=0.33]{Saliency_images/skin.PNG}\label{fig:saliencyimgc4}}
+\subfigure[]{\includegraphics[scale=0.36]{Saliency_images/sm.PNG}\label{fig:ex_saliencymap}}
 
+\caption{Example of saliency maps. (f) shows the final saliency map, while (b), (c), (d) and (e) show the conspicuity maps respectively for color, intensity, orientation and skin.}
+\end{figure}
 
 
 \subsubsection{Classification}
