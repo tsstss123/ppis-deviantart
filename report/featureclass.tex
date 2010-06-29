@@ -113,7 +113,7 @@ Til now the saliency map has been used as information channel in scene understan
 The most important aspect in this project is to describe images, artists or categories using the features that were extracted.
 In this approach, classifiers are used to give a performance score to a set of features that is used to either describe an artist or a category.
 
-\paragraph{Data normalization}
+\paragraph{\textit{Data normalization}}
 
 Classifiers improve their classification performance when the dataset that is used is normalized.
 In this case every extracted feature in the dataset has a different value range, it is important to translate all the different ranges to one defined value range so that the data is normalized.
@@ -172,12 +172,13 @@ J = \frac{|m_1-m_2|}{\sqrt(s^2_1 + s^2_2)}
 In this equation $m_1$ and $m_2$ are the average mean of class 1 and class 2, $s_1$ and $s_2$ are the standard deviations of those classes.
 This equation is also equivalent to the Fisher criterion~\cite{malina1981extended}.
 
-\paragraph{Performance measures}
+\paragraph{\textit{Performance measures}}
 A performance measure is needed to assign a performance score to a set of features.
 Because our approach requires the need of classifiers, it is arbitrary that the performance measure is the same as the evaluation measure of the classifier.
 
 Every prediction of the classifier is labeled into one of the following four types,
 depending on whether or not the classification was correct:
+
 
 \begin{tabular}{r|c|c|}
 \multicolumn{1}{r}{}
@@ -189,6 +190,7 @@ positive & \textbf{tp} (true positive) & \textbf{fp} (false positive) \\
 negative & \textbf{fn} (false negative) & \textbf{tn} (true negative) \\
 \cline{2-3}
 \end{tabular}
+
 
 With these standard classification measures two more evaluation measures can be computed from it.
 These are the precision and the recall.
