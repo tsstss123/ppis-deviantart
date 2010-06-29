@@ -123,6 +123,7 @@ rewrote introduction
 = Tue 28-06-2010 = 
 Edited whole paper together
 Wrote conclusion
+Started code cleanup
 
 
 
