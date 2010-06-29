@@ -4,27 +4,28 @@ Information visualization can be used to visually represent a large-scale datase
 
 \subsubsection{Previous work}
 Image features and information visualization are both research fields that have received great interest.
-Research that combines both fields is largely coming from the image retrieval field, focussing on efficient methods to retrieve images from (large) image collections.
+Research that combines both fields is largely coming from the image retrieval field, focusing on efficient methods to retrieve images from (large) image collections.
 
-Musha et al~\cite{musha1998interface} developed a visualization method and an interface for image retrieval.
-In their method, principal component analysis (PCA) is dynamically applied to the to image features of the retrieved images in order to determine their eigenspace and the retrieved images are displayed in that space.
-Statistical experiments showed that heir method effectively decentralizes the retrieved images over the two-dimensional space.
+Musha et al.~\cite{musha1998interface} developed a visualization method and an interface for image retrieval.
+In their method, principal component analysis is dynamically applied to the image features of the retrieved images in order to determine their eigenspace and the retrieved images are displayed in that space.
+Statistical experiments showed that their method effectively decentralizes the retrieved images over the two-dimensional space.
 
-Chen et al.~\cite{chen2000content} compared and analyzed a number of Pathfinder networks of images generated based on low-Ievel image features (color, texture and shape).
-Salient structures of images are visualized according to features extracted from color, texture, and shape orientation.
+Chen et al.~\cite{chen2000content} compared and analyzed a number of Pathfinder networks of images generated based on low-level image features (color, texture and shape).
+Salient structures of images are visualized according to features extracted from color, texture and shape orientation.
 
-Schneidewind et al~\cite{schneidewind2004approach} presented a visualization technique that aims to provide a tool to analyze a mismatch between the user’s perception and the system’s calculation of similarity.
+Schneidewind et al.~\cite{schneidewind2004approach} presented a visualization technique that aims to provide a tool to analyze a mismatch between the user’s perception and the system’s calculation of similarity.
 They combine techniques of visual image retrieval and information visualization to acquire insight into the extracted feature data.
-They implemented three visualization techniques to present feature data on three different levels of abstraction: data table, a parallel coordinate plot, and a color space plot.
+They implemented three visualization techniques to present feature data on three different levels of abstraction: data table, a parallel coordinate plot and a color space plot.
 
 %Imo et al~\cite{imo2008interactive} propose to make content based image retrieval systems more “transparent” by visualization of the employed features.
 %Since non-experts should be able to operate the CBIR system, they argue that features should be visualized as prototypical, artificial images, rather than feature-specific visualizations.
 % sidetrack?
 
-Yang el al~\cite{yang2006semantic} propose a scalable semantic image browser by applying existing information visualization techniques to semantic image analysis.
+Yang el al.~\cite{yang2006semantic} propose a scalable semantic image browser by applying existing information visualization techniques to semantic image analysis.
 The system consists of multiple visualization components that allows effective high dimensional visualization without dimension reduction.
-The Multi-Dimensional Scaling image view maps image miniatures onto the screen based on their content similarities using a fast MDS algorithm.
-Interactions are provided to reduce clutter.% (reordering, dynamic scaling, relocation, distortion, showing original image, zooming and panning).
+The Multi-Dimensional Scaling (MDS) image view maps image miniatures onto the screen based on their content similarities using a fast MDS algorithm.
+Interactions are provided to reduce clutter.
+% (reordering, dynamic scaling, relocation, distortion, showing original image, zooming and panning).
 The Value and Relation content view visually represents the contents of the whole image collection.
 The correlations among different contents within the image collection, as well as detailed annotations of each image, are visually revealed in this view.
 The concept-sensitive image content analysis technique was used as automatic annotation engine.
@@ -40,4 +41,4 @@ Each image feature represents a dimension in an $n$-dimensional space.
 A scatter plot is used to visualize the images in a two-dimensional space.
 Thumbnail versions of the images are used to represent an image from the dataset, resulting in a low level of abstraction.
 A parallel coordinates plot is used to visualize a $n \geq 2$ dimensional space.
-Each image is presented by a polyline, resulting in a higher level of abstraction then the scatter plot.
+Each image is presented by a polyline, resulting in a higher level of abstraction than the scatter plot.
