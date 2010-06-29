@@ -2,6 +2,13 @@
 
 = Logbook =
 
+== 29/06/2010 == 
+  * Finalized report. Added visualization: intro and proposed approach
+
+== 28/06/2010 ==
+  * Report structure change.
+  * Report introduction / future work
+
 == 27/06/2010 ==
   * Wrote previous work on image feature visualizations.
 
