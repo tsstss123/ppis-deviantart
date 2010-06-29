@@ -1,15 +1,15 @@
-function [ fmeasure ] = TADAkNN( data, R, crossfolds, K )
+function [ fmeasure ] = TADAkNN( data, R, K )
 %   The TADA kNN Classifier
 %   
 %   Input: data:            PRTools Format Dataset;
 %          R:               Crossvalidation Rotation Matrix;
-%          crossfolds:      number of crossfolds;
 %          K:               number of neighbours
 %              
 %   Output: fmeasure:       Average of the F-measure of the crossfolds
-%
 
-    disp('KNN');    
+    fprintf('kNN with k = %f\n', K);
+    
+    crossfolds = max(R);
        
     fnvector=zeros(1,crossfolds);
     fpvector=zeros(1,crossfolds);

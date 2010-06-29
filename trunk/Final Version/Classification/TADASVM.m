@@ -1,13 +1,13 @@
-function [ fmeasure ] = TADASVM( data, R, crossfolds, C )
+function [ fmeasure ] = TADASVM( data, R, C )
 %   The TADA Linear SVM Classifier
 %   
 %   Input: data:            PRTools Format Dataset;
 %          R:               Crossvalidation Rotation Matrix;
-%          crossfolds:      number of crossfolds;
 %          C:               Cost value;
 %              
 %   Output: fmeasure:       Average of the F-measure of the crossfolds
-%  
+
+    crossfolds = max(R);
     options = sprintf('-t 0 -w1 1 -w2 1 -c %f', C);
     
     fnvector=zeros(1,crossfolds);

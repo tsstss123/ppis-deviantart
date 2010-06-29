@@ -1,15 +1,16 @@
-function [ fmeasure ] = TADANaiveBayes( data, R, crossfolds, Bin )
+function [ fmeasure ] = TADANaiveBayes( data, R, Bin )
 %   The TADA Naive Bayes Classifier
 %   
 %   Input: data:            PRTools Format Dataset;
 %          R:               Crossvalidation Rotation Matrix;
-%          crossfolds:      number of crossfolds;
 %          Bin:             number of Bins
 %              
 %   Output: fmeasure:       Average of the F-measure of the crossfolds
-%
-    disp('Naive Bayes');
+
+    fprintf('Naive Bayes with Bins: %f\n', Bin);
        
+    crossfolds = max(R);
+    
     fnvector=zeros(1,crossfolds);
     fpvector=zeros(1,crossfolds);
     tpvector=zeros(1,crossfolds);
