@@ -11,25 +11,28 @@ lastfilesize = 0
 def progressReporter(count, size, total):
 	global lastfilesize
 	lastfilesize = total
-	
+
 class ErrorHandler:
-    def error(self, exception):
-        "Handle a recoverable error."
-        raise exception
+	""" Ignore fatal errors in XML files. 
+		Apparently deviantART has corrupt RSS XML files.
+		Needs a better fix."""
+	def error(self, exception):
+	    "Handle a recoverable error."
+	    raise exception
 
-    def fatalError(self, exception):
-        "Handle a non-recoverable error."
-        #raise exception
-        pass
+	def fatalError(self, exception):
+	    "Handle a non-recoverable error."
+	    #raise exception
+	    pass
 
-    def warning(self, exception):
-        "Handle a warning."
-        print exception
+	def warning(self, exception):
+	    "Handle a warning."
+	    print exception
 
 class GalleryBackEndParser(handler.ContentHandler):
 	""" Downloads images and info from the backend url of deviantART.  
-		Set downloadfull to False to not download the full images
-		Set downloadthumbs to False to not download the thumbnails (2 for each image) 
+		Set downloadfullimages to False to not download the full images
+		Set downloadthumbnails to False to not download the thumbnails (2 for each image) 
 		Set removefailed to True in case you want the xml files removed when one of the images
 		fails to download."""
 	def __init__(self, deviant, imagefolder, downloadfullimages, downloadthumbnails, removefailed):
@@ -41,7 +44,7 @@ class GalleryBackEndParser(handler.ContentHandler):
 		self.downloadfullimages = downloadfullimages
 		self.downloadthumbnails = downloadthumbnails
 		self.removefailed = removefailed
-			
+		
 		# Item info
 		self.itemstarted = False
 		self.xmlcontent = []
@@ -60,7 +63,7 @@ class GalleryBackEndParser(handler.ContentHandler):
 		thumbsmall_folder = os.path.join(deviant_folder, 'thumbsmall')
 		if not os.path.exists(thumbsmall_folder):
 			os.mkdir(thumbsmall_folder)
-		
+	
 		self.deviant_folder = deviant_folder
 		self.full_folder = full_folder
 		self.thumbbig_folder = thumbbig_folder
@@ -160,7 +163,7 @@ class GalleryBackEndParser(handler.ContentHandler):
 
 			self.imagefilename = None
 			self.itemstarted = False
-			
+		
 	def characters(self, content):
 		if len(self.stack) == 0:
 			return
@@ -175,12 +178,10 @@ class GalleryBackEndParser(handler.ContentHandler):
 	def endDocument(self):
 		pass
 
-def getDeviantPage(deviant):
-	return 'http://%s.deviantart.com/' % (deviant)
-def getDeviantForPage(page):
-	return page.split('http://')[1].split('.')[0]
-	
 def parseDeviant(deviant, imagefolder, downloadfullimages, downloadthumbnails, removefailed):
+	""" Parsed all xml files from the backend links of deviantArt for a given deviant
+		The information retrieved retrieved will be stored in a XML file.
+		Depending on the arguments it will also download the images. """	
 	print('[%s] Parsing %s...' % (datetime.now() - starttime, deviant))
 
 	# Parse all backend pages
@@ -195,14 +196,14 @@ def parseDeviant(deviant, imagefolder, downloadfullimages, downloadthumbnails, r
 		started = True
 		print '\t[%s] offset=%d (%d MB downloaded)' % (datetime.now() - starttime, offset, total / 1048576)
 		url = urllib.urlopen('%s%d' % (backendurl, offset))
-		
+	
 		parser = make_parser()
 		handler = GalleryBackEndParser(deviant, imagefolder, 
 						downloadfullimages, downloadthumbnails, removefailed)
 		parser.setContentHandler(handler)
 		parser._err_handler = ErrorHandler()
 		parser.parse(url)
-		
+	
 		count = handler.count
 		offset += count
 		total += handler.totaldownloaded
@@ -224,7 +225,7 @@ def main():
 	if len(args) < 1:
 		print('Usage: %s [options] image_folder_path deviant1 deviant2 deviant3 ...\n\t or %s [options]-f filename image_folder_path' % (sys.argv[0],sys.argv[0]))
 		return
-		
+	
 	deviants = None
 
 	for o, v in opt:
@@ -237,11 +238,11 @@ def main():
 		elif o == '-f':
 			deviants = load_deviants(v)
 			removefailed = True
-	
+
 	imagefolder = args[0]
 	if not deviants:
 		deviants = args[1:]
-	
+
 	if not os.path.exists(imagefolder):
 		os.mkdir(imagefolder)
 
