@@ -58,13 +58,55 @@ Furthermore the co-occurrences between the watchers and watched network is about
 
 
 \subsection{Image experiments}
-For the image experiments we collected our dataset by downloading the complete galleries from around 30 artists.
+For the image experiments we collected our dataset by downloading the complete galleries from 31 artists.
 Those artists were selected from the daily deviations of a random day and includes both premium and non premium members.
+Daily Deviations are featured images of artists selected by the staff members of DeviantArt.
 In total we downloaded around 5000 images. 
 For each image we also stored the category information.
 The dataset is unbalanced since some artists only have around 50 images, while other artists have over 500 images.
-The top five categories are listed in table \ref{datasetstats}.
+Some dataset statistics are listed in table \ref{datasetstats}.
 
+\begin{table}[ht]
+	\centering
+	\subtable[General]{
+		\begin{tabular} { |l|c| }
+			\hline
+			Total Size & 1.4gb \\
+			\hline
+			Users & 31 \\
+			\hline
+			Total image count & 5324 \\
+			\hline 
+			Average image width & 671 \\
+			\hline
+			Average image height & 689 \\
+			\hline
+			Average image size & 250kb \\
+			\hline
+			Average image count per artist & 171 \\
+			\hline
+			Image formats & jpg, png, gif \\
+			\hline
+		\end{tabular}
+	}
+
+    \subtable[Category]{
+		\begin{tabular}
+		    { | l | c | } 
+		    \hline
+		    Category & count \\
+		    \hline
+		    photography & 2244 \\ 
+		    customization & 906 \\ 
+		    traditional & 842 \\ 
+		    digitalart & 587 \\ 
+		    fanart & 239 \\ 
+		    \hline 
+		\end{tabular}
+	}
+    \caption{Dataset statistics}
+    \label{datasetstats}
+\end{table}
 
 \begin{table}[htb]
     \centering
@@ -102,48 +144,6 @@ The top five categories are listed in table \ref{datasetstats}.
   \caption{mean image per artist, left to right, top to bottom, in order of table \ref{datasetstats2}: Craniata, K1lgore, Kitsunebaka91, ..., zihnisinir }
   \label{fig:avgDataset}
 \end{figure}
-
-
-\begin{table}[ht]
-	\centering
-	\subtable[]{
-	
-    \begin{tabular}
-        { | l | c | } 
-        \hline
-        Category & count \\
-        \hline
-        photography & 2244 \\ 
-        customization & 906 \\ 
-        traditional & 842 \\ 
-        digitalart & 587 \\ 
-        fanart & 239 \\ 
-        \hline 
-    \end{tabular}
-	}
-	
-	\subtable[]{
-	\begin{tabular} { |l|c| }
-		\hline
-		Total Size & 1.4gb \\
-		\hline
-		Users & 31 \\
-		\hline
-		Image count & 5324 \\
-		\hline 
-		Average image width & 671 \\
-		\hline
-		Average image height & 689 \\
-		\hline
-		Average image size & 250kb \\
-		\hline
-		Average image count & 171 \\
-		\hline
-	\end{tabular}
-	}
-    \caption{Dataset category statistics}
-    \label{datasetstats}
-\end{table}
 
 %\subsubsection{Experiment 1: One against all artists}
 
