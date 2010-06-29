@@ -1,11 +1,11 @@
 \subsection{Network experiments}
 The network experiments have been performed to analyze the dA network and establish global characteristics of the network, but also to find interesting sub-networks of artists and artworks which are of particular interest to investigate.
 
-The dA network consists of 13 million registered users, doing a full analysis of the the whole network was impossible within the scope of the project. Therefore a network of the dA watchers functionality\footnote{a watcher is someone who indicates he likes an artist and would like to receive updates when that artist produces new artwork.} was extracted for all but casual artists, these latter can be distinguished with a $~$, indicating that they do not have a paid membership. This network formed the basis of our network experiments.
+The dA network consists of 13 million registered artists, and therefore doing a full analysis of the the whole network was not possible within the time-scope of the project. Therefore a network of the dA watchers functionality\footnote{A watcher is someone who indicates he likes an artist and would like to receive updates when that artist produces new artwork.} was extracted for all except casual artists (distinguished with a \textit{tilde} ($\sim$)). This network formed the basis of our network experiments.
 
-From this large network of around 100000 professional artists three core-networks were extracted using the findcore algorithm, described in Algorithm \ref{alg:findcore}. The three cores correspond to three types of the $degree(j)$ function in that algorithm, namely - in-degree, out-degree and in+out-degree -. This has resulted in a core of artists that are "power-watchers" a core with "popular-watched" artists and last a mix of both.
+From this large network of around 100000 professional artists three core-networks were extracted using the \textit{FindCore} algorithm, described in Algorithm \ref{alg:findcore}. The three cores correspond to three types of the $degree(j)$ function in that algorithm, namely: in-degree, out-degree and in+out-degree. This has resulted in a core of artists that are \textit{power-watchers}, a core with \textit{popular-watched} artists and last a mix of both.
 
-The results of the network experiments are presented in Table \ref{tab:netstatistics}, Table \ref{tab:netcooccurrences} as well as Figure \ref{fig:results_core}.  For all networks statistics were extracted, unfortunately for the large professional users network statistics such as the characteristic path length were not possible to compute within the given time period.
+The results of the network experiments are presented in Table \ref{tab:netstatistics}, Table \ref{tab:netcooccurrences} as well as Figure \ref{fig:results_core}.  For all networks, statistics were extracted. Unfortunately for the large professional artists network, statistics such as the characteristic path length were not within the time-scope of this project.
 
 \begin{table}[htb]
     \centering
@@ -52,24 +52,23 @@ The results of the network experiments are presented in Table \ref{tab:netstatis
   \label{fig:results_core}
 \end{figure*}
 
-Through application of the findcore algorithm we have been able to find cores of interesting users, which are of manageable size for full analysis. To establish if these core networks are small-world, we refer to the definition of small-world networks as described in section \ref{net_proposed_approach}, a network can be considered small-world when $L_G\approx L_{random}$ and $C_G \gg C_{random}$. All core networks have a clustering coefficient larger than a comparable random network, though the mixed core is close to the random network. The characteristic path lengths are longer than their random network equivalents. This is most likely due to the relatively small size of the networks, the paths are still significantly smaller than $L_{lattice}=\frac{n}{2k}$. We therefore conclude that the core's of dA can be considered small-world networks.  
-Furthermore the co-occurrences between the watchers and watched network is about $\frac{1}{3}$, while this is much lower for the mixed network. We presume that this has to do with the findcore degree $\max x$ which is much higher for the mixed network. Thus the mixed network is distinct from the watchers and watched cores which are more alike.
+Through application of the \textit{FindCore} algorithm cores of interesting artists have been identified. These cores are of manageable size for full analysis.  All core networks have a clustering coefficient larger than a comparable random network, though the mixed core is close to the random network. The characteristic path lengths are longer than their random network equivalents. This is most likely due to the relatively small size of the networks. However, the paths are still significantly smaller than $L_{lattice}=\frac{n}{2k}$. It can been concluded that the cores of dA can be considered small-world networks.  
+Furthermore, the co-occurrences between the watchers and watched network is about $\frac{1}{3}$; this is much lower for the mixed network. It is presumed that this has to do with the FindCore degree $\max x$ which is much larger for the mixed network. Thus the mixed network is distinct from the watchers and watched cores which are more alike.
 
 
 
 \subsection{Image experiments}
-For the image experiments we collected our dataset by downloading the complete galleries from around 30 artists.
-Those artists were selected from the daily deviations of a random day and includes both premium and non premium members.
-In total we downloaded around 5000 images. 
-For each image we also stored the category information.
-The dataset is unbalanced since some artists only have around 50 images, while other artists have over 500 images.
-Some more detailed statistics about the dataset are listed in table \ref{datasetstats}.
+For the image experiments, a dataset containing full galleries of 30 artists was collected.
+Those artists were selected from the \textit{daily deviations}\footnote{Daily deviations are featured images selected by dA's staff members} of a random day and includes both premium and non-premium artists. 
+More details about the dataset can be found in Table \ref{datasetstats}. 
+The dataset is unbalanced (like dA) since some artists only have around 50 images, while other artists have over 500 images. This may influence the performance of the classifications.
+
 
 
 \begin{figure}[htb]
 %  \centering
   \includegraphics[width=1\linewidth]{img/datasetAvg.png}
-  \caption{mean image per artist, left to right, top to bottom, in order of table \ref{datasetstats2}: Craniata, K1lgore, Kitsunebaka91, ..., zihnisinir }
+  \caption{mean image per artist, left to right, top to bottom, in order of table \ref{datasetstats}(b): Craniata, K1lgore, Kitsunebaka91, ..., zihnisinir }
   \label{fig:avgDataset}
 \end{figure}
 
@@ -77,7 +76,7 @@ Some more detailed statistics about the dataset are listed in table \ref{dataset
 \begin{table}[ht]
 	\centering
 
-	\subtable[General information]{
+	\subtable[General information about the dataset]{
 		\begin{tabular} { |l|c| }
 			\hline
 			Total Size & 1.4gb \\
@@ -97,7 +96,7 @@ Some more detailed statistics about the dataset are listed in table \ref{dataset
 		\end{tabular}
 	}
 
-	\subtable[Image count per artist]{
+	\subtable [List of artist with the number of their artworks]{
 		\begin{tabular}
 		    { | l | c | l | c|} 
 		    \hline
@@ -111,18 +110,19 @@ Some more detailed statistics about the dataset are listed in table \ref{dataset
 		Red-Priest-Usada & 132 & Skarbog & 229 \\
 		Swezzels & 9 & Udodelig & 54 \\
 		UdonNodu & 38 & WarrenLouw & 51 \\
-		catluvr2 & 793 & erroid & 146 \\
-		fediaFedia & 303 & gsphoto & 661 \\
-		iakobos & 47 & kamilsmala & 39 \\
-		miss-mosh & 307 & nyctopterus & 68 \\
-		omega300m & 483 & sekcyjny & 55 \\
-		stereoflow & 166 & sujawoto & 33 \\
-		wirestyle & 143 & woekan & 49 \\
-		zihnisinir & 177 \\
+		erroid & 146 & fediaFedia & 303\\
+		gsphoto & 661 & iakobos & 47 \\
+		kamilsmala & 39 & miss-mosh & 307 \\
+		nyctopterus & 68 & omega300m & 483 \\
+		sekcyjny & 55 & stereoflow & 166 \\
+		sujawoto & 33 & wirestyle & 143 \\ 
+		woekan & 49 & zihnisinir & 177 \\
 
 		    \hline 
 		\end{tabular}
-	}
+		\label{artists_table}
+        }
+	
 
 	\subtable[Top 5 categories]{
 		\begin{tabular}
@@ -142,159 +142,21 @@ Some more detailed statistics about the dataset are listed in table \ref{dataset
     \label{datasetstats}
 \end{table}
 
-%\subsubsection{Experiment 1: One against all artists}
+Multiple experiments have been conducted in a preliminary phase, however this paper will only present results for the most significant experiment.
 
-%The first experiment using this toolkit is to find out if there are any artists in our dataset that uses an unique style.
-%The experiment is performed using two feature combination, the statistical features and the cognitive features.
-%Also it is focused on using one artist as the positive class while all the other artists are in the negative class resulting in a two class problem.
-%This experiment is set up as an orientation experiment to find out what might work for this dataset and what might not.
-%Also this experiment can give a clear indication of how to approach this type of dataset.
-%
-%For this experiment, three classifiers were used: kNN, Naive Bayes and the Nearest Mean classifiers.
-%The classifiers were trained on a train set which consists of 70\% of the entire dataset.
-%Training was done with a 5 fold cross-validation and the performance of each classifier can be computed by calculating the average of the $F_1$-measure gathered from all folds.
-%Because this is an orientation experiment, no test set was incorporated in this experiment.
-%
-%%\subsubsection{Experiment 1: Results}
-%
-%%\begin{table*}
-%%    \centering
-%%    \begin{tabular}
-%%        { | l | l | c | c |} 
-%%        \hline
-%%        Artist & Classifier & Parameter & F-Measure \\
-%%        \hline
-%%        my\_shots & Nearest Mean & - & 0.8742 \\ 
-%%        gsphoto & kNN & 3 & 0.8722 \\ 
-%%        gsphoto & kNN & 5 & 0.8711 \\ 
-%%        Pierrebfoto & Naive Bayes & 10 & 0.8698 \\ 
-%%        Kitsunebaka91 & Naive Bayes & 24 & 0.8693 \\
-%%        Kitsunebaka91 & Naive Bayes & 12 & 0.8680 \\
-%%        gsphoto & kNN & 7 & 0.8669 \\
-%%        Kitsunebaka91 & Naive Bayes & 22 & 0.8668 \\
-%%        gsphoto & kNN & 9 & 0.8664 \\
-%%        Kitsunebaka91 & Naive Bayes & 8 & 0.8657 \\
-%%        \hline 
-%%    \end{tabular}
-%%    \caption{Top 10 Ranking of the highest $F_1$-measure using \textit{statistical features}}
-%%    \label{ex1aresults}
-%%\end{table*}
-%
-%\begin{table}[htb]
-%    \centering
-%    \begin{tabular}
-%        { | l | l | c |} 
-%        \hline
-%        Artist & Classifier & $F_1$-Measure \\
-%        \hline
-%        my\_shots & Nearest Mean & 0.8742 \\ 
-%        gsphoto & kNN & 0.8722 \\ 
-%        gsphoto & kNN & 0.8711 \\ 
-%        Pierrebfoto & Naive Bayes & 0.8698 \\ 
-%        Kitsunebaka91 & Naive Bayes & 0.8693 \\
-%        Kitsunebaka91 & Naive Bayes & 0.8680 \\
-%        gsphoto & kNN & 0.8669 \\
-%        Kitsunebaka91 & Naive Bayes & 0.8668 \\
-%        gsphoto & kNN & 0.8664 \\
-%        Kitsunebaka91 & Naive Bayes & 0.8657 \\
-%        \hline 
-%    \end{tabular}
-%    \caption{Top 10 Ranking of the highest $F_1$-measure using \textit{statistical features}}
-%    \label{ex1aresults}
-%\end{table}
-%
-%The results from the experiment for the statistical features can be found in table \ref{ex1aresults}.
-%The table lists the top 10 ranking of the artist names combined with the classifier and parameter used to train the classifier.
-%The ranking is in a descending order starting from the combination that performed the best according to the $F_1$-measure.
-%
-%The table shows that 2 artist names exists multiple times in the top 10 ranking.
-%Those artists are \textit{Kitsunebaka91} and \textit{gsphoto} and the table shows that they were separated from all other artists using different classifiers and parameter settings.
-%
-%The table also shows that the nearest mean classifier only has one entry in the top 10.
-%Eventhough it has the highest $F_1$-measure, the classifier does not seem to be performing well on the other artists.
-%
-%%\begin{table*}
-%%    \centering
-%%    \begin{tabular}
-%%        { | l | l | c | c |} 
-%%        \hline
-%%        Artist & Classifier & Parameter & F-Measure \\
-%%        \hline
-%%        giannisgx89 & Nearest Mean & - & 0.8549 \\ 
-%%        gsphoto & Nearest Mean & - & 0.8196 \\ 
-%%        Pierrebfoto & Nearest Mean & - & 0.7305 \\ 
-%%        sekcyjny & Nearest Mean & - & 0.7298 \\ 
-%%        fediaFedia & Nearest Mean & - & 0.7133 \\
-%%        NEDxfullMOom & Nearest Mean & - & 0.7020 \\
-%%        erroid & Nearest Mean & - & 0.6831 \\
-%%        gsphoto & Naive Bayes & 14 & 0.6820 \\
-%%        Mentosik8 & Nearest Mean & - & 0.6801 \\
-%%        gsphoto & Naive Bayes & 10 & 0.6753 \\
-%%        \hline 
-%%    \end{tabular}
-%%    \caption{Top 10 Ranking of the highest $F_1$-measure using \textit{cognitive} features}
-%%    \label{ex1bresults}
-%%\end{table*}
-%
-%\begin{table}[htb]
-%    \centering
-%    \begin{tabular}
-%        { | l | l | c |} 
-%        \hline
-%        Artist & Classifier & $F_1$-Measure \\
-%        \hline
-%        giannisgx89 & Nearest Mean & 0.8549 \\ 
-%        gsphoto & Nearest Mean & 0.8196 \\ 
-%        Pierrebfoto & Nearest Mean & 0.7305 \\ 
-%        sekcyjny & Nearest Mean & 0.7298 \\ 
-%        fediaFedia & Nearest Mean & 0.7133 \\
-%        NEDxfullMOom & Nearest Mean & 0.7020 \\
-%        erroid & Nearest Mean & 0.6831 \\
-%        gsphoto & Naive Bayes & 0.6820 \\
-%        Mentosik8 & Nearest Mean & 0.6801 \\
-%        gsphoto & Naive Bayes & 0.6753 \\
-%        \hline 
-%    \end{tabular}
-%    \caption{Top 10 Ranking of the highest $F_1$-measure using \textit{cognitive} features}
-%    \label{ex1bresults}
-%\end{table}
-%
-%Table \ref{ex1bresults} shows the results obtained from only using cognitive features to separate artists from each other.
-%In contrast to table \ref{ex1aresults} these results show that the nearest mean classifier is the one having the best performance according to $F_1$-measure.
-%
-%However using cognitive features results into a different ranking of separable artists, the performance of each classifier is not as high as for using statistical features.
-%The top 10 ranking using the statistical features all have scores above the 0.8 indicating that using statistical features seems more stable compared to using cognitive features.
-%
-%This orientation experiment showed that using statistical features better results can be obtained compared to using cognitive features.
-%Also it seems like there are some artists that can be seperable from all the others but most artists do not perform well in this experiment.
-%Using the results of this experiment it is hard to describe why this is happening. 
-%An experiment showing which features contributes to the separation of an artist from all other artists is important in order to describe why the style of an artist is unique compared to the other artists in the dataset.
-%The next section describes an experiment that gives a clear view over these questions.
+\subsubsection{Experimental setup}
 
-\subsubsection{Experimental Setup}
+This experiment focused on determining if an artists is distinguishable from another artist, and which are the best features to separate both. 
+%This experiment is focused on finding the most defining features of every artist in the dataset.
+For every artist, the feature selection algorithm uses the inter-intra criterion to select the best features.% to separate that artist from another artist.
+%This is done for every artist pair in the dataset, meaning that the best 5 features can differ depending on what kind of artist pair is used.
 
-This experiment is focused on finding the most defining features of every artist in the dataset.
-For every artist, the feature selection algorithm selects the best 5 features that according to the inter-intra criterion can separate that artist with another artist.
-This will be done for every artist pair that can be found in the dataset, meaning that the best 5 features can differ depending on what kind of artist pair is used.
-
-At first, a classifier needs to be selected which is going to be used to give a performance score for each set of features that the feature selection algorithm is computing.
-The classifier is selected by optimizing the parameters for each classifier using 5 fold cross-validation on the training set, which is 70 percent of the dataset.
-The classifier selected will be the one that gives the highest performance score.
-
-For every artist pair a performance score is computed based on how well the selected classifier can separate those artists given the features.
-Therefore the performance measure used here is the $F_1$-measure.
-
-%For this experiment each artist is compared to one other artist.
-%The motivation of this approach is that each artist can be evaluated separately and it can give more clarity for cases where the performance of a classifier is low.
-%The experiment is done for all the artists in the dataset meaning that an artist is compared to every other artist in the dataset.
-%Also this experiment uses the feature selection algorithm to determine the features that best separates an artist from another artist.
-%The feature selection algorithm selects features up to a combination of 5 different features for every artist pair.
-%
-%For this experiment the kNN, Naive Bayes, Nearest Mean and the SVM classifiers were optimized and trained on the train set using 5 fold cross-validation and the highest average $F_1$-measure determines the classifier that is used to produce the results.
-%
-%For every artist pair the $F_1$-measure is calculated on the test set to evaluate the performance of the classifier separating those artists.
-
-\subsubsection{Image Experiment Results}
+Before performing the main experiment, another experiment was conducted to determine the performance of different classifiers.
+The best performing classifier is than used for the main experiment.
+The classifiers that have been used are kNN, Naive Bayes, Nearest Mean and Linear SVM.
+The parameters of the classifiers have been optimized using 5-fold cross validation on 70\% of the dataset.
+The remaining 30\% is used as test set for the main experiment. 
+The performance measure used is $F_1$-measure.
 
 \begin{table}[htb]
     \centering
@@ -313,9 +175,21 @@ Therefore the performance measure used here is the $F_1$-measure.
     \label{ex2optimizeresults}
 \end{table}
 
-The results of optimizing the classifiers and then validating them using the train set are shown in table \ref{ex2optimizeresults}.
-The results show that the linear SVM has got the highest mean $F_1$-measure score and also the second highest standard deviation.
-Based on these scores, it is best to select the linear SVM to assign performance scores because this classifier can best separate artists.
+The results are shown in Table \ref{ex2optimizeresults}.
+Linear SVM has the highest mean $F_1$-measure score and the second highest standard deviation, and therefore best separates two artists.
+Based on these scores, linear SVM has been selected for the main experiment.
+
+%For this experiment each artist is compared to one other artist.
+%The motivation of this approach is that each artist can be evaluated separately and it can give more clarity for cases where the performance of a classifier is low.
+%The experiment is done for all the artists in the dataset meaning that an artist is compared to every other artist in the dataset.
+%Also this experiment uses the feature selection algorithm to determine the features that best separates an artist from another artist.
+%The feature selection algorithm selects features up to a combination of 5 different features for every artist pair.
+%
+%For this experiment the kNN, Naive Bayes, Nearest Mean and the SVM classifiers were optimized and trained on the train set using 5 fold cross-validation and the highest average $F_1$-measure determines the classifier that is used to produce the results.
+%
+%For every artist pair the $F_1$-measure is calculated on the test set to evaluate the performance of the classifier separating those artists.
+
+\subsubsection{Image experiment results}
 
 %Table \ref{ex2optimizeresults} shows the results After the optimization and training of the classifiers.
 %The linear SVM classifier obtained the highest average $F_1$-measure however the Naive Bayes classifier did not perform significantly worse than the SVM.
@@ -338,14 +212,13 @@ Based on these scores, it is best to select the linear SVM to assign performance
   \label{fig:experiment2results}
 \end{figure*}
 
-The results of using the trained linear SVM on the test set is shown in figure \ref{fig:experiment2results}.
-The figure shows the intensity mappings of different lengths of feature sets.
-It shows that the length of the feature sets used to separate artists is correlated to the performance score between them.
-It also shows that there are artists pairs that can be separated using only a few features.
-There are even artists which can be separated from every other artist in the dataset.
-This is shown by the columns and rows that are predominantly red.
-These artists uses an art style that is unique compared to the other artists in this dataset.
-This result tells that those artists can be described using the features that were created using this toolkit.
+Results of the trained linear SVM on the test set are shown in Figure \ref{fig:experiment2results}.
+The figure shows the \textit{intensity mappings} of four differently sized feature sets (the best 1, 3, 5 and all features).
+It shows that the size of the feature sets used to separate artists is correlated to the performance score.
+It also shows that there are artists pairs that can be separated using only few features.
+There are artists which can be separated from all the other artists in the dataset, shown by the columns and rows that are predominantly red.
+This happen because those artists use an art style that is unique in the dataset.
+Furthermore, this result tells that those artists can be described using the features that are implemented in the toolkit.
 
 \begin{table*}[htb]
     \centering
@@ -353,37 +226,37 @@ This result tells that those artists can be described using the features that we
         { | c | l | c | c | l | } 
         \hline
         No. & Name & $\mu$ $F_1$-measure & $\sigma$ $F_1$-measure & Most defining features\\
-        \hline
-    1 & Craniata &  0.6314 & 0.1864 & Center average Hue, Center corner detection, Center edge detection\\
-    2 & K1lgore & 0.6078 & 0.1813 & Entropy of the Intensity, Variance of the Intensity, Edge detection \\
-    3 & Kitsunebaka91 & 0.8827 & 0.1756 & Center edge detection, Entropy of the Intensity, Edge detection \\
-    4 & Knuxtiger4 & 0.7751 & 0.1822 & Variance of the Intensity, Entropy of the Intensity, Center edge detection \\
+    \hline
+    1 & Craniata &  0.6314 & 0.1864 & Center average Hue, Center corner pixel ratio, Center edge to pixel ratio\\
+    2 & K1lgore & 0.6078 & 0.1813 & Entropy of the Intensity, Variance of the Intensity, Edge to pixel ratio \\
+    3 & Kitsunebaka91 & 0.8827 & 0.1756 & Center edge to pixel ratio, Entropy of the Intensity, Edge to pixel ratio \\
+    4 & Knuxtiger4 & 0.7751 & 0.1822 & Variance of the Intensity, Entropy of the Intensity, Center edge to pixel ratio \\
     5 & LALAax & 0.6498 & 0.1902 & Edgeratio, Entropy of the Intensity, Variance of the Intensity \\
-    6 & Mallimaakari & 0.7548 & 0.1824 & Variance of the Intensity, Center edge detection, Center average Hue\\
-    7 & Mentosik8 & 0.6807 & 0.1876 & Entropy of the Intensity, Variance of the Intensity, Lowerleft edge detection \\ 
-    8 & NEDxfullMOon & 0.7071 & 0.1880 & Center edge detection, Center avg B, Entropy of the Intensity\\
-    9 & One-Vox & 0.6570 & 0.1833 & Entropy of the Intensity, Edge detection, Center edge detection  \\
-    10 & Pierrebfoto & 0.8375 & 0.1852 & Entropy of the skin map, Center average Hue, Edge detection\\
-    11 & Red-Priest-Usada & 0.7376 & 0.1851 & Entropy of the intensity map, Center Edge detection, Entropy of the saliency map\\
-    12 & Skarbog & 0.7875 & 0.1869 & Entropy of the Intensity, Center average saturation, Lowerright average R \\
-    13 & Swezzels & 0.3296 & 0.2281 & - \\ 
+    6 & Mallimaakari & 0.7548 & 0.1824 & Variance of the Intensity, Center edge to pixel ratio, Center average Hue\\
+    7 & Mentosik8 & 0.6807 & 0.1876 & Entropy of the Intensity, Variance of the Intensity, Lower-left edge to pixel ratio \\ 
+    8 & NEDxfullMOon & 0.7071 & 0.1880 & Center edge to pixel ratio, Center avg B, Entropy of the Intensity\\
+    9 & One-Vox & 0.6570 & 0.1833 & Entropy of the Intensity, Edge to pixel ratio, Center edge to pixel ratio  \\
+    10 & Pierrebfoto & 0.8375 & 0.1852 & Entropy of the skin map, Center average Hue, Edge to pixel ratio\\
+    11 & Red-Priest-Usada & 0.7376 & 0.1851 & Entropy of the intensity map, Center edge to pixel ratio, Entropy of the saliency map\\
+    12 & Skarbog & 0.7875 & 0.1869 & Entropy of the Intensity, Center average saturation, Lower-right average R \\
+    13 & Swezzels & 0.3296 & 0.2281 & Not enough image to report most defining features \\ 
     14 & Udodelig & 0.5798 & 0.1887 & Entropy of the Saliency, Entropy of the Intensity, $\sigma$ saliency distribution \\
-    15 & UdonNodu & 0.5352 & 0.2158 & Entropy of the saliency map, Variance of the Intensity, Uppermiddel average Hue \\ 
-    16 & WarrenLouw & 0.6235 & 0.1864 & Entropy of the Intensity, median B, Upperright median Intensity\\
-    17 & erroid & 0.7535 & 0.1833 & Variance of the Intensity, Center edge detection, Entropy of the Intensity\\
-    18 & fediaFedia & 0.8270 & 0.1804 & Center edge detection, corner detection, Variance of the Intensity \\
-    19 & gsphoto & 0.9172 & 0.1779 & Entropy of the Intensity, Variance of the Intensity, Center edge detection \\
-    20 & iakobos & 0.5764 & 0.1899 & Edge detection, upperleft average saturation, upperleft median G \\
-    21 & kamilsmala & 0.6359 & 0.1978 & Variance of the Intensity, Entropy of the Intensity, middleleft edge detection\\
-    22 & miss-mosh & 0.8205 & 0.1811 & upperleft corner detection, Number of faces, Entropy of the Intensity \\
-    23 & nyctopterus & 0.6324 & 0.1950 & Variance of the Intensity, Center median Hue, center average Hue\\
-    24 & sekcyjny & 0.5875 & 0.1983 & Entropy of the Intensity, Downmiddle edge detection, Entropy of the saliency map\\
-    25 & stereoflow & 0.7576 & 0.1904 & Center average Hue, Variance of the Intensity, Corner detection \\
-    26 & sujawoto & 0.4752 & 0.1873 & Entropy of the intensity map, Entropy of the Intensity, Downmiddle edge detection\\
+    15 & UdonNodu & 0.5352 & 0.2158 & Entropy of the saliency map, Variance of the Intensity, Upper-middel average Hue \\ 
+    16 & WarrenLouw & 0.6235 & 0.1864 & Entropy of the Intensity, median B, Upper-right median Intensity\\
+    17 & erroid & 0.7535 & 0.1833 & Variance of the Intensity, Center edge to pixel ratio, Entropy of the Intensity\\
+    18 & fediaFedia & 0.8270 & 0.1804 & Center edge to pixel ratio, Corner pixel ratio, Variance of the Intensity \\
+    19 & gsphoto & 0.9172 & 0.1779 & Entropy of the Intensity, Variance of the Intensity, Center edge to pixel ratio \\
+    20 & iakobos & 0.5764 & 0.1899 & edge to pixel ratio, Upper-left average saturation, upper-left median G \\
+    21 & kamilsmala & 0.6359 & 0.1978 & Variance of the Intensity, Entropy of the Intensity, middle-left edge to pixel ratio\\
+    22 & miss-mosh & 0.8205 & 0.1811 & upper-left corner pixel ratio, Number of faces, Entropy of the Intensity \\
+    23 & nyctopterus & 0.6324 & 0.1950 & Variance of the Intensity, Center median Hue, Center average Hue\\
+    24 & sekcyjny & 0.5875 & 0.1983 & Entropy of the Intensity, Lower-middle edge to pixel ratio, Entropy of the saliency map\\
+    25 & stereoflow & 0.7576 & 0.1904 & Center average Hue, Variance of the Intensity, Corner pixel ratio \\
+    26 & sujawoto & 0.4752 & 0.1873 & Entropy of the intensity map, Entropy of the Intensity, Lower-middle edge to pixel ratio\\
     27 & wirestyle & 0.7138 & 0.1931 & Entropy of the intensity map, Variance of the Intensity, Center average B\\ 
-    28 & woekan & 0.5529 & 0.1881 & Entropy of the Intensity, Variance of the Intensity, Upperleft edge detection\\
+    28 & woekan & 0.5529 & 0.1881 & Entropy of the Intensity, Variance of the Intensity, Upper-left edge to pixel ratio\\
     29 & zihnisinir & 0.7632 & 0.1918 & Entropy of the Intensity, Center average saturation, Entropy of the intensity map\\
-    30 & omega300m & 0.8318 & 0.2403 & Entropy of the Intensity, Center edge detection, Downright average Intensity \\
+    30 & omega300m & 0.8318 & 0.2403 & Entropy of the Intensity, Center edge to pixel ratio, Lower-right average Intensity \\
         \hline 
     \end{tabular}
     \caption{This table first describes the mean $F_1$-measure and its standard deviation for every artist which was computed by using linear SVM combined with a feature set containing the 5 most informative features that separates an artist pair.
@@ -392,71 +265,13 @@ This result tells that those artists can be described using the features that we
     \label{ex2stats}
 \end{table*}
 
-Table \ref{ex2stats} shows the summary of this experiment and it shows what the most defining features are for each artist.
-Note that some artists, according to the feature selection algorithm, contains defining features but the mean $F_1$-measure is very low.
-This shows that eventhough they are the defining features, one should not assume that they can describe the artist.
-The classifier could not correctly separate the artist from the other artists by using those features.
-The mean $F_1$-measure can be seen as the score that these features are in fact correctly describing the artist.
-
-The table also shows that the edge detection and the intensity are valuable features in describing artist styles.
-This is very feasible because images can actually range between being dark and very light and also there are styles where there are a lot of edges like in photographs or drawings but other styles like abstract can have very little edges.
-Other features that can be found in this table are the hue and corner detection but they are not used as much as the edge detection and the intensity.
-
-Also it seems that cognitive features work best in certain types of styles.
-In this dataset, the artist $Pierrebfoto$ has a lot of nude images and this was picked up using the skin map feature.
-
+Table \ref{ex2stats} shows the most discriminating features for each artist. 
+Based on these results, some observations can be made.
+For some artists the mean $F_1$-measure is very low. This shows that despite the features are the best ones in the entire feature collection, they are not sufficiently describing the artists.
+The table shows that the \textit{edge to pixel ratio} and \textit{intensity} are valuable features in describing artists.
+This is very feasible because images can range between being dark and very light. Moreover, there are styles that have many edges (e.g. photographs and drawings), but more abstract ones that have not.
+Other discriminant features are \textit{hue} and \textit{corner pixel ratio}.
+Even more, it seems that cognitive-inspired features perform best on certain styles.
+For example, the artist $Pierrebfoto$ has a lot of nude images and this was exploited by the skin map feature.
 Another important detail about these results is that the center cell of an image is chosen a lot compared to the other cells.
 This is actually highly feasible because most of the time in an image, the center contains the most information.
-
-These results have shown that some artists can be described by only a using a few features.
-Also edge detection and intensity are important features that can be considered when describing artists. 
-
-%Figure \ref{fig:experiment2results} shows the results for this experiment using the linear SVM which was chosen in a greedy fashion based on the results found in table \ref{ex2optimizeresults}.
-%From left to right the figure shows the results of using: \textit{1} feature, \textit{2} features, \textit{3} features, \textit{4} features, \textit{5} features and \textit{all} features as the feature combination that is used by the classifier to classify images.
-%The results are plotted using an intensity mapping where each square represents the $F_1$-measure performance of separating the \textit{x} and \textit{y} artist.
-%
-%The first thing that is noticable is that the intensity mappings are not symmetric.
-%This is because the $F_1$-measure was used here to evaluate the performance.
-%The measure is calculated by looking at the precision and recall of the positive class, so when the classes are turned around the $F_1$-measure will also turn into a different value.
-%Therefore in order to determine if two artists are separable, there is a need to look at the $F_1$-measure for both artists.
-%This is because for some artist pairs the $F_1$-measure of one artist has a value of 1 while the other has a value of 0.
-%This means that for those artist pairs the classifier has classified all images to one artist, which most of the time is caused by the non-uniform dataset.
-%
-%Furthermore the figure shows that artists can be better separated by using more features.
-%The intensity mapping using all features shows that it has the highest overall $F_1$-measure.
-%However the more interesting mappings are the ones where only the top 1,2,3,4,5 features were used for classification.
-%Eventhough their performance is lower than using all the features it gives information about the most defining features that is used to separate an artist from another artist.
-%
-%The intensity mappings using 1 to 5 features contains artists that have an overall high $F_1$-measure which shows that some artists can be separated from all other artists using only a few features.
-%
-%\begin{table}[htb]
-%    \centering
-%    \begin{tabular}
-%        { | l | c |} 
-%        \hline
-%        Feature & Counts \\
-%        \hline
-%        gridEdgeRatio\_5 & 9 \\ 
-%        intEntropy & 4 \\ 
-%        edgeRatio & 4 \\ 
-%        avgRCells\_9 & 4 \\ 
-%        medIntCells\_2 & 3 \\
-%        medIntCells\_7 & 3 \\
-%        \hline 
-%    \end{tabular}
-%    \caption{Counts of features that were used to separate \textit{Kitsunebaka91} from the other artists.}
-%    \label{kitsune}
-%\end{table}
-%
-%Table \ref{kitsune} shows the top 6 feature counts of features that were used to distinct \textit{Kitsunebaka91} from the other artists.
-%The features were counted whenever the $F_1$-measure of \textit{Kitsunebaka91} had an $F_1$-measure higher than 0.9, which indicates that the artist is separable from the other artist.
-%So the table details the reason why \textit{Kitsunebaka91} was separable.
-%The artwork of \textit{Kitsunebaka91} consists mostly of images where there is a white background with a drawing in the center of it.
-%This corresponds to the features found using this toolkit because table \ref{kitsune} shows that the edgeratio and intensity of the images are the dominant features to separate this artist from other artists.
-%Also the table shows that the \textit{GridEdgeRatio\_5} feature is used multiple times to separate this artist.
-%This again corresponds to the artist style because the \textit{GridEdgeRatio\_5} is the edgeratio value of the center cell of an image, the cell where the drawing of the artist lies.
-%
-%Eventhough \textit{Kitsunebaka91} was seperable from most other artists, pairing \textit{Kitsunebaka91} with the artist \textit{Knuxtiger4} resulted in a lower $F_1$-measure of 0.7397 wheras the mean of all the scores was 0.91.
-%Inspecting the images of \textit{Knuxtiger4} showed that the artist mostly contained images that were drawings on a white background similar to that of \textit{Kitsunebaka91}.
-%Therefore it is not surprising that the score for that pair was lower than the average because the classifier could not seperate those images.
-%These results indicates that these results can be used to create a recommender system.
