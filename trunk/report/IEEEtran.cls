@@ -3911,9 +3911,9 @@ between column types.}%
 % Note that subsection and smaller may not be correct for the Computer Society,
 % I have to look up an example.
 \def\subsection{\@startsection{subsection}{2}{\z@}{-3.5ex plus -1.5ex minus -1.5ex}%
-{0.7ex plus .5ex minus 0ex}{\normalfont\normalsize\sffamily\bfseries}}%
+{0.7ex plus .5ex minus 0ex}{\normalfont\normalsize\bfseries}}%
 \def\subsubsection{\@startsection{subsubsection}{3}{\z@}{-2.5ex plus -1ex minus -1ex}%
-{0.5ex plus 0.5ex minus 0ex}{\normalfont\normalsize\sffamily\itshape}}%
+{0.5ex plus 0.5ex minus 0ex}{\normalfont\normalsize}}%
 \def\paragraph{\@startsection{paragraph}{4}{2\parindent}{-0ex plus -0.1ex minus -0.1ex}%
 {0ex}{\normalfont\normalsize}}%
 \fi\fi
