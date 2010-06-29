@@ -12,6 +12,7 @@ import os
 starttime = datetime.datetime.now()
 
 class Deviants( dict ):
+	"""" dictionary class to store a list of deviants """"
 	def add(self, deviant):
 		super(Deviants,self).__setitem__(deviant, [super(Deviants,self).__len__()+1, set()])
 	def deviant_id(self, deviant):
@@ -19,8 +20,9 @@ class Deviants( dict ):
 	def add_friend(self, deviant, friend):
 		item = dict.__getitem__(self, deviant)
 		item[1].add(self.deviant_id(friend))
-		
+
 class FriendListParser(SGMLParser):
+	"""" main html parser deviants are between <li></li>, filter on ~""""
 	def __init__(self, deviant, deviants, todolist):
 		SGMLParser.__init__(self, 0)
 		self.deviant = deviant
@@ -79,6 +81,7 @@ class FriendListParser(SGMLParser):
 				self.nextpage = self.lasthref[0] 
 
 def parseFriends(deviant, deviants, todolist):
+	"""" retrieve consecutive friends lists for a deviant and parse""""
 	deviant_page = getDeviantPage(deviant)
 	parser = FriendListParser(deviant, deviants, todolist)
 	print('[%s] %s (%d deviants known, %d todo )....' 
@@ -91,11 +94,14 @@ def parseFriends(deviant, deviants, todolist):
 		parser.reset()
 
 def getDeviantPage(deviant):
+	"""" does as the name indicates """"
 	return 'http://%s.deviantart.com/' % (deviant)
 def getDeviantForPage(page):
+	"""" removes http and deviantart.com""""
 	return page.split('http://', 1)[1].split('.')[0]
 	
-def pajek_writer(deviantsandlist, time, delete):
+def pickle_writer(deviantsandlist, time, delete):
+	"""" write a python pickle style file to continue if the scraper encounters problems """"
 	print 'saving timestamp %d, found errors %s' %(time, deviantsandlist[2])
 	try :
 		os.remove('deviants_%d.pickle' %(delete))
@@ -106,7 +112,10 @@ def pajek_writer(deviantsandlist, time, delete):
 	out = open('deviants_%d.pickle' %(time), 'wb')
 	cPickle.dump(deviantsandlist, out)
 	out.close
-	deviants = deviantsandlist[0]
+	
+def pajek_writer(deviants, time):
+	"""" write a pajek style network file """"
+	print 'saving for pajek timestamp %d' %(time)
 	#open as binary so both in windows and unix we get the windows output
 	f = open('deviants_%d.net' %(time), 'wb')
 	f.write('*Vertices %d\r\n'  %(len(deviants)))
@@ -119,6 +128,7 @@ def pajek_writer(deviantsandlist, time, delete):
 	f.close
 	
 def matlab_writer(deviants, time):
+	"""" write 2 files, *.vert, *.arcs used for loading in matlab with loadNetwork """"
 	print 'saving for matlab timestamp %d' %(time)
 	#open as binary so both in windows and unix we get the windows output
 	f = open('deviants_%d.vert' %(time), 'wb')
@@ -134,6 +144,7 @@ def matlab_writer(deviants, time):
 	
 	
 def load_data():
+	"""" load a python pickle file to recover a session """"
 	mx = -1
 	mxf = ''
 	for file in os.listdir('.'):
@@ -154,13 +165,15 @@ def load_data():
 		return defaultvalues()
 		
 def defaultvalues():
+	"""" some default values """"
 	deviants = Deviants()
 	todolist = ['omega300m']
 	errlist = []
 	nextsavetime = 0
 	return [deviants, todolist, errlist, nextsavetime]
 	
-def start():
+def main():
+	"""" starts the main program, load pickle files if available, ends and writes network files when the network has been scraped""""
 	data = load_data()
 	deviants = data[0]
 	todolist = data[1]
@@ -181,7 +194,7 @@ def start():
 	while (len(todolist) > 0):
 		if (datetime.datetime.now()-starttime).seconds > (nextsavetime*saveinterval):
 		
-			pajek_writer([deviants, todolist, errlist, prevsavetime+nextsavetime+1], prevsavetime+nextsavetime, prevsavetime+nextsavetime-2)
+			pickle_writer([deviants, todolist, errlist, prevsavetime+nextsavetime+1], prevsavetime+nextsavetime, prevsavetime+nextsavetime-2)
 			nextsavetime += 1
 		deviant = todolist.pop(0)
 		try:
@@ -189,10 +202,12 @@ def start():
 		except Exception as e:
 			print('Exception: %s %s, %s' %(deviant, type(e), e))
 			errlist.append(deviant)
-	pajek_writer([deviants, todolist, errlist, nextsavetime+prevsavetime+1], prevsavetime+nextsavetime, prevsavetime+nextsavetime-2)
+	pickle_writer([deviants, todolist, errlist, nextsavetime+prevsavetime+1], prevsavetime+nextsavetime, prevsavetime+nextsavetime-2)
+	pajek_writer(deviants, prevsavetime+nextsavetime)
 	matlab_writer(deviants, prevsavetime+nextsavetime)
+
 if __name__ == '__main__':
-	start()
-#	cProfile.run('start()', 'prof')
+	main()
+#	cProfile.run('main()', 'prof')
 #	p = pstats.Stats('prof')
 #	p.sort_stats('cumulative').print_stats(25)
