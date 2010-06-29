@@ -13,7 +13,7 @@ import getopt
 printsubcategories = False
 printperuser = False
 
-# Categories
+# Categories. Keeps track of the sub categories count.
 def createSubCategory(depth=6):
 	if depth == 0:
 		return [0, None] 
@@ -36,8 +36,8 @@ def printCategories(categories, indent='\t', printsub=True):
 
 totalcategories = defaultdict( lambda : [0, createSubCategory()] )
 
-# Count categories for a given deviant
 def reportDeviant(folder_name, deviant):
+	""" Count categories for a given deviant """	
 	global totalcategories
 	deviant_folder = os.path.join(folder_name, deviant)
 	usercategories = defaultdict( lambda : [0, createSubCategory()] )
