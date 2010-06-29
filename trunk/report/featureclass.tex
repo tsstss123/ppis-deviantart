@@ -77,7 +77,7 @@ The features described above only contain global information about images. In or
 %\subsubsection{Weibull, this subsubsubsection can be made normal text, but we can do that later}
 %The contrast of natural image statistics has been shown to conform to Weibull-shaped probability distributions \cite{Weibull_physical}. Furthermore, when images do not adhere to this distribution, the images in question are mashups of multiple sub-images which themselves do conform to the Weibull distribution. In addition to this property of natural images, it has been proposed that the parameters for the Weibull distribution form a basis for the description of texture in images \cite{Weibull_6}. There is indeed evidence that the human visual system is capable of approximating the parameters of the Weibull distribution \cite{Weibull_brain}. Last the two most important parameters of the Weibull distribution, when it comes to natural images have a straight forward interpretation, the shape parameter the describes the resemblance to other probability distribution, from a power-law to the normal distribution, where the scale describes the how wide the distribution is. Therefore we included the maximum likelihood estimation of the Weibull-distribution for contrast of the image as used for \cite{Weibull_6} in our Feature extraction toolbox, unfortunately this seemed to give unstable results, therefore we later eliminated it. 
 
-\paragraph{\textit{Cognitively-inspired features} \label{proposed-cognitive}}
+\paragraph{\textit{Cognitively-inspired features}\label{proposed-cognitive}}
 One of the more recent trends in computer vision research in the pursuit of human-like capability is the coupling of cognition and vision into cognitive computer vision. The term cognitive computer vision has been introduced with the aim of achieving more robust, resilient, and adaptable computer vision systems by endowing them with a cognitive faculty: the ability to learn, adapt, weigh alternative solutions, and develop new strategies for analysis and interpretation.
 
 Recent studies focused on computational models of focal visual attention. Attention has been seen to influences the processing of visual information even in the earliest areas of primate visual cortex. Even more, it has been discovered that the interaction of bottom-up sensory information and top-down attentional influences creates an integrated \textit{saliency map}, that can be defined as a topographic representation of relative stimulus strength and behavioral relevance across visual space \cite{Saliency_WWHW}. This map enables the visual system to integrate large amounts of information, even from outside the fovea, because it provides an efficient coding scheme for the potentially most relevant information in the sensory input. 
@@ -131,17 +131,17 @@ $x$ represents the unnormalized values of feature $n$ whereas $y$ represents the
 In our approach, four different classifiers were incorporated to calculate the performance of a set of features.
 All classifiers were chosen based on their performance in earlier work except for the Nearest Mean classifier.
 
-The \textit{k-Nearest Neighbour} \ref{korn1996fast} classifies an artwork based on the training examples that are close to it.
+The \textit{k-Nearest Neighbour}~\cite{korn1996fast} classifies an artwork based on the training examples that are close to it.
 The euclidian distance is used here to measure how far a training example is located from the artwork.
 
-The \textit{Naive Bayes} \ref{keren2003recognizing} first divides the value range for each feature in $n$ bins.
+The \textit{Naive Bayes}~\cite{keren2003recognizing} first divides the value range for each feature in $n$ bins.
 It then counts the frequency of a training example for each of the classes in every bin and uses that to classify an artwork belonging to the class that gives the maximum posterior probability.
 
 The \textit{Nearest Mean} classifies an artwork based on the euclidian distance to the mean of a class.
 The classifier was chosen because it might give a high performance for when the right features are used to describe a class.
 This is because the right features of a class will make the artwork of that class cluster.
 
-At last the \textit{Support Vector Machine} \ref{chapelle1999svms} classifies an artwork using a model created with training examples.
+At last the \textit{Support Vector Machine}~\cite{chapelle1999svms} classifies an artwork using a model created with training examples.
 The model represents the training examples in a way that separates the two classes by a clear gap that is as wide as possible.
 The artwork is classified by the model based on which side of the gap they fall on.
 
@@ -170,7 +170,7 @@ J = \frac{|m_1-m_2|}{\sqrt(s^2_1 + s^2_2)}
 \end{equation}
 
 In this equation $m_1$ and $m_2$ are the average mean of class 1 and class 2, $s_1$ and $s_2$ are the standard deviations of those classes.
-This equation is also equivalent to the Fisher criterion \ref{malina1981extended}.
+This equation is also equivalent to the Fisher criterion~\cite{malina1981extended}.
 
 \paragraph{Performance measures}
 A performance measure is needed to assign a performance score to a set of features.
