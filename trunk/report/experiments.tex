@@ -19,10 +19,10 @@ The results of the network experiments are presented in Table \ref{tab:netstatis
 	no. links & 4'483'023 & 139'285 & 127'837  & 166'244 \\
 	avg. degree $(k)$& 43.25 & 81.88 & 86.90 & 151.27 \\
 	findcore $\max x$ & & 43 & 44 & 185\\
-	$L_G$ & - & 2.15 & 2.27 & 2.14 \\
-	$L_{random}$ & - & 1.69 & 1.63 & 1.40 \\
-	$C_G$ & - & 0.20 & 0.22 & 0.20 \\
-	$C_{random}$ & - & 0.048 & 0.059 & 0.140 \\
+	$L_G$ & & 2.15 & 2.27 & 2.14 \\
+	$L_{random}$ & & 1.69 & 1.63 & 1.40 \\
+	$C_G$ & & 0.20 & 0.22 & 0.20 \\
+	$C_{random}$ & & 0.048 & 0.059 & 0.140 \\
 	\hline
     \end{tabular}
     \caption{Network statistics}
@@ -81,13 +81,14 @@ The top five categories are listed in table \ref{datasetstats}.
     Red-Priest-Usada & 132 & Skarbog & 229 \\
     Swezzels & 9 & Udodelig & 54 \\
     UdonNodu & 38 & WarrenLouw & 51 \\
-  	erroid & 146 & fediaFedia & 303 \\
-  	gsphoto & 661 & iakobos & 47 \\
-  	kamilsmala & 39 & miss-mosh & 307 \\
-  	nyctopterus & 68 & omega300m & 483 \\
-  	sekcyjny & 55 & stereoflow & 166\\
-  	sujawoto & 33 & wirestyle & 143\\
-  	woekan & 49 & zihnisinir & 177 \\
+    catluvr2 & 793 & erroid & 146 \\
+    fediaFedia & 303 & gsphoto & 661 \\
+    iakobos & 47 & kamilsmala & 39 \\
+    miss-mosh & 307 & nyctopterus & 68 \\
+    omega300m & 483 & sekcyjny & 55 \\
+    stereoflow & 166 & sujawoto & 33 \\
+    wirestyle & 143 & woekan & 49 \\
+    zihnisinir & 177 \\
 
         \hline 
     \end{tabular}
@@ -98,7 +99,7 @@ The top five categories are listed in table \ref{datasetstats}.
 \begin{figure}[htb]
 %  \centering
   \includegraphics[width=1\linewidth]{img/datasetAvg.png}
-  \caption{mean image per artist, left to right, top to bottom, in order of Table \ref{datasetstats2}: Craniata, K1lgore, Kitsunebaka91, ..., zihnisinir }
+  \caption{mean image per artist, left to right, top to bottom, in order of table \ref{datasetstats2}: Craniata, K1lgore, Kitsunebaka91, ..., zihnisinir }
   \label{fig:avgDataset}
 \end{figure}
 
@@ -388,9 +389,28 @@ This result tells that those artists can be described using the features that we
     30 & omega300m & 0.8318 & 0.2403 & Entropy of the Intensity, Center edge detection, Downright average Intensity \\
         \hline 
     \end{tabular}
-    \caption{Dataset artist statistics}
+    \caption{This table first describes the mean $F_1$-measure and its standard deviation for every artist which was computed by using linear SVM combined with a feature set containing the 5 most informative features that separates an artist pair.
+    It also shows the number of the artist that corresponds to the x/y axis of the intensity mappings found in figure \ref{fig:experiment2results}.
+    The last column shows the most defining features that can describe the artist.
     \label{ex2stats}
 \end{table*}
+
+Table \ref{ex2stats} shows the summary of this experiment and it shows what the most defining features are for each artist.
+Note that some artists, according to the feature selection algorithm, contains defining features but the mean $F_1$-measure is very low.
+This shows that eventhough they are the defining features, one should not assume that they can describe the artist.
+The classifier could not correctly separate the artist from the other artists by using those features.
+The mean $F_1$-measure can be seen as the score that these features are in fact correctly describing the artist.
+
+The table also shows that the edge detection and the intensity are valuable features in describing artist styles.
+This is very feasible because images can actually range between being dark and very light and also there are styles where there are a lot of edges like in photographs or drawings but other styles like abstract can have very little edges.
+Other features that can be found in this table are the hue and corner detection but they are not used as much as the edge detection and the intensity.
+
+Also it seems that cognitive features work best in certain types of styles.
+In this dataset, the artist $Pierrebfoto$ has a lot of nude images and this was picked up using the skin map feature.
+
+
+
+
 
 %Figure \ref{fig:experiment2results} shows the results for this experiment using the linear SVM which was chosen in a greedy fashion based on the results found in table \ref{ex2optimizeresults}.
 %From left to right the figure shows the results of using: \textit{1} feature, \textit{2} features, \textit{3} features, \textit{4} features, \textit{5} features and \textit{all} features as the feature combination that is used by the classifier to classify images.
