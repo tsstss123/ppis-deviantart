@@ -1,13 +1,14 @@
-function [ fmeasure ] = TADANearestMean( data, R, crossfolds )
+function [ fmeasure ] = TADANearestMean( data, R )
 %   The TADA Nearest Mean Classifier
 %   
 %   Input: data:            PRTools Format Dataset;
 %          R:               Crossvalidation Rotation Matrix;
-%          crossfolds:      number of crossfolds;
 %              
 %   Output: fmeasure:       Average of the F-measure of the crossfolds
-%
-    disp('Nearest Mean');  
+
+    disp('Nearest Mean\n');  
+    
+    crossfolds = max(R);
     
     fnvector=zeros(1,crossfolds);
     fpvector=zeros(1,crossfolds);
