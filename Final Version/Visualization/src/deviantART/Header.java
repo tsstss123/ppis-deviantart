@@ -18,6 +18,10 @@ public class Header extends JPanel {
 
 	private deviantART mainApp;
 	private BufferedImage img;
+	/**
+	 * Array containing the view buttons.
+	 * Used to change the style of an image (active/inactive view)
+	 */
 	private ArrayList<HeaderViewButton> viewButtons	= new ArrayList<HeaderViewButton>();
 
 
@@ -108,11 +112,18 @@ public class Header extends JPanel {
 		return label;
 	}
 
+	/**
+	 * Make a view active
+	 */
 	public void setView(String view) {
 		updateButtons(view);
 		mainApp.addView(view);
 	}
 	
+	/**
+	 * Update style of all buttons based on the view state (active/inactive)
+	 * @param view
+	 */
 	public void updateButtons(String view) {
 		for (HeaderViewButton b : viewButtons) {
 			if (!b.active && b.name.equals(view))
@@ -122,6 +133,9 @@ public class Header extends JPanel {
 		}
 	}
 	
+	/**
+	 * Opens the directory chooser to select a dataset directory
+	 */
 	public void open() {
 		mainApp.selectFile();
 	}

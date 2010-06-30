@@ -12,6 +12,20 @@ import Views.ViewParallel;
 import Views.ViewRadial;
 import Views.ViewScatter;
 
+/**
+ * Main application to visualize a deviantART dataset.
+ * Combines three different visualization techniques into
+ * one application.
+ * @author Nick
+ */
+/**
+ * @author Nick
+ *
+ */
+/**
+ * @author Nick
+ *
+ */
 public class deviantART extends JFrame {
 	
 	private static final long serialVersionUID	= 1L;
@@ -22,7 +36,14 @@ public class deviantART extends JFrame {
 	public final static String VIEW_RADIAL		= "VIEW_RADIAL";
 	public static String activeView				= VIEW_PARALLEL;
 
+	
+	/**
+	 * Box that holds the active visualization object.
+	 */
 	public Box viewHolder;
+	/**
+	 * Active visualization object
+	 */
 	public static View viewObject;
 	
 	/* layout */
@@ -30,14 +51,29 @@ public class deviantART extends JFrame {
 	public static Footer footer;
 
 	/* dataset */
+	/**
+	 * Directory containing the dataset (images, XML)
+	 */
 	public static File datasetDir;
+	/**
+	 * Directory containing the images of the dataset
+	 */
 	public static String imagesDir;
+	/**
+	 * Database used to store the loaded dataset (scatter/parallel)
+	 */
 	public static DBFeatures DBFeatures;
+	/**
+	 * Database used to store the loaded dataset (radial)
+	 */
 	public static DBPerformance DBPerformance;
 
 	public static Cursor hander					= new Cursor (Cursor.HAND_CURSOR);
 
 
+	/**
+	 * Default constructor
+	 */
 	public deviantART() {
 		initLayout();
 
@@ -53,6 +89,10 @@ public class deviantART extends JFrame {
 		setVisible(true);
 	}
 
+	/**
+	 * Initialize application layout.
+	 * Add header, view and footer.
+	 */
 	private void initLayout() {
 		setTitle("deviantART Divider");
 		setBackground(Color.black);
@@ -65,6 +105,10 @@ public class deviantART extends JFrame {
 		addFooter();
 	}
 	
+	/**
+	 * Activates a visualization view
+	 * @param Name of the view to active
+	 */
 	public void addView(String view) {
 		if (viewObject != null) {
 			if (view.equals(activeView)) return;
@@ -90,11 +134,17 @@ public class deviantART extends JFrame {
 		runView();
 	}
 	
+	/**
+	 * Add header to the application
+	 */
 	private void addHeader() {
 		header = new Header(this);
 		add(header);
 	}
 	
+	/**
+	 * Add the view holder to the application
+	 */
 	private void addViewHolder() {
 		viewHolder = Box.createHorizontalBox();
 		viewHolder.setAlignmentX(LEFT_ALIGNMENT);
@@ -125,6 +175,9 @@ public class deviantART extends JFrame {
 		add(footer);
 	}
 
+	/**
+	 * Lets the user select a dataset directory
+	 */
 	public void selectFile() {
 		JFileChooser fc = new JFileChooser();
 		fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -138,6 +191,10 @@ public class deviantART extends JFrame {
 		}
 	}
 
+	/**
+	 * Set the directory of the dataset
+	 * @param Directory containing the dataset
+	 */
 	public void setDatasetDir(File file) {
 		String path = "./";
 
@@ -162,6 +219,9 @@ public class deviantART extends JFrame {
 		DBPerformance	= new DBPerformance(filePerformance);
 	}
 
+	/**
+	 * Run the active view
+	 */
 	public void runView() {
 		if (datasetDir == null) return;		
 		
