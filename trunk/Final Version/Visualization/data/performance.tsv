@@ -1,0 +1,7 @@
+category	classifier	performance	features
+cat1	KNN	0.55	edgeness	hue
+cat1	KNN	0.7	edgeness	weibull
+cat1	SVM	0.4	edgeness	weibull
+cat2	SVM	0.5	saturation	weibull
+cat3	SVM	0.5	saturation	weibull
+cat4	SVM	0.5	saturation	weibull

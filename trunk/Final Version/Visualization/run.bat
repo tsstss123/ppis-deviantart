@@ -1,1 +1,1 @@
-java -classpath "./bin;core.jar" -Xmx500m deviantART.deviantART
+java -classpath "C:\deviantART\bin;C:\deviantART\core.jar" -Xmx500m deviantART.deviantART
