@@ -2,6 +2,17 @@
 
 
 =Research Log=
+
+==30/06==
+ * Cleaning up code
+
+==29/06==
+ * Finalized report
+ * Reviewed and fixed the report with the whole group (lot of hours :P)
+
+==26/06-28/06==
+ * Work on report
+
 ==25/06==
  * recomputed the intensity and corner ratio features, and added the HSV value feature as "avgVal", "medVal" etc so that nick can use the updated features in his visualization screenshots. (Features added under downloads)
  * worked on report
