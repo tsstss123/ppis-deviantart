@@ -14,6 +14,12 @@ import javax.swing.*;
 import Helpers.ImageTools;
 import Models.DataImage;
 
+/**
+ * Footer component of the application.
+ * Used to display images and control buttons.
+ * @author Nick
+ *
+ */
 public class Footer extends JPanel {
 	
 	private static final long serialVersionUID = 1L;

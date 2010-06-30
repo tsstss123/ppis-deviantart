@@ -1,7 +1,15 @@
 package Models;
+/**
+ * Represents a node on the radial plot
+ * @author Nick
+ *
+ */
 public class DataNode {
 
 	public String name			= "";
+	/**
+	 * List of features used as node
+	 */
 	public String[] features	= null;
 	public float a				= 0;
 	public float perf			= 0.0f;

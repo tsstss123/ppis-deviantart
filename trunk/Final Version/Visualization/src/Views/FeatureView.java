@@ -4,6 +4,11 @@ import deviantART.deviantART;
 import Databases.DBFeatures;
 import Models.DataImage;
 
+/**
+ * Parent class for all views that perform a feature based view (scatter, parallel).
+ * @author Nick
+ *
+ */
 public class FeatureView extends View {
 
 	private static final long serialVersionUID = 1L;

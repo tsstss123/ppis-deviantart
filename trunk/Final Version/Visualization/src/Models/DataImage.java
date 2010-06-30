@@ -2,6 +2,11 @@ package Models;
 
 import java.awt.image.BufferedImage;
 
+/**
+ * Represents an datapoint (image) of the scatter plot
+ * @author Nick
+ *
+ */
 public class DataImage {
 
 	public String filename		= null;

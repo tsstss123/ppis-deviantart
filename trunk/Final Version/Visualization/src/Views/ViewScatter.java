@@ -20,6 +20,11 @@ import Models.DataImage;
 
 import Helpers.ImageTools;
 
+/**
+ * Scatter plot view
+ * @author Nick
+ *
+ */
 public class ViewScatter extends FeatureView {
 
 	private static final long serialVersionUID = 1L;

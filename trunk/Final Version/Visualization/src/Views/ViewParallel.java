@@ -8,6 +8,11 @@ import Popups.Popups;
 
 import Helpers.DistancePointSegment;
 
+/**
+ * Parallel coordinates view
+ * @author Nick
+ *
+ */
 public class ViewParallel extends FeatureView {
 
 	private static final long serialVersionUID = 1L;

@@ -1,5 +1,10 @@
 package Popups;
 
+/**
+ * Holder for all popups.
+ * @author Nick
+ *
+ */
 public class Popups {
 
 	public static FeatureSelector featureSelector;

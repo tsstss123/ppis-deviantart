@@ -22,6 +22,11 @@ import deviantART.deviantART;
 
 import Models.DataCol;
 
+/**
+ * Popup to select the active features
+ * @author Nick
+ *
+ */
 public class FeatureSelector extends JFrame implements ItemListener, ActionListener  {
 
 	private static final long serialVersionUID = 1L;

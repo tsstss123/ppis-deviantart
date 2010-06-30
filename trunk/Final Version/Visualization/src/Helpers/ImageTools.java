@@ -4,6 +4,11 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
 
+/**
+ * Handy tools for image manipulation
+ * @author Nick
+ *
+ */
 public class ImageTools {
 
 	public static BufferedImage resize(BufferedImage img, int newW, int newH) {
@@ -29,6 +34,14 @@ public class ImageTools {
         return dimg;  
     }
 	
+	/**
+	 * Calculate the new size of an image when keeping aspect ratio.
+	 * @param newW
+	 * @param newH
+	 * @param curW
+	 * @param curH
+	 * @return
+	 */
 	public static int[] getNewSize(int newW, int newH, int curW, int curH) {
 		int[] size = new int[3];
 		
