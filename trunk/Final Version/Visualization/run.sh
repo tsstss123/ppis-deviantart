@@ -1,0 +1,1 @@
+java -classpath ./bin -Djava.ext.dirs=./ -Xdock:name="deviantART Divider" -Xdock:icon="images/dock.png" -Xmx500m deviantART.deviantART

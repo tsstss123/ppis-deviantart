@@ -1,0 +1,1 @@
+javac -d bin -classpath "./src;core.jar" src/deviantART/deviantART.java
