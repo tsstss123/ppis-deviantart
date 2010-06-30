@@ -21,6 +21,11 @@ import deviantART.deviantART;
 
 import Models.DataClass;
 
+/**
+ * Popup that lets the user select the active classes
+ * @author Nick
+ *
+ */
 public class ClassSelector extends JFrame implements ItemListener, ActionListener  {
 
 	private static final long serialVersionUID = 1L;

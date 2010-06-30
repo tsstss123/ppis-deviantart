@@ -19,6 +19,11 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+/**
+ * Converts XML features files to the tab separated file (TSV) format of the visualization application. 
+ * @author Nick
+ *
+ */
 public class XMLtoTSV {
 	
 	public final String spacer				= "\t";

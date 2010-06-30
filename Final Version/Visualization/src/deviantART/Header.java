@@ -12,6 +12,12 @@ import javax.swing.*;
 
 import Models.HeaderViewButton;
 
+/**
+ * Header component of the application.
+ * Displays the view buttons and a load button
+ * @author Nick
+ *
+ */
 public class Header extends JPanel {
 	
 	private static final long serialVersionUID = 1L;

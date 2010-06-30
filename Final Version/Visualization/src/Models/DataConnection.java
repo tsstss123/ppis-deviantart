@@ -1,5 +1,10 @@
 package Models;
 
+/**
+ * Represents a connection between to nodes (radial plot)
+ * @author Nick
+ *
+ */
 public class DataConnection {
 	
 	public static final int FEATURE		= 0;

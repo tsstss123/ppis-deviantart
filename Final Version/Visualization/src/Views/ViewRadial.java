@@ -6,6 +6,11 @@ import Models.DataConnection;
 import Models.DataNode;
 
 
+/**
+ * Radial view
+ * @author Nick
+ *
+ */
 public class ViewRadial extends PerformanceView {
 
 	private static final long serialVersionUID = 1L;
