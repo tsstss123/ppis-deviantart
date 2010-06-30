@@ -1,8 +1,8 @@
 function Graph = loadNetwork(filename)
-%LOADPAJEK loads a network (.arcs .vert)as obtained from scraper_network.py
+%LOADNETWORK loads a network (.arcs .vert)as obtained from scraper_network.py
 % GRAPH = LOADNETWORK(FILENAME)
 % GRAPH = Graph object, using the Complex Networks Package for MatLab
-% FILENAME = string with start of the filenames 
+% FILENAME = string with the filename without extensions
 %
 % example (win) loadNetwork('deviant_99')
 % Created by: bjbuter
@@ -18,7 +18,7 @@ ids = verts{1};
 names = verts{2};
 [ids, I] = sort(ids);
 names = names(I);
-fid = fclose(fid);
+fclose(fid);
 disp(strcat('Closing: ', filename, '.vert'))
 disp(strcat('number of vertices: ', num2str(length(verts{1}))))
 
