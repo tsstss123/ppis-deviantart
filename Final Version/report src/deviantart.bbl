@@ -1,0 +1,177 @@
+\begin{thebibliography}{10}
+
+\bibitem{DaMasters}
+B.M. Mccreight.
+\newblock A comparison of peer evaluation: The evaluation app versus
+  deviantart.
+\newblock Master's thesis, Purdue University - College of Technology, 2010.
+
+\bibitem{cha2009measurement}
+M.~Cha, A.~Mislove, and K.P. Gummadi.
+\newblock {A measurement-driven analysis of information propagation in the
+  flickr social network}.
+\newblock In {\em Proceedings of the 18th international conference on World
+  wide web}, pages 721--730. ACM, 2009.
+
+\bibitem{kumar2006structure}
+R.~Kumar, J.~Novak, and A.~Tomkins.
+\newblock {Structure and evolution of online social networks}.
+\newblock In {\em Proceedings of the 12th ACM SIGKDD international conference
+  on Knowledge discovery and data mining}, page 617. ACM, 2006.
+
+\bibitem{leskovec2008microscopic}
+J.~Leskovec, L.~Backstrom, R.~Kumar, and A.~Tomkins.
+\newblock {Microscopic evolution of social networks}.
+\newblock In {\em Proceeding of the 14th ACM SIGKDD international conference on
+  Knowledge discovery and data mining}, pages 462--470. ACM, 2008.
+
+\bibitem{Saliency_WWHW}
+Stefan Treue.
+\newblock Visual attention: the where, what, how and why of saliency.
+\newblock {\em Current Opinion in Neurobiology}, pages 428--432, August 2003.
+
+\bibitem{Itti_review}
+Laurent Itti and Christof Koch.
+\newblock Computational modelling of visual attention.
+\newblock {\em Nature reviews. Neuroscience}, 2(3):194--203, March 2001.
+
+\bibitem{Itti_model}
+Laurent Itti, Christof Koch, and Ernst Niebur.
+\newblock A model of saliency-based visual attention for rapid scene analysis,
+  1998.
+
+\bibitem{musha1998interface}
+Y.~Musha, Y.~Mori, A.~Hiroike, and A.~Sugimoto.
+\newblock {An interface for visualizing feature space in image retrieval}.
+\newblock {\em InMachine Vision and Applications, pages447-450}, 1998.
+
+\bibitem{chen2000content}
+C.~Chen, G.~Gagaudakis, and P.~Rosin.
+\newblock {Content-based image visualization}.
+\newblock {\em iv}, page~13, 2000.
+
+\bibitem{schneidewind2004approach}
+A.~Schneidewind, P.~Neumann, and I.~Schmitt.
+\newblock {An approach to visualize image retrieval results}.
+\newblock In {\em 2004 Conference on Computer Vision and Pattern Recognition
+  Workshop}, pages 148--148, 2004.
+
+\bibitem{yang2006semantic}
+J.~Yang, J.~Fan, D.~Hubball, Y.~Gao, H.~Luo, W.~Ribarsky, and M.~Ward.
+\newblock {Semantic image browser: Bridging information visualization with
+  automated intelligent image analysis}.
+\newblock In {\em 2006 IEEE Symposium On Visual Analytics Science And
+  Technology}, pages 191--198, 2006.
+
+\bibitem{watts1998collective}
+D.J. Watts and S.H. Strogatz.
+\newblock {Collective dynamics of ‘small-world’networks}.
+\newblock {\em Nature}, 393(6684):440--442, 1998.
+
+\bibitem{erdos1960evolution}
+P.~Erdos and A.~R{\'e}nyi.
+\newblock {On the evolution of random graphs}.
+\newblock {\em Publ. Math. Inst. Hung. Acad. Sci}, 5(1):17--60, 1960.
+
+\bibitem{albert2002statistical}
+R.~Albert and A.L. Barab{\'a}si.
+\newblock {Statistical mechanics of complex networks}.
+\newblock {\em Reviews of modern physics}, 74(1):47--97, 2002.
+
+\bibitem{Floyd}
+Robert~W. Floyd.
+\newblock Algorithm 97: Shortest path.
+\newblock {\em Commun. ACM}, 5(6):345, 1962.
+
+\bibitem{geusebroek2005six}
+J.M. Geusebroek and A.W.M. Smeulders.
+\newblock {A six-stimulus theory for stochastic texture}.
+\newblock {\em International Journal of Computer Vision}, 62(1):7--16, 2005.
+
+\bibitem{Duin00prtoolsversion}
+R.~P.~W. Duin.
+\newblock Prtools version 3.0: A matlab toolbox for pattern recognition.
+\newblock In {\em Proc. of SPIE}, page 1331, 2000.
+
+\bibitem{chang2001libsvm}
+C.C. Chang and C.J. Lin.
+\newblock {LIBSVM: a library for support vector machines}, 2001.
+
+\bibitem{pudil1994floating}
+P.~Pudil, J.~Novovicov{\'a}, and J.~Kittler.
+\newblock {Floating search methods in feature selection}.
+\newblock {\em Pattern recognition letters}, 15(11):1119--1125, 1994.
+
+\bibitem{pekalska2005pairwise}
+E.~Pekalska, A.~Harol, C.~Lai, and R.~Duin.
+\newblock {Pairwise selection of features and prototypes}.
+\newblock {\em Computer Recognition Systems}, pages 271--278, 2005.
+
+\bibitem{fry08}
+Ben Fry.
+\newblock {\em {Visualizing Data}}.
+\newblock {O{'}Reilly Media, Inc}, {2008}.
+
+\bibitem{andrienko2001constructing}
+G.~Andrienko and N.~Andrienko.
+\newblock {Constructing parallel coordinates plot for problem solving}.
+\newblock In {\em 1st International Symposium on Smart Graphics}, pages 9--14,
+  2001.
+
+\bibitem{color_emotion1}
+L.C. Ou, M.R. Luo, A.~Woodcock, and A.~Wright.
+\newblock {A study of colour emotion and colour preference. Part I: Colour
+  emotions for single colours}.
+\newblock {\em Color Research \& Application}, 29(3):232--240, 2004.
+
+\bibitem{LucassenECCGIV2010}
+M.~Lucassen, T.~Gevers, and A.~Gijsenij.
+\newblock Adding texture to color: Quantitative analysis of color emotions.
+\newblock In {\em European Conference on Color in Graphics, Imaging and
+  Vision}, 2010.
+
+\bibitem{Weibull_robust}
+J.C. van Gemert, J.~Geusebroek, C.J. Veenman, C.G.M. Snoek, and A.W.M.
+  Smeulders.
+\newblock Robust scene categorization by learning image statistics in context.
+\newblock In {\em 2006 Conference on Computer Vision and Pattern Recognition
+  Workshop}, pages 105--105, 2006.
+
+\bibitem{Weibull_6}
+J.M. Geusebroek and A.W.M. Smeulders.
+\newblock A six-stimulus theory for stochastic texture.
+\newblock {\em International Journal of Computer Vision}, 62(1):7--16, 2005.
+
+\bibitem{Weibull_physical}
+J.M. Geusebroek and A.W.M. Smeulders.
+\newblock A physical explanation for natural image statistics.
+\newblock In {\em Proceedings of the 2nd International Workshop on Texture
+  Analysis and Synthesis (Texture 2002)}, pages 47--52, 2002.
+
+\bibitem{imo2008interactive}
+J.~Imo, S.~Klenk, and G.~Heidemann.
+\newblock {Interactive feature visualization for image retrieval}.
+\newblock In {\em 19th International Conference on Pattern Recognition, 2008.
+  ICPR 2008}, pages 1--4, 2008.
+
+\bibitem{Weibull_brain}
+H.S. Scholte, S.~Ghebreab, L.~Waldorp, A.W.M. Smeulders, and V.A.F. Lamme.
+\newblock Brain responses strongly correlate with weibull image statistics when
+  processing natural images.
+\newblock {\em Journal of Vision}, 9(4):29, 2009.
+
+\bibitem{tokarchuk2009using}
+L.~Tokarchuk, K.~Shoop, and A.~Ma.
+\newblock {Using co-presence communities to enhance social recommendation}.
+\newblock In {\em Proceedings of the Sixth international conference on Wireless
+  On-Demand Network Systems and Services}, pages 157--160. Institute of
+  Electrical and Electronics Engineers Inc., The, 2009.
+
+\bibitem{VazquezJOSA2010}
+E.~Vazquez, T.~Gevers, M.~Lucassen, J.~van~de Weijer, and R.~Baldrich.
+\newblock Saliency of color image derivatives: A comparison between
+  computational models and human perception.
+\newblock {\em Journal of the Optical Society of America A}, 27(3):613--621,
+  2010.
+
+\end{thebibliography}
