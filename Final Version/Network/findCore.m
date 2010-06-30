@@ -1,10 +1,19 @@
-function GOld = myFindCore(str, startDegree, Graph)
+function G = findCore(degreetype, startDegree, Graph)
+%FINDCORE finds the core of a network as described in report
+% G = FINDCORE(DEGREETYPE, STARTDEGREE, GRAPH)
+% G = Graph object, containing core
+% DEGREETYPE = string {'in', 'out', 'all'} describing what type of degree to use
+% STARTDEGREE = integer degree at which corefinding should start
+% GRAPH = the Graph object for which the core needs to be found
+%
+% example G = findCore('all', 185, Graph)
+% Created by: bjbuter
 
-if(strcmpi(str,'in'))
+if(strcmpi(degreetype,'in'))
     degreeCol = 2;
-elseif(strcmpi(str,'out'))
+elseif(strcmpi(degreetype,'out'))
     degreeCol = 3;
-elseif(strcmpi(str, 'all'))
+elseif(strcmpi(degreetype, 'all'))
     degreeCol = 4;
 else
     error('wrong input')
@@ -21,7 +30,7 @@ while ~isempty(Degree)
     
     indexRemoveNodes = Degree(:,degreeCol)<i;
     idsRemoveNodes = Degree(indexRemoveNodes,1);
-    GOld = GNew;
+    G = GNew;
     while ~isempty(idsRemoveNodes);   
         disp(['removing: ', num2str(length(idsRemoveNodes)), ' nodes'])
         

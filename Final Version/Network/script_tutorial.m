@@ -1,4 +1,8 @@
-%function tutorial(Graph)
+%SCRIPT_TUTORIAL Script as provided on the Complex Networks Package for MatLab website
+%slow parts are commented out
+%
+%G, Graph variable should have been assigned before
+Graph = G;
 
 close all
 %+++Some basic statistics:
@@ -13,11 +17,11 @@ Degrees(:,4)=(Degrees(:,2)+Degrees(:,3))/2;
 disp(sprintf('Average Node Degree: %2.2f',mean(Degrees(:,2))));
 
 %Find fraction of reciprocal links:
-%Reciprocal = GraphCountUnderectionality(Graph);
-%disp(sprintf('Fraction of reciprocal links: %2.2f%%',Reciprocal.DoubleConnectivityFraction*100));
+Reciprocal = GraphCountUnderectionality(Graph);
+disp(sprintf('Fraction of reciprocal links: %2.2f%%',Reciprocal.DoubleConnectivityFraction*100));
 % Clustering coefficient:
-%CC = mexGraphClusteringCoefficient(Graph);
-%disp(sprintf('Average Clustering Coefficient: %3.3f%%',CC.C));
+CC = mexGraphClusteringCoefficient(Graph);
+disp(sprintf('Average Clustering Coefficient: %3.3f%%',CC.C));
 
 %+++Node Degree Distribution:
 disp 'Node Degree Distribution:'
