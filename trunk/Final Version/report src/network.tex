@@ -1,0 +1,53 @@
+Network analysis has been identified as one of the three main pillars of the research into dA. The purpose of the network analysis is to investigate the properties of the dA network as a whole. Moreover the network is investigated to identify clusters of interest to a humanities researcher. First, previous work will be discussed after which we present a more in depth description of the models used in our investigation.
+
+\subsubsection{Previous work}
+Even though dA presents a rich dataset interesting for the art, social web and computer vision communities, there has been little research into dA. One of the few available academic sources is \cite{DaMasters} in which dA is discussed in the context of evaluating a specific peer-review and critiquing application.
+However, research into art-based social networks exists but concentrates on the photography based network \textit{Flickr}. For instance, favorite markings and their spread through the \textit{Flickr} network have been described in \cite{cha2009measurement}. The structure and growth of the \textit{Flickr} network has been described in \cite{kumar2006structure} and \cite{leskovec2008microscopic}. These articles investigate the user-network with an extra dimension of temperal information about when users first appear and can therefore describe the growth and evolution of the network. The global network model at a macroscopic level is described in \cite{kumar2006structure}, while \cite{leskovec2008microscopic} describes the growth at a user or microscopic level. 
+A network model of particular relevance for this project is the small-world model \cite{watts1998collective} from Watts and Strogatz. Small-world networks inhabit the space between the regular networks or lattices and random networks. Many practical networks have been shown to have a small-world topology, such as the Internet, the power grid and neural networks. For some more examples see \cite{albert2002statistical}. The next section will describe the statistical measures which will enable the identification of small-world networks, as well as some other technical details about these networks.
+
+
+\subsubsection{Proposed approach}\label{net_proposed_approach}
+In terms of a social network, a large (close to 1) cluster coefficient means that many of a person's friends know each other. A low characteristic path length means that on average two persons are connected through small friends-of-friends chains.
+Small-world networks are those networks that have a high cluster coefficient and low characteristic path length.  Whereas random networks have a low characteristic path and low cluster coefficient and lattices have high cluster coefficients but long characteristic path length. 
+
+Formally, let $G=(V, E)$ be a graph, where $V$ is a set of vertices, and $E$ a set of edges between vertices in $V$, here $e_{ij}$ denotes the edge connecting $i$ and $j$.  The \textit{out-neighborhood} of $v_i$, $N_i^{out}:=\{v_j|e_{ij}\in E\}$, the \textit{in-neighborhood} $N_i^{in}:=\{v_j|e_{ji}\in E\}$. The \textit{neighborhood} of $v_i$, $N_i:=N_i^{out}\cup N_i^{in}$. The \textit{degree} of vertex $v_i$, $k_i:=|N_i|$ is the number of vertices in the neighborhood of $v_i$. A degree can similarly be defined for in and out neighborhoods. The \textit{directional clustering coefficient} for $v_i$ with $k_i>1$ can now be defined as:
+\begin{equation}
+C_i :=\frac{|\{e_{jk}\}|}{k_i(k_i-1)},
+\end{equation}
+where $v_j,v_k\in N_i$ and $e_{jk}\in E$, let $n=|V|$ denote the number vertices the \textit{directional clustering coefficient} for $G$ is defined as:
+\begin{equation}
+C_G:=\frac{\sum_{i\in V} C_i}{n}.
+\end{equation}
+The \textit{characteristic path length} $L_G$ of graph $G$ is the average shortest path length between vertices in $G$. Land  $L_{Gij}$ denote the length of the shortest path between vertices $i$ and $j$. 
+\begin{equation}
+L_G:= \frac{\sum_{i\in V} \sum_{j \in V\setminus i}L_{Gij}}{n(n-1)}.
+\end{equation}
+Finding all shortest paths can be performed using the Floyd-Warshall algorithm~\cite{Floyd} having $O(|V|^3)$ complexity.
+
+For networks where $n\gg k\gg ln(n) \gg1$, the ring lattice will have $L_{lattice}\approx\frac{n}{2k}$ and $C_{lattice}\approx\frac{3}{4}$.
+A large random network  $ L_{random}\approx\frac{\ln(n)}{\ln(k)}$ and $C_{random}\approx\frac{k}{n}$. A network is considered small-world when $L_G\approx L_{random}$ and $C_G \gg C_{random}$
+
+To find the core of most connected vertices the findcore algorithm, shown in Algorithm \ref{alg:findcore}, is proposed. This algorithm recursively removes all vertices of degree $x$ from the network, starting at $1$. If there are vertices left in the network this is repeated with  $x+1$. Once an empty network is obtained the previous network is deemed the core, because recursively removing nodes of higher degree will inevitably lead to an empty network. The choice of the $degree(j)$ - standard, in-degree, out-degree,  or in+out-degree - facilitates in finding cores with different characteristics.
+
+\pagebreak
+
+\algsetup{indent=1em}
+\newcommand{\FindCore}{\ensuremath{\mbox{\sc FindCore}}}
+\begin{algorithm}[htb]
+\caption{$\FindCore(Network)$}\label{alg:findcore}
+\begin{algorithmic}
+\REQUIRE A Network $G=(V,E)$.
+\ENSURE The core of network $G$ and the degree $x$ at which the core is found.
+\medskip
+\STATE $x\gets 1$
+\WHILE {$|V| > 0$}
+	
+	\STATE $Gprevious \gets G$
+	\WHILE {$|\{j\in V | degree(j)<x\}| > 0$}
+		\STATE $G\gets removeNodes(G, \{j\in V | degree(j)<x\})$ 
+	\ENDWHILE
+	\STATE $i \gets x+1$
+\ENDWHILE
+\RETURN $Gprevious, x-1$
+\end{algorithmic}
+\end{algorithm}

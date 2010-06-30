@@ -1,0 +1,62 @@
+\documentclass[10pt,journal,compsoc]{IEEEtran}
+
+\usepackage{graphicx}
+\usepackage{subfigure}
+\usepackage{url}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+\makeindex
+
+\begin{document}
+
+\title{TADA: Toolkit for Analysis of deviantART}
+\author{Bart Buter, Nick Dijkshoorn, Davide Modolo, Quang Nguyen, Sander van Noort, Bart van de Poel}
+
+\maketitle
+
+\begin{abstract}
+\input{abstract}
+\end{abstract}
+
+
+\begin{keywords}
+image analysis, image features, classification, deviantART, art, online social network
+\end{keywords}
+
+
+\section{Introduction \label{intro}}
+\input{introduction}
+
+
+\section{Research areas \label{research_area}}
+	\subsection{deviantART network analysis \label{net}}
+	\input{network}
+	\subsection{Feature extraction and classification \label {feat_class}}
+	\input{featureclass}
+	\subsection{Visualization \label{visualiz}}
+	\input{visualization}
+
+
+\section{Toolkit \label{toolkit}}
+\input{toolbox}
+
+\section{Experiments \label{exp}}
+\input{experiments}
+
+
+\section{Future work \label{future_work}}
+\input{futurework}
+
+\section{Conclusion \label{conclusion}}
+\input{conclusion}
+
+%\appendix
+%\section{Datasets}
+%\input{appendix}
+
+%\nocite{*}
+\bibliographystyle{unsrt}
+\bibliography{bibtex}
+
+\end{document}
