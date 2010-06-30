@@ -127,7 +127,7 @@
 
 = Implemented features =
  * edge/pixels ratio (also grid version) (now with default parameters) (about 10-50 per second)
- * avg&median hue,saturation,Intensity (also grid version) (about 10-50 per second)
+ * avg&median hue,saturation,Value,Intensity (also grid version) (about 10-50 per second)
  * number of faces in image (very bad face detection) (processes about 3 images per second)
  * corners pixel ratio in image (also grid version) (5-10 per second)
  * weibull fit  (Bart B.) (Currently not used due to unexplicable bug in the external weibull code)
