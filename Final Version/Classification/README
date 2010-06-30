@@ -1,0 +1,60 @@
+---Classification Part of the Toolkit---
+
+Make sure you have LibSVM, PRTools and XML_toolbox in your Matlab workspace path in order to use these functions.
+
+The following list shows all functions of the final Classification toolkit:
+
+The category Dataset Functions and Classifiers are basic components one can use to create experiments.
+
+The categories Experiment functions and Output/Evaluation functions are functions and experiments geared towards the results in the report.
+They can be used as a learning example on how to use the basic components.
+
+Also in the directory Precomputed data are some precomputed data that can be used, you will not have to read in all XML files again etc.
+
+More functions that were not included in the final version can be found in the SVN, it also contains out dated functions that can be helpful in the future.
+
+---Precomputed Data---
+
+	- 1on1ResultsFeatures.mat, this file contains the features that were used to separate artist pairs, there are 6 matrices here where the first matrix corresponds to allfeatures and 2-6 are the top 1,2,3,4,5 matrices.
+	- 1on1ResultsScores.mat, this file contains the F-measure score for every artist and the 6 matrices here correspond to the 1on1ResultsFeatures.mat matrices.
+	- artistnames.mat, list of the artistnames used here this file is used for many output functions.
+	- Testset.mat, the test set used for the run1on1.m file or optimize classifiers. PRTools format
+	- Trainset.mat the train set used for the run1on1.m file or optimize classifiers or can be used to filter our classes, features etc. PRTools format.
+
+
+---Dataset Functions---
+
+	- readfeatureXML.m, is used to read in the XML files containing the feature values
+	- createRawDataset.m, converts the read in XML files into different parts of a dataset that can be combined using PRTools
+	- createExperimentFiles.m, this function also calls createRawDataset.m and creates a training, testset and few other files needed for the experiments. The dataset outputted here is in PRTools format and is also normalized.
+	- filterClasses.m, selects classes that you want from the dataset
+	- filterFeatures.m, select features that you want from the dataset
+	- MinMaxNormalization.m, normalizes the raw data
+	- CrossvalRotation.m, sets up the crossvalrotation matrix indicating which row is sorted to which fold.	-	- 
+	- Featureselection.m, this is the sequential forward feature selector.
+	- computeFmeasure.m, computes the F-measure
+
+---Classifiers---
+
+	- optimizekNN.m, optimize function for kNN.
+	- optimizeNaiveBayes.m, optimize function for Naive Bayes
+	- optimizeSVM.m, optimize function for SVM
+	- TADAkNN.m, function kNN
+	- TADANearestMean.m, function Neares Mean
+	- TADANaiveBayes.m, function Naive Bayes
+	- TADASVM.m, function SVM
+
+
+---Experiment Functions---
+
+	- optimizeClassifiers.m, this function is used to find the best parameters for each classifier. Taking the mean of the results of the parameter matrix of this function can give you the average optimized parameter
+	- run1on1.m, the function used to create the results in the report. This can be used as a learning example on how to combine the preprocessing and classifier components.
+
+---Output/Evaluation Functions---
+
+	- createIntensitymap.m, this function creates the intensity map from the output matrices
+	- countFeatureArtist.m, this function counts the number of features that were used for an artist.
+	- countFeatureScores.m, this function counts the number of features for all artists
+	- findCombination.m, this function returns the details of a result between 2 artists/classes
+	- findPairs.m, this function finds the interesting artistpairs that can be investigated with the visualization.
+	
