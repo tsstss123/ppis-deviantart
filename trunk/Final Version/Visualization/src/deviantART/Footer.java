@@ -82,10 +82,16 @@ public class Footer extends JPanel {
 		paintImages();
 	}
 	
+	/**
+	 * Clear all images from the footer
+	 */
 	public void resetAll() {
 		resetImages();
 	}
 	
+	/**
+	 * Reset all images from the footer and repaint
+	 */
 	public void resetImages() {
 		Images.clear();
 		paintImages();
@@ -95,6 +101,12 @@ public class Footer extends JPanel {
 		g.drawImage(bg, 0, 0, null);
 	}
 	
+	/**
+	 * Paint the images to the screen
+	 */
+	/**
+	 * 
+	 */
 	public void paintImages() {
 		ImagesBox.removeAll();
 		
@@ -113,7 +125,7 @@ public class Footer extends JPanel {
 		int surfW		= 870 - 2*offsetX;
 		int surfH		= 112;
 
-		// slow
+		/* Find optimal image size (max width is 100px) */
 		int rows;
 		for(int i=100; i>0; i--) {
 
