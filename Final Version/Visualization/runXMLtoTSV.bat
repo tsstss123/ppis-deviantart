@@ -1,1 +1,1 @@
-java -classpath "./bin;core.jar" -Xmx500m XMLtoTSV.XMLtoTSV data/default/
+java -classpath "C:\deviantART\bin" -Xmx500m XMLtoTSV.XMLtoTSV data/default/

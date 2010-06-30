@@ -45,7 +45,7 @@ public class deviantART extends JFrame {
 		//selectFile();
 
 		// auto select file
-		setDatasetDir(new File("./data/albert/"));
+		setDatasetDir(new File("./data/default/"));
 		runView();
 
 		/* java layout */
