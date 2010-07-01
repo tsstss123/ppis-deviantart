@@ -1,25 +1,11 @@
 function [E, Etot, H, P, Sk] = saliency(im,numberPoints)
-    
-    
-    
-    % number of most saliency points
-%     numberPoints = 3;
-    
-%     im = imread('../datasets/images/child19.jpg');
-%     
-%         path = {'../images/animals/','../images/famous/', ...
-%             '../images/carthoon/','../images/photo/','../images/paint/'} ;
-%         extension = '.jpg';
-%    
-%         for i=1:size(path,2)
-%             for j=1:5
-%                 imagestr{i+(j-1)*5,1} = horzcat(path{j},int2str(i),extension);
-%             end
-%         end
+% File used to extract all the saliency features    
 
+% input values: [im] = image we want to extract the features
+%               [numberPoints] = number of most saliency points we want to
+%                                retrieve
+% Created by Davide Modolo
         
-    
-    %im = imread(imagestr{i});
     
     params = set_parameters(im);
     [salMap, salData] = generateSaliencyMap(im, params);
