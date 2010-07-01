@@ -1,4 +1,27 @@
 function [coordinates] = getMostSalientPoints(salmap, salData, params, n)
+% Function used to find the n most saliency point of the saliency map
+% It runs the winner-take-all (WTA) process (used also in a previous step to
+% compute the saliency map) and at each step:
+% - it finds the most salient point;
+% - it stores it;
+% - it inhibit it;
+% - it runs again the process and compute the next most salienct points
+% until it has retrieved n points.
+
+% input value:  [salmap] =  structure used to store the saliency map and
+%                           its information (such as. dimension, etc. etc.)
+
+%               [salData] = structure used to store the four conspicuity maps and their
+%                           information (such as. dimension, etc. etc.)
+
+%               [params] =  parameters used in the saliency toolbox. For
+%                           more information about those parameters look in
+%                           function: set_parameters
+
+%               [n] =       number of most salient points we want to
+%                           retrieve
+
+% Created by Davide Modolo 
    
     wta = initializeWTA(salmap,params);
     
