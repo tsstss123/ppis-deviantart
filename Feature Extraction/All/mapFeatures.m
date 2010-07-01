@@ -1,5 +1,5 @@
 function [pcaLda, projected] = mapFeatures(type, class, settings)
-%MAPFEATURES maps features to 2d PCA or LDA space, and saves in XML
+%MAPFEATURES maps features to (2d) PCA or LDA space, and saves in XML
 % [PCALDA, PROJECTED] = MAPFEATURES(TYPE, CLASS, SETTINGS)
 % PCALDA = cell array with prtools PCA LDA mappings
 % PROJECTED = cell array with dataset projected into PCA, LDA space
