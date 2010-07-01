@@ -1,12 +1,17 @@
 #summary Davide's research log
 
 == 29/06/2010==
+    * Worked on the report
+       * Experiments, conclusion & Abstract
     * Reviewed the entire report with the group
     * After 9 hours of discussion the final report has been ready to be delivered!!!  GREAT JOB GUYS!!! :)
 
 == 28/06/2010==
     * Proposed to Albert the current version of the report.
     * Changed the structure of the report following his advices  
+    * Worked on the report
+       * Data collection
+       * Classification
 
 == 27/06/2010==
     * Worked on the report
@@ -14,10 +19,13 @@
 
 == 26/06/2010==
    * Worked on the report
+      * Feature extraction
+      * Future work
 
 == 25/06/2010==
     * Worked on the report
-       * The cognitive-inspired feature description is done
+       * Introduction
+       * Cognitive-inspired feature
 
 == 24/06/2010==
     * Started working on the final report
