@@ -1,10 +1,32 @@
 function [pcaLda, projected] = mapFeatures(type, class, settings)
-
+%MAPFEATURES maps features to 2d PCA or LDA space, and saves in XML
+% [PCALDA, PROJECTED] = MAPFEATURES(TYPE, CLASS, SETTINGS)
+% PCALDA = cell array with prtools PCA LDA mappings
+% PROJECTED = cell array with dataset projected into PCA, LDA space
+% TYPE = string indicating type of mapping {'pca', 'lda', 'all'}
+% CLASS = string indicating the classes that need to be used (for LDA)
+%       {'artist', 'catfull', 'catmiddle', 'cattop','catall', 'all'};
+%       'catfull' is the whole dA catagory 3 deep, 'catmiddle' 2 deep, 
+%       'cattop' is top catagory only, catall means all 3 catagory depths 
+%       'all' is all catagories + artists
+% SETTINGS = a string {'all', 'standard', 'allfeatures'} will invoke
+%               standard settings: 'allfeatures' =PCA/LDA on the whole featurespace 
+%               standard will do PCA/LDA on grid based features separately
+%               all will do both options from above.
+%           It is also possible to input a settings 3*N cellarray with in each column:
+%           {string_featurename; {feature1,..., featurex}; projectDim];
+%           every column is a new experiment with name=string_featurename,
+%           PCA/LDA will be performed on featurespace {feature1,...,
+%           featurex}, it will be projected to projectDim space. 
+%
+%Note all results will be added to the xml feature files
+%
+% example [pcaLda, projected] = mapFeatures('all', 'all', 'all')
+% Created by: bjbuter
+%
+% NOTE: paths to external packages should have been added
+%       some directories & settings are hardcoded
 minimalClassSize = 10;
-
-%setup paths should be moved to general setup file
-project_root = ['..',filesep,'..',filesep];
-addpath(genpath([project_root, 'externalpackages']));
 
 % DIR NEEDS TO EXIST
 featuredir = ['..',filesep,'features', filesep];
@@ -122,12 +144,13 @@ for i=1:length(files)
 end
 
 function [doPca, doLda, doClasses, classes, settings] = parseInputs(type, class, settings)
-
+%parse the inputs into a settings cellarray as described in the main
+%function
 type = lower(type);
 class = lower(class);
 
 types = {'pca', 'lda', 'all'};
-classes = {'artist', 'catfulll', 'catmiddle', 'cattop', 'catall', 'all'};
+classes = {'artist', 'catfull', 'catmiddle', 'cattop', 'catall', 'all'};
 settingsStrs = {'all', 'standard', 'allfeatures'};
 
 if ~ischar(type) || ~ismember(type, types)
