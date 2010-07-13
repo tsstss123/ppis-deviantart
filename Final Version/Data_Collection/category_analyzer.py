@@ -64,8 +64,8 @@ def reportDeviant(folder_name, deviant):
 		addToCategories(totalcategories, category)
 		addToCategories(usercategories, category)
 
+	print('Analyzing deviant %s' % (deviant))	
 	if printperuser:
-		print('Analyzing deviant %s' % (deviant))
 		printCategories(usercategories, '\t', printsubcategories)
 		
 	if print2file:
