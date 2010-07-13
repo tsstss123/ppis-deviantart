@@ -93,8 +93,9 @@ def main():
 			
 	for name in os.listdir(folder_name):
 		reportDeviant(folder_name, name)
-	
-	file.close()
+	if print2file:
+		file.close()
+		
 	if not printperuser:
 		printCategories(totalcategories, '', printsubcategories)
 
