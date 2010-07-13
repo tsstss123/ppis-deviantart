@@ -48,6 +48,7 @@ class GalleryBackEndParser(handler.ContentHandler):
 		# Item info
 		self.itemstarted = False
 		self.xmlcontent = []
+		self.chars = ''
 		self.imagefilename = None
 
 		# Create folders for the downloaded images if needed
@@ -94,6 +95,14 @@ class GalleryBackEndParser(handler.ContentHandler):
 				self.downloadImageTo(self.full_folder, attrs.getValue('url'))
 		elif name == 'media:thumbnail':
 			self.thumbnails.append( (attrs.getValue('url'), int(attrs.getValue('width')), int(attrs.getValue('height'))) )
+		# we cannot put this in characters since there chunks are given not necessary all characters
+		elif name == 'media:category':
+			self.xmlcontent.append('\t<category idx="1" type="char" size="1 ')
+		elif name == 'media:title':
+			self.xmlcontent.append('\t<title idx="1" type="char" size="1 ')
+		elif name == 'guid':
+			self.xmlcontent.append('\t<guid idx="1" type="char" size="1 ')
+		
 
 	def downloadImageTo(self, folder, url_name):
 		""" Downloads the image from the url to the specified folder
@@ -166,17 +175,24 @@ class GalleryBackEndParser(handler.ContentHandler):
 
 			self.imagefilename = None
 			self.itemstarted = False
-		
+		#
+		elif name == 'media:category':
+			self.xmlcontent.append('%s">%s</category>\n' % (len(self.chars), self.chars))
+			self.chars = ''
+		elif name == 'media:title':
+			self.xmlcontent.append('%s">%s</title>\n' % (len(self.chars), self.chars))
+			self.chars = ''
+		elif name == 'guid':
+			self.xmlcontent.append('%s">%s</guid>\n' % (len(self.chars), self.chars))
+			self.chars = ''
+	
 	def characters(self, content):
+		#watch out this receives chunks of characters not always all
 		if len(self.stack) == 0:
 			return
 		tag = self.stack[len(self.stack)-1]
-		if tag == 'media:category':
-			self.xmlcontent.append('\t<category idx="1" type="char" size="1 %s">%s</category>\n' % (len(content), content))
-		elif tag == 'media:title':
-			self.xmlcontent.append('\t<title idx="1" type="char" size="1 %s">%s</title>\n' % (len(content), content))
-		elif tag == 'guid':
-			self.xmlcontent.append('\t<guid idx="1" type="char" size="1 %s">%s</guid>\n' % (len(content), content))
+		if tag == 'media:category' or tag == 'media:title' or tag == 'guid':
+			self.chars += content
 
 	def endDocument(self):
 		pass
