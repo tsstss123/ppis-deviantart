@@ -72,7 +72,6 @@ class GalleryBackEndParser(handler.ContentHandler):
 		self.deviant_folder = deviant_folder
 		
 
-
 	def startElement(self, name, attrs):
 		self.stack.append(name)
 		if name == 'item':

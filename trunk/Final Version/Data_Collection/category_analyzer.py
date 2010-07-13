@@ -12,6 +12,9 @@ import getopt
 # Global settings
 printsubcategories = False
 printperuser = False
+print2file = False
+file
+totalcategories = defaultdict( lambda : [0, createSubCategory()] )
 
 # Categories. Keeps track of the sub categories count.
 def createSubCategory(depth=6):
@@ -33,8 +36,11 @@ def printCategories(categories, indent='\t', printsub=True):
 		print '%s%s: %d' % (indent, k, v[0])
 		if printsub:
 			printCategories(v[1], indent = '%s\t' % (indent))
-
-totalcategories = defaultdict( lambda : [0, createSubCategory()] )
+			
+def writeCategories(deviant, categories):
+	categories = sorted(categories.iteritems(), key=itemgetter(1), reverse=True)
+	for k, v in categories:
+		file.write('%s, %s, %d \r\n' %(deviant, k, v[0]))
 
 def reportDeviant(folder_name, deviant):
 	""" Count categories for a given deviant """	
@@ -62,10 +68,12 @@ def reportDeviant(folder_name, deviant):
 		print('Analyzing deviant %s' % (deviant))
 		printCategories(usercategories, '\t', printsubcategories)
 		
+	if print2file:
+		writeCategories(deviant, usercategories)
 def main():
-	global totalcategories, printsubcategories, printperuser
+	global totalcategories, printsubcategories, printperuser, print2file, file
 
-	opt, args = getopt.getopt(sys.argv[1:], 'us')
+	opt, args = getopt.getopt(sys.argv[1:], 'usf')
 	
 	if len(args) != 1:
 		print('Usage: ./category_analyzer [options] folder_name')
@@ -78,10 +86,14 @@ def main():
 			printperuser = True
 		if o == '-s':		
 			printsubcategories = True
-		
+		if o == '-f':
+			print2file = True
+			file = open('%s.csv' %(folder_name), 'wb')
+			
 	for name in os.listdir(folder_name):
 		reportDeviant(folder_name, name)
-
+	
+	file.close()
 	if not printperuser:
 		printCategories(totalcategories, '', printsubcategories)
 
