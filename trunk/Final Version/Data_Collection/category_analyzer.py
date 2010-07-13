@@ -23,7 +23,8 @@ def createSubCategory(depth=6):
 	return defaultdict( lambda : [0, createSubCategory(depth-1)] )
 
 def addToCategories(categoriesdict, category):
-	category = category.split('/')
+	#first strip leading '/' then split
+	category = category.lstrip('/').split('/')
 	for c in category:
 		categoriesdict[c][0] += 1
 		categoriesdict = categoriesdict[c][1]
