@@ -54,20 +54,24 @@ class GalleryBackEndParser(handler.ContentHandler):
 		deviant_folder = os.path.join(imagefolder, deviant)
 		if not os.path.exists(deviant_folder):
 			os.mkdir(deviant_folder)
-		full_folder = os.path.join(deviant_folder, 'full')
-		if not os.path.exists(full_folder):
-			os.mkdir(full_folder)
-		thumbbig_folder = os.path.join(deviant_folder, 'thumbbig')
-		if not os.path.exists(thumbbig_folder):
-			os.mkdir(thumbbig_folder)
-		thumbsmall_folder = os.path.join(deviant_folder, 'thumbsmall')
-		if not os.path.exists(thumbsmall_folder):
-			os.mkdir(thumbsmall_folder)
+		if downloadfullimages:
+			full_folder = os.path.join(deviant_folder, 'full')
+			if not os.path.exists(full_folder):
+				os.mkdir(full_folder)
+			self.full_folder = full_folder
+		if downloadthumbnails:
+			thumbbig_folder = os.path.join(deviant_folder, 'thumbbig')
+			if not os.path.exists(thumbbig_folder):
+				os.mkdir(thumbbig_folder)
+			thumbsmall_folder = os.path.join(deviant_folder, 'thumbsmall')
+			if not os.path.exists(thumbsmall_folder):
+				os.mkdir(thumbsmall_folder)
+			self.thumbbig_folder = thumbbig_folder
+			self.thumbsmall_folder = thumbsmall_folder
 	
 		self.deviant_folder = deviant_folder
-		self.full_folder = full_folder
-		self.thumbbig_folder = thumbbig_folder
-		self.thumbsmall_folder = thumbsmall_folder
+		
+
 
 	def startElement(self, name, attrs):
 		self.stack.append(name)
