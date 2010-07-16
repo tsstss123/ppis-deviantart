@@ -238,7 +238,7 @@ def load_deviants_vert(filename):
 	file = open(filename, 'r')
 	deviant_list = file.readlines()
 	file.close()
-	return [deviant.strip('"\n \t\r').split(',')[2] for deviant in deviant_list ]
+	return [deviant.strip('"\n \t\r').split(',')[1] for deviant in deviant_list ]
 
 
 def main():
