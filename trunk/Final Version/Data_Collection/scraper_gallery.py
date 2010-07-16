@@ -234,12 +234,19 @@ def load_deviants(filename):
 	file.close()
 	return [deviant.strip('"\n \t\r') for deviant in deviant_list ]
 
+def load_deviants_vert(filename):
+	file = open(filename, 'r')
+	deviant_list = file.readlines()
+	file.close()
+	return [deviant.strip('"\n \t\r').split(',')[2] for deviant in deviant_list ]
+
+
 def main():
 	downloadfullimages = False
 	downloadthumbnails = False
 	removefailed = False
 
-	opt, args = getopt.getopt(sys.argv[1:], 'f:itr')
+	opt, args = getopt.getopt(sys.argv[1:], 'f:itrv:')
 
 	if len(args) < 1:
 		print('Usage: %s [options] image_folder_path deviant1 deviant2 deviant3 ...\n\t or %s [options]-f filename image_folder_path' % (sys.argv[0],sys.argv[0]))
@@ -257,6 +264,10 @@ def main():
 		elif o == '-f':
 			deviants = load_deviants(v)
 			removefailed = True
+		elif o == '-v':
+			deviants = load_deviants_vert(v)
+			removefailed = True
+			
 
 	imagefolder = args[0]
 	if not deviants:
@@ -277,4 +288,3 @@ def main():
 if __name__ == '__main__':
 	starttime = datetime.now()
 	main()
-
