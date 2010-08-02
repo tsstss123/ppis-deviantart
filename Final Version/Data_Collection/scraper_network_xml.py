@@ -112,7 +112,6 @@ def createXMLFile(xml_folder, deviant):
 	xmlname = '%s.xml' % (deviant)
 	file = open(os.path.join(xml_folder, xmlname), 'wb')
 	file.write('<?xml version="1.0"?>\n')
-	file.write('<!-- Automaticallt generated on %s for UvA dA project by BJButer`s network script-->\n' % (datetime.datetime.now()) )
 	file.write('<deviant>%s\n' %(deviant))
 	file.write('<datetime>%s</datetime>\n' % (datetime.datetime.now()) )
 	return file
@@ -209,7 +208,7 @@ def main():
 	prevsavetime = data[3]
 
 	nextsavetime = 1
-	saveinterval = 30
+	saveinterval = 600
 	
 	xml_folder = 'xml'
 	if not os.path.exists(xml_folder):
