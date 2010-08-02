@@ -182,7 +182,6 @@ def main():
 	errlist = data[2]
 	prevsavetime = data[3]
 
-        todolist = []
 	nextsavetime = 1
 	saveinterval = 30
 
