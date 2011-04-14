@@ -1,20 +1,21 @@
 #summary Paper corrections
 
+== General Changes ==
  * Figure captions
- * deviantART -> deviantArt (or did you guys change it to deviantART on purpose?)
+ * deviantART -> deviantArt (not sure about this did you guys change it to deviantART on purpose?)
 
-abstract
+==abstract==
 	mem- bers -> members
 	
-I. Introduction
+==I. Introduction==
 	non- professionals -> non-professionals <br>
 	others -> other's (according to Word Corrections) <br>
 	de- scribe -> describe
 	
-II. Methodology
+==II. Methodology==
 	-
 	
-III. Image Analysis
+==III. Image Analysis==
 	colour -> italics <br>
 	composition -> italics <br>
 	contrast -> italics <br>
@@ -23,11 +24,11 @@ III. Image Analysis
 	statistical features -> italics <br>
 	cognitive-based features -> italics
 	 
-1) Statistical features
+==1) Statistical features==
 	color-based -> italics <br>
 	mea- sure -> measure
 
-2) Cognitively-inspired features
+==2) Cognitively-inspired features==
 	decom posed -> decomposed <br>
 	Shannon entropy -> italics <br>
 	Standard deviation -> italics <br>
@@ -35,7 +36,7 @@ III. Image Analysis
 	Skin intensity -> italics <br>
 	Toolbox3 -> Toolbox
 	
-IV. Automatic Feature Selection
+==IV. Automatic Feature Selection==
 	How- ever -> However <br>
 	Naive Bayes -> italics <br>
 	Nearest Mean -> italics <br>
@@ -51,32 +52,32 @@ IV. Automatic Feature Selection
 
 	F-measure -> italics
 	
-V. Visualization
+==V. Visualization==
 	-
 	
-B. Visualization software
+==B. Visualization software==
 	scatter plot -> italics <br>
 	parallel coordinates -> italics <br>
 	radial plot -> italics <br>
 	offline -> italics
 	
-C. DeviantART Toolkit
+==C. DeviantART Toolkit==
 	PRTools5 -> PRTools <br>
 	LibSVM6 -> LibSVM <br>
 	Processing API ^7^ -> Processing API^7^
 	(what i mean here is remove the whitespace character between API and ^7^)
 	
-VI. Experiments
+==VI. Experiments==
 	-
 
-A. The deviantART network
+==A. The deviantART network==
 	-
 
-B. Image and classification experiments
+==B. Image and classification experiments==
 	Borda count10 -> Borda count^10^ <br>
 	hue -> italics <br>
 	corner pixel ratio -> italics
 	
-VII. Conclusion
+==VII. Conclusion==
 	-
 	
